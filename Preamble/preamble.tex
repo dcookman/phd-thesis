@@ -5,7 +5,7 @@
 % Set {innerside margin / outerside margin / topmargin / bottom margin}  and
 % other page dimensions
 \ifsetCustomMargin
-  \RequirePackage[left=37mm,right=30mm,top=35mm,bottom=30mm]{geometry}
+  \RequirePackage[left=35mm,right=30mm,top=35mm,bottom=30mm]{geometry}
   \setFancyHdr % To apply fancy header after geometry package is loaded
 \fi
 
@@ -54,9 +54,10 @@
 % Captions: This makes captions of figures use a boldfaced small font.
 %\RequirePackage[small,bf]{caption}
 
-\RequirePackage[labelsep=space,tableposition=top]{caption}
+\RequirePackage[labelsep=colon,tableposition=top,font=small,labelfont=bf]{caption}
 \renewcommand{\figurename}{Fig.} %to support older versions of captions.sty
 
+\usepackage{hyperref}
 
 % *************************** Graphics and figures *****************************
 
@@ -86,7 +87,11 @@
 % *********************************** SI Units *********************************
 \usepackage{siunitx} % use this package module for SI units
 \sisetup{separate-uncertainty = true, range-phrase = --, range-units = single, group-separator = {,}}
-\DeclareSIUnit\npe{\text{npe}}
+\DeclareSIUnit{\npe}{\text{npe}}
+\DeclareSIUnit{\gpl}{\text{g/L}}
+\DeclareSIUnit{\dB}{\text{dB}}
+\DeclareSIUnit{\Bq}{\text{Bq}}
+\DeclareSIUnit{\byte}{\text{B}}
 
 % ******************************* Line Spacing *********************************
 
@@ -143,8 +148,8 @@
 % *********** To change the name of Table of Contents / LOF and LOT ************
 
 %\renewcommand{\contentsname}{My Table of Contents}
-%\renewcommand{\listfigurename}{My List of Figures}
-%\renewcommand{\listtablename}{My List of Tables}
+\renewcommand{\listfigurename}{List of Figures}
+\renewcommand{\listtablename}{List of Tables}
 
 
 % ********************** TOC depth and numbering depth *************************
@@ -157,7 +162,7 @@
 
 % To change the name of the Nomenclature section, uncomment the following line
 
-%\renewcommand{\nomname}{Symbols}
+\renewcommand{\nomname}{List of Acronyms}
 
 
 % ********************************* Appendix ***********************************
@@ -180,7 +185,7 @@
 %\SetDraftWMPosition{bottom}
 
 % Draft Version - default is v1.0
-\SetDraftVersion{v0.1}
+\SetDraftVersion{v1.2}
 
 % Draft Text grayscale value (should be between 0-black and 1-white)
 % Default value is 0.75
@@ -218,3 +223,20 @@
 % *****************************************************************************
 % ******************* Better enumeration my MB*************
 \usepackage{enumitem}
+
+
+
+%%%%%%%%%
+\usepackage{mhchem}
+
+
+\newcommand{\beight}{\ce{^{8}B}}
+\newcommand{\onbb}{$0\nu\beta\beta$}
+\newcommand{\dmsq}{\ensuremath{\Delta m^{2}_{21}}}
+\newcommand{\tonetwo}{\ensuremath{\theta_{12}}}
+\newcommand{\alphan}{$(\alpha, n)$}
+\newcommand{\tres}{\ensuremath{t_{res}}}
+
+\usepackage{epigraph}
+\usepackage{bm}
+\usepackage{tabulary}
