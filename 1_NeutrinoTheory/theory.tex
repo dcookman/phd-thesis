@@ -20,7 +20,7 @@
 % [2 pages total]
 % \subsection{Neutrinos within the Standard Model}
 \nomenclature{\textbf{SM}}{The Standard Model of Particle Physics}
-The Standard Model (SM) of Particle Physics is the culmination of a century's work by scientists to understand the fundamental constituent elements of the Universe, and their interactions. Within the SM, fundamental particles are excitations of associated quantum fields within spacetime. The particles that define the SM are shown in Fig.~\ref{fig:sm_particles}. As can be seen, these particles can be split into categories based on their properties.
+The \textit{Standard Model} (SM) of Particle Physics is the culmination of a century's work by scientists to understand the fundamental constituent elements of the Universe, and their interactions. Within the SM, fundamental particles are excitations of associated quantum fields within spacetime. The particles that define the SM are shown in Fig.~\ref{fig:sm_particles}. As can be seen, these particles can be split into categories based on their properties.
 
 \begin{figure}
     \centering
@@ -56,6 +56,8 @@ and the DONUT Collaboration to discover the tau neutrino in 2000~\cite{kodamaObs
 The existence of NC interactions with neutrinos and anti-neutrinos was first demonstrated by the Gargamelle experiment in 1974~\cite{hasertObservationNeutrinolikeInteractions1973,hasertSearchElasticMuonneutrino1973,hasertObservationNeutrinolikeInteractions1974,blietschauEvidenceLeptonicNeutral1976}. % cite gargamelle
 In particular, the observation of anti-muon neutrino electron elastic scattering, \ce{\bar{\nu}_{\mu} + e^{-} \to \bar{\nu}_{\mu} + e^{-}} by the experiment was an unambiguous demonstration of NC interactions. Further experiments, such as CHARM2, demonstrated the consistency of observed NC interactions with EW theory~\cite{}. % cite CHARM2 relevant paper(s)
 
+In 1958, Goldhaber \textit{et al}~\cite{goldhaberHelicityNeutrinos1958} were able to demonstrate experimentally that the helicity of electron neutrinos, i.e. the component of their spin along the direction of motion, is $-1$. No evidence of neutrinos with positive helicities (or equally, anti-neutrinos with negative helicities) exists. This stands in firm contrast to all other SM particles.
+
 No flavours of neutrino beyond the electron, muon, or tau types have been discovered. A combined analysis of data from the four LEP experiments looking at the decay width of the $Z$ boson was able to indirectly measure the number of neutrino species that could undergo NC interactions and had masses less than one half of the $Z$ boson: $N_{\nu} = 2.9963\pm0.0074$~\cite{}. % cite LEP papers, including update with correction!
 This measurement is very strong evidence that no other `light' neutrinos exist.
 
@@ -68,7 +70,40 @@ This measurement is very strong evidence that no other `light' neutrinos exist.
 
 % [4 pages]
 \section{Neutrino Oscillations and Neutrino Masses}
+So far in this description, no attempt has been made to explain the origin of the masses of the fundamental particles. It is certainly straightforward to na\"{i}vely add a mass term such as $m_{e}\bar{e}_{L}e_{R}$ into the SM Lagrangian, where $m_e$ is the mass of the electron. However, one can show that any mass terms added will necessarily violate the $SU(2)_{L}\times U(1)_{Y}$ symmetry that defines the EW interactions~\cite{}. % should cite something appropriate.
+The weak vector bosons $W^{\pm}$ and $Z$ would then need to be massless, in contradiction with observations.
+
+\nomenclature{\textbf{BEH}}{Brout-Englert-Higgs (Mechanism)}
+The solution to this problem comes in the form of the \textit{Brout-Englert-Higgs (BEH) Mechanism}~\cite{}, % cite BEH theory papers
+the final component of the SM.  In this Mechanism, an additional two-component ``Higgs'' field $H$ is proposed, which is able to interact with the other fields of the theory in a manner that preserves the SM gauge symmetries. One such part of the added Higgs field interactions are the so-called Yukawa terms~\cite{}, % cite Yukawa, presumably
+which for interactions with leptons are given by:
+\begin{equation}
+    -\mathcal{L}_{\mathrm{Yukawa,lep}} = \sum_{\ell}y_{\ell}\bar{L}^{\ell}H\ell^{c} + \mathrm{h.c.},
+\end{equation}
+where $y_{\ell}$ are the ``Yukawa'' coupling constants for the three lepton flavours, $L^{\ell} = \begin{pmatrix}
+    \nu_{\ell,L} \\ \ell_{L}
+\end{pmatrix}$ are the left-handed lepton doublets of the SM, and $\ell^{c}$ are the right-handed charged leptons.
+
+The key to the BEH Mechanism is \textit{Spontaneous Symmetry Breaking}: the Higgs field is defined in such a way that the ground state takes a non-zero `vacuum expectation value', $v$. By doing so, the underlying gauge symmetry of the EW interactions is spontaneously broken as $SU(2)_{L}\times~U(1)_{Y}\to~U(1)_{Q}$, where $U(1)_{Q}$ is the residual electromagnetic charge conservation. The above Yukawa Lagrangian term after symmetry breaking generates the mass terms for the charged leptons:
+\begin{equation}
+    -\mathcal{L}_{\mathrm{Yukawa,lep}} \to \sum_{\ell}m_{\ell}\bar{\ell}_{L}\ell^{c} + \mathrm{h.c.},
+\end{equation}
+where $m_{\ell} = \frac{v}{\sqrt{2}}y_{\ell}$ are the charged lepton masses. Other terms associated with Higgs interactions in the SM generate mass terms for the quarks and weak vector bosons, as seen in data. A further prediction of this BEH Mechanism is the existence of a massive scalar boson known as the Higgs particle; this was discovered in 2012 by the ATLAS and CMS Collaborations~\cite{}. %cite Higgs discovery papers
+
+The one type of fundamental particle not covered by the above argument are neutrinos. If neutrinos were massless, then there is no issue: we observe neutrinos to have only negative helicities, which is equal to left-handed chiralities if they are massless. As the SM contains no right-handed neutrinos, no Yukawa interaction can be built to generate masses for the neutrinos. One can also demonstrate that, in the SM, neutrinos cannot even obtain masses through loop corrections~\cite{}. % cite PDG review 14
+
+This assumption of massless neutrinos appears initially consistent with the current observations of direct neutrino mass measurements. The strongest direct limits come from the KATRIN experiment, which looks at the endpoint of the tritium $\beta$-decay spectrum. The `effective'\footnote{
+    KATRIN measures the `effective' mass and not the actual mass, because of the phenomenon of neutrino oscillations as described in the following sections.
+} electron anti-neutrino mass $m_{\nu} < \SI{0.8}{\eV}$ at a 90\% confidence level~\cite{}. % cite https://inspirehep.net/literature/1863711
+Even stronger limits are available from cosmology, by looking in part at the power spectrum of the Cosmic Microwave Background. Assuming the so-called Standard `$\Lambda$CDM' Model of Cosmology, limits on the sum of all three neutrino flavours $\sum m_{\nu}<\mathcal{O}(\SI{0.1}{\eV})$ have been achieved~\cite{}. % cite a couple of papers, maybe.
+
 \subsection{The Evidence for Neutrino Oscillations}\label{sec:nu_osc_evidence}
+Despite the current lack of any direct measurements, we now know that at least some neutrinos must have mass. This is because of the phenomenon of \textit{neutrino oscillations}, which have been observed over a variety of experiments and contexts. The critical pieces of evidence for this process are described here; the underlying mathematical model that is used to explain them quantitatively is described in Section~\ref{sec:nu_osc_phenom}.
+
+\subsubsection{The Solar Neutrino Problem}
+\nomenclature{\textbf{SSM}}{Standard Solar Model}
+Neutrinos are generated from the Sun as a by-product of the fusion reactions at its core. At the highest level, protons fuse into alpha particles by the overall reaction \ce{4p \to \alpha{} + 2e^{+} + 2\nu_{e}}, generating also $\sim\SI{25}{\MeV}$ of energy that enables the Sun to shine~\cite{}. % cite Bahcall Neutrino Astrophysics.
+The Standard Solar Model (SSM)
 
 {
 \color{blue}
@@ -82,7 +117,7 @@ This measurement is very strong evidence that no other `light' neutrinos exist.
     \item A few further observations to note are: reactor electron anti-neutrino disappearance from both KamLAND and Daya Bay; tau neutrino appearance at the OPERA experiment; short-baseline neutrino anomaly within LSND and MiniBooNE (with recent contrary evidence from MicroBooNE).
 \end{itemize}
 [5 pages]
-\subsection{The Phenomenology of Neutrino Oscillations}
+\subsection{The Phenomenology of Neutrino Oscillations}\label{sec:nu_osc_phenom}
 \begin{itemize}
     \item Describe the current phenomenological model of 3-flavour neutrino oscillations that can explain all of this evidence: the PMNS mixing matrix.
     \item Describe also the MSW effect, which is critical for explaining solar neutrino oscillations.
