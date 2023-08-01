@@ -102,8 +102,40 @@ Despite the current lack of any direct measurements, we now know that at least s
 
 \subsubsection{The Solar Neutrino Problem}
 \nomenclature{\textbf{SSM}}{Standard Solar Model}
-Neutrinos are generated from the Sun as a by-product of the fusion reactions at its core. At the highest level, protons fuse into alpha particles by the overall reaction \ce{4p \to \alpha{} + 2e^{+} + 2\nu_{e}}, generating also $\sim\SI{25}{\MeV}$ of energy that enables the Sun to shine~\cite{}. % cite Bahcall Neutrino Astrophysics.
-The Standard Solar Model (SSM)
+Neutrinos are generated from the Sun as a by-product of the fusion reactions at its core. At the highest level, protons fuse into alpha particles by the overall reaction \ce{4p \to ^{4}He{} + 2e^{+} + 2\nu_{e}}, generating also $\sim\SI{25}{\MeV}$ of energy that enables the Sun to shine~\cite{}. % cite Bahcall Neutrino Astrophysics.
+This process is known as `hydrogen burning'. The Standard Solar Model (SSM) is the current best quantitative description of stellar evolution for main sequence stars, and our Sun in particular. It covers the nuclear reactions that generate both the energy that powers the star and the changes in the relative isotopic abundances, how the energy is transported out through the star via radiation of photons and convection, and how the outward pressures caused by this radiation is balanced by gravity to maintain hydrostatic equilibrium. An introduction to the SSM can be found in~\cite{}. % cite Bahcall's book again.
+
+In the Sun, two sets of nuclear reactions enable hydrogen burning to occur: the \textit{proton-proton (pp) chain} and \textit{CNO cycle}. Diagrams of these reaction chains are shown in Fig.~\ref{fig:pp_chain} and Fig.~\ref{fig:cno_cycle}, respectively. In the pp chain, protons are first fused together to form a \ce{^{2}H} nucleus through the `pp' and `pep' reactions, the latter also using an electron. Both of these processes are weak interactions that generate an electron neutrino. Once a deuterium nucleus has been generated, it strongly interacts with a proton to create a \ce{^{3}He} nucleus. The dominant method for hydrogen burning to then terminate is for two \ce{^{3}He} nuclei strongly interact to generate \ce{^{4}He} and two protons
+
+\begin{figure}
+    \centering
+    % \includegraphics[]{}
+    \caption[]{}
+    \label{fig:pp_chain}
+\end{figure}
+
+\begin{figure}
+    \centering
+    % \includegraphics[]{}
+    \caption[]{}
+    \label{fig:cno_cycle}
+\end{figure}
+
+Two other nuclear reactions with \ce{^{3}He} are possible. In one, \ce{^{3}He} fuses with \ce{^{4}He} to generate a \ce{^{7}Be} nucleus, which can then generate a neutrino either from the creation of \ce{^{7}Li} via electron capture, or from the additional fusing into \beight{} which promptly $\beta^{+}$-decays. These are known as the \ce{^{7}Be} and \beight{} solar neutrino generation reactions, respectively. The final and rarest reaction within the pp chain that generates a neutrino is the so-called `hep' reaction, in which \ce{^{3}He} directly fuses with a proton.
+
+The CNO cycle is a secondary means by which the Sun can burn hydrogen. This is achieved through the aid of a \ce{^{12}C} nucleus as a catalyst. Part of the cycle involves the generation of unstable isotopes \ce{^{13}N} and \ce{^{15}O}, both of which \ce{\beta^{+}}-decay, creating electron neutrinos. In a rare side-chain of the CNO cycle, it is possible to also generate \ce{^{17}F} which also weakly decays to generate a neutrino. This is the final method of generating neutrinos in our Sun.
+
+The SSM quantitatively predicts the flux and energy spectra of neutrinos generated through each of the above processes, as incident on the Earth. This is shown in Fig.~\ref{fig:ssm_neutrino_spectra}. The shapes of the energy spectra are determined by the nuclear reactions that define the process: for example, the broad shape of the \beight{} $\nu_{e}$ energy spectrum comes from the $\beta^{+}$-decay of \beight{} isotopes, and has been measured in nuclear beam experiments to high precision~\cite{winterB8NeutrinoSpectrum2006}. % citation of B8 shape measurement by Winter et al.
+
+\begin{figure}
+    \centering
+    % \includegraphics[]{}
+    \caption[]{}
+    \label{fig:ssm_neutrino_spectra}
+\end{figure}
+
+The rate of the \beight{} interaction in the Sun, and hence the generated neutrino flux, depend strongly on the radial temperature distribution of the Sun, the cross-sections of the pp chain nuclear reactions, and the Sun's chemical composition. The latter point remains a topic of some controversy: measurements of the relative abundances in 1998 through spectroscopy of the Sun's photosphere as well as meteorites give a `metal-to-hydrogen' ratio of $Z/X = 0.023$~\cite{grevesseStandardSolarComposition1998}, whereas a more recent study in 2009 has a substantially lower value of $Z/X = 0.018$~\cite{asplundChemicalCompositionSun2009}. Metallicity here is used in the astrophysical sense: elements heavier than hydrogen or helium. These two models are called the `high-metallicity' \texttt{GS98} model and `low-metallicity' \texttt{AGSS09met} model, respectively. The current best SSM associated with these two abundance models, denoted \texttt{B16\_GS98} and \texttt{B16\_AGSS09met}, have \beight{} flux predictions of $\Phi_{\beight{}} = (5.46\pm12\%)\times 10^{6}\,\si{\per\cm\squared\per\second}$ and $\Phi_{\beight{}} = (4.50\pm12\%)\times 10^{6}\,\si{\per\cm\squared\per\second}$, respectively~\cite{vinyolesB16StandardSolar2018}.
+
 
 {
 \color{blue}
