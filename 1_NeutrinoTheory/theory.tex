@@ -49,8 +49,9 @@ The Lagrangian that defines the weak interactions of neutrinos is:
 \end{equation}
 Here, $g$ is the dimensionless coupling constant associated with $SU(2)_{L}$, and $\theta_{W}$ is the Weinberg angle. The three lepton flavour fields are denoted by $\ell=e,\mu,\tau$, with their associated neutrino fields being given by $\nu_{\ell}$. Similarly, the fields associated with the weak gauge bosons are given by $W^{\pm}$ and $Z^{0}$. The two components of this Lagrangian are known as the Neutral Current (NC) and Charged Current (CC) weak interactions of neutrinos, respectively. Similar Lagrangians exist that define the NC and CC interactions of quarks, as well as the NC interactions of the charged leptons.
 
+\nomenclature{\textbf{IBD}}{Inverse $\beta$-decay}
 Solidifying this theoretical picture are decades-worth of experimental tests of neutrinos and their place in the SM. The first neutrinos to be detected were electron anti-neutrinos, by Cowan and Reines in 1956~\cite{cowanDetectionFreeNeutrino1956,reinesNeutrino1956}. % cite Reines and Cowen.
-These neutrinos were generated in the $\beta$-decay of radioactive isotopes within the Savannah River nuclear reactor: \ce{n \to p + e^{-} + \bar{\nu}_{e}}. This decay arises from a down quark within the neutron of an atom converting into an up quark via a CC interaction, generating a virtual $W^{-}$ boson that promptly decays into an electron and $\bar{\nu}_{e}$. The method by which Cowen and Reines detected these anti-neutrinos was through \textit{inverse $\beta$-decay}: \ce{\bar{\nu}_{e} + p \to e^{+} + n}. This process also originates from CC interactions. Analogous CC interactions allowed Danby \textit{et al} to discover the muon neutrino in 1962~\cite{danbyObservationHighEnergyNeutrino1962}, % cite Lederman, Schwarts, Steinberger
+These neutrinos were generated in the $\beta$-decay of radioactive isotopes within the Savannah River nuclear reactor: \ce{n \to p + e^{-} + \bar{\nu}_{e}}. This decay arises from a down quark within the neutron of an atom converting into an up quark via a CC interaction, generating a virtual $W^{-}$ boson that promptly decays into an electron and $\bar{\nu}_{e}$. The method by which Cowen and Reines detected these anti-neutrinos was through \textit{inverse $\beta$-decay} (IBD): \ce{\bar{\nu}_{e} + p \to e^{+} + n}. This process also originates from CC interactions. Analogous CC interactions allowed Danby \textit{et al} to discover the muon neutrino in 1962~\cite{danbyObservationHighEnergyNeutrino1962}, % cite Lederman, Schwarts, Steinberger
 and the DONUT Collaboration to discover the tau neutrino in 2000~\cite{kodamaObservationTauNeutrino2001}. % cite DONUT Collaboration
 
 The existence of NC interactions with neutrinos and anti-neutrinos was first demonstrated by the Gargamelle experiment in 1974~\cite{hasertObservationNeutrinolikeInteractions1973,hasertSearchElasticMuonneutrino1973,hasertObservationNeutrinolikeInteractions1974,blietschauEvidenceLeptonicNeutral1976}. % cite gargamelle
@@ -203,7 +204,56 @@ Results of the measured fluxes of $\nu_{e}$ and $\nu_{\mu,\tau}$ solar neutrinos
 % ADD BOREXINO, KamLAND results???
 
 \subsubsection{The Atmospheric Neutrino Anomaly}
+Atmospheric neutrinos come from the decays of cosmic ray pions and muons in the Earth's atmosphere. One can show that the expected ratio of the flux of muon neutrinos to electron neutrinos generated in the atmosphere should be about 2~\cite{}. % cite something!
+The IBM~\cite{}, % cite
+Kamiokande~\cite{}, % cite
+and Super-Kamiokande~\cite{} % cite
+experiments were able to detect atmospheric neutrinos through CC interactions with electrons in the water, generating electron or muon tracks (depending on the neutrino flavour) that could be distinguished by the shape of their Cherenkov rings. In all cases, the observed ratio of $\nu_{\mu}$ to $\nu_{e}$ events was consistently below expectations. This was known as the Atmospheric Neutrino Anomaly.
 
+Super-Kamiokande was able to gather enough statistics from atmospheric neutrino interactions to demonstrate that there was a clear dependence on the rate of muon neutrino interactions as a function of the event direction. In particular, the asymmetry $A$ between the number of upward-going muon neutrino events $U$, and downward-going events $D$, was measured in one dataset to be~\cite{}: % cite SK
+\begin{equation*}
+    A = \frac{U-D}{U+D} = -0.296 \pm 0.048(\mathrm{stat.}) \pm 0.01(\mathrm{sys.}),
+\end{equation*}
+a deviation from zero by over 6$\sigma$. In contrast, the asymmetry measured for atmospheric $\nu_{e}$ events was consistent with zero. Further analysis on the experiment looked at the rate of atmospheric $\nu_{\mu}$ events as a function of the ratio $L/E$, where $L$ is the estimated distance from production of the neutrino, and $E$ is the neutrino energy. The relative rate compared to expectations is shown in Fig.~\ref{fig:LE_plot_SK_atmos}. Taken together, these atmospheric neutrino results demonstrate that there is a disappearance of muon neutrinos which depends on the ratio $L/E$, whereas there is no similar effect for the electron neutrinos.
+
+\begin{figure}
+    \centering
+    \begin{subfigure}{0.48\textwidth}
+        \centering
+        % \includegraphics[width=0.95\linewidth]{2_Detector/Figs/refractive_indices_plot.pdf}
+        \caption{}
+        \label{fig:LE_plot_SK_atmos}
+    \end{subfigure}
+    \begin{subfigure}{0.48\textwidth}
+        \centering
+        % \includegraphics[width=0.95\linewidth]{2_Detector/Figs/reflectance_vs_angle_plot.pdf}
+        \caption{}
+        \label{fig:LE_plot_KamLAND_antinu}
+    \end{subfigure}
+    \begin{subfigure}{0.48\textwidth}
+        \centering
+        % \includegraphics[width=0.95\linewidth]{2_Detector/Figs/refractive_indices_plot.pdf}
+        \caption{}
+        \label{fig:LE_plot_DayaBay}
+    \end{subfigure}
+    \begin{subfigure}{0.48\textwidth}
+        \centering
+        % \includegraphics[width=0.95\linewidth]{2_Detector/Figs/reflectance_vs_angle_plot.pdf}
+        \caption{}
+        \label{fig:LE_plot_4}
+    \end{subfigure}
+    \caption[]
+    {}
+    \label{fig:LE_plots}
+\end{figure}
+
+\subsubsection{Reactor Anti-neutrinos}
+The detection of $\bar{\nu}_{e}$ from nuclear reactors via IBD has been used not just to first detect the existence of neutrinos by Cowan and Reines~\cite{cowanDetectionFreeNeutrino1956,reinesNeutrino1956}, but also to provide evidence for neutrino oscillations. For example, the KamLAND experiment is a large-scale liquid scintillator detector based in Japan in which IBD events can be detected~\cite{}. % cite KamLAND
+The expected rate of these events could be derived from the known powers of the various Japanese nuclear reactors, as well as their distances from the experiment. The ratio of the measured rate to expectation as a function of $L_{0}/E$, where $L_{0}$ is the flux-averaged distance to the reactors, is shown in Fig.~\ref{fig:LE_plot_KamLAND_antinu}. The plot shows clear evidence of $\bar{\nu}_{e}$ disappearance, with an oscillatory dependence on $L_{0}/E$.
+
+The Daya Bay, Double Chooz, and RENO experiments are all also liquid scintillator detectors that measured IBD interactions from reactors, but unlike KamLAND they were each placed only $\sim\SI{1}{\km}$ from a nuclear reactor. Each detector observed $\bar{\nu}_{e}$ disappearance over this much shorter length scale, also with a dependence on energy. The results from Daya Bay, as an example, are shown in Fig.~\ref{fig:LE_plot_DayaBay}. Interestingly, the magnitude of the disappearance observed in these `short-baseline' reactor antineutrino experiments is different to those seen in the `long-baseline' KamLAND experiment.
+
+\subsubsection{Accelerator Neutrinos}
 
 {
 \color{blue}
