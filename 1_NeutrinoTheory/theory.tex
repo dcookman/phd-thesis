@@ -240,7 +240,7 @@ a deviation from zero by over 6$\sigma$. In contrast, the asymmetry measured for
         \centering
         % \includegraphics[width=0.95\linewidth]{2_Detector/Figs/reflectance_vs_angle_plot.pdf}
         \caption{}
-        \label{fig:LE_plot_4}
+        \label{fig:LE_plot_T2K_numu}
     \end{subfigure}
     \caption[]
     {}
@@ -254,20 +254,97 @@ The expected rate of these events could be derived from the known powers of the 
 The Daya Bay, Double Chooz, and RENO experiments are all also liquid scintillator detectors that measured IBD interactions from reactors, but unlike KamLAND they were each placed only $\sim\SI{1}{\km}$ from a nuclear reactor. Each detector observed $\bar{\nu}_{e}$ disappearance over this much shorter length scale, also with a dependence on energy. The results from Daya Bay, as an example, are shown in Fig.~\ref{fig:LE_plot_DayaBay}. Interestingly, the magnitude of the disappearance observed in these `short-baseline' reactor antineutrino experiments is different to those seen in the `long-baseline' KamLAND experiment.
 
 \subsubsection{Accelerator Neutrinos}
+Neutrinos generated from accelerators have been able to demonstrate numerous pieces of direct evidence for neutrino oscillations. These accelerators are able to generate very high intensity beams of $\nu_{\mu}$ and $\bar{\nu}_{\mu}$, with some background of $\nu_{e}$ and $\bar{\nu}_{e}$. Much like experiments designed for reactor antineutrino measurements, accelerator neutrino detectors tend to come in two main varieties: long- and short-baseline. Typically, long-baseline experiments have two detectors, one near to the point of neutrino generation, and the much-larger far detector where the main oscillation measurements take place. The near-detector is used to ascertain the precise composition of neutrino beam, in order to minimise systematics in the composition of the beam as well as interaction cross-sections.
+
+A wide variety of accelerator neutrino experiments have taken place over the past 25 years. The long-baseline experiments T2K and NOvA have both demonstrated disappearance of both $\nu_{\mu}$ and $\bar{\nu}_{\mu}$ from their accelerator beams with high statistical significance~\cite{}. % cite T2K, Nova
+An example of the observed muon neutrino energy spectrum seen by T2K is shown in Fig.~\ref{fig:LE_plot_T2K_numu}. In contrast to the energy spectrum of the neutrinos at production, which is unimodal, this plot clearly shows oscillations in the observed rate as a function of neutrino energy. 
+
+T2K and NOvA have also been able to observe the appearance of $\nu_{e}$ and $\bar{\nu}_{e}$ (as appropriate) in their far detectors, well above the background rate expected. Recently, the two experiments have seen evidence for differences in the appearance and disappearance rates of neutrinos and antineutrinos~\cite{}. % cite CP violation papers.
+In addition to the appearance of $\nu_{e}$ shown by T2K and NOvA, the OPERA long-baseline neutrino experiment was able to show the appearance of $\nu_{\tau}$ in detector~\cite{}. % cite OPERA
+ 
+% short-baseline neutrino anomaly???
+
+% \begin{itemize}
+%     \item Describe status quo ante of massless nature of neutrinos: BEH mechanism as exists cannot allow for neutrinos to have mass as only left-handed neutrinos have been observed.
+%     \item Furthermore, strong experimental limits on neutrino masses, from e.g. tritium-decay endpoint measurements by the KATRIN experiment and cosmological inferences from the CMB by the Planck satellite.
+%     \item But --- then neutrino oscillations are observed over a variety of experiments and contexts. Summarise critical bits of evidence:
+%     \item Electron neutrino disappearance in solar neutrino experiments, including Ray Davis' Homestake experiment, the SAGE/GALLEX experiments, and SNO. For the latter, the comparison of charged-current and neutral-current modes of interaction was clear evidence of neutrino oscillations over other types of process (e.g. neutrino decay).
+%     \item Include in the above a brief description of Bahcall's Standard Solar Model.
+%     \item Muon neutrino disappearance in atmospheric and long-baseline accelerator neutrino experiments, such as Super-Kamiokande, T2K, and No$\nu$a.
+%     \item A few further observations to note are: reactor electron anti-neutrino disappearance from both KamLAND and Daya Bay; tau neutrino appearance at the OPERA experiment; short-baseline neutrino anomaly within LSND and MiniBooNE (with recent contrary evidence from MicroBooNE).
+% \end{itemize}
+% [5 pages]
+\subsection{The Phenomenology of Neutrino Oscillations}\label{sec:nu_osc_phenom}
+\subsubsection{Oscillations in Vacuum}\label{sec:nu_osc_phenom_vacuum}
+All the observations described in the previous section naturally lead to the notion of neutrino oscillations, the idea that as neutrinos propagate through space they are capable of changing flavour. Special Relativity precludes massless particles from experiencing time evolution, so any theory of neutrinos changing flavour between one another must require non-zero mass states.
+
+\nomenclature{\textbf{PMNS}}{Pontecorvo-Maki-Nakagawa-Sakata (neutrino mixing matrix)}
+The initial theories describing neutrino oscillations were made by Pontecorvo, Maki, Nakagawa, and Sakata in the 1960s~\cite{makiRemarksUnifiedModel1962,pontecorvoNeutrinoExperimentsProblem1968}. % cite PMNS papers
+These theories initially assumed a two-neutrino model of oscillations, but now that $\nu_{\tau}$ particles have been observed a three-neutrino model has been adopted. The theory starts by assuming that the flavour eigenstates of neutrinos, $\nu_{e,\mu,\tau}$ are different from the neutrino mass eigenstates, $\nu_{1,2,3}$, and are instead related to one another through the Pontecorvo-Maki-Nakagawa-Sakata (PMNS) mixing matrix, $U$:
+\begin{align}
+    \begin{pmatrix}
+        \nu_{e} \\ \nu_{\mu} \\ \mu_{\tau}
+    \end{pmatrix}
+     &= U \cdot 
+     \begin{pmatrix}
+        \nu_{1} \\ \nu_{2} \\ \nu_{3}
+    \end{pmatrix}
+     = \begin{pmatrix}
+        U_{e1} & U_{e2} & U_{e3} \\
+        U_{\mu1} & U_{\mu2} & U_{\mu3} \\
+        U_{\tau1} & U_{\tau2} & U_{\tau3} 
+    \end{pmatrix} \cdot 
+     \begin{pmatrix}
+        \nu_{1} \\ \nu_{2} \\ \nu_{3}
+    \end{pmatrix}.
+    % &= \begin{pmatrix}
+    %     c_{12}c_{13} & s_{12}c_{13} & s_{13}e^{-i\delta_{CP}} \\
+    %     -s_{12}c_{23}-c_{12}s_{13}s_{23}e^{i\delta_{CP}} & c_{12}c_{23}-s_{12}s_{13}s_{23}e^{i\delta_{CP}} & c_{13}s_{23} \\
+    %     s_{12}s_{23}-c_{12}s_{13}c_{23}e^{i\delta_{CP}} & -c_{12}s_{23}-s_{12}s_{13}c_{23}e^{i\delta_{CP}} & c_{13}c_{23} 
+    % \end{pmatrix} \cdot 
+    %  \begin{pmatrix}
+    %     \nu_{1} \\ \nu_{2} \\ \nu_{3}
+    % \end{pmatrix}.
+\end{align}
+Because $U$ must be unitary in order to preserve total probability, its components can be parameterised as follows:
+\begin{equation}
+    U = 
+    \begin{pmatrix}
+        c_{12}c_{13} & s_{12}c_{13} & s_{13}e^{-i\delta_{CP}} \\
+        -s_{12}c_{23}-c_{12}s_{13}s_{23}e^{i\delta_{CP}} & c_{12}c_{23}-s_{12}s_{13}s_{23}e^{i\delta_{CP}} & c_{13}s_{23} \\
+        s_{12}s_{23}-c_{12}s_{13}c_{23}e^{i\delta_{CP}} & -c_{12}s_{23}-s_{12}s_{13}c_{23}e^{i\delta_{CP}} & c_{13}c_{23} 
+    \end{pmatrix} \cdot 
+     \begin{pmatrix}
+        \nu_{1} \\ \nu_{2} \\ \nu_{3}
+    \end{pmatrix}.
+\end{equation}
+This matrix uses three ``mixing angles'' $0\leq \theta_{12},\theta_{13},\theta_{23}, \pi/2$, and one further parameter called the ``CP-violating phase'', $0\leq\delta_{CP}\leq2\pi$, with the abbreviations $s_{ij}=\sin{\theta_{ij}}$ and $c_{ij}=\cos{\theta_{ij}}$ used in the above expression for brevity.
+
+Given that a neutrino flavour eigenstate $\Ket{\nu_{\alpha}(0)}$ ($\alpha=e,\mu,\tau$) is produced in some CC process at time $t = 0$, because mass eigenstates $\Ket{\nu_{i}(0)}$ ($i=1,2,3$) are simultaneously the energy eigenstates when propagating in free space, the time evolution of the neutrino state is given by:
+\begin{equation}
+    \Ket{\nu_{\alpha}(t)} = \sum_{i=1}^{3}U_{\alpha i}e^{-E_{i}t}\Ket{\nu_{i}(0)}.
+\end{equation}
+$E_{i}$ is the energy eigenvalues corresponding to the associated mass eigenstates. The oscillation probability of going from one flavour $\alpha$ to another $\beta$ is given by $P\left(\nu_{\alpha}\to\nu_{\beta}\right) = |\Braket{\nu_{\beta} | \nu_{\alpha}(t)}|^{2}$. Assuming that the neutrino is ultra-relativistic so that $E_{i}\gg m_{i}$, where $m_{i}$ is the mass of the $i^{\mathrm{th}}$ mass eigenstate, and that all mass eigenstates have the same definite momentum, one can show that the oscillation probability becomes~\cite{}: % cite Deppisch book?
+\begin{align}\label{eq:nu_osc_vacuum}
+    P\left(\nu_{\alpha}\to\nu_{\beta}\right) &=
+        \delta_{\alpha\beta} 
+        - 4\sum_{i<j}\Re\left\{W_{\alpha\beta,ij}\right\}\sin^{2}\left(\frac{\Delta m^{2}_{ij}L}{4E}\right)\nonumber\\
+        &- 2\sum_{i<j}\Im\left\{W_{\alpha\beta,ij}\right\}\sin\left(\frac{\Delta m^{2}_{ij}L}{2E}\right),
+\end{align}
+where $\delta_{\alpha\beta}$ is the usual Kronecker delta, $W_{\alpha\beta,ij}=U_{\alpha i}U_{\beta i}^{*}U_{\alpha j}^{*}U_{\beta j}$, $\Delta m^{2}_{ij}=m^{2}_{i} - m^{2}_{j}$, $L$ is the distance between the creation and detection of the neutrinos, and $E_{i}\approx E$ is the average energy of the neutrino. As can be seen, the probability will oscillate as a function of $L/E$, in accordance with what was seen in Section~\ref{sec:nu_osc_evidence}.
+
+If anti-neutrinos are produced, then oscillations are governed by $U^{*}$, which is equivalent to $U$ but with the CP phase changing sign: $\delta_{CP}\to -\delta_{CP}$. Therefore, the difference between $P\left(\nu_{\alpha}\to\nu_{\beta}\right)$ and $P\left(\bar{\nu}_{\alpha}\to\bar{\nu}_{\beta}\right)$ is given by twice the third term of Eq.~\ref{eq:nu_osc_vacuum}.
+
+In a neutrino flavour disappearance measurement, $P\left(\nu_{\alpha}\to\nu_{\beta}\right) = P_{\alpha\alpha}$ is the \textit{survival probability} of the neutrinos. In this case, $W_{\alpha\beta,ij} = |U_{\alpha i}U_{\alpha j}^{*}|^{2}$ is real, and the survival probability formula simplifies to:
+\begin{equation}
+    P_{\alpha\alpha} = 1 
+    - 4\sum_{i<j}|U_{\alpha i}U_{\alpha j}^{*}|^{2}\sin^{2}\left(\frac{\Delta m^{2}_{ij}}{4E}\right).
+\end{equation}
+
+\subsubsection{Neutrino Oscillations in Matter}
 
 {
 \color{blue}
-\begin{itemize}
-    \item Describe status quo ante of massless nature of neutrinos: BEH mechanism as exists cannot allow for neutrinos to have mass as only left-handed neutrinos have been observed.
-    \item Furthermore, strong experimental limits on neutrino masses, from e.g. tritium-decay endpoint measurements by the KATRIN experiment and cosmological inferences from the CMB by the Planck satellite.
-    \item But --- then neutrino oscillations are observed over a variety of experiments and contexts. Summarise critical bits of evidence:
-    \item Electron neutrino disappearance in solar neutrino experiments, including Ray Davis' Homestake experiment, the SAGE/GALLEX experiments, and SNO. For the latter, the comparison of charged-current and neutral-current modes of interaction was clear evidence of neutrino oscillations over other types of process (e.g. neutrino decay).
-    \item Include in the above a brief description of Bahcall's Standard Solar Model.
-    \item Muon neutrino disappearance in atmospheric and long-baseline accelerator neutrino experiments, such as Super-Kamiokande, T2K, and No$\nu$a.
-    \item A few further observations to note are: reactor electron anti-neutrino disappearance from both KamLAND and Daya Bay; tau neutrino appearance at the OPERA experiment; short-baseline neutrino anomaly within LSND and MiniBooNE (with recent contrary evidence from MicroBooNE).
-\end{itemize}
-[5 pages]
-\subsection{The Phenomenology of Neutrino Oscillations}\label{sec:nu_osc_phenom}
 \begin{itemize}
     \item Describe the current phenomenological model of 3-flavour neutrino oscillations that can explain all of this evidence: the PMNS mixing matrix.
     \item Describe also the MSW effect, which is critical for explaining solar neutrino oscillations.
