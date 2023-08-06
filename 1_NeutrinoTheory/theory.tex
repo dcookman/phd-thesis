@@ -148,7 +148,7 @@ where 1 SNU (`Solar Neutrino Unit') is defined as $10^{-36}$ events per target a
     \label{fig:homestake_results}
 \end{figure}
 
-In contrast, according to one particular recent SSM using the GS98 metallicity model, the expected rate is $84.6^{+0.87}_{-0.88}\mathrm{ SNU}$~\cite{pena-garaySolarNeutrinosSolar2008}, highly inconsistent with the results at Homestake. This disagreement became known as the \textit{Solar Neutrino Problem}, and was the first piece of evidence towards neutrino oscillations.
+In contrast, according to one particular recent SSM using the GS98 metallicity model, the expected rate is $8.46^{+0.87}_{-0.88}\mathrm{ SNU}$~\cite{pena-garaySolarNeutrinosSolar2008}, highly inconsistent with the results at Homestake. This disagreement became known as the \textit{Solar Neutrino Problem}, and was the first piece of evidence towards neutrino oscillations.
 
 Since the Homestake experiment, a series of solar neutrino experiments used a variety of different target isotopes to measure the rate of solar neutrinos. In all cases, the measured rates were substantially below what is expected from the SSM. The SAGE and GALLEX/GNO experiments used the capture of electron neutrinos on \ce{^{71}Ga} to measure the capture rate: the final observations were $65.4^{+3.1}_{-3.0}(\mathrm{stat.})\,^{+2.6}_{-2.8}(\mathrm{sys.})\,\mathrm{ SNU}$~\cite{abdurashitovMeasurementSolarNeutrino2009} and $69.3\pm4.1\pm3.6\,\mathrm{ SNU}$~\cite{altmannCompleteResultsFive2005}, respectively. An SSM expectation is $127.9^{+8.1}_{-8.2}$~\cite{pena-garaySolarNeutrinosSolar2008}. Because the capture on \ce{^{71}Ga} has a much lower energy threshold than \ce{^{37}Cl}, these experiments were able to show that the Solar Neutrino Problem was associated with the low-energy pp neutrinos as much as the higher energy \beight{} and \ce{^{7}Be} neutrinos.
 
@@ -318,7 +318,7 @@ Because $U$ must be unitary in order to preserve total probability, its componen
         \nu_{1} \\ \nu_{2} \\ \nu_{3}
     \end{pmatrix}.
 \end{equation}
-This matrix uses three ``mixing angles'' $0\leq \theta_{12},\theta_{13},\theta_{23}, \pi/2$, and one further parameter called the ``CP-violating phase'', $0\leq\delta_{CP}\leq2\pi$, with the abbreviations $s_{ij}=\sin{\theta_{ij}}$ and $c_{ij}=\cos{\theta_{ij}}$ used in the above expression for brevity.
+This matrix uses three ``mixing angles'' $0\leq \theta_{12},\theta_{13},\theta_{23}\leq \pi/2$, and one further parameter called the ``CP-violating phase'', $0\leq\delta_{CP}\leq2\pi$, with the abbreviations $s_{ij}=\sin{\theta_{ij}}$ and $c_{ij}=\cos{\theta_{ij}}$ used in the above expression for brevity.
 
 Given that a neutrino flavour eigenstate $\Ket{\nu_{\alpha}(0)}$ ($\alpha=e,\mu,\tau$) is produced in some CC process at time $t = 0$, because mass eigenstates $\Ket{\nu_{i}(0)}$ ($i=1,2,3$) are simultaneously the energy eigenstates when propagating in free space, the time evolution of the neutrino state is given by:
 \begin{equation}
@@ -338,24 +338,93 @@ If anti-neutrinos are produced, then oscillations are governed by $U^{*}$, which
 In a neutrino flavour disappearance measurement, $P\left(\nu_{\alpha}\to\nu_{\beta}\right) = P_{\alpha\alpha}$ is the \textit{survival probability} of the neutrinos. In this case, $W_{\alpha\beta,ij} = |U_{\alpha i}U_{\alpha j}^{*}|^{2}$ is real, and the survival probability formula simplifies to:
 \begin{equation}
     P_{\alpha\alpha} = 1 
-    - 4\sum_{i<j}|U_{\alpha i}U_{\alpha j}^{*}|^{2}\sin^{2}\left(\frac{\Delta m^{2}_{ij}}{4E}\right).
+    - 4\sum_{i<j}|U_{\alpha i}U_{\alpha j}^{*}|^{2}\sin^{2}\left(\frac{\Delta m^{2}_{ij}L}{4E}\right).
 \end{equation}
 
+An experiment is only sensitive to neutrino oscillations from mass splitting $\Delta m^{2}_{ij}$ if $X_{ij}$ is $\mathcal{O}(1)$, where $X_{ij}$ is the phase within the relevant oscillation probability term:
+\begin{equation}\label{eq:nu_osc_phase}
+    X_{ij} = \frac{\Delta m^{2}_{ij} L}{4E} = 1.27 \frac{\Delta m^{2}_{ij} [10^{-3}\,\si{\eV\squared}] L [\si{\km}]}{E [\si{MeV}]}.
+\end{equation}
+If $X_{ij}\ll 1$, then $\sin^{2}\left(X_{ij}\right)\to 0$, and no oscillations are seen due to that mass splitting. If instead $X_{ij}\gg 1$, then what can only be observed is the average effect over many oscillations, $\left<\sin^{2}\left(X_{ij}\right)\right> = 1/2$.
+
+From the results of a variety of neutrino oscillation experiments, the oscillation parameters and magnitudes of the mass splittings have now been measured, with varying degrees of precision. A global fit of the experimental data by the NuFit group in October 2021~\cite{estebanFateHintsUpdated2020} give the values shown in Table~\ref{tab:nufit_osc_params}. All the parameters appear to have no-zero values, implying that mixing between all neutrino flavours is possible. Furthermore, $|\dmsq{}|\ll|\Delta m^{2}_{31}|\sim|\Delta m^{2}_{32}|$, meaning there are two distinct `scales' in $L/E$ that are sensitive to neutrino oscillations.
+
+\begin{table}
+    \centering
+    \begin{tabular}{c p{2.2cm} p{2.2cm}}
+        \hline
+        Parameter   & Normal Hierarchy                       & Inverted Hierarchy  \\ \hline \hline
+        $\theta_{12} [^{\circ}]$ & $33.44^{+0.77}_{-0.74}$  & $33.45^{+0.77}_{-0.74}$     \\
+        $\theta_{23} [^{\circ}]$ & $49.2^{+1.0}_{-1.3}$     & $49.5^{+1.0}_{-1.2}$  \\
+        $\theta_{13} [^{\circ}]$ & $8.57^{+0.13}_{-0.12}$   & $8.60^{+0.12}_{-0.12}$  \\
+        $\delta_{CP} [^{\circ}]$ & $194^{+52}_{-25}$        & $287^{+27}_{-32}$   \\
+        $\dmsq{} [10^{-5}\,\si{eV\squared}]$ & $7.42^{+0.21}_{-0.20}$ & $7.42^{+0.21}_{-0.20}$    \\
+        $\Delta m^{2}_{3\ell} [10^{-3}\,\si{eV\squared}]$ & $+2.515^{+0.028}_{-0.028}$ & $-2.498^{+0.028}_{-0.029}$    \\
+        \hline
+    \end{tabular}
+    \caption[Global Fit neutrino oscillation parameters]
+    {Global fit results for the neutrino oscillation parameters and mass splittings, as performed in NuFit 5.1~\cite{estebanFateHintsUpdated2020}. The results for both the Normal and Inverted Hierarchy are shown: $\Delta m^{2}_{3\ell} = \Delta m^{2}_{31}$ in the former, $\Delta m^{2}_{32}$ in the latter. The results used do not include atmospheric neutrino data from Super-Kamiokande.}
+    \label{tab:nufit_osc_params}
+\end{table}
+
+\nomenclature{\textbf{NH}}{Normal Hierarchy (of neutrino masses)}
+\nomenclature{\textbf{NH}}{Inverted Hierarchy (of neutrino masses)}
+In addition to this information, we also know from solar data that the sign of \dmsq{} must be positive, for reasons that will be explained in the next section. However, the same cannot be yet said for $\Delta m^{2}_{31}$. This leads to two possible scenarios of the ordering of the neutrino mass states. If the sign of $\Delta m^{2}_{31}$ is positive, then $m_{\nu_{1}}<m_{\nu_{2}}<m_{\nu_{3}}$, known as the Normal Hierarchy (NH). Alternatively, $m_{\nu_{3}}<m_{\nu_{1}}<m_{\nu_{2}}$, known as the Inverted Hierarchy (IH).
+
 \subsubsection{Neutrino Oscillations in Matter}
+Considering only neutrino oscillations in vacuum is insufficient to understanding the results of certain neutrino experiments, especially those detecting high-energy solar neutrinos, such as those from the \beight{} chain. Using Eq.~\ref{eq:nu_osc_phase} for the case of solar neutrinos, one finds that $X_{ij}\gg 1$ for all $i,j$, so all effects of neutrino oscillations in the vacuum should be washed out. This leads to an expected electron neutrino survival probability for solar neutrinos of:
+\begin{align}\label{eq:solar_pee_naive}
+    P_{ee}  &= 1 - 2\sum_{i<j}|U_{ei}U_{ej}^{*}|^{2}\\
+            &= 1 - \frac{1}{2}\sin^{2}(2\theta_{13}) - \frac{1}{2}\sin^{2}(2\theta_{12})\cos^{4}(\theta_{13})\\
+            &= 0.55,
+\end{align}
+using the parameters in Table~\ref{tab:nufit_osc_params}. This survival probability value appears consistent with those measured in low-energy solar neutrino experiments such as SAGE and GALLEX/GNO, but not with experiments with higher energy thresholds such as Homestake, Super-Kamiokande, or SNO.
+
+\nomenclature{\textbf{MSW effect}}{Mikheyev-Smirnov-Wolfenstein effect (of neutrinos)}
+The resolution of this apparent problem is that the effect of matter on neutrino oscillations have not been considered. When neutrinos travel through a medium, the electrons, protons, and neutrons within that medium interact weakly with those neutrinos, leading to coherent forward elastic scattering. The resulting phenomenon is known as the \textit{MSW effect}, after its discovery by Mikheyev, Smirnov, and Wolfenstein~\cite{}. %cite MSW effect papers
+
+One can show that there is an effective potential due to these weak interactions of the form $V_{CC}(x) = \sqrt{2}G_{F}n_{e}(x)$, where $n_{e}(x)$ is the electron number density at a position $x$~\cite{}. % cite something
+This effective potential is only felt by electron neutrinos, because of the additional CC interaction possible, as seen in Fig.~\ref{fig:nu_e_es_feynman_diagrams}. All neutrino flavours experience NC interactions identically, leading to no impact on what follows. The effective potential modifies the Hamiltonian, and therefore by the Schr\"{o}dinger Equation the propagation of the neutrino wavefunctions are modified.
+
+The resulting dynamics of the MSW effect for 3-$\nu$ oscillations in a general medium can become quite complex. However, for the case of solar neutrinos two simplifying assumptions can be made that make many of the equations far more tractable: a full derivation can be read in e.g.~\cite{}. % cite Giutti
+Firstly, for solar neutrinos it can be shown that $A_{CC} = 2EV_{CC} \ll \Delta m^{2}_{31}$, leading to the evolution of the $\nu_{3}$ state decoupling from the $\nu_{1}$ and $\nu_{2}$ states. There exists a new basis in which the Hamiltonian is diagonalised, known as the matter eigenstate basis, leading to new effective oscillation parameters~\cite{}: %cite Giutti
+\begin{align}\label{eq:matter_osc_params}
+    \tan{2\theta_{12}^{M}} &= \frac{\tan{2\theta_{12}}}{1-\frac{A_{CC}}{A_{res}}},\nonumber\\
+    \Delta m^{2}_{M,21} &= \dmsq{}\sqrt{\sin^{2}2\theta_{12} + \cos^{2}2\theta_{12}\left(1-\frac{A_{CC}}{A_{res}}\right)^{2}},\\
+    A_{res} &= \frac{\cos{2\theta_{12}\dmsq{}}}{\cos^{2}\theta_{13}},\nonumber
+\end{align}
+where $A_{res}$ is the value of $A_{CC}$ at which a resonance occurs, the effective mass splitting $\Delta m^{2}_{M,21}$ being minimised. In the core of the Sun, this resonance occurs at an energy of $E\sim \SI{2}{\MeV}$. If $A_{CC} \ll A_{res}$, then the effective oscillation parameters reduce back to the vacuum oscillation parameters, as expected. If instead $A_{res} \ll A_{CC} \ll \Delta m^{2}_{31}$, then $\theta_{12}^{M}\to \pi/2$. In this case, $\nu_{e}$ that are created in the medium are completely driven into the $\ket{\nu_{2}^{M}}$ effective mass eigenstate.
+
+Because the values of the effective oscillation parameters are a function of the electron density of the medium, calculating the full impact of the MSW effect of a medium with strongly-changing density can be challenging. However, If the rate of change of electron density is slow enough as a function of distance, calculations of the survival probability simplify further: this is known as the \textit{adiabatic approximation}. For solar neutrinos, this approximation has been shown to be valid assuming the SSM and the measured values of the oscillation parameters. Under this approximation, states that are in a given effective mass eigenstate smoothly transform into one another as the neutrinos propagate. Therefore, an electron neutrino with high-enough energy that it has been driven into the $\ket{\nu_{2}^{M}}$ state in the Sun's core will then smoothly transform into the equivalent $\ket{\nu_{2}}$ mass eigenstate once it has reached the Sun's surface. This state then travels through space without any further oscillations occurring, because the neutrino has been transformed into a mass eigenstate. For such a neutrino, the detection probability becomes simply:
+\begin{align}
+    P(\nu_{2}\to\nu_{e}) &= |\Braket{\nu_{e}|\nu_{2}}|^{2} = |U_{e2}|^{2}\\
+                         &= \sin^{2}\tonetwo{}\cos^{2}\theta_{13}\\
+                         &= 0.30,
+\end{align}
+using the oscillation parameters from Table~\ref{tab:nufit_osc_params}. This survival probability is almost half of the value seen in Eq.~\ref{eq:solar_pee_naive}.
+
+At intermediate energies, solar neutrinos are only partly driven into the $\ket{\nu_{2}^{M}}$ eigenstate, leading to a survival probability that is somewhere in-between the two extremes: $0.30\leq P_{ee} \leq 0.55$. The value of $P_{ee}$ for a given neutrino will be dependent on both the neutrino's energy and its location of production in the Sun: a neutrino generated closer to the core of Sun will have to travel through regions of greater electron density, driving the effective mixing angle $\theta_{12}^{M}$ larger.
+
+Looking at data, Fig.~\ref{fig:pee_solar_data} shows the measured values of $P_{ee}$ for a number of different types of solar neutrino, each with their own characteristic energy spectrum. Also shown is the expectation after considering the MSW effect: as can be seen, the solar neutrino data appears consistent with this model.
+
+\begin{figure}
+    \centering
+    % \includegraphics[]{}
+    \caption[]{}
+    \label{fig:pee_solar_data}
+\end{figure}
+
+% \begin{itemize}
+%     \item Describe the current phenomenological model of 3-flavour neutrino oscillations that can explain all of this evidence: the PMNS mixing matrix.
+%     \item Describe also the MSW effect, which is critical for explaining solar neutrino oscillations.
+%     \item Show the formula for solar neutrino oscillations, given this MSW effect in both the Sun and Earth. Note the dependence of solar neutrino oscillations on only the ``solar'' oscillation parameters. This is all particularly useful for the solar analysis chapter.
+% \end{itemize}
+% [3 pages]
+
+\subsection{The Origins of Neutrino Mass}
 
 {
 \color{blue}
-\begin{itemize}
-    \item Describe the current phenomenological model of 3-flavour neutrino oscillations that can explain all of this evidence: the PMNS mixing matrix.
-    \item Describe also the MSW effect, which is critical for explaining solar neutrino oscillations.
-    \item Show the formula for solar neutrino oscillations, given this MSW effect in both the Sun and Earth. Note the dependence of solar neutrino oscillations on only the ``solar'' oscillation parameters. This is all particularly useful for the solar analysis chapter.
-\end{itemize}
-
-\begin{equation}\label{eq:pee_msw}
-    P_{ee}\left(\tan2\theta^{M}_{12}, \sin\theta^{M}_{13}, \Delta m^{2}_{21,M}\right) = BLAH
-\end{equation}
-[3 pages]
-\subsection{The Origins of Neutrino Mass}
 \begin{itemize}
     \item Observed neutrino oscillations require at least two neutrino mass states to be non-zero. Given constraints of the current SM, two main ways of adding neutrino masses: a Dirac mass term (i.e. allowing for sterile neutrinos), and a Majorana mass term.
     \item For latter, briefly describe what a Majorana particle is, and how with the Seesaw Mechanism (just the simple Type 1 described in-text) one can not only get neutrino masses but also explain their lightness relative to the other massive SM particles. Note that there exist more elaborate versions of this theory.
