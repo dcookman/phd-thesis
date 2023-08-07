@@ -78,7 +78,7 @@ The weak vector bosons $W^{\pm}$ and $Z$ would then need to be massless, in cont
 The solution to this problem comes in the form of the \textit{Brout-Englert-Higgs (BEH) Mechanism}~\cite{}, % cite BEH theory papers
 the final component of the SM.  In this Mechanism, an additional two-component ``Higgs'' field $H$ is proposed, which is able to interact with the other fields of the theory in a manner that preserves the SM gauge symmetries. One such part of the added Higgs field interactions are the so-called Yukawa terms~\cite{}, % cite Yukawa, presumably
 which for interactions with leptons are given by:
-\begin{equation}
+\begin{equation}\label{eq:SM_yukawa_leptons}
     -\mathcal{L}_{\mathrm{Yukawa,lep}} = \sum_{\ell}y_{\ell}\bar{L}^{\ell}H\ell^{c} + \mathrm{h.c.},
 \end{equation}
 where $y_{\ell}$ are the ``Yukawa'' coupling constants for the three lepton flavours, $L^{\ell} = \begin{pmatrix}
@@ -414,6 +414,8 @@ Looking at data, Fig.~\ref{fig:pee_solar_data} shows the measured values of $P_{
     \label{fig:pee_solar_data}
 \end{figure}
 
+Important to note is that the resonance phenomenon of the MSW effect requires a positive sign for \dmsq{} to occur, given that $0\leq\tonetwo{}\leq\pi/4$. If $\dmsq{}<0$, then in the case where $|A_{CC}|\gg |A_{res}|$ $\theta_{12}^{M}$ will be driven to 0 instead of $\pi/2$. This would lead to the survival probability of solar neutrinos increasing at higher energies, entirely counter to what is seen in data. Because of this, the sign of \dmsq{} is known to be positive.
+
 % \begin{itemize}
 %     \item Describe the current phenomenological model of 3-flavour neutrino oscillations that can explain all of this evidence: the PMNS mixing matrix.
 %     \item Describe also the MSW effect, which is critical for explaining solar neutrino oscillations.
@@ -422,6 +424,22 @@ Looking at data, Fig.~\ref{fig:pee_solar_data} shows the measured values of $P_{
 % [3 pages]
 
 \subsection{The Origins of Neutrino Mass}
+Having seen a wide variety of experiments over many decades observe neutrino oscillations, and the phenomenology that describes them requiring at least two neutrino mass states to be non-zero, a critical question is how neutrino masses can be included into the SM. There are two different approaches to doing so. If neutrinos are given a \textit{Dirac mass term}, then a term similar to the one in Eq.~\ref{eq:SM_yukawa_leptons} is added, now using right-handed neutrino terms $\nu^{c}_{j}$:
+\begin{align}
+    -\mathcal{L}_{\mathrm{Dirac}} &= \sum_{i,j}y^{\nu}_{ij}\bar{L}^{i}CH\nu^{c}_{j} + \mathrm{ h.c.}\\
+                              &\to \sum_{i,j}m^{\nu}_{ij}\bar{\nu}_{i,L}\nu^{c}_{j} + \mathrm{ h.c.}.
+\end{align}
+The $3\times3$ matrix $y^{\nu}_{ij}$ describes the Yukawa coupling strengths between the neutrinos and the charge conjugate of the Higgs doublet, $CH$. After SSB, a neutrino mass matrix is obtained $m^{\nu}_{ij} = \frac{v}{\sqrt{2}}y^{\nu}_{ij}$, which can be related to the PMNS mixing matrix~\cite{}. %cite
+The theoretical downsides of this approach are two-fold: firstly, because $v = \SI{246.22}{\GeV} \gg m_{\nu_{i}}\sim \mathcal{O}(10^{-2}\si{\eV\squared})$, this requires fine-tuning of the Yukawa coupling parameters down to values $\sim\mathcal{O}(10^{-14})$.
+
+A second assumption needed for neutrinos to be Dirac particles is the existence of right-handed, `sterile' neutrinos. These are so-called because their right-handed nature precludes them from interacting via any of the three main fundamental forces of particle physics. The only known means by which sterile neutrinos could have any contact with the rest of the SM is via the above mass term of the Lagrangian; this implies that neutrinos could oscillate into a sterile neutrino state, for example. The LSND and MiniBooNE short-baseline neutrino experiments have seen excesses at low energies that could be explained by oscillations of a sterile neutrino with a mass splitting of $\Delta m^{2}_{41}\sim\mathcal{O}(\SI{1}{\eV\squared})$~\cite{}; % cite LSND & MiniBooNE excess papers
+however, these results seem at odds with recent results by the MicroBooNE Collaboration~\cite{}. % cite MicroBooNE
+
+An alternative approach to generating neutrino masses is through a \textit{Majorana mass term}:
+\begin{equation}
+    \mathcal{L}_{M} = \frac{1}{2}\sum_{i,j}m^{\nu}_{ij}\nu^{T}_{i,L}C\nu_{j,L} + \mathrm{ h.c.},
+\end{equation}
+where there is now no longer a coupling to the Higgs field, and instead the charge conjugate of the left-handed neutrino states is used.
 
 {
 \color{blue}
