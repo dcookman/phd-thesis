@@ -449,9 +449,13 @@ The existence of this Majorana mass term would have major consequences, beyond j
 \nomenclature{\textbf{\onbb{}}}{Neutrinoless double beta decay}
 \nomenclature{\textbf{\twonbb{}}}{Two-neutrino double beta decay}
 One prominent search mode for determining whether neutrinos have a Majorana mass term is by looking for \textit{neutrinoless double beta decay}, \onbb{}. This is a variant of the radioactive decay known as \textit{two-neutrino double beta decay}, \twonbb{}, and was first hypothesised by Wendell H Furry in 1937~\cite{}. % cite Furry paper
-\twonbb{} is a nuclear process in which two $\beta$-decays occur simultaneously in one nucleus, generating two electrons and two electron anti-neutrinos. This is only possible in the subset of isotopes for which \twonbb{} is energetically favourable, but the usual single $\beta$-decay is not (or indeed any other form of nuclear decay).
+\twonbb{} is a nuclear process theorised by Maria Goeppert-Mayer~\cite{}, % cite
+in which two $\beta$-decays occur simultaneously in one nucleus, generating two electrons and two electron anti-neutrinos. This is only possible in the subset of isotopes for which \twonbb{} is energetically favourable, but the usual single $\beta$-decay is not (or indeed any other form of nuclear decay).
 
-One example of an isotope capable of \twonbb{} is \ce{^{130}Te}. Fig.~\ref{fig:bb_isobar_example} shows the mass excesses of the nuclear ground state energy levels for isotopes in the isobar $A = 130$. As can be seen, \ce{^{130}Te} is not capable of $\beta^{-}$-decay to \ce{^{130}I}, but decay via \twonbb{} down to the stable isotope \ce{^{130}Xe} is possible. This process has been observed by the CUORE experiment~\cite{}, and \twonbb{} has been similarly observed in a number of other isotopes.
+One example of an isotope capable of \twonbb{} is \ce{^{130}Te}. Fig.~\ref{fig:bb_isobar_example} shows the mass excesses of the nuclear ground state energy levels for isotopes in the isobar $A = 130$. As can be seen, \ce{^{130}Te} is not capable of $\beta^{-}$-decay to \ce{^{130}I}, but decay via \twonbb{} down to the stable isotope \ce{^{130}Xe} is possible. This process has been observed by the CUORE experiment~\cite{}, % cite CUORE
+and \twonbb{} has been similarly observed in a number of other isotopes such as \ce{^{76}Ge}~\cite{}, % cite
+\ce{^{136}Xe}~\cite{}, % cite
+and \ce{^{150}Nd}~\cite{}. % cite
 
 \begin{figure}
     \centering
@@ -460,18 +464,51 @@ One example of an isotope capable of \twonbb{} is \ce{^{130}Te}. Fig.~\ref{fig:b
     \label{fig:bb_isobar_example}
 \end{figure}
 
-{
-\color{blue}
-\begin{itemize}
-    \item Observed neutrino oscillations require at least two neutrino mass states to be non-zero. Given constraints of the current SM, two main ways of adding neutrino masses: a Dirac mass term (i.e. allowing for sterile neutrinos), and a Majorana mass term.
-    \item For latter, briefly describe what a Majorana particle is, and how with the Seesaw Mechanism (just the simple Type 1 described in-text) one can not only get neutrino masses but also explain their lightness relative to the other massive SM particles. Note that there exist more elaborate versions of this theory.
-    \item Furthermore, with reference to the Sakharov conditions, describe qualitatively how the Seesaw Mechanism also allows for possible leptogenesis/baryogenesis in the early Universe, and hence could explain its matter-antimatter asymmetry.
-    \item Describe briefly the nuclear physics behind double-beta decay (i.e. why it can happen at all over just normal beta decay), and then how Majorana neutrinos allow for neutrinoless double beta decay, \onbb{}.
-    \item Describe the experimental signature of \onbb{}: a spike of events of observed energy equal to the Q-value of the decay.
-    \item Note Schecter-Valle Theorem ensures that any observation of \onbb{} must be the result of neutrinos being Majorana. I.e. the Universe cannot conspire against us and have \onbb{} without Majorana neutrinos.
-    \item Very briefly note the current status of the search for \onbb{}, describing the main varieties of experimental setup seen, along with a nice canonical example of such an experiment and their best limit. In particular, the Germanium-crystal detectors such as GERDA, Xenon-TPC detectors like EXO-200, and large-scale liquid scintillators such as KamLAND-Zen.
-\end{itemize}
-[3 pages]
+Unlike \twonbb{}, \onbb{} would emit no neutrinos during the decay, and instead a virtual anti-neutrino emitted by one nucleon would be captured on another as a neutrino. Fig.~\ref{fig:feynman_diagram_ovbb} shows a Feynman diagram for this process. A theorem by J. Schechter and J.W.F. Valle~\cite{} % cite
+says that, as long as the weak interaction is governed by some form of local gauge theory, any observation of \onbb{} guarantees the existence of a Majorana mass term for neutrinos.
 
-[CHAPTER TOTAL: 17 pages]
-}
+\begin{figure}
+    \centering
+    \begin{subfigure}{0.48\textwidth}
+        \centering
+        % \includegraphics[width=0.95\linewidth]{2_Detector/Figs/refractive_indices_plot.pdf}
+        \caption{}
+        \label{fig:feynman_diagram_ovbb}
+    \end{subfigure}
+    \begin{subfigure}{0.48\textwidth}
+        \centering
+        % \includegraphics[width=0.95\linewidth]{2_Detector/Figs/reflectance_vs_angle_plot.pdf}
+        \caption{}
+        \label{fig:energy_spectrum_bb}
+    \end{subfigure}
+    \caption[]
+    {}
+    \label{fig:ovbb_plots}
+\end{figure}
+
+The lack of neutrinos generated in \onbb{} compared to \twonbb{} enables a method for distinguishing between the two processes. In \twonbb{}, the energy of the decay is shared between the two electrons and two anti-neutrinos generated. Given that the anti-neutrinos rarely ever interact, the observed energy of the event will come only from the electrons (ignoring the negligble kinetic energy of the daughter nucleus). This leads to a broad observed energy spectrum. In comparison, with \onbb{} all the decay energy is passed onto the electrons, and so the observed energy spectrum will be a thin peak at the $Q$-value of the decay. This is shown schematically in Fig.~\ref{fig:energy_spectrum_bb}. As can be seen, \onbb{} can be searched for by looking for an excess of radioactive decay events generated by a \twonbb{}-decaying isotope at the $Q$-value.
+
+No evidence of \onbb{} has been seen at the time of writing. However, numerous experiments have been searching for the decays in a variety of isotopes, and more are under construction or being planned. A summary of the current state of searches for the most prominent isotopes that could theoretically allow \onbb{} is shown in Table~\ref{}. In absence of an observation, experiments report a limit on the minimum possible half-life of \onbb{}, $T_{1/2}^{\onbb{}}$. As can be seen, current limits on the $T_{1/2}^{\onbb{}}$ vary by isotope, but are generally $\mathcal{O}(10^{26}\,\mathrm{ years})$. If \onbb{} is observed, the measured half-life can be used to help determine the neutrino masses, through the formula:
+\begin{equation}
+    \frac{1}{T_{1/2}^{\onbb{}}} = \frac{ |m_{\beta\beta}|^{2}}{m_{e}^{2}}G_{\nu}|\mathcal{M}_{\onbb{}}|^{2},
+\end{equation}
+where $G_{\nu}$ and $\mathcal{M}_{\onbb{}}$ are the phase space factor and matrix elements of the decay, and $m_{\beta\beta}$ is known as the `effective \onbb{} mass', defined as:
+\begin{equation}
+    m_{\beta\beta} = \sum_{i=1}^{3}U_{ei}^2m_{\nu_{i}}.
+\end{equation}
+
+% {
+% \color{blue}
+% \begin{itemize}
+%     \item Observed neutrino oscillations require at least two neutrino mass states to be non-zero. Given constraints of the current SM, two main ways of adding neutrino masses: a Dirac mass term (i.e. allowing for sterile neutrinos), and a Majorana mass term.
+%     \item For latter, briefly describe what a Majorana particle is, and how with the Seesaw Mechanism (just the simple Type 1 described in-text) one can not only get neutrino masses but also explain their lightness relative to the other massive SM particles. Note that there exist more elaborate versions of this theory.
+%     \item Furthermore, with reference to the Sakharov conditions, describe qualitatively how the Seesaw Mechanism also allows for possible leptogenesis/baryogenesis in the early Universe, and hence could explain its matter-antimatter asymmetry.
+%     \item Describe briefly the nuclear physics behind double-beta decay (i.e. why it can happen at all over just normal beta decay), and then how Majorana neutrinos allow for neutrinoless double beta decay, \onbb{}.
+%     \item Describe the experimental signature of \onbb{}: a spike of events of observed energy equal to the Q-value of the decay.
+%     \item Note Schecter-Valle Theorem ensures that any observation of \onbb{} must be the result of neutrinos being Majorana. I.e. the Universe cannot conspire against us and have \onbb{} without Majorana neutrinos.
+%     \item Very briefly note the current status of the search for \onbb{}, describing the main varieties of experimental setup seen, along with a nice canonical example of such an experiment and their best limit. In particular, the Germanium-crystal detectors such as GERDA, Xenon-TPC detectors like EXO-200, and large-scale liquid scintillators such as KamLAND-Zen.
+% \end{itemize}
+% [3 pages]
+
+% [CHAPTER TOTAL: 17 pages]
+% }
