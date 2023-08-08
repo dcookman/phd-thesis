@@ -367,7 +367,7 @@ From the results of a variety of neutrino oscillation experiments, the oscillati
     \label{tab:nufit_osc_params}
 \end{table}
 
-\nomenclature{\textbf{NH}}{Normal Hierarchy (of neutrino masses)}
+\nomenclature{\textbf{IH}}{Normal Hierarchy (of neutrino masses)}
 \nomenclature{\textbf{NH}}{Inverted Hierarchy (of neutrino masses)}
 In addition to this information, we also know from solar data that the sign of \dmsq{} must be positive, for reasons that will be explained in the next section. However, the same cannot be yet said for $\Delta m^{2}_{31}$. This leads to two possible scenarios of the ordering of the neutrino mass states. If the sign of $\Delta m^{2}_{31}$ is positive, then $m_{\nu_{1}}<m_{\nu_{2}}<m_{\nu_{3}}$, known as the Normal Hierarchy (NH). Alternatively, $m_{\nu_{3}}<m_{\nu_{1}}<m_{\nu_{2}}$, known as the Inverted Hierarchy (IH).
 
@@ -435,11 +435,30 @@ The theoretical downsides of this approach are two-fold: firstly, because $v = \
 A second assumption needed for neutrinos to be Dirac particles is the existence of right-handed, `sterile' neutrinos. These are so-called because their right-handed nature precludes them from interacting via any of the three main fundamental forces of particle physics. The only known means by which sterile neutrinos could have any contact with the rest of the SM is via the above mass term of the Lagrangian; this implies that neutrinos could oscillate into a sterile neutrino state, for example. The LSND and MiniBooNE short-baseline neutrino experiments have seen excesses at low energies that could be explained by oscillations of a sterile neutrino with a mass splitting of $\Delta m^{2}_{41}\sim\mathcal{O}(\SI{1}{\eV\squared})$~\cite{}; % cite LSND & MiniBooNE excess papers
 however, these results seem at odds with recent results by the MicroBooNE Collaboration~\cite{}. % cite MicroBooNE
 
-An alternative approach to generating neutrino masses is through a \textit{Majorana mass term}:
+\nomenclature{\textbf{BSM}}{Beyond the Standard Model}
+An alternative approach to generating neutrino masses without needing to posit the existence of right-handed neutrino states is through a \textit{Majorana mass term}:
 \begin{equation}
     \mathcal{L}_{M} = \frac{1}{2}\sum_{i,j}m^{\nu}_{ij}\nu^{T}_{i,L}C\nu_{j,L} + \mathrm{ h.c.},
 \end{equation}
-where there is now no longer a coupling to the Higgs field, and instead the charge conjugate of the left-handed neutrino states is used.
+where there is now no longer a coupling to the Higgs field, and instead the charge conjugate of the left-handed neutrino states is used. This term breaks SM gauge symmetry, so in theories Beyond the Standard Model (BSM) that want to include such a term typically introduce a higher-order term that reduces after SSB down to the Majorana term~\cite{}. % cite some relevant papers, inc. Weinberg
+Many of these BSM theories, for example ones that include a so-called `Seesaw Mechanism', also have a means of explaining why neutrinos have such light masses, without having to resort to `unnatural' Yukawa coupling strengths~\cite{}. % cite 
+For this term to exist neutrinos must be a `Majorana particle', in which they are their own antiparticle, expressed mathematically as $\nu^{c} = \nu$. This is named after Ettore Majorana, who realised that a mass term such as the above could exist under these special conditions~\cite{}. % cite Majorana
+
+The existence of this Majorana mass term would have major consequences, beyond just allowing for neutrino masses. Crucially, the term violates lepton number, as it allows for neutrinos to annihilate one another. Because all other terms in the SM conserve the `accidental' symmetry of lepton number conservation, any evidence of lepton number violation with neutrinos can provide strong evidence that neutrinos are Majorana particles.
+
+\nomenclature{\textbf{\onbb{}}}{Neutrinoless double beta decay}
+\nomenclature{\textbf{\twonbb{}}}{Two-neutrino double beta decay}
+One prominent search mode for determining whether neutrinos have a Majorana mass term is by looking for \textit{neutrinoless double beta decay}, \onbb{}. This is a variant of the radioactive decay known as \textit{two-neutrino double beta decay}, \twonbb{}, and was first hypothesised by Wendell H Furry in 1937~\cite{}. % cite Furry paper
+\twonbb{} is a nuclear process in which two $\beta$-decays occur simultaneously in one nucleus, generating two electrons and two electron anti-neutrinos. This is only possible in the subset of isotopes for which \twonbb{} is energetically favourable, but the usual single $\beta$-decay is not (or indeed any other form of nuclear decay).
+
+One example of an isotope capable of \twonbb{} is \ce{^{130}Te}. Fig.~\ref{fig:bb_isobar_example} shows the mass excesses of the nuclear ground state energy levels for isotopes in the isobar $A = 130$. As can be seen, \ce{^{130}Te} is not capable of $\beta^{-}$-decay to \ce{^{130}I}, but decay via \twonbb{} down to the stable isotope \ce{^{130}Xe} is possible. This process has been observed by the CUORE experiment~\cite{}, and \twonbb{} has been similarly observed in a number of other isotopes.
+
+\begin{figure}
+    \centering
+    % \includegraphics[]{}
+    \caption[]{}
+    \label{fig:bb_isobar_example}
+\end{figure}
 
 {
 \color{blue}
