@@ -1,22 +1,48 @@
 \chapter{Analysis of SMELLIE Data in the Scintillator Phase}\label{chap:smellie_analysis}
 % \epigraph{\textit{}}{source}
-{
-    \color{blue}
-    This chapter contains two sets of analyses: measurements of the extinction lengths of the scintillator as a function of wavelength and time, as well as monitoring the Rayleigh scattering length over time.
+
+% This chapter contains two sets of analyses: measurements of the extinction lengths of the scintillator as a function of wavelength and time, as well as monitoring the Rayleigh scattering length over time.
 
 \section{Extinction Length Analysis}\label{sec:ext_length_analysis}
-\subsection{Motivation}
-\begin{itemize}
-    \item Explain motivating observations for this analysis: a substantial discrepancy between MC and data seen in the radial profiles of nhitsCleaned for \ce{^{210}Po} after the PPO top-up campaign. Performed by Serena.
-    \item Hypothesis of a shortening of the absorption/scattering length proposed, further strengthened by Ben Tam's ex-situ absorption measurements with scintillator taken from the detector, as well as knowledge about a likely ``cooking'' of PPO during the PPO-fill.
-    \item Describe the provisional optics model decided on based on these measurements, which includes an additional non-re-emitting component of the scintillator.
-    \item As a further cross-check, SMELLIE should be sensitive to changes in the overall extinction length of the scintillator, especially for short extinction lengths relative to the size of the detector.
-    \item More straightforward in measuring extinction length compared to scattering length --- no need to distinguish between scintillator re-emission and scattering.
-    \item Further uses: can be used to monitor the extinction length over time!
-\end{itemize}
-[4 pages]
+% \subsection{Motivation}
+% \begin{itemize}
+%     \item Explain motivating observations for this analysis: a substantial discrepancy between MC and data seen in the radial profiles of nhitsCleaned for \ce{^{210}Po} after the PPO top-up campaign. Performed by Serena.
+%     \item Hypothesis of a shortening of the absorption/scattering length proposed, further strengthened by Ben Tam's ex-situ absorption measurements with scintillator taken from the detector, as well as knowledge about a likely ``cooking'' of PPO during the PPO-fill.
+%     \item Describe the provisional optics model decided on based on these measurements, which includes an additional non-re-emitting component of the scintillator.
+%     \item As a further cross-check, SMELLIE should be sensitive to changes in the overall extinction length of the scintillator, especially for short extinction lengths relative to the size of the detector.
+%     \item More straightforward in measuring extinction length compared to scattering length --- no need to distinguish between scintillator re-emission and scattering.
+%     \item Further uses: can be used to monitor the extinction length over time!
+% \end{itemize}
+% [4 pages]
 \subsection{Analysis Approach}
 \subsubsection{The 2-PMT Case}
+To begin, consider light emission from a particular SMELLIE fibre of fixed wavelength $\lambda_{j}$, with a mean emission intensity of $I_{j}$ photons emitted per event in subrun $j$ during detector phase $p$. Modifying Eq.~\ref{eq:mu_def}, a general PMT $i$ will have a mean npe per event of $\mu_{ij,p}(\lambda_{j}) = I_{j,p}b_{i,p}(\lambda_{j})f_{i,p}(\lambda_{j})$. A detector phase-dependence has been added to all terms, because:
+\begin{itemize}
+    \item The emission intensities chosen, $I_{j,p}$, can vary between different data-taking campaigns. These changes are due to changes in hardware (as detailed in Chapter~\ref{chap:smellie_hardware}), as well as changes in the settings used to run SMELLIE.
+    \item The beam profile of a given fibre at a given wavelength is not expected to change with detector phase. However, if the refractive index of the inner detector medium changes (e.g. from the water phase to scintillator phase), then the fraction of light emitted that is pointed in the correct direction to be detected by PMT $i$, $b_{i,p}(\lambda_{j})$, \textit{can} change. This effect is discussed in more detail in Section~\ref{sec:smellie_ext_corrections}.
+    \item In a different phase of the detector, the optics of the inner detector can certainly change, and so the probability that a photon pointing in the correct direction for PMT $i$ actually makes it across the detector and generates a photoelectron, $f_{i,p}(\lambda_{j})$, can change.
+\end{itemize}
+
+For the purposes of this analysis, consider specifically PMTs in the beamspot of the fibre with unobstructed paths. Then, a given beamspot PMT will have a mean npe per event, $\mu_{ij,p}^{\mathrm{beam}}(\lambda_{j})$, of:
+\begin{align}\label{eq:smellie_ext_length_theory}
+    \mu_{ij,p}^{\mathrm{beam}}(\lambda_{j}) &= I_{j,p}b_{i,p}(\lambda_{j})
+    \exp\left(
+        -\frac{L_{ij,p}^{\mathrm{extern}}(\lambda_{j})}{l^{\mathrm{extern}}(\lambda_{j})}
+    \right)
+    \exp\left(
+        -\frac{L_{ij,p}^{\mathrm{acr}}(\lambda_{j})}{l^{\mathrm{acr}}(\lambda_{j})}
+    \right)
+    \exp\left(
+        -\frac{L_{ij,p}^{\mathrm{inner}}(\lambda_{j})}{l_{p}^{\mathrm{inner}}(\lambda_{j})}
+    \right)\nonumber\\
+    & \qquad\cdot T_{ij,p}(\lambda_{j})\epsilon_{ij,p}(\lambda_{j}).
+\end{align}
+Here, $L_{ij,p}^{\mathrm{extern,acr,inner}}(\lambda_{j})$ is the length of a path in a given detector medium through which light travels, for the external water, acrylic, and inner detector medium, respectively. $l_{p}^{\mathrm{extern,acr,inner}}(\lambda_{j})$ is the extinction length of each detector medium for a given wavelength --- it is assumed that only the inner detector medium has changing optics in different phases. Some fraction of light is lost when passing between two mediums with different refractive indices: this is captured by $T_{ij,p}(\lambda_{j})$, the product of the Fresnel transmission components for all optical boundaries along a photon's path. Finally, $\epsilon_{ij,p}(\lambda_{j})$ is the probability that a photon along a given path, incident on a given PMT, will generate a photoelectron that is detected. 
+
+Measuring $l_{p}^{\mathrm{inner}}(\lambda_{j})$ is the aim of this analysis. In order to do so, all other parameters in Eq.~\ref{eq:smellie_ext_length_theory} must either be measured, or removed in some careful way. As discussed in Section~\ref{sec:optical_processes}, the extinction lengths of both the UPW and the acrylic were measured as a function of wavelength in the water phase with the Laserball. It is assumed that the optics of the UPW inside and outside the AV were the same, and have not changed since. That section also discusses the measured refractive indices as a function of wavelength for the UPW, acrylic, and LABPPO. For a given detector phase, subrun, and PMT, the Collaboration's \texttt{Light Path Calculator} is able to determine the values of $L_{ij,p}^{\mathrm{extern,acr,inner}}(\lambda_{j})$ as well as the combined Fresnel transmission coefficient $T_{ij,p}(\lambda_{j})$.
+
+{
+\color{blue}
 \begin{itemize}
     \item Outline theoretical approach for how one could measure the extinction length of scintillator through a comparison of SMELLIE data between the scintillator and water phases, in the simplified 1 dimensional case with only 2 PMTs.
 \end{itemize}
@@ -28,7 +54,7 @@
 \end{itemize}
 [2 pages]
 
-\subsubsection{Corrections Between the Water and Scintillator Phases}
+\subsubsection{Corrections Between the Water and Scintillator Phases}\label{sec:smellie_ext_corrections}
 \begin{itemize}
     \item Note the complications that we have to deal with. Namely, the differing refractive indices of the media bending the beamspot differently in the phases, as well as the method used to estimate $t_{\textrm{emm}}$.
     \item Explain how we deal with these, the former through MC simulation.
