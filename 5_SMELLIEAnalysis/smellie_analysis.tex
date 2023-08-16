@@ -23,8 +23,7 @@ The first analysis discussed in this chapter is the measurement of the extinctio
     \label{fig:smellie_expected_ext_length_phases}
 \end{figure}
 
-\subsection{Analysis Approach}
-\subsubsection{The 2-PMT Case}
+\subsection{Mathematical Model}
 To begin, consider light emission from a particular SMELLIE fibre of fixed wavelength $\lambda_{j}$, with a mean emission intensity of $I_{j}$ photons emitted per event in subrun $j$ during detector phase $p$. Modifying Eq.~\ref{eq:mu_def}, a general PMT $i$ will have a mean npe per event of $\mu_{ij,p}(\lambda_{j}) = I_{j,p}b_{i,p}(\lambda_{j})f_{i,p}(\lambda_{j})$. A detector phase-dependence has been added to all terms, because:
 \begin{itemize}
     \item The emission intensities chosen, $I_{j,p}$, can vary between different data-taking campaigns. These changes are due to changes in hardware (as detailed in Chapter~\ref{chap:smellie_hardware}), as well as changes in the settings used to run SMELLIE.
@@ -47,8 +46,6 @@ For the purposes of this analysis, consider specifically PMTs in the beamspot of
     & \qquad\cdot T_{ij,p}(\lambda_{j})\epsilon_{ij,p}(\lambda_{j}).
 \end{align}
 Here, $L_{ij,p}^{\mathrm{extern,acr,inner}}(\lambda_{j})$ is the length of a path in a given detector medium through which light travels, for the external water, acrylic, and inner detector medium, respectively. $l_{p}^{\mathrm{extern,acr,inner}}(\lambda_{j})$ is the extinction length of each detector medium for a given wavelength --- it is assumed that only the inner detector medium has changing optics in different phases. Some fraction of light is lost when passing between two mediums with different refractive indices: this is captured by $T_{ij,p}(\lambda_{j})$, the product of the Fresnel transmission components for all optical boundaries along a photon's path. Finally, $\epsilon_{ij,p}(\lambda_{j})$ is the probability that a photon along a given path, incident on a given PMT, will generate a photoelectron that is detected. 
-
-Measuring $l_{p}^{\mathrm{inner}}(\lambda_{j})$ is the aim of this analysis. In order to do so, all other parameters in Eq.~\ref{eq:smellie_ext_length_theory} must either be measured, or removed in some careful way. As discussed in Section~\ref{sec:optical_processes}, the extinction lengths of both the UPW and the acrylic were measured as a function of wavelength in the water phase with the Laserball. It is assumed that the optics of the UPW inside and outside the AV were the same, and have not changed since. That section also discusses the measured refractive indices as a function of wavelength for the UPW, acrylic, and LABPPO. For a given detector phase, subrun, and PMT, the Collaboration's \texttt{Light Path Calculator} is able to determine the values of $L_{ij,p}^{\mathrm{extern,acr,inner}}(\lambda_{j})$ as well as the combined Fresnel transmission coefficient $T_{ij,p}(\lambda_{j})$.
 
 As will be discussed in Section~\ref{sec:smellie_intensity}, measuring the absolute value of $I_{j,p}$ is challenging. Fortunately, there are ways of making relative intensity calibrations, which is sufficient for this analysis. Consider PMTs near the fibre emission point. The first light observed by these PMTs will be from photons which have `back-scattered' off of the UPW outside the AV. This is followed by light reflected off of the AV surface. Fig.~\ref{fig:smellie_back_PMTs_tres_plot} shows the observed time residual distribution for such a PMT. As can be seen, the back-scattered light is well-separated in time from all other optical processes. Assuming that the Rayleigh scattering properties of the UPW outside the AV have been unchanged throughout the lifetime of the detector, then the expected number of photoelectrons observed in a selection of these PMTs during a time period in which only back-scattering can occur will be simply:
 \begin{equation}
@@ -114,13 +111,57 @@ Rearranging the above for $l_{p}^{\mathrm{inner}}(\lambda_{j})$, one can write:
 \end{align}
 The parameter $s_{ij,p}(\lambda_{j})$ describes the fractional change in observed npe for a given PMT due to differences in refraction between the phases. Quantifying this effect will be discussed in Section~\ref{sec:smellie_ext_corrections}.
 
+\subsection{Parameter Measurements and Uncertainties}
+As a result of Eq.~\ref{eq:smellie_ext_length_1PMT}, measuring the extinction length of the scintillator requires first measuring a number of other quantities with knowledge of their uncertainties.
+
+\subsubsection{UPW Extinction Lengths}
+As discussed in Section~\ref{sec:optical_processes}, the attenuation lengths of the UPW were measured as a function of wavelength in the water phase with the Laserball. It is assumed that the optics of the UPW inside and outside the AV were the same, and have not changed since.
+
+In this analysis, the measured values of the attenuation coefficients $\alpha_{w}(\lambda) = 1/l_{\ce{H_{2}O}}^{\mathrm{inner}}(\lambda)$ and their associated errors were taken from~\cite{andersonOpticalCalibrationSNO2021}. The wavelength range this Laserball data was taken over was \SIrange{337}{500}{\nm}, so to prevent any errors from extrapolation only wavelengths in this range were considered in this analysis. For a given SMELLIE subrun with wavelength $\lambda_{j}$, $l_{\ce{H_{2}O}}^{\mathrm{inner}}(\lambda_{j})$ was estimated by linearly interpolating between laserball $\alpha_{w}$ data points, and then taking a reciprocal. Because the systematic uncertainties dominated for each Laserball data point, which were likely to be highly correlated between data points, the uncertainty in $\alpha_{w}(\lambda_{j})$ was estimated by linearly interpolating the quadrature sum of the statistical and systematic uncertainties at each Laserball data point. Fig.~\ref{fig:smellie_laserball_water_ext_length_est} shows this process in action from the wavelength \SI{375}{\nm}. At its largest, the uncertainty in $l_{\ce{H_{2}O}}^{\mathrm{inner}}$ is $\sim50\%$, which is very large. Fortunately, the impact of this large error is strongly mitigated in Eq.~\ref{eq:smellie_ext_length_1PMT} because $L_{ij,\ce{H_{2}O}}^{\mathrm{inner}}(\lambda_{j})\ll l_{\ce{H_{2}O}}^{\mathrm{inner}}$.
+
+\begin{figure}
+    \centering
+    % \includegraphics[width=0.8\textwidth]{6_SolarAnalysis/images/b8_eelectrue_vs_enutrue.pdf}
+    \caption[]{}
+    \label{fig:smellie_laserball_water_ext_length_est}
+\end{figure}
+
+\subsubsection{Path Lengths and Transmission Coefficients}
+Section~\ref{sec:optical_processes} also discusses the measured refractive indices as a function of wavelength for the UPW, acrylic, and LABPPO. For a given detector phase, subrun, and PMT, the Collaboration's \texttt{Light Path Calculator} is able to determine the values of $L_{ij,p}^{\mathrm{inner}}(\lambda_{j})$ as well as the combined Fresnel transmission coefficient $T_{ij,p}(\lambda_{j})$. It is assumed that there is negligible uncertainty in these values.
+
+\subsubsection{Number of Photoelectrons}
+Critical to this analysis is the determination of the mean npe per event in both `beamspot' and `backscatter' PMTs. These two PMT selections have to be approached slightly differently.
+
+A beamspot PMT was defined similarly to Section~\ref{sec:combining_beam_profiles}: a PMT with $\alpha<\ang{10}$ which has been identified as ``good'' in both the scintillator phase subrun $j$ and the matching water phase subrun. % CONFIRM!!!
+For a given beamspot PMT, the direct light was isolated by calculating the time residuals of all hits on the PMT, using the ``$t_{\mathrm{emm}} = t_{\mathrm{med}}$'' approach mentioned in Section~\ref{sec:smellie_triggering_daq}. % CONFIRM!!!
+Then, the number of hits observed in a ``tight'' time residual window of $[-5,+5]\,\si{\ns}$ for the subrun was measured for a given subrun for the PMT of interest. % CONFIRM!!!
+By converting to occupancy and then using a multi-hit correction as described in Eq.~\ref{eq:multihit_correction}, the total npe per event for that PMT was estimated. The uncertainty in this value was given by the Poisson error of the calculated npe. A final correction was made to account for noise hits: the measured noise rate of a given PMT was calculated using the PULSEGT triggers, as described in Section~\ref{sec:smellie_software}. After accounting for the width of the time window, the corresponding expected number of noise hits was subtracted off of the total measured npe to give the npe per event from direct light only.
+
+Backscattered PMTs were selected for each fibre by isolating the PMTs in the hemisphere of the fibre emission point which observed the most hits in the \tres{} window $[-25,-5]\,\si{\ns}$, using ``medium'' intensity subruns from water phase data run \num{114018}. % CONFIRMx2!!!
+An example of this PMT selection is shown for fibre FS007 in Fig.~\ref{fig:smellie_backscat_PMT_selection}. This same \tres{} window was used for the isolation of backscattered light in each subrun. Like above, the total hits for each PMT was converted into a total npe with associated Poisson error, followed by noise subtraction. This accounting of noise was particularly important for these backscattered PMTs because the signal-to-noise ratio was typically much lower here than in the beamspot.
+
+\begin{figure}
+    \centering
+    % \includegraphics[width=0.8\textwidth]{6_SolarAnalysis/images/b8_eelectrue_vs_enutrue.pdf}
+    \caption[]{}
+    \label{fig:smellie_backscat_PMT_selection}
+\end{figure}
+
+$t_{\mathrm{med}}$ was used in this analysis instead of $t_{2}$ because it was found to be far more robust to changes in emission intensity. Fig.~\ref{fig:t2_temm_comparison} shows a comparison of the \tres{} distribution for backscattered PMTs between using $t_{2}$ and $t_{\mathrm{med}}$, at different emission intensities. As can be seen, the $t_{2}$ distribution is biased towards positive \tres{} values, with a bias that is emission-intensity dependent. This is not the case when using $t_{\mathrm{med}}$. 
+
+\begin{figure}
+    \centering
+    % \includegraphics[width=0.8\textwidth]{6_SolarAnalysis/images/b8_eelectrue_vs_enutrue.pdf}
+    \caption[]{}
+    \label{fig:t2_temm_comparison}
+\end{figure}
 
 % \begin{itemize}
 %     \item Outline theoretical approach for how one could measure the extinction length of scintillator through a comparison of SMELLIE data between the scintillator and water phases, in the simplified 1 dimensional case with only 2 PMTs.
 % \end{itemize}
 % [3 pages]
 
-\subsubsection{Combining Results Between PMTs}
+\subsection{Combining Results Between PMTs}
 The formula described in Eq.~\ref{eq:smellie_ext_length_1PMT} is theoretically able to measure the extinction length of the liquid scintillator using one beamspot PMT and a number of `back-scatter' PMTs. Conveniently, numerous beamspot PMTs exist, which means each can be used to make a separate measurement of the extinction length, and then the measurements combined afterwards. One could alternatively consider the total npe detected in all beamspot PMTs together, but this wouldn't account for the different path lengths through the scintillator that light has to travel to get to different beamspot PMTs.
 
 

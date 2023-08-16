@@ -242,7 +242,7 @@ The origin of this double-peaked structure for SuperK events remains unresolved.
 %     \item Make sure to mention explicitly these upgrades: Tony Zummo's fix to the TUBii trigger logic, as well as the addition of the VFA, updated MPU, and modified trigger window. Make sure to motivate why these updates were made.
 % \end{itemize}
 % [7 pages]
-\section{Software for SMELLIE Data-taking}
+\section{Software for SMELLIE Data-taking}\label{sec:smellie_software}
 The process of taking data with SMELLIE is largely automated. The user begins by deciding on the settings --- the number of laser pulses and their frequency, as well as which fibre, laser, wavelength, intensity, and attenuation (if relevant) --- that will be used for each subrun. One run of SMELLIE data taking can have an arbitrary number of subruns within it, each with their own setting. This is organised into a ``run plan'' \texttt{JSON} file for that run, and uploaded to a central CouchDB server for storage.
 
 To begin data taking, ORCA is used to put the DAQ into a `SMELLIE' run type, which disables almost all the usual `Physics' triggers such as N100 and N20. The only triggers still masked into the MTC/D are:
