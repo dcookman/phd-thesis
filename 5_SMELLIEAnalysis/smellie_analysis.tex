@@ -129,7 +129,7 @@ In this analysis, the measured values of the attenuation coefficients $\alpha_{w
 \subsubsection{Path Lengths and Transmission Coefficients}
 Section~\ref{sec:optical_processes} also discusses the measured refractive indices as a function of wavelength for the UPW, acrylic, and LABPPO. For a given detector phase, subrun, and PMT, the Collaboration's \texttt{Light Path Calculator} is able to determine the values of $L_{ij,p}^{\mathrm{inner}}(\lambda_{j})$ as well as the combined Fresnel transmission coefficient $T_{ij,p}(\lambda_{j})$. It is assumed that there is negligible uncertainty in these values.
 
-\subsubsection{Number of Photoelectrons}
+\subsubsection{Measuring the Number of Photoelectrons}
 Critical to this analysis is the determination of the mean npe per event in both `beamspot' and `backscatter' PMTs. These two PMT selections have to be approached slightly differently.
 
 A beamspot PMT was defined similarly to Section~\ref{sec:combining_beam_profiles}: a PMT with $\alpha<\ang{10}$ which has been identified as ``good'' in both the scintillator phase subrun $j$ and the matching water phase subrun. % CONFIRM!!!
@@ -138,7 +138,7 @@ Then, the number of hits observed in a ``tight'' time residual window of $[-5,+5
 By converting to occupancy and then using a multi-hit correction as described in Eq.~\ref{eq:multihit_correction}, the total npe per event for that PMT was estimated. The uncertainty in this value was given by the Poisson error of the calculated npe. A final correction was made to account for noise hits: the measured noise rate of a given PMT was calculated using the PULSEGT triggers, as described in Section~\ref{sec:smellie_software}. After accounting for the width of the time window, the corresponding expected number of noise hits was subtracted off of the total measured npe to give the npe per event from direct light only.
 
 Backscattered PMTs were selected for each fibre by isolating the PMTs in the hemisphere of the fibre emission point which observed the most hits in the \tres{} window $[-25,-5]\,\si{\ns}$, using ``medium'' intensity subruns from water phase data run \num{114018}. % CONFIRMx2!!!
-An example of this PMT selection is shown for fibre FS007 in Fig.~\ref{fig:smellie_backscat_PMT_selection}. This same \tres{} window was used for the isolation of backscattered light in each subrun. Like above, the total hits for each PMT was converted into a total npe with associated Poisson error, followed by noise subtraction. This accounting of noise was particularly important for these backscattered PMTs because the signal-to-noise ratio was typically much lower here than in the beamspot.
+An example of this PMT selection is shown for fibre FS007 in Fig.~\ref{fig:smellie_backscat_PMT_selection}. This same \tres{} window was used for the isolation of backscattered light in each subrun. Like above, the total hits for each PMT was converted into a total npe with associated Poisson error, followed by noise subtraction. This accounting of noise was particularly important for these backscattered PMTs because the signal-to-noise ratio was typically much lower here than in the beamspot. In order to minimise the statistical uncertainty, all individual backscatter npe measurements for a given subrun were combined into one value of the backscattered light npe per event, $\mu_{j,p}^{\mathrm{back}}$. 
 
 \begin{figure}
     \centering
@@ -161,30 +161,80 @@ $t_{\mathrm{med}}$ was used in this analysis instead of $t_{2}$ because it was f
 % \end{itemize}
 % [3 pages]
 
-\subsection{Combining Results Between PMTs}
-The formula described in Eq.~\ref{eq:smellie_ext_length_1PMT} is theoretically able to measure the extinction length of the liquid scintillator using one beamspot PMT and a number of `back-scatter' PMTs. Conveniently, numerous beamspot PMTs exist, which means each can be used to make a separate measurement of the extinction length, and then the measurements combined afterwards. One could alternatively consider the total npe detected in all beamspot PMTs together, but this wouldn't account for the different path lengths through the scintillator that light has to travel to get to different beamspot PMTs.
+\subsubsection{Differential Beamspot Refraction}\label{sec:smellie_ext_corrections}
+The correction factor $s_{ij,p}(\lambda_{j})$ is very important for comparing water and scintillator phase data like-for-like. As the SMELLIE beam travels through the AV, refraction bends it by a small amount. However, the amount of this bending will change as a function of the refractive index of the inner detector medium. Because the beam profile drops roughly exponentially as a function of $\alpha$, even small movements in the SMELLIE beam can have a substantial impact on the measured npe for a given beamspot PMT.
+
+To quantify this effect, SMELLIE events were simulated under ideal conditions in the water phase for every fibre, with the PQ495 laser. Then, the npe per event in the prompt time window was calculated using the same approach described in the previous section. % CONFIRM!!
+The use of the water phase and \SI{495}{\nm} wavelength was chosen so that the impact from optical scattering or absorption would be small. Then, the refractive index of the inner water was modified to match that of LAB, and the above simulations and npe calculations were repeated. The results of this are shown for fibre FS107 in the first two plots of Fig.~\ref{fig:smellie_ref_index_ratio_beamspot}. As can be seen, there is a clear movement of the beam by a polar angle of $\sim\ang{5}$. % CONFIRM!!!
+The movement of other common features in the beamspot, such as the rope shadows and ring structures, can also be seen. There is also a dramatic band of low-npe PMTs that appears only in the latter simulation. This phenomenon will be explained and taken advantage of in Section~\ref{sec:smellie_scatt_new_method} for the scattering analysis.
+
+\begin{figure}
+    \centering
+    % \includegraphics[width=0.8\textwidth]{6_SolarAnalysis/images/b8_eelectrue_vs_enutrue.pdf}
+    \caption[]{}
+    \label{fig:smellie_ref_index_ratio_beamspot}
+\end{figure}
+
+These simulations were then used to estimate the values of $s_{ij,p}(\lambda_{j})$ in the beamspot. It was assumed that the beam profiles used in simulation were a reasonable model for the beamspot, and there was no wavelength-dependence in these profiles. Assuming that the fractional changes in path lengths relative to their associated extinction lengths are negligible, by using Eq.~\ref{eq:smellie_ext_length_theory} the above ratio will just be:
+\begin{equation}
+    \frac{\mu_{ij,\ce{H_{2}O}}^{\mathrm{beam}}}{\mu_{ij,\ce{H_{2}O}'}^{\mathrm{beam}}}
+    = \frac{T_{ij,\ce{H_{2}O}}}{T_{ij,\ce{H_{2}O}'}}\cdot
+    \frac{b_{ij,\ce{H_{2}O}}\epsilon_{ij,\ce{H_{2}O}}}{b_{ij,\ce{H_{2}O}'}\epsilon_{ij,\ce{H_{2}O}'}}
+    = \frac{T_{ij,\ce{H_{2}O}}}{T_{ij,\ce{H_{2}O}'}}\cdot s_{ij,\mathrm{scint}},
+\end{equation}
+where $p = \ce{H_{2}O}'$ corresponds to the simulation with the modified refractive index. Therefore, the values of $s_{ij,\mathrm{scint}}$ can be estimated by:
+\begin{equation}
+    s_{ij,\mathrm{scint}} = 
+    \frac{\mu_{ij,\ce{H_{2}O}}^{\mathrm{beam}}}{\mu_{ij,\ce{H_{2}O}'}^{\mathrm{beam}}}
+    \cdot \frac{T_{ij,\ce{H_{2}O}'}}{T_{ij,\ce{H_{2}O}}}.
+\end{equation}
+
+Both the ratio $\frac{\mu_{ij,\ce{H_{2}O}}^{\mathrm{beam}}}{\mu_{ij,\ce{H_{2}O}'}^{\mathrm{beam}}}$ and the derived value for $s_{ij,\mathrm{scint}}$ for fibre FS107 are shown in Fig.~\ref{fig:smellie_ref_index_ratio_beamspot}. % ADD SOME COMMENTS HERE?? ALSO ABOUT ASSUMPTION OF BEAM PROFILE
 
 
+% \begin{itemize}
+%     \item Not doing analysis with just 2 PMTs, of course! Can combine results from multiple PMTs within a beamspot: I explain how here.
+% \end{itemize}
+% [2 pages]
+
+% \subsubsection{Corrections Between the Water and Scintillator Phases}
+% \begin{itemize}
+%     \item Note the complications that we have to deal with. Namely, the differing refractive indices of the media bending the beamspot differently in the phases, as well as the method used to estimate $t_{\textrm{emm}}$.
+%     \item Explain how we deal with these, the former through MC simulation.
+% \end{itemize}
+% [2 pages]
+
+
+% \subsection{Validation of the Analysis in Simulation}
+% \begin{itemize}
+%     \item Show results of this approach being used to measure the extinction length in simulation. How well does it do?
+% \end{itemize}
+% [3 pages]
+
+\subsection{Results in Data}
+\subsubsection{Datasets Used}
+The datasets used in this analysis are summarised in Table~\ref{tab:smellie_ext_length_data}. The water phase data all came from run \num{114018}; scintillator phase data was taken at five different points during the scintillator phase, two during the loading of PPO and three afterwards. These datasets match those highlighted in Fig.~\ref{fig:smellie_timeline}.
+
+\begin{table}
+    \begin{center}
+        \begin{tabulary}{\textwidth}{c L L}
+            \hline
+            Date & Detector Phase & Runs used \\ \hline \hline
+            June 2018 & Water Phase & \num{114018} \\ \hline
+            May 2021 & Scintillator Phase, \SI{0.6}{\gpl} PPO & \num{270856}, \num{270857}, \num{270858}, \num{270862} \\
+            October 2021 & Scintillator Phase, \SI{1.1}{\gpl} PPO & \num{275674}; \num{275676}; \num{275678}; \num{275680} \\
+            May 2022 & Scintillator Phase, \SI{2.2}{\gpl} PPO & \num{300706}; \num{300708}; \num{300710}; \num{300712}; \num{300715}; \num{300748} \\
+            July 2022 & Scintillator Phase, \SI{2.2}{\gpl} PPO & \num{302628}; \num{302630}; \num{302632}; \num{302634}; \num{302636} \\
+            June 2023 & Scintillator Phase, \SI{2.2}{\gpl} PPO & \num{310292}; \num{310294}; \num{310296}; \num{310298}; \num{310303} \\\hline
+        \end{tabulary}
+    \end{center}
+    \caption[Datasets used in this analysis]
+    {Datasets used in this analysis.}
+    \label{tab:smellie_ext_length_data}
+\end{table}
 
 {
 \color{blue}
-\begin{itemize}
-    \item Not doing analysis with just 2 PMTs, of course! Can combine results from multiple PMTs within a beamspot: I explain how here.
-\end{itemize}
-[2 pages]
-
-\subsubsection{Corrections Between the Water and Scintillator Phases}\label{sec:smellie_ext_corrections}
-\begin{itemize}
-    \item Note the complications that we have to deal with. Namely, the differing refractive indices of the media bending the beamspot differently in the phases, as well as the method used to estimate $t_{\textrm{emm}}$.
-    \item Explain how we deal with these, the former through MC simulation.
-\end{itemize}
-[2 pages]
-\subsection{Validation of the Analysis in Simulation}
-\begin{itemize}
-    \item Show results of this approach being used to measure the extinction length in simulation. How well does it do?
-\end{itemize}
-[3 pages]
-\subsection{Results in Data}
 \begin{itemize}
     \item Describe the data used in this analysis, both water and scintillator, which can be shown in a table.
     \item Show examples of analysis of data in action for \SI{375}{\nm} data: typical $t_{\textrm{res}}$ distributions of backscattered and beamspot PMTs; calculation of that particular extinction length measurement, followed by the graph for extinction length in \SI{375}{\nm} over all fibres and time periods.
@@ -203,7 +253,7 @@ The formula described in Eq.~\ref{eq:smellie_ext_length_1PMT} is theoretically a
     \item Motivates the need for either reduced systematics, or an alternative analysis approach that is more robust to them!
 \end{itemize}
 [2 pages]
-\subsection{New Methodology}
+\subsection{New Methodology}\label{sec:smellie_scatt_new_method}
 \subsubsection{Signal Region Selection}
 \begin{itemize}
     \item Propose the new analysis approach: looking at light in the ``bad light-path'' PMT region. Define what this region is.
