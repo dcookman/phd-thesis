@@ -262,18 +262,53 @@ The datasets used in this analysis are summarised in Table~\ref{tab:smellie_ext_
     \label{tab:smellie_ext_length_data}
 \end{table}
 
+`Medium' intensity subruns from the PQ407 laser were used in this study. % CONFIRM - MIGHT CHANGE!!
+Fibres FS193 and FS293 were not used as they failed to ever allow a substantial amount of light through them; FS207 was also not used as there was no beam profile distribution made for that fibre. Every scintillator phase subrun being used was matched to an equivalent water phase subrun.
+
+The sensitivity of the extinction length measurement is strongly dependent on the ratio of that extinction length to the length scale of the AV. Very long extinction lengths are difficult to measure because only a small amount of light is expected to be lost due to scattering or absorption. In contrast, at short extinction lengths only a very small amount of light will reach the other side without being extinguished; the dominant source of hits will come from scattered or re-emitted light.
+
+As an example, Fig.~\ref{fig:smellie_PQ375_far_pmts_components} shows the expected optical component breakdown for hits from far PMTs from fibre FS007 due to laser PQ375, using the current \texttt{RAT} model of the \SI{2.2}{\gpl} LABPPO scintillator phase detector. Because the short extinction length at this wavelength relative to the diameter of the AV, typically there would only be one hit in the beamspot region per event. This meant that $t_{\mathrm{med}}$ would correspond to that hit's time, and because there is an overlap between the beamspot and far PMTs for this fibre, a large spike at $\tres{} = 0$ can be observed. Importantly, the amount of direct light seen in the far PMTs in this simulation is entirely sub-dominant to the re-emitted light. Without accounting for this re-emitted light, this analysis would over-estimate the extinction length substantially. In contrast, it has already been shown in Fig.~\ref{fig:smellie_far_PMT_selection} that the contribution of re-emitted light to the PQ407 laser is expected to be sub-dominant.
+
+\begin{figure}
+    \centering
+    % \includegraphics[width=0.8\textwidth]{6_SolarAnalysis/images/b8_eelectrue_vs_enutrue.pdf}
+    \caption[]{}
+    \label{fig:smellie_PQ375_far_pmts_components}
+\end{figure}
+
+For the PQ407 laser, an important background can be scattered light. This becomes most relevant for the \ang{10} and \ang{20} fibres, as the direction of the far PMTs are somewhat distant from the beamspot, so the intensity of direct light is substantially less than that of the ang{0} fibres. A simulation of this is shown in Fig.~\ref{fig:smellie_PQ407_FS107_far_pmts_components} for fibre FS107 in the \SI{2.2}{\gpl} scintillator phase. The proportion of direct light signal to background components in the $[-5,+5]\,\si{\ns}$ window is substantial. As a result, any measurement of $R_{s}$ would be systematically off. % have to introduce R_s, R_w notation earlier.
+With similar simulations for all other fibres, it was found that all \ang{0} fibres achieved a signal-to-background ratio of over 95\%. No other fibres were able to achieve a signal purity close to this value. Because of this, only \ang{0} fibres were used for actual extinction length calculations in this analysis. Data from the other fibres was still processed, but only used for comparison, as will be seen in the next section.
+
+\begin{figure}
+    \centering
+    % \includegraphics[width=0.8\textwidth]{6_SolarAnalysis/images/b8_eelectrue_vs_enutrue.pdf}
+    \caption[]{}
+    \label{fig:smellie_PQ407_FS107_far_pmts_components}
+\end{figure}
+
+\subsubsection{Results and Discussion}
+
+\begin{sidewaysfigure}
+    \centering
+    \includegraphics[width=\textwidth]{5_SMELLIEAnalysis/images/rsrw_plot_combined_PQ405.pdf}
+    \caption[Results of the extinction length analysis using the PQ407 laser]
+    {Results of the extinction length analysis using the PQ407 laser.}
+\end{sidewaysfigure}
+
+
+
+% \begin{itemize}
+%     \item Describe the data used in this analysis, both water and scintillator, which can be shown in a table.
+%     \item Show examples of analysis of data in action for \SI{375}{\nm} data: typical $t_{\textrm{res}}$ distributions of backscattered and beamspot PMTs; calculation of that particular extinction length measurement, followed by the graph for extinction length in \SI{375}{\nm} over all fibres and time periods.
+%     \item Discuss what results can be seen in this plot: consistency between fibres, the expected change as a function of PPO concentration, and stability of the extinction length during the main \SI{2.2}{\gpl} scintillator phase.
+%     \item Compare results to those made by Ben ex-situ: are they in agreement? If not, what possible systematics could there be? The main one for my analysis is likely to be uncertainties in the simulated beam profile that leak through into the refractive index correction of the beamspot. For the ex-situ analysis, the value of the extinction length obtained is achieved through background subtraction at some long wavelength, and the particular choice of this wavelength can lead to systematic changes in the obtained extinction length.
+%     \item Look at results at longer wavelengths: can anything reasonably be said at these longer wavelengths? Why/why not?
+%     \item Finally: describe any conclusions that can be reached, in particular whether we can affirm the optics model we use in RAT.
+% \end{itemize}
+% [8 pages]
+
 {
 \color{blue}
-\begin{itemize}
-    \item Describe the data used in this analysis, both water and scintillator, which can be shown in a table.
-    \item Show examples of analysis of data in action for \SI{375}{\nm} data: typical $t_{\textrm{res}}$ distributions of backscattered and beamspot PMTs; calculation of that particular extinction length measurement, followed by the graph for extinction length in \SI{375}{\nm} over all fibres and time periods.
-    \item Discuss what results can be seen in this plot: consistency between fibres, the expected change as a function of PPO concentration, and stability of the extinction length during the main \SI{2.2}{\gpl} scintillator phase.
-    \item Compare results to those made by Ben ex-situ: are they in agreement? If not, what possible systematics could there be? The main one for my analysis is likely to be uncertainties in the simulated beam profile that leak through into the refractive index correction of the beamspot. For the ex-situ analysis, the value of the extinction length obtained is achieved through background subtraction at some long wavelength, and the particular choice of this wavelength can lead to systematic changes in the obtained extinction length.
-    \item Look at results at longer wavelengths: can anything reasonably be said at these longer wavelengths? Why/why not?
-    \item Finally: describe any conclusions that can be reached, in particular whether we can affirm the optics model we use in RAT.
-\end{itemize}
-[8 pages]
-
 \section{Scattering Analysis}\label{sec:scattering_analysis}
 \subsection{Historical Approaches and the Problem of Systematics}
 \begin{itemize}
