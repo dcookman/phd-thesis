@@ -262,7 +262,7 @@ The datasets used in this analysis are summarised in Table~\ref{tab:smellie_ext_
     \label{tab:smellie_ext_length_data}
 \end{table}
 
-`Medium' intensity subruns from the PQ407 laser were used in this study. % CONFIRM - MIGHT CHANGE!!
+`Medium' intensity subruns from the PQ407 and SuperK lasers were used in this study. % CONFIRM - MIGHT CHANGE!!
 Fibres FS193 and FS293 were not used as they failed to ever allow a substantial amount of light through them; FS207 was also not used as there was no beam profile distribution made for that fibre. Every scintillator phase subrun being used was matched to an equivalent water phase subrun.
 
 The sensitivity of the extinction length measurement is strongly dependent on the ratio of that extinction length to the length scale of the AV. Very long extinction lengths are difficult to measure because only a small amount of light is expected to be lost due to scattering or absorption. In contrast, at short extinction lengths only a very small amount of light will reach the other side without being extinguished; the dominant source of hits will come from scattered or re-emitted light.
@@ -277,7 +277,8 @@ As an example, Fig.~\ref{fig:smellie_PQ375_far_pmts_components} shows the expect
 \end{figure}
 
 For the PQ407 laser, an important background can be scattered light. This becomes most relevant for the \ang{10} and \ang{20} fibres, as the direction of the far PMTs are somewhat distant from the beamspot, so the intensity of direct light is substantially less than that of the ang{0} fibres. A simulation of this is shown in Fig.~\ref{fig:smellie_PQ407_FS107_far_pmts_components} for fibre FS107 in the \SI{2.2}{\gpl} scintillator phase. The proportion of direct light signal to background components in the $[-5,+5]\,\si{\ns}$ window is substantial. As a result, any measurement of $R_{s}$ would be systematically off. % have to introduce R_s, R_w notation earlier.
-With similar simulations for all other fibres, it was found that all \ang{0} fibres achieved a signal-to-background ratio of over 95\%. No other fibres were able to achieve a signal purity close to this value. Because of this, only \ang{0} fibres were used for actual extinction length calculations in this analysis. Data from the other fibres was still processed, but only used for comparison, as will be seen in the next section.
+
+With similar simulations for all other fibres, it was found that all \ang{0} fibres apart from FS093 achieved a signal-to-background ratio of over 95\%. No other fibres were able to achieve a signal purity close to this value. Because of this, only these `pure' fibres were used for actual extinction length calculations in this analysis. Data from the other fibres was still processed, but only used for comparison, as will be seen in the next section. Unlike all other fibres, FS093 was found to have a strong contribution to the far PMT hits from light reflected off of ropes. Although this rope reflection contribution shouldn't be impacted by changes to the inner detector medium, it was decided to leave this fibre out of the extinction length calculations also.
 
 \begin{figure}
     \centering
@@ -288,14 +289,31 @@ With similar simulations for all other fibres, it was found that all \ang{0} fib
 
 \subsubsection{Results and Discussion}
 
+
 \begin{sidewaysfigure}
     \centering
     \includegraphics[width=\textwidth]{5_SMELLIEAnalysis/images/rsrw_plot_combined_PQ405.pdf}
     \caption[Results of the extinction length analysis using the PQ407 laser]
     {Results of the extinction length analysis using the PQ407 laser.}
+    \label{fig:smellie_ext_length_results_PQ407}
 \end{sidewaysfigure}
 
+\begin{sidewaysfigure}
+    \centering
+    \includegraphics[width=\textwidth]{5_SMELLIEAnalysis/images/rsrw_plot_combined_superK[400,410].pdf}
+    \caption[Results of the extinction length analysis using the SuperK laser in the \SIrange{400}{410}{\nm} range]
+    {Results of the extinction length analysis using the SuperK laser in the \SIrange{400}{410}{\nm} range.}
+    \label{fig:smellie_ext_length_results_SK_400410}
+\end{sidewaysfigure}
 
+\begin{figure}
+    \centering
+    \includegraphics[width=\textwidth]{5_SMELLIEAnalysis/images/ext_length_results_summary.pdf}
+    \caption[Summary of scintillator extinction length measurements made by SMELLIE]
+    {Summary of scintillator extinction length measurements made by SMELLIE, with comparisons to the ex-situ measurements made by B. Tam~\cite{} % CITE!
+    and the current \SI{2.2}{\gpl} optics model used in \texttt{RAT}.}
+    \label{fig:smellie_ext_length_final_results}
+\end{figure}
 
 % \begin{itemize}
 %     \item Describe the data used in this analysis, both water and scintillator, which can be shown in a table.
