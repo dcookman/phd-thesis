@@ -287,8 +287,8 @@ With similar simulations for all other fibres, it was found that all \ang{0} fib
     \label{fig:smellie_PQ407_FS107_far_pmts_components}
 \end{figure}
 
-\subsubsection{Results and Discussion}
-
+\subsubsection{Results}
+The analysis results from the PQ407 laser are shown in Fig.~\ref{fig:smellie_ext_length_results_PQ407}. These have been split into a different plot for each time period. Each fibre is represented by an individual colour and marker shape pairing associated with the fibre's pointing angle and node, respectively. Because \ang{0} fibres had the far PMT region nearest the beamspot, they observed the largest values of $R_{w}$ and $R_{s}$ compared to the \ang{10} and \ang{20} fibres. This necessitated the use of log-log plots to effectively show the data. Lines of constant gradient, associated with scintillator extinction lengths in the range \SIrange{5}{120}{\m} in \SI{5}{\m} steps, are shown as dashed grey lines. These lines increase in extinction length from the top left down to the bottom right, and in so doing show that longer extinction lengths are much harder to measure with the same precision as shorter extinction lengths.
 
 \begin{sidewaysfigure}
     \centering
@@ -298,6 +298,29 @@ With similar simulations for all other fibres, it was found that all \ang{0} fib
     \label{fig:smellie_ext_length_results_PQ407}
 \end{sidewaysfigure}
 
+As explained in the previous section, each plot had a straight line of the form $y = mx$ fit to the \ang{0} data points, excluding fibre FS093. Because there were comparable uncertainties in both axes, this fit was performed by minimising the $\chi^{2}$ term:
+\begin{equation}
+    \chi^{2}(m) = \sum_{i}\frac{\left(y_{i} - mx_{i}\right)^{2}}{\sigma^{2}_{y_{i}} + m^{2}\sigma^{2}_{x_{i}}}.
+\end{equation}
+An uncertainty on the gradient of the fit was found by determining the change in $m$ required to increase the value of $\chi^{2}(m)$ by 1. By using the formula:
+\begin{equation}
+    l_{\mathrm{scint}} = 
+    \frac{
+        L_{s}
+        }{
+        \ln{m}
+        + \ln\left(
+            \frac{T_{s}}{T_{w}}
+        \right)
+        + \frac{L_{w}}{l_{w}}
+    },
+\end{equation}
+values for the extinction length in scintillator at a given wavelength at a given time period with propagated uncertainties was found.
+
+As the concentration of PPO is increased in the detector, the extinction length at 407 nm appears to decrease in tandem. Then, the first two datasets taken in the \SI{2.2}{\gpl} scintillator phase appear consistent with one another. This is not true of the final dataset taken at the end of the scintillator phase, which measured a shorter extinction length again. The origin of this change is unknown.
+
+Also shown in the plot are the results of fibres not included in the fit. As an example, fibre FS125 (shown as the purple square) is found to be generally in the non-physical region corresponding to negative extinction lengths, in the bottom-right half of the plots. This can be explained by the substantial scattering background expected in the far PMTs of this fibre. Assuming the simulation discussed in the previous section for this fibre in the \SI{2.2}{\gpl} scintillator phase, as well as matching simulations for the other PPO concentrations, this systematic effect in $R_{s}$ was corrected for and shown with a black square. This was also shown for all other fibres. As can be seen, by using the nominal correction from the existing scintillator optics models, the FS125 measurements are pushed into the physical regime, quite close to the line of best-fit.
+
 \begin{sidewaysfigure}
     \centering
     \includegraphics[width=\textwidth]{5_SMELLIEAnalysis/images/rsrw_plot_combined_superK[400,410].pdf}
@@ -305,6 +328,17 @@ With similar simulations for all other fibres, it was found that all \ang{0} fib
     {Results of the extinction length analysis using the SuperK laser in the \SIrange{400}{410}{\nm} range.}
     \label{fig:smellie_ext_length_results_SK_400410}
 \end{sidewaysfigure}
+
+Fig.~\ref{fig:smellie_ext_length_results_SK_400410} shows the data from the SuperK laser in the \SIrange{400}{410}{\nm} range, for the May 2021, May 2022, and June 2023 datasets in which SuperK data was taken. Once again, there appears to be a substantial shortening of the scintillator's extinction length as PPO was added. These values differ from the PQ407 result, but this is not too surprising as what is measured with the SuperK laser is the extinction length averaged over a whole \SI{10}{\nm} range, weighted by the intensity spectrum of the laser. The third measurement result increases compared to the second here, another contrast to the PQ407 laser.
+
+It is possible that the observed changes in these measurements between 2022 and 2023 are not a result of changes to the scintillator, but instead indirectly a result of the SMELLIE hardware changes made in the Summer of 2022 causing a systematic effect on the measurements. One possible way this could occur is through the instability of the laser intensities before the addition of the VFA. Fig.~\ref{fig:smellie_ext_length_far_pmt_tres_plot_comparison} shows the observed time residual distribution for far PMTs for fibre FS007 using laser PQ407 in the water phase data, as well as scintillator data of July 2022 and June 2023. The first two datasets show a clear spike of events at $\tres{} = 0$, corresponding to events with only one hit in the beamspot (and far PMT) region. This spike was substantial for these datasets, because of the substantial laser intensity instability discussed in Section~\ref{sec:smellie_attenuators}. However, the third dataset was taken after the installation of the VFA, meaning the laser intensities were stabilised event-by-event. This led to a dramatic decrease in the number of `spike' hits. Because 
+
+\begin{figure}
+    \centering
+    % \includegraphics[width=\textwidth]{5_SMELLIEAnalysis/images/ext_length_results_summary.pdf}
+    \caption[]{}
+    \label{fig:smellie_ext_length_far_pmt_tres_plot_comparison}
+\end{figure}
 
 \begin{figure}
     \centering
