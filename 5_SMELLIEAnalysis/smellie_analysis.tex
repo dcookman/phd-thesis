@@ -331,7 +331,7 @@ Also shown in the plot are the results of fibres not included in the fit. As an 
 
 Fig.~\ref{fig:smellie_ext_length_results_SK_400410} shows the data from the SuperK laser in the \SIrange{400}{410}{\nm} range, for the May 2021, May 2022, and June 2023 datasets in which SuperK data was taken. Once again, there appears to be a substantial shortening of the scintillator's extinction length as PPO was added. These values differ from the PQ407 result, but this is not too surprising as what is measured with the SuperK laser is the extinction length averaged over a whole \SI{10}{\nm} range, weighted by the intensity spectrum of the laser. The third measurement result increases compared to the second here, another contrast to the PQ407 laser.
 
-It is possible that the observed changes in these measurements between 2022 and 2023 are not a result of changes to the scintillator, but instead indirectly a result of the SMELLIE hardware changes made in the Summer of 2022 causing a systematic effect on the measurements. One possible way this could occur is through the instability of the laser intensities before the addition of the VFA. Fig.~\ref{fig:smellie_ext_length_far_pmt_tres_plot_comparison} shows the observed time residual distribution for far PMTs for fibre FS007 using laser PQ407 in the water phase data, as well as scintillator data of July 2022 and June 2023. The first two datasets show a clear spike of events at $\tres{} = 0$, corresponding to events with only one hit in the beamspot (and far PMT) region. This spike was substantial for these datasets, because of the substantial laser intensity instability discussed in Section~\ref{sec:smellie_attenuators}. However, the third dataset was taken after the installation of the VFA, meaning the laser intensities were stabilised event-by-event. This led to a dramatic decrease in the number of `spike' hits. Because 
+It is possible that the observed changes in these measurements between 2022 and 2023 are not a result of changes to the scintillator, but instead indirectly a result of the SMELLIE hardware changes made in the Summer of 2022 causing a systematic effect on the measurements. One possible way this could occur is through the instability of the laser intensities before the addition of the VFA. Fig.~\ref{fig:smellie_ext_length_far_pmt_tres_plot_comparison} shows the observed time residual distribution for far PMTs for fibre FS007 using laser PQ407 in the water phase data, as well as scintillator data of July 2022 and June 2023. The first two datasets show a clear spike of events at $\tres{} = 0$, corresponding to events with only one hit in the beamspot (and far PMT) region. This spike was substantial for these datasets, because of the substantial laser intensity instability discussed in Section~\ref{sec:smellie_attenuators}. However, the third dataset was taken after the installation of the VFA, meaning the laser intensities were stabilised event-by-event. This led to far fewer `spike' hits. This change in the shape of the time residual distribution leads to a change in the signal purity and efficiency within the `prompt' time window, causing a systematic shift.
 
 \begin{figure}
     \centering
@@ -339,6 +339,8 @@ It is possible that the observed changes in these measurements between 2022 and 
     \caption[]{}
     \label{fig:smellie_ext_length_far_pmt_tres_plot_comparison}
 \end{figure}
+
+Fits to the SuperK data at wavelengths between \SIrange{400}{500}{\nm} during May 2021, May 2022, and June 2023 were performed in the same manner as described above. The combined results for all of these measurements, as well as the PQ407 laser, are shown in Fig.~\ref{fig:smellie_ext_length_final_results}. All three SuperK datasets show an increase in the extinction length with wavelength, as expected. There is also a substantial shortening in the extinction length going from the \SI{0.6}{\gpl} dataset to the \SI{2.2}{\gpl} dataset. This is matched qualitatively with the PQ407 data. Interestingly, both the SuperK and PQ407 data appear to show a shortening of the extinction length in the most recent dataset.
 
 \begin{figure}
     \centering
@@ -348,6 +350,14 @@ It is possible that the observed changes in these measurements between 2022 and 
     and the current \SI{2.2}{\gpl} optics model used in \texttt{RAT}.}
     \label{fig:smellie_ext_length_final_results}
 \end{figure}
+
+\subsubsection{Comparisons with other Measurements}
+It is important to compare the measurements of the scintillator extinction lengths using SMELLIE to other methods used by the Collaboration. One approach by Ben Tam was to use `UV-vis' spectroscopy on samples of the scintillator extracted from the detector~\cite{}. % cite Ben's thesis, DocDB?
+Another method, used by Serena Riccetto, was to look at the \texttt{nhits} distribution of the radioactive background \ce{^{210}Po} within the detector: a discussion of this and other backgrounds in the detector can be found in Section~\ref{sec:background_processes}. The peak \texttt{nhit} value associated with this background varies with the position of the event, because of the changing lengths of scintillator the event's scintillation light must travel through. Different optical models could then be tested by comparing the peak \texttt{nhits} of the \ce{^{210}Po} in simulation to data~\cite{}. % cite Serena's work.
+
+The current model of the \SI{2.2}{\gpl} scintillator absorption and scattering used in \texttt{RAT} was developed by combining the measurements of B. Tam and S. Riccetto with older bench-top measurements made before the scintillator phase~\cite{}: details about this model-building can be found in~\cite{}. % cite Serena's explanation; older measurements.
+The extinction lengths obtained from this model are shown as a purple line in Fig.~\ref{fig:smellie_ext_length_final_results}. There appears to be good agreement between these model values and the results from the analysis with SMELLIE data taken in May 2022. The only exception to this is at the long wavelength region of \SIrange{480}{500}{\nm}, where SMELLIE data appears to observe longer extinction lengths than the model predicts. In contrast, the most recent SMELLIE data tends to obtain extinction length values somewhat below the model in \texttt{RAT}, although still within statistics.
+
 
 % \begin{itemize}
 %     \item Describe the data used in this analysis, both water and scintillator, which can be shown in a table.
@@ -359,10 +369,21 @@ It is possible that the observed changes in these measurements between 2022 and 
 % \end{itemize}
 % [8 pages]
 
-{
-\color{blue}
+
 \section{Scattering Analysis}\label{sec:scattering_analysis}
 \subsection{Historical Approaches and the Problem of Systematics}
+A method for measuring scattering lengths in the detector using SMELLIE was first developed by K. Majumdar~\cite{majumdarMeasurementOpticalScattering2015}. This method was used by E. Turner to measure the scattering length of the UPW in the water phase~\cite{turnerMeasurementScatteringCharacteristics2022}. A similar approach was built by S. Langrock, and tested on fake water phase data~\cite{langrockMeasurementRayleighScattering2016}. In all cases, the general analysis approach was as follows:
+\begin{enumerate}
+    \item Using simulations under nominal conditions, a region of PMTs and associated time windows was selected that optimised the sensitivity to hits from photons that were scattered inside the AV. This signal region was typically defined by a geometric region of the 2D $(\tres{},\alpha)$ parameter space.
+    \item Data was taken using the SMELLIE system.
+    \item A calibration curve of the fraction of hits in the scattered signal region to that of the whole detector as a function of the scattering length for a given fibre and wavelength, was built using simulations.
+    \item The fraction of hits in the signal region was determined for each subrun of SMELLIE data, and then the calibration curve was used to derive values of the scattering length at that wavelength.
+\end{enumerate}
+
+The challenge with this analysis approach is that it relies on the use of SMELLIE simulations to derive results. Because
+
+{
+\color{blue}
 \begin{itemize}
     \item Comparison to MC is necessary in scattering analysis, compared to merely being needed as a correction factor. This is because of the angular dependence of scattering. As a result, we can be far more susceptible to systematics from poor modelling!
     \item As a warning, show how Krish's/Esther's approach to the SMELLIE scattering analysis suffers majorly from these systematic effects. Requires describing their analysis approach briefly, and then explaining how the systematics described in Section~\ref{sec:smellie_systematics} lead to major problems with this approach.
