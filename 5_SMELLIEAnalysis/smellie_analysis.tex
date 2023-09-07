@@ -1,5 +1,5 @@
 \chapter{Analysis of SMELLIE Data in the Scintillator Phase}\label{chap:smellie_analysis}
-% \epigraph{\textit{}}{source}
+\epigraph{\textit{Due to Local Education Authority cuts,\\The light at the end of the tunnel has been switched off.}}{\texttt{Dr. Frank Chew}}
 
 This chapter contains two sets of analyses: measurements of the extinction lengths of the scintillator as a function of wavelength and time, as well as monitoring the Rayleigh scattering length over time. In both cases, care had to be taken to try and make the methodologies robust to systematics.
 
@@ -131,7 +131,7 @@ The measurable quantities $R_{ij,\ce{H_{2}O}}(\lambda_{j})$ and $R_{ij,p}(\lambd
 % \end{align}
 % The parameter $s_{ij,p}(\lambda_{j})$ describes the fractional change in observed npe for a given PMT due to differences in refraction between the phases. Quantifying this effect will be discussed in Section~\ref{sec:smellie_ext_corrections}.
 
-\subsection{Parameter Measurements and Uncertainties}
+\subsection{Parameter Measurements and Uncertainties}\label{sec:smellie_ext_length_params_and_uncs}
 As a result of Eq.~\ref{eq:smellie_ext_length_rsrw_formula_1PMT}, measuring the extinction length of the scintillator requires first measuring a number of other quantities with knowledge of their uncertainties.
 
 \subsubsection{UPW Extinction Lengths}
@@ -346,8 +346,7 @@ Fits to the SuperK data at wavelengths between \SIrange{400}{500}{\nm} during Ma
     \centering
     \includegraphics[width=\textwidth]{5_SMELLIEAnalysis/images/ext_length_results_summary.pdf}
     \caption[Summary of scintillator extinction length measurements made by SMELLIE]
-    {Summary of scintillator extinction length measurements made by SMELLIE, with comparisons to the ex-situ measurements made by B. Tam~\cite{} % CITE!
-    and the current \SI{2.2}{\gpl} optics model used in \texttt{RAT}.}
+    {Summary of scintillator extinction length measurements made by SMELLIE, with a comparison to the current \SI{2.2}{\gpl} optics model used in \texttt{RAT}.}
     \label{fig:smellie_ext_length_final_results}
 \end{figure}
 
@@ -380,33 +379,107 @@ A method for measuring scattering lengths in the detector using SMELLIE was firs
     \item The fraction of hits in the signal region was determined for each subrun of SMELLIE data, and then the calibration curve was used to derive values of the scattering length at that wavelength.
 \end{enumerate}
 
-The challenge with this analysis approach is that it relies on the use of SMELLIE simulations to derive results. Because
+The challenge with this analysis approach is that it relies on the use of SMELLIE simulations to derive results. There are substantial systematic uncertainties in the modelling of the SMELLIE beam profiles, which can readily propagate into the uncertainty of the scattering length measurement. Both S. Langrock and E. Turner found this in their analyses~\cite{langrockMeasurementRayleighScattering2016,turnerMeasurementScatteringCharacteristics2022}. Furthermore, the signal regions chosen historically had a substantial background contribution, which often appeared to not be modelled with sufficient accuracy.
+
+As a demonstration of these problems, consider a comparison between SuperK laser data taken in May 2022, through fibre FS055 in the wavelength range \SIrange{490}{500}{\nm}, to a simulation of the same setup. This is shown in Fig.~\ref{fig:smellie_tres_alpha_data_mc}. Also shown in these plots is the scattering signal region as determined by K. Majumdar and E. Turner's method. One can observe qualitatively features that differ between the data and MC. % DETAILS?
+Furthermore, Fig.~\ref{fig:smellie_tresalpha_mc2} shows the impact of using a modified beam profile in the simulation: the fraction of hits in the signal region changes from XXX to XXX, which is substantial.
+
+\begin{figure}
+    \centering
+    \begin{subfigure}{0.98\textwidth}
+        \centering
+        % \includegraphics[width=0.74\textwidth]{4_SMELLIESimulation/images/flat_plot_r_FS055_beam_profile_original_6-18-13.pdf}
+        \caption{}
+        \label{fig:smellie_tresalpha_data}
+    \end{subfigure}
+    \begin{subfigure}{0.98\textwidth}
+        \centering
+        % \includegraphics[width=0.74\textwidth]{4_SMELLIESimulation/images/polar_plot_FS055_MC_sampling_old_beam_profile.png}
+        \caption{}
+        \label{fig:smellie_tresalpha_mc}
+    \end{subfigure}
+    \begin{subfigure}{0.98\textwidth}
+        \centering
+        % \includegraphics[width=0.74\textwidth]{4_SMELLIESimulation/images/polar_plot_FS055_MC_sampling_old_beam_profile.png}
+        \caption{}
+        \label{fig:smellie_tresalpha_mc2}
+    \end{subfigure}
+    \caption[]{}
+    \label{fig:smellie_tres_alpha_data_mc}
+\end{figure}
+
+There are two major approaches to handling the problems described above. One approach is to build an optical model of the detector and SMELLIE that has negligible systematic uncertainties, so that the existing analysis approach can be used with minimal problems. An alternative approach, and the one used in this thesis, is to build a new analysis that would be far more robust to the existing systematic uncertainties in both the SMELLIE beam profile and detector optics.
+
+
+% \begin{itemize}
+%     \item Comparison to MC is necessary in scattering analysis, compared to merely being needed as a correction factor. This is because of the angular dependence of scattering. As a result, we can be far more susceptible to systematics from poor modelling!
+%     \item As a warning, show how Krish's/Esther's approach to the SMELLIE scattering analysis suffers majorly from these systematic effects. Requires describing their analysis approach briefly, and then explaining how the systematics described in Section~\ref{sec:smellie_systematics} lead to major problems with this approach.
+%     \item Motivates the need for either reduced systematics, or an alternative analysis approach that is more robust to them!
+% \end{itemize}
+% [2 pages]
+\subsection{New Methodology}\label{sec:smellie_scatt_new_method}
+\subsubsection{Signal Region Selection}
+A new PMT and time region was found that had substantially higher scattered signal purity than previous selections, whilst maintaining large signal statistics. Fig.~\ref{fig:smellie_propagation_toy_model} shows a simple 2D model of the geometric optics of SMELLIE in the scintillator phase. As can be seen, refraction due to the larger refractive index of LAB and acrylic compared to UPW causes a substantial region of the PSUP to be unreachable by direct light-paths. In the full three dimensions of the detector, this region corresponds to a broad ring of PMTs.
+
+\begin{figure}
+    \centering
+    % \includegraphics[width=\textwidth]{5_SMELLIEAnalysis/images/ext_length_results_summary.pdf}
+    \caption[]{}
+    \label{fig:smellie_propagation_toy_model}
+\end{figure}
+
+For this analysis, this new scattering signal region will be known as the ``bad light-path'' region, because no direct light-paths can be found. By consequence, it is impossible to calculate a time residual for hits in this region, as no direct light-path time-of-flight calculation is possible. Instead, times are calculated simply by $t = t_{\mathrm{hit}}-t_{\mathrm{emm}}$, where the usual $t_{\mathrm{med}}$ method is used for calculating the emission time.
+
+In order to try and ensure that the bad light-path region really contained no contribution from direct light, SMELLIE simulations were performed for each fibre, and only PMTs in the forward hemisphere relative to the fibre that also observed no hits from direct light were chosen. % CONFIRM; add picture of this?
+
+Fig.~\ref{fig:smellie_bad_lightpath_region_tracked} shows the time distribution of hits in the scattering signal region, split by the different components of a simulation, using the PQ495 through fibre FS055. As can be seen, in the $[-25,30]\,\si{\ns}$ time window there is a large peak that is dominated by light scattered by the scintillator. It is this time window that is used in this analysis to isolate the scattered signal. 
+
+\begin{figure}
+    \centering
+    \includegraphics[width=\textwidth]{5_SMELLIEAnalysis/images/bad_lightpaths_components_plot_FS055_PQ495_Jul2022.pdf}
+    \caption[Timing distribution of a simulation of the observed hits in the bad light-path PMT selection, split by optical components]
+    {Timing distribution of a simulation of the observed hits in the bad light-path PMT selection through fibre FS055, using the PQ495 laser. The distribution is split into the different optical components.}
+    \label{fig:smellie_bad_lightpath_region_tracked}
+\end{figure}
+
+In addition to having a high signal purity, this new scattered signal region has the benefit of being robust to beam profile uncertainties. Although beam profile systematics impact the intensity distribution of the direct light, no such light is seen in the signal region. Moreover, because scattered light must have a large scattering angle to reach the signal region, the beam profile shape is `washed out' by the scattering. As a demonstration of this effect, Fig.~\ref{fig:smellie_bad_lightpath_region_beamprofile_comparison} compares the observed time distribution in the bad light-path region for the new and old beam profiles of FS055, still using the SuperK laser in the \SIrange{490}{500}{\nm} range. One can see that there is little difference between the distributions, compared to the substantial differences seen in Fig.~\ref{fig:smellie_tres_alpha_data_mc}.
+
+\begin{figure}
+    \centering
+    % \includegraphics[width=\textwidth]{5_SMELLIEAnalysis/images/ext_length_results_summary.pdf}
+    \caption[]{}
+    \label{fig:smellie_bad_lightpath_region_beamprofile_comparison}
+\end{figure}
+
+In the new signal region, some backgrounds to scattering are still present. These can come from PMT noise, scintillator re-emission, reflections off of PMTs and their concentrators, and combinations of multiple optical effects. A substantial fraction of the paths which undergo multiple processes scatter in the scintillator, and so are treated as signal for the purposes of this analysis. The contribution due to noise hits can be readily determined through the use of PULSEGT triggers, through the same approach used in Section~\ref{sec:smellie_ext_length_params_and_uncs}. In the example shown in Fig.~\ref{fig:smellie_bad_lightpath_region_tracked}, 82\% of non-noise hits in the signal region were from photons which underwent scattering in the scintillator.
+
+\subsubsection{Observing Changes in Scattering}
+If the absolute shot-to-shot intensity of a SMELLIE subrun is known, and the models of the scintillator re-emission and PMT reflections are well-enough known for the wavelengths of interest, then the scattering length of the scintillator can be determined by comparing data in the signal region to matching simulations of varying scattering length. Sadly, at the time of writing, no method for determining the absolute intensity which is sufficiently robust to systematic uncertainties in the modelling of MC is known. Instead, it was decided for this analysis to use the back-scattered light region described in Section~\ref{sec:smellie_ext_length_params_and_uncs} as a measure of relative intensity.
+
+Without knowledge of the absolute intensity, absolute scattering lengths cannot be measured. However, by calculating the ratio of npe in the signal region to that of the back-scatter region for two equivalent scintillator subruns, denoted $R_{1}$ and $R_{2}$, any substantial change in the scattering length between datasets can be observed. Another restriction that this analysis has is that changes in the scattering length cannot be distinguished from changes in the background processes, in particular PMT reflections and scintillator re-emission. The reflectivity of the PMT concentrators is known to be changing slowly with time as the reflective petals of the concentrators degrade in the outer water~\cite{}. % cite SNO, optics paper, Stringer thesis
+The fractional change in their reflectivity over the course of the two-year period in which SMELLIE scintillator phase data was taken is expected to be XX\%, % CALCULATE!
+assuming the same trends seen in SNO and the SNO+ water phase. Using the example shown in Fig.~\ref{fig:smellie_bad_lightpath_region_tracked}, 6.5\% of non-noise hits in the signal region came from PMT reflections, meaning that the overall systematic effect of concentrator degradation is expected to be merely XX\%. % CALCULATE!
+ 
+The other dominant source of background is scintillator re-emission. This is expected to change as a function of PPO concentration. However, because the absorption length of the scintillator at \SI{2.2}{\gpl} is substantially longer than the scattering length in the \SIrange{400}{500}{\nm} range according to the current \texttt{RAT} model, the proportion of this background component is expected to be small: see Figs.~\ref{fig:cherenkov_scintillator_abs_emit_dist}~\&~\ref{fig:scattering_lengths_upw_labppo_current}. According to the simulation shown in Fig~\ref{fig:smellie_bad_lightpath_region_tracked}, 7\% of non-noise hits in the signal region come from scintillator re-emission. This contribution is expected to be somewhat larger at shorter wavelengths. As a result, fractional changes in the measured value of $R$, $\frac{\left|R_{1}-R_{2}\right|}{R_{1}}\lesssim 10\%$, cannot be reasonably distinguished between changes in scintillator re-emission or scattering.
+
+% \begin{itemize}
+%     \item Propose the new analysis approach: looking at light in the ``bad light-path'' PMT region. Define what this region is.
+%     \item Give qualitative argument for why we expect this region to be robust to the beam profile systematics: dominated by the scattered signal as no direct light can make it here, and changes to beam profile should get ``smeared out'' after scattering.
+%     \item Show how simulations indicate this should be a region with a very high purity of scattered light, and (assuming all else being equal) robust to beam profile uncertainties.
+%     \item Confirm robustness of selected PMT region to uncertainties in AV offset and fibre position.
+% \end{itemize}
+% [5 pages]
+% \subsubsection{Measuring the Emission Intensity}\label{sec:smellie_intensity}
+% \begin{itemize}
+%     \item Remaining systematics is now in the calculation of an average absolute emission intensity.
+%     \item Show how various methods don't work particularly well: whole detector npe, beamspot npe, backscattered light npe, ``bad light-path'' PMTs but at later times. Explain why it goes wrong for each method.
+%     \item Look at "beamspot but excepting the central bit": if that works well, then we can continue!
+%     \item Otherwise, we'll have to live with measuring relative scattering lengths instead of absolute amounts, using the outer water back-scattering as a measure of the relative emission intensity.
+% \end{itemize}
+% [4 pages]
 
 {
 \color{blue}
-\begin{itemize}
-    \item Comparison to MC is necessary in scattering analysis, compared to merely being needed as a correction factor. This is because of the angular dependence of scattering. As a result, we can be far more susceptible to systematics from poor modelling!
-    \item As a warning, show how Krish's/Esther's approach to the SMELLIE scattering analysis suffers majorly from these systematic effects. Requires describing their analysis approach briefly, and then explaining how the systematics described in Section~\ref{sec:smellie_systematics} lead to major problems with this approach.
-    \item Motivates the need for either reduced systematics, or an alternative analysis approach that is more robust to them!
-\end{itemize}
-[2 pages]
-\subsection{New Methodology}\label{sec:smellie_scatt_new_method}
-\subsubsection{Signal Region Selection}
-\begin{itemize}
-    \item Propose the new analysis approach: looking at light in the ``bad light-path'' PMT region. Define what this region is.
-    \item Give qualitative argument for why we expect this region to be robust to the beam profile systematics: dominated by the scattered signal as no direct light can make it here, and changes to beam profile should get ``smeared out'' after scattering.
-    \item Show how simulations indicate this should be a region with a very high purity of scattered light, and (assuming all else being equal) robust to beam profile uncertainties.
-    \item Confirm robustness of selected PMT region to uncertainties in AV offset and fibre position.
-\end{itemize}
-[5 pages]
-\subsubsection{Measuring the Emission Intensity}\label{sec:smellie_intensity}
-\begin{itemize}
-    \item Remaining systematics is now in the calculation of an average absolute emission intensity.
-    \item Show how various methods don't work particularly well: whole detector npe, beamspot npe, backscattered light npe, ``bad light-path'' PMTs but at later times. Explain why it goes wrong for each method.
-    \item Look at "beamspot but excepting the central bit": if that works well, then we can continue!
-    \item Otherwise, we'll have to live with measuring relative scattering lengths instead of absolute amounts, using the outer water back-scattering as a measure of the relative emission intensity.
-\end{itemize}
-[4 pages]
 \subsection{Results}
 \begin{itemize}
     \item Actually do the proposed analysis on data, versus time and wavelength. Do the results seem consistent between fibres? Are they sensible values?
