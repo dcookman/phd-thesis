@@ -287,7 +287,7 @@ With similar simulations for all other fibres, it was found that all \ang{0} fib
     \label{fig:smellie_PQ407_FS107_far_pmts_components}
 \end{figure}
 
-\subsubsection{Results}
+\subsubsection{Results}\label{sec:smellie_ext_length_results}
 The analysis results from the PQ407 laser are shown in Fig.~\ref{fig:smellie_ext_length_results_PQ407}. These have been split into a different plot for each time period. Each fibre is represented by an individual colour and marker shape pairing associated with the fibre's pointing angle and node, respectively. Because \ang{0} fibres had the far PMT region nearest the beamspot, they observed the largest values of $R_{w}$ and $R_{s}$ compared to the \ang{10} and \ang{20} fibres. This necessitated the use of log-log plots to effectively show the data. Lines of constant gradient, associated with scintillator extinction lengths in the range \SIrange{5}{120}{\m} in \SI{5}{\m} steps, are shown as dashed grey lines. These lines increase in extinction length from the top left down to the bottom right, and in so doing show that longer extinction lengths are much harder to measure with the same precision as shorter extinction lengths.
 
 \begin{sidewaysfigure}
@@ -478,12 +478,63 @@ The other dominant source of background is scintillator re-emission. This is exp
 % \end{itemize}
 % [4 pages]
 
-{
-\color{blue}
-\subsection{Results}
-\begin{itemize}
-    \item Actually do the proposed analysis on data, versus time and wavelength. Do the results seem consistent between fibres? Are they sensible values?
-\end{itemize}
-[5 pages]
-[33 PAGES TOTAL]
-}
+\subsection{Results in Data}
+The datasets used in this scattering analysis are the subset of those described in Table~\ref{tab:smellie_ext_length_data} which were taken in the scintillator phase by the SuperK laser between \SI{400}{\nm} and \SI{500}{\nm}. Only three scintillator datasets had SuperK data taken: May 2021, May 2022, and June 2023. The npe ratio for the first dataset is denoted by $R_{1}$, and used as the baseline to compare to the later two datasets, denoted $R_{2}$.
+
+Results from the same wavelength for the same dataset pair were combined onto a plot, as shown in Fig.~\ref{fig:smellie_scat_r1r2_plots}. Because far more hits are observed in the signal region compared to the backscatter light region for all subruns, the dominant source of statistical uncertainty in $R$ comes from the latter region. As a result, data points with large $R$ values had much larger uncertainties, because these corresponded to subruns with lower statistics in the backscatter light region. In order to account for the non-negligible uncertainties along both axes, the same fitting procedure from Section~\ref{sec:smellie_ext_length_results} was used. This found the best-fit line $R_{2} = m\cdot R_{1}$ for each plot with an associated uncertainty.
+
+\begin{figure}
+    \centering
+    \begin{subfigure}{0.48\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{5_SMELLIEAnalysis/images/R1_vs_R2_superK_400_410_May2022.pdf}
+        \caption{May 2021 versus May 2022, \SIrange{400}{410}{\nm}.}
+        \label{fig:smellie_scat_r1r2_sk405_may22}
+    \end{subfigure}
+    \begin{subfigure}{0.48\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{5_SMELLIEAnalysis/images/R1_vs_R2_superK_400_410_Jun2023.pdf}
+        \caption{May 2021 versus June 2023, \SIrange{400}{410}{\nm}.}
+        \label{fig:smellie_scat_r1r2_sk405_jun23}
+    \end{subfigure}
+    \begin{subfigure}{0.48\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{5_SMELLIEAnalysis/images/R1_vs_R2_superK_490_500_May2022.pdf}
+        \caption{May 2021 versus May 2022, \SIrange{490}{500}{\nm}.}
+        \label{fig:smellie_scat_r1r2_sk495_may22}
+    \end{subfigure}
+    \begin{subfigure}{0.48\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{5_SMELLIEAnalysis/images/R1_vs_R2_superK_490_500_Jun2023.pdf}
+        \caption{May 2021 versus June 2023, \SIrange{490}{500}{\nm}.}
+        \label{fig:smellie_scat_r1r2_sk495_jun23}
+    \end{subfigure}
+    \caption[Plots of $R_{1}$ against $R_{2}$ for four pairs of scintillator phase datasets, using the SuperK laser]
+    {Plots of $R_{1}$ against $R_{2}$ for four pairs of scintillator phase datasets, using the SuperK laser.}
+    \label{fig:smellie_scat_r1r2_plots}
+\end{figure}
+
+The results for the gradient of all the data considered in this analysis are shown in Fig.~\ref{fig:smellie_scat_results_vs_wavelength}. All values for the ratio $R_{2}/R_{1}$ are found to be less than 1. This implies that, at all wavelengths in the range \SIrange{400}{500}{\nm}, less light was observed in the scatter signal region of the \SI{2.2}{\gpl} scintillator than the \SI{0.6}{\gpl} scintillator. Furthermore, there is a strong wavelength-dependence to this effect, such that shorter wavelengths observe a substantially lower fraction than at longer wavelengths. These results appear consistent to within statistical uncertainties for both \SI{2.2}{\gpl} scintillator datasets considered.
+
+\begin{figure}
+    \centering
+    \includegraphics[width=\textwidth]{5_SMELLIEAnalysis/images/scattering_results_summary.pdf}
+    \caption[Summary of results from the scattering analysis]
+    {Summary of results from the scattering analysis, shown as a function of wavelength.}
+    \label{fig:smellie_scat_results_vs_wavelength}
+\end{figure}
+
+\subsection{Interpretation}
+A na\"{i}ve reading of the above results would say that the scattering length has increased substantially between May 2021 and May 2022. However, that would be in strong tension with the results of the analysis of the previous section, which clearly shows a significant decrease in the observed extinction length over the same time period. It is also very difficult to explain from a theoretical perspective how the addition of PPO to the scintillator cocktail could decrease the amount of Rayleigh scattering.
+
+There is an alternative interpretation which fits the observations of both analyses. Suppose that the scattering length did not change with time, but there was an additional non-re-emitting component of the scintillator added during the PPO loading. Then, this new component of the scintillator would be capable of absorbing light, shortening the observed extinction length, but the amount of re-emitted light could be much less than expectation in the wavelength range considered in this work. This would lead to a decrease in the amount of light observed in the scattered signal region, as the background re-emitted light substantially decreased in quantity. The expected fraction of light arriving in this region due to scintillator re-emission is, as seen in Section~\ref{sec:smellie_scatt_new_method}, of the correct magnitude to explain the change in the scattering signal region.
+
+% {
+% \color{blue}
+
+% \begin{itemize}
+%     \item Actually do the proposed analysis on data, versus time and wavelength. Do the results seem consistent between fibres? Are they sensible values?
+% \end{itemize}
+% [5 pages]
+% [33 PAGES TOTAL]
+% }
