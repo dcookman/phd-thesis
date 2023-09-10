@@ -1,7 +1,9 @@
 \chapter{Analysis of SMELLIE Data in the Scintillator Phase}\label{chap:smellie_analysis}
-\epigraph{\textit{Due to Local Education Authority cuts,\\The light at the end of the tunnel has been switched off.}}{\texttt{Dr. Frank Chew}}
+\setlength{\epigraphwidth}{.5\textwidth}
+\epigraph{\textit{Due to Local Education Authority cuts,\\The light at the end of the tunnel has been switched off.}}{\textsc{Dr. Frank Chew}}
+\setlength{\epigraphwidth}{.4\textwidth}
 
-This chapter contains two sets of analyses: measurements of the extinction lengths of the scintillator as a function of wavelength and time, as well as monitoring the Rayleigh scattering length over time. In both cases, care had to be taken to try and make the methodologies robust to systematics.
+In this chapter, two novel analyses using data from SMELLIE are built and implemented. The first is a method for measuring the extinction lengths of the SNO+ scintillator as a function of both wavelength and time; the second is a way of monitoring changes in Rayleigh scattering. A key theme of both is the careful design of their methodologies to avoid relying on the known systematics discussed in Section~\ref{sec:smellie_systematics}.
 
 \section{Extinction Length Analysis}\label{sec:ext_length_analysis}
 % \subsection{Motivation}
@@ -14,12 +16,13 @@ This chapter contains two sets of analyses: measurements of the extinction lengt
 %     \item Further uses: can be used to monitor the extinction length over time!
 % \end{itemize}
 % [4 pages]
-The first analysis discussed in this chapter is the measurement of the extinction lengths of the liquid scintillator deployed in the SNO+ detector, as a function of both wavelength and time. As seen in Fig.~\ref{fig:smellie_timeline}, SMELLIE data was taken during the water phase, and in the scintillator phase when the PPO concentration of the LABPPO was at a variety of levels. Fig.~\ref{fig:smellie_expected_ext_length_phases} shows the expected changes in extinction length with detector phase, as a function of wavelength, according to the optical model described in Section~\ref{sec:optical_processes}.
+The first analysis discussed in this chapter is the measurement of the extinction lengths of the liquid scintillator deployed in the SNO+ detector, as a function of both wavelength and time. As seen in Fig.~\ref{fig:smellie_timeline}, SMELLIE data was taken during the water phase, and in the scintillator phase when the PPO concentration of the LABPPO was at a variety of levels. Fig.~\ref{fig:smellie_expected_ext_length_phases} shows the expected changes in extinction length with detector phase, as a function of wavelength, according to the optical model described in Section~\ref{sec:optical_processes}, and implemented in \texttt{RAT}. This will be discussed further in Sections~\ref{sec:smellie_ext_length_comparison}~\&~\ref{sec:smellie_scat_discussion}.
 
 \begin{figure}
     \centering
-    % \includegraphics[width=0.8\textwidth]{6_SolarAnalysis/images/b8_eelectrue_vs_enutrue.pdf}
-    \caption[]{}
+    \includegraphics[width=\textwidth]{5_SMELLIEAnalysis/images/ext_length_expectations_RAT_nice.pdf}
+    \caption[Current \texttt{RAT} models for the extinction lengths of both UPW and scintillator, as a function of wavelength]
+    {Current \texttt{RAT} models for the extinction lengths of both UPW and scintillator, at different PPO concentrations as a function of wavelength. For the scintillator, the scattering length distribution is also shown as a dotted line, showing that it is expected for scattering to dominate over absorption in the \SIrange{400}{500}{\nm} range.}
     \label{fig:smellie_expected_ext_length_phases}
 \end{figure}
 
@@ -33,8 +36,9 @@ To begin, consider light emission from a particular SMELLIE fibre of fixed wavel
 
 \begin{figure}
     \centering
-    % \includegraphics[width=0.8\textwidth]{6_SolarAnalysis/images/b8_eelectrue_vs_enutrue.pdf}
-    \caption[]{}
+    \includegraphics[width=\textwidth]{5_SMELLIEAnalysis/images/smellie_ext_length_pmt_selection_schematic.pdf}
+    \caption[Diagram showing the two PMT regions used in the SMELLIE extinction length analysis]
+    {Diagram showing the two PMT regions used in this analysis, indicated by red rings.}
     \label{fig:smellie_ext_length_schematic}
 \end{figure}
 
@@ -137,12 +141,13 @@ As a result of Eq.~\ref{eq:smellie_ext_length_rsrw_formula_1PMT}, measuring the 
 \subsubsection{UPW Extinction Lengths}
 As discussed in Section~\ref{sec:optical_processes}, the attenuation lengths of the UPW were measured as a function of wavelength in the water phase with the Laserball. It is assumed that the optics of the UPW inside and outside the AV were the same, and have not changed since.
 
-In this analysis, the measured values of the attenuation coefficients $\alpha_{w}(\lambda) = 1/l_{\ce{H_{2}O}}^{\mathrm{inner}}(\lambda)$ and their associated errors were taken from~\cite{andersonOpticalCalibrationSNO2021}. The wavelength range this Laserball data was taken over was \SIrange{337}{500}{\nm}, so to prevent any errors from extrapolation only wavelengths in this range were considered in this analysis. For a given SMELLIE subrun with wavelength $\lambda_{j}$, $l_{\ce{H_{2}O}}^{\mathrm{inner}}(\lambda_{j})$ was estimated by linearly interpolating between laserball $\alpha_{w}$ data points, and then taking a reciprocal. Because the systematic uncertainties dominated for each Laserball data point, which were likely to be highly correlated between data points, the uncertainty in $\alpha_{w}(\lambda_{j})$ was estimated by linearly interpolating the quadrature sum of the statistical and systematic uncertainties at each Laserball data point. Fig.~\ref{fig:smellie_laserball_water_ext_length_est} shows this process in action from the wavelength \SI{375}{\nm}. At its largest, the uncertainty in $l_{\ce{H_{2}O}}^{\mathrm{inner}}$ is $\sim50\%$. Fortunately, the impact of this large error is strongly mitigated in Eq.~\ref{eq:smellie_ext_length_rsrw_formula_1PMT} because $L_{ij,\ce{H_{2}O}}^{\mathrm{inner}}(\lambda_{j})\ll l_{\ce{H_{2}O}}^{\mathrm{inner}}$.
+In this analysis, the measured values of the attenuation coefficients $\alpha_{w}(\lambda) = 1/l_{\ce{H_{2}O}}^{\mathrm{inner}}(\lambda)$ and their associated errors were taken from~\cite{andersonOpticalCalibrationSNO2021}. The wavelength range this Laserball data was taken over was \SIrange{337}{500}{\nm}, so to prevent any errors from extrapolation only wavelengths in this range were considered in this analysis. For a given SMELLIE subrun with wavelength $\lambda_{j}$, $l_{\ce{H_{2}O}}^{\mathrm{inner}}(\lambda_{j})$ was estimated by linearly interpolating between Laserball $\alpha_{w}$ data points, and then taking a reciprocal. Because the systematic uncertainties dominated for each Laserball data point, which were likely to be highly correlated between data points, the uncertainty in $\alpha_{w}(\lambda_{j})$ was estimated by linearly interpolating the quadrature sum of the statistical and systematic uncertainties at each Laserball data point. Fig.~\ref{fig:smellie_laserball_water_ext_length_est} shows this process in action from the wavelength \SI{375}{\nm}. At its largest, the uncertainty in $l_{\ce{H_{2}O}}^{\mathrm{inner}}$ is $\sim50\%$. Fortunately, the impact of this large error is strongly mitigated in Eq.~\ref{eq:smellie_ext_length_rsrw_formula_1PMT} because $L_{ij,\ce{H_{2}O}}^{\mathrm{inner}}(\lambda_{j})\ll l_{\ce{H_{2}O}}^{\mathrm{inner}}$.
 
 \begin{figure}
     \centering
-    % \includegraphics[width=0.8\textwidth]{6_SolarAnalysis/images/b8_eelectrue_vs_enutrue.pdf}
-    \caption[]{}
+    \includegraphics[width=\textwidth]{5_SMELLIEAnalysis/images/OCA_water_atten_coeffs_with_interploation.pdf}
+    \caption[Linear interpolation being used on Laserball UPW attenuation coefficient data]
+    {Plot showing how linear interpolation has been used on the Laserball water phase UPW attenuation coefficient data. An example point at \SI{475}{\nm} is shown explicitly.}
     \label{fig:smellie_laserball_water_ext_length_est}
 \end{figure}
 
@@ -350,7 +355,7 @@ Fits to the SuperK data at wavelengths between \SIrange{400}{500}{\nm} during Ma
     \label{fig:smellie_ext_length_final_results}
 \end{figure}
 
-\subsubsection{Comparisons with other Measurements}
+\subsubsection{Comparisons with other Measurements}\label{sec:smellie_ext_length_comparison}
 It is important to compare the measurements of the scintillator extinction lengths using SMELLIE to other methods used by the Collaboration. One approach by Ben Tam was to use `UV-vis' spectroscopy on samples of the scintillator extracted from the detector~\cite{}. % cite Ben's thesis, DocDB?
 Another method, used by Serena Riccetto, was to look at the \texttt{nhits} distribution of the radioactive background \ce{^{210}Po} within the detector: a discussion of this and other backgrounds in the detector can be found in Section~\ref{sec:background_processes}. The peak \texttt{nhit} value associated with this background varies with the position of the event, because of the changing lengths of scintillator the event's scintillation light must travel through. Different optical models could then be tested by comparing the peak \texttt{nhits} of the \ce{^{210}Po} in simulation to data~\cite{}. % cite Serena's work.
 
@@ -524,10 +529,43 @@ The results for the gradient of all the data considered in this analysis are sho
     \label{fig:smellie_scat_results_vs_wavelength}
 \end{figure}
 
-\subsection{Interpretation}
+\subsection{Interpretation}\label{sec:smellie_scat_discussion}
 A na\"{i}ve reading of the above results would say that the scattering length has increased substantially between May 2021 and May 2022. However, that would be in strong tension with the results of the analysis of the previous section, which clearly shows a significant decrease in the observed extinction length over the same time period. It is also very difficult to explain from a theoretical perspective how the addition of PPO to the scintillator cocktail could decrease the amount of Rayleigh scattering.
 
 There is an alternative interpretation which fits the observations of both analyses. Suppose that the scattering length did not change with time, but there was an additional non-re-emitting component of the scintillator added during the PPO loading. Then, this new component of the scintillator would be capable of absorbing light, shortening the observed extinction length, but the amount of re-emitted light could be much less than expectation in the wavelength range considered in this work. This would lead to a decrease in the amount of light observed in the scattered signal region, as the background re-emitted light substantially decreased in quantity. The expected fraction of light arriving in this region due to scintillator re-emission is, as seen in Section~\ref{sec:smellie_scatt_new_method}, of the correct magnitude to explain the change in the scattering signal region.
+
+This theory is consistent with pieces of evidence from the rest of the Collaboration. In the process of building the current \SI{2.2}{\gpl} scintillator absorption and scattering model, S. Riccetto and B. Tam found that adding a non-re-emitting absorption component was necessary to fit their calibration data simultaneously~\cite{}. % cite 2.2 g/l model building
+The origin of this new component was investigated by B. Tam, who concluded that near the end of the PPO top-up campaign some contaminants were likely added from the accidental overheating of the LABPPO during one of the distillation processes~\cite{}. % cite Ben's DocDB 7481; maybe thesis too?
+
+\section{Summary and Suggestions for Future Work}
+In this chapter, two analyses were developed and performed on data taken with the SMELLIE calibration system, to understand the optical properties of the scintillator within SNO+. The first analysis measured the extinction length of the scintillator as a function both of time and wavelength, through comparison to the already-calibrated water phase data. The extinction lengths found were of the same magnitude as expectations from existing models, with an increase the extinction length seen as a function of wavelength. A substantial decrease in the extinction lengths were observed between the May 2021 and May 2022, when the PPO concentration of the scintillator increased from \SI{0.6}{\gpl} to \SI{2.2}{\gpl}. However, the change in extinction length was far greater than the expected change to the absorption length of PPO. Data taken one year later, in June 2023, shows no indication of any further change to the scintillator's extinction length distribution.
+
+In the second half of this chapter, another analysis was built, designed to be sensitive to changes in Rayleigh scattering. Simulations indicated that this new analysis was also sensitive to changes in the scintillator's  re-emission properties. By performing relative measurements between scintillator datasets, it was found that the amount of light seen in signal region decreased between May 2021 and May 2022, with similar results being seen when comparing May 2021 to June 2023 data. This could only be explained by a decrease in the quantity of scattered light, scintillator re-emission, or PMT reflections in the \SIrange{400}{500}{\nm} range. A significant wavelength-dependence was also seen in these results, with shorter wavelengths observing greater decreases in the amount of light seen.
+
+The best physical explanation that combines these results is the existence of a new component of the scintillator cocktail that absorbs, but does not scatter or re-emit light substantially in the \SIrange{400}{500}{\nm} range. This would generate a significant shortening of the extinction lengths over these wavelengths, but decrease the amount of light seen in the signal region of the scattering analysis. This theory is consistent with the observations seen by B. Tam in ex-situ measurements, as well as the fits to the spectra of in-situ backgrounds performed by S. Riccetto. It also has a plausible explanation for this new component's origin.
+
+The key insight that enabled both of the analyses in this chapter is the building of analysis methods that were robust to the major systematics present in SMELLIE. By not comparing SMELLIE data to simulation, the discrepancies between the \texttt{RAT} model of SMELLIE and reality, described in Section~\ref{sec:smellie_systematics}, could be avoided. However, not using simulations in these analyses does come at a price. Firstly, the extinction length analysis becomes fundamentally dependent on the water phase data taken by both the Laserball and SMELLIE. The former had large systematic uncertainties in their UPW attenuation measurements that puts a firm limit on the precision that any extinction length measurement can make.
+
+As an example, consider a measurement of the scintillator's extinction length at \SI{446}{\nm}, with a `true' value of the extinction length of \SI{12}{\m}. If the uncertainties from all other factors could be made negligible, because the derived attenuation length from the water Laserball data is \SI{108(49)}{\m}, this propagates to an uncertainty on the extinction length of the scintillator of 5\%. This effect becomes even larger as the extinction length increases.
+
+This limitation is further compounded by the limited statistics taken in the SMELLIE water phase subruns used in this analysis. The extinction length analysis used `medium' intensity subruns, with the rare UPW backscatter light being used for intensity calibration, where for multiple PQ lasers there were very large shot-to-shot intensity variations. In addition, by needing to determine the emission time for each event independently, instead of being able to rely on the EXTA trigger timing, a small fraction of events may have leaked into or out of the time windows used in both analyses. This effect would be most predominant in data with a low number of hits in the beamspot region.
+
+The other major source of uncertainty in the results of both analyses comes from the scatter between fibres around the line of best fit for a given plot. For example, in Fig.~\ref{fig:smellie_scat_r1r2_sk495_jun23} one of the points with the strongest pull on the fit value of the gradient is the purple triangle associated with fibre FS037. The backscattered light distributions that give rise to this data point are shown in Fig.~\ref{fig:smellie_FS037_backscat_tres_comparison}. As can be seen, there is a prominent change of shape of the peaks near $\tres{} = \SI{0}{\ns}$, which appears to leak into the backscattered light time window. The origin of this shape change is not yet known, but only appears to affect a few fibres in the most recent scintillator dataset. % confirm?
+This problem could have minor impacts on the particular fit values which use this data, but all the qualitative results of this chapter would remain. %not a fan of this.
+
+\begin{figure}
+    \centering
+    \includegraphics[width=\textwidth]{5_SMELLIEAnalysis/images/FS037_superK_490_500_May2021_vs_Jun2023_back_tres.pdf}
+    \caption[Observed time residual distributions for the backscattered light region for FS037, comparing May 2021 to June 2023 data]
+    {Observed time residual distributions for the backscattered light region of PMTs, with the SuperK laser in the \SIrange{490}{500}{\nm} range through fibre FS037. The distributions from both May 2021 and June 2023 are compared, with both of their distributions normalised to 1.}
+    \label{fig:smellie_FS037_backscat_tres_comparison}
+\end{figure}
+
+There are a series of improvements that can be made to these two SMELLIE analyses, based upon the comments above. Major progress could be achieved if a robust measure of a fibre's absolute emission intensity could be found. In so doing, measurements of the extinction lengths and scattering properties of the detector media could be made independent of Laserball data or having to make merely relative measurements. This could become even more powerful if the beam profiles of the fibres for different wavelengths could be known with sufficient precision.
+
+Another important set of considerations that will need to be made in the future in order to make precision scattering length measurements is the calibration of the scintillator re-emission and PMT reflections. It is worth noting that the analysis of Section~\ref{sec:scattering_analysis}, despite being designed for measuring changes in scattering length in the scintillator, actually appears to have measured a change in the re-emission properties of the scintillator. The impact of PMT reflections over time can be constrained by isolating regions of PMTs and time for which there is high purity of reflected light, such as the peak seen at \SI{50}{\ns} in Fig.~\ref{fig:smellie_bad_lightpath_region_tracked}. Alternatively, these could be calibrated through a deployment of the Laserball during the scintillator phase.
+
+A possible approach to disambiguating between re-emission and scattering in scintillator is through their different scattering angle distributions. Whilst the former emits light isotropically, as discussed in Section~\ref{sec:optical_processes} Rayleigh scattering has the angular form $\left(1+\frac{1-\delta}{1+\delta}\cos^{2}\theta\right)$. To do this, a secondary measurement of the scattered and re-emitted light could be made in the far PMT region. Because it is known that it is this light which is the major background to the direct light for the extinction length analysis, the amount of this background light which enabled the \ang{10} and \ang{20} fibres to best line up with the fit results of the \ang{0} ones could be determined. Then, this amount could be compared to the amount seen in the bad light-path signal region. One expects a difference in the observed amounts of scattered and re-emitted light in these two regions, because of the anisotropy of the Rayleigh scattering. With the differing values of these two different datasets, one might be able to tease apart the individual contributions of scattering and re-emission, and hence measure both.
 
 % {
 % \color{blue}
