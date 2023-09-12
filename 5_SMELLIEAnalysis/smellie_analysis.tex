@@ -58,19 +58,11 @@ In this analysis, two regions of PMTs will be used for a given fibre; Fig.~\ref{
 \end{align}
 Here, $L_{ij,p}^{\mathrm{extern,acr,inner}}(\lambda_{j})$ is the length of a path in a given detector medium through which light travels, for the external water, acrylic, and inner detector medium, respectively. $l_{p}^{\mathrm{extern,acr,inner}}(\lambda_{j})$ is the extinction length of each detector medium for a given wavelength --- it is assumed that only the inner detector medium has changing optics in different phases. Some fraction of light is lost when passing between two mediums with different refractive indices: this is captured by $T_{ij,p}(\lambda_{j})$, the product of the Fresnel transmission components for all optical boundaries along a photon's path. Finally, $\epsilon_{ij,p}(\lambda_{j})$ is the probability that a photon along a given path, incident on a given PMT, will generate a photoelectron that is detected. 
 
-The second selection of PMTs are those near the fibre emission point. The first light observed by these PMTs will be from photons which have `back-scattered' off of the UPW outside the AV. This is followed by light reflected off of the AV surface. Fig.~\ref{fig:smellie_back_PMTs_tres_plot} shows the observed time residual distribution for such a PMT. As can be seen, the back-scattered light is well-separated in time from all other optical processes. % note about rope reflections!
-Assuming that the Rayleigh scattering properties of the UPW outside the AV have been unchanged throughout the lifetime of the detector, then the expected number of photoelectrons observed in a selection of these PMTs during a time period in which only back-scattering can occur will be simply:
+The second selection of PMTs are those near the fibre emission point. The first light observed by these PMTs will be from photons which have `back-scattered' off of the UPW outside the AV. This is followed by light reflected off of the AV surface. The details of isolating this backscattered light is discussed in Section~\ref{sec:smellie_ext_length_params_and_uncs}. Assuming that the Rayleigh scattering properties of the UPW outside the AV have been unchanged throughout the lifetime of the detector, then the expected number of photoelectrons observed in a selection of these PMTs during a time period in which only back-scattering can occur will be simply:
 \begin{equation}
     \mu_{j,p}^{\mathrm{back}} = kI_{j,p}.
 \end{equation}
 $k$ here is just some general constant of proportionality. Therefore, observing this back-scattered light can be used as a measure of the relative intensity of the subrun.
-
-\begin{figure}
-    \centering
-    % \includegraphics[width=0.8\textwidth]{6_SolarAnalysis/images/b8_eelectrue_vs_enutrue.pdf}
-    \caption[]{}
-    \label{fig:smellie_back_PMTs_tres_plot}
-\end{figure}
 
 Because $\mu_{j,p}^{\mathrm{back}}$ is proportional to the intensity, the ratio $R_{ij,p} = \mu_{ij,p}^{\mathrm{beam}}(\lambda_{j})/\mu_{j,p}^{\mathrm{back}}$ will be independent of $I_{j,p}$. A similar trick can be used to remove the dependence of $R_{ij,p}$ on $k$, by taking the ratio of $R_{ij,p}$ with $R_{ij,\ce{H_{2}O}}$, where $R_{ij,\ce{H_{2}O}}$ is the measured values of $R_{ij,p}$ in the water phase. This ratio becomes:
 \begin{align}
@@ -167,17 +159,18 @@ Fig.~\ref{fig:smellie_extlength_PMT_selections} shows the time residual distribu
     \centering
     \begin{subfigure}{0.98\textwidth}
         \centering
-        % \includegraphics[width=0.74\textwidth]{4_SMELLIESimulation/images/flat_plot_r_FS055_beam_profile_original_6-18-13.pdf}
-        \caption{}
+        \includegraphics[width=\textwidth]{5_SMELLIEAnalysis/images/far_pmts_tres_components_nice_PQ407_FS007.pdf}
+        \caption{Far region}
         \label{fig:smellie_far_PMT_selection}
     \end{subfigure}
     \begin{subfigure}{0.98\textwidth}
         \centering
-        % \includegraphics[width=0.74\textwidth]{4_SMELLIESimulation/images/polar_plot_FS055_MC_sampling_old_beam_profile.png}
-        \caption{}
+        \includegraphics[width=\textwidth]{5_SMELLIEAnalysis/images/backscatter_pmts_tres_components_nice_PQ407_FS007.pdf}
+        \caption{Backscatter region}
         \label{fig:smellie_backscat_PMT_selection}
     \end{subfigure}
-    \caption[]{}
+    \caption[Time residual distributions of the far and backscatter PMT regions for a simulation using laser PQ407 through fibre FS007, split by the different optical components]
+    {Time residual distributions of the far and backscatter PMT regions for a simulation using laser PQ407 through fibre FS007, split by the different optical components. The time windows defining the signal regions are shown in both.}
     \label{fig:smellie_extlength_PMT_selections}
 \end{figure}
 
@@ -185,8 +178,9 @@ $t_{\mathrm{med}}$ was used in this analysis instead of $t_{2}$ because it was f
 
 \begin{figure}
     \centering
-    % \includegraphics[width=0.8\textwidth]{6_SolarAnalysis/images/b8_eelectrue_vs_enutrue.pdf}
-    \caption[]{}
+    \includegraphics[width=\textwidth]{5_SMELLIEAnalysis/images/t2_vs_tmed_backscatter_region_comparison_vs_intensity.pdf}
+    \caption[Comparison of the backscatter light region time residual distribution with intensity and emission time calculation choice]
+    {Comparison of the backscatter light region time residual distribution, as a function of both emission intensity and emission time calculation choice. A clear intensity-dependence can be seen when using $t_{2}$, whereas $t_{\mathrm{med}}$ is much more robust.}
     \label{fig:t2_temm_comparison}
 \end{figure}
 
@@ -276,8 +270,9 @@ As an example, Fig.~\ref{fig:smellie_PQ375_far_pmts_components} shows the expect
 
 \begin{figure}
     \centering
-    % \includegraphics[width=0.8\textwidth]{6_SolarAnalysis/images/b8_eelectrue_vs_enutrue.pdf}
-    \caption[]{}
+    \includegraphics[width=0.8\textwidth]{5_SMELLIEAnalysis/images/far_pmts_tres_plot_FS007_PQ375.pdf}
+    \caption[Unstacked time residual distribution of a simulation of light from the PQ375 laser firing through fibre FS007, split by optical components]
+    {Unstacked time residual distribution of a simulation of light from the PQ375 laser firing through fibre FS007, split by optical components. The direct light is clearly subdominant to light that has been absorbed and re-emitted by the scintillator. The spike at \SI{0}{\ns} arises from only one hit being observed in the beamspot for that event.}
     \label{fig:smellie_PQ375_far_pmts_components}
 \end{figure}
 
@@ -287,8 +282,9 @@ With similar simulations for all other fibres, it was found that all \ang{0} fib
 
 \begin{figure}
     \centering
-    % \includegraphics[width=0.8\textwidth]{6_SolarAnalysis/images/b8_eelectrue_vs_enutrue.pdf}
-    \caption[]{}
+    \includegraphics[width=\textwidth]{5_SMELLIEAnalysis/images/far_pmts_tres_components_nice_PQ407_FS107.pdf}
+    \caption[]
+    {Far PMT time window selection applied to a simulation of the PQ407 laser fired through laser FS107. The substantial background contribution from scattered light can be seen.}
     \label{fig:smellie_PQ407_FS107_far_pmts_components}
 \end{figure}
 
@@ -336,14 +332,14 @@ Also shown in the plot are the results of fibres not included in the fit. As an 
 
 Fig.~\ref{fig:smellie_ext_length_results_SK_400410} shows the data from the SuperK laser in the \SIrange{400}{410}{\nm} range, for the May 2021, May 2022, and June 2023 datasets in which SuperK data was taken. Once again, there appears to be a substantial shortening of the scintillator's extinction length as PPO was added. These values differ from the PQ407 result, but this is not too surprising as what is measured with the SuperK laser is the extinction length averaged over a whole \SI{10}{\nm} range, weighted by the intensity spectrum of the laser. The third measurement result increases compared to the second here, another contrast to the PQ407 laser.
 
-It is possible that the observed changes in these measurements between 2022 and 2023 are not a result of changes to the scintillator, but instead indirectly a result of the SMELLIE hardware changes made in the Summer of 2022 causing a systematic effect on the measurements. One possible way this could occur is through the instability of the laser intensities before the addition of the VFA. Fig.~\ref{fig:smellie_ext_length_far_pmt_tres_plot_comparison} shows the observed time residual distribution for far PMTs for fibre FS007 using laser PQ407 in the water phase data, as well as scintillator data of July 2022 and June 2023. The first two datasets show a clear spike of events at $\tres{} = 0$, corresponding to events with only one hit in the beamspot (and far PMT) region. This spike was substantial for these datasets, because of the substantial laser intensity instability discussed in Section~\ref{sec:smellie_attenuators}. However, the third dataset was taken after the installation of the VFA, meaning the laser intensities were stabilised event-by-event. This led to far fewer `spike' hits. This change in the shape of the time residual distribution leads to a change in the signal purity and efficiency within the `prompt' time window, causing a systematic shift.
+% It is possible that the observed changes in these measurements between 2022 and 2023 are not a result of changes to the scintillator, but instead indirectly a result of the SMELLIE hardware changes made in the Summer of 2022 causing a systematic effect on the measurements. One possible way this could occur is through the instability of the laser intensities before the addition of the VFA. Fig.~\ref{fig:smellie_ext_length_far_pmt_tres_plot_comparison} shows the observed time residual distribution for far PMTs for fibre FS007 using laser PQ407 in the water phase data, as well as scintillator data of July 2022 and June 2023. The first two datasets show a clear spike of events at $\tres{} = 0$, corresponding to events with only one hit in the beamspot (and far PMT) region. This spike was substantial for these datasets, because of the substantial laser intensity instability discussed in Section~\ref{sec:smellie_attenuators}. However, the third dataset was taken after the installation of the VFA, meaning the laser intensities were stabilised event-by-event. This led to far fewer `spike' hits. This change in the shape of the time residual distribution leads to a change in the signal purity and efficiency within the `prompt' time window, causing a systematic shift.
 
-\begin{figure}
-    \centering
-    % \includegraphics[width=\textwidth]{5_SMELLIEAnalysis/images/ext_length_results_summary.pdf}
-    \caption[]{}
-    \label{fig:smellie_ext_length_far_pmt_tres_plot_comparison}
-\end{figure}
+% \begin{figure}
+%     \centering
+%     % \includegraphics[width=\textwidth]{5_SMELLIEAnalysis/images/ext_length_results_summary.pdf}
+%     \caption[]{}
+%     \label{fig:smellie_ext_length_far_pmt_tres_plot_comparison}
+% \end{figure}
 
 Fits to the SuperK data at wavelengths between \SIrange{400}{500}{\nm} during May 2021, May 2022, and June 2023 were performed in the same manner as described above. The combined results for all of these measurements, as well as the PQ407 laser, are shown in Fig.~\ref{fig:smellie_ext_length_final_results}. All three SuperK datasets show an increase in the extinction length with wavelength, as expected. There is also a substantial shortening in the extinction length going from the \SI{0.6}{\gpl} dataset to the \SI{2.2}{\gpl} dataset. This is matched qualitatively with the PQ407 data. Interestingly, both the SuperK and PQ407 data appear to show a shortening of the extinction length in the most recent dataset.
 
@@ -393,23 +389,18 @@ Furthermore, Fig.~\ref{fig:smellie_tresalpha_mc2} shows the impact of using a mo
     \centering
     \begin{subfigure}{0.98\textwidth}
         \centering
-        % \includegraphics[width=0.74\textwidth]{4_SMELLIESimulation/images/flat_plot_r_FS055_beam_profile_original_6-18-13.pdf}
-        \caption{}
-        \label{fig:smellie_tresalpha_data}
-    \end{subfigure}
-    \begin{subfigure}{0.98\textwidth}
-        \centering
-        % \includegraphics[width=0.74\textwidth]{4_SMELLIESimulation/images/polar_plot_FS055_MC_sampling_old_beam_profile.png}
-        \caption{}
+        \includegraphics[width=\textwidth]{5_SMELLIEAnalysis/images/FS055_PQ495_new_beam_profile_signal_vs_all_tres_alpha_plot.pdf}
+        \caption{New beam profile}
         \label{fig:smellie_tresalpha_mc}
     \end{subfigure}
     \begin{subfigure}{0.98\textwidth}
         \centering
-        % \includegraphics[width=0.74\textwidth]{4_SMELLIESimulation/images/polar_plot_FS055_MC_sampling_old_beam_profile.png}
-        \caption{}
+        \includegraphics[width=\textwidth]{5_SMELLIEAnalysis/images/FS055_PQ495_old_beam_profile_signal_vs_all_tres_alpha_plot.pdf}
+        \caption{Old beam profile}
         \label{fig:smellie_tresalpha_mc2}
     \end{subfigure}
-    \caption[]{}
+    \caption[Comparison of the signal and total hit distribution in the $(\tres{},\alpha)$-space using new and old beam profiles for laser PQ495 through fibre FS055]
+    {Comparison of the signal and total hit distribution in the $(\tres{},\alpha)$-space using new and old beam profiles for laser PQ495 through fibre FS055. The triangular scattering signal region of K. Majumdar's analysis are shown, optimised for the new beam profile simulation. The fraction of all hits in this signal is 31.2\% for the new beam profile simulation, and 27.7\% for the old beam profile.}
     \label{fig:smellie_tres_alpha_data_mc}
 \end{figure}
 
@@ -428,8 +419,9 @@ A new PMT and time region was found that had substantially higher scattered sign
 
 \begin{figure}
     \centering
-    % \includegraphics[width=\textwidth]{5_SMELLIEAnalysis/images/ext_length_results_summary.pdf}
-    \caption[]{}
+    \includegraphics[width=0.8\textwidth]{5_SMELLIEAnalysis/images/smellie_scattering_region_ray_optics_model.png}
+    \caption[Model of light rays propagating in the SNO+ detector during scintillator phase, emanating from an external source such as SMELLIE]
+    {Model of light rays propagating in the SNO+ detector during scintillator phase, emanating from an external source such as SMELLIE. Because of refraction, a large ringed region is formed where no direct light can reach the region from the source. This forms the basis of the new scattering signal region.}
     \label{fig:smellie_propagation_toy_model}
 \end{figure}
 
@@ -451,8 +443,9 @@ In addition to having a high signal purity, this new scattered signal region has
 
 \begin{figure}
     \centering
-    % \includegraphics[width=\textwidth]{5_SMELLIEAnalysis/images/ext_length_results_summary.pdf}
-    \caption[]{}
+    \includegraphics[width=\textwidth]{5_SMELLIEAnalysis/images/FS055_PQ495_new_vs_old_beam_profile_bad_lightpath_timeplot.pdf}
+    \caption[]
+    {Comparison of timing distributions in the bad light-path PMT region for simulations of laser PQ495 through fibre FS055, comparing the old and new beam profile. Both distributions have been normalised by the number of non-skipped events. The fractional difference in the number of hits in the signal time window is 1.0\%.}
     \label{fig:smellie_bad_lightpath_region_beamprofile_comparison}
 \end{figure}
 
