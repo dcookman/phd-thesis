@@ -162,7 +162,7 @@ The `far' PMTs were selected by first finding the intersection point on the PSUP
 
 Backscattered PMTs were selected for each fibre by finding the 50 PMTs closest to the fibre emission point. A \tres{} window of $[-30,-10]\,\si{\ns}$ was used for the isolation of backscattered light in each subrun. Like above, the total hits for each PMT was converted into a total npe with associated Poisson error. A final correction was made to account for noise hits: the measured noise rate of a given PMT was calculated using the PULSEGT triggers, as described in Section~\ref{sec:smellie_software}. After accounting for the width of the time window, the corresponding expected number of noise hits was subtracted off of the total measured npe to give the npe per event from direct light only. The npe from these PMTs were combined into one value of the backscattered light npe per event, $\mu_{j,p}^{\mathrm{back}}$. The variables $R_{s}$ and $R_{w}$ are the ratios of the far light npe to the backscattered light npe for a given scintillator or water phase subrun, respectively. The subrun $j$ subscript has been dropped for simplicity.
 
-Fig.~\ref{fig:smellie_extlength_PMT_selections} shows the time residual distributions for both PMT selections of a simulation of the PQ407 laser being fired through fibre FS007 during the scintillator phase, with \SI{2.2}{\gpl} PPO loading. The simulation used the optical model described in Section~\ref{sec:optical_processes}. The earliest photon track associated with a given PMT hit was classified by the optical processes it underwent. A hit associated with a photon that travelled unimpeded through the detector is classified as `direct'. For this fibre and wavelength combination, the time residual windows used allow for a signal-to-background ratio of XXX for the far PMTs, and XXX for the backscattered PMTs. % FILL IN.
+Fig.~\ref{fig:smellie_extlength_PMT_selections} shows the time residual distributions for both PMT selections of a simulation of the PQ407 laser being fired through fibre FS007 during the scintillator phase, with \SI{2.2}{\gpl} PPO loading. The simulation used the optical model described in Section~\ref{sec:optical_processes}. The earliest photon track associated with a given PMT hit was classified by the optical processes it underwent. A hit associated with a photon that travelled unimpeded through the detector is classified as `direct'. For this fibre and wavelength combination, the time residual windows used allow for a signal-to-background ratio of 98.8\% for the far PMTs, and 99.7\% for the backscattered PMTs, ignoring noise hits.
 
 \begin{figure}
     \centering
@@ -259,14 +259,14 @@ The datasets used in this analysis are summarised in Table~\ref{tab:smellie_ext_
             Date & Detector Phase & Runs used \\ \hline \hline
             June 2018 & Water Phase & \num{114018} \\ \hline
             May 2021 & Scintillator Phase, \SI{0.6}{\gpl} PPO & \num{270856}, \num{270857}, \num{270858}, \num{270862} \\
-            October 2021 & Scintillator Phase, \SI{1.1}{\gpl} PPO & \num{275674}; \num{275676}; \num{275678}; \num{275680} \\
-            May 2022 & Scintillator Phase, \SI{2.2}{\gpl} PPO & \num{300706}; \num{300708}; \num{300710}; \num{300712}; \num{300715}; \num{300748} \\
-            July 2022 & Scintillator Phase, \SI{2.2}{\gpl} PPO & \num{302628}; \num{302630}; \num{302632}; \num{302634}; \num{302636} \\
-            June 2023 & Scintillator Phase, \SI{2.2}{\gpl} PPO & \num{310292}; \num{310294}; \num{310296}; \num{310298}; \num{310303} \\\hline
+            October 2021 & Scintillator Phase, \SI{1.1}{\gpl} PPO & \num{275676}; \num{275680} \\
+            May 2022 & Scintillator Phase, \SI{2.2}{\gpl} PPO & \num{300708}; \num{300712}; \num{300715}; \num{300748} \\
+            July 2022 & Scintillator Phase, \SI{2.2}{\gpl} PPO & \num{302630}; \num{302634}; \\
+            June 2023 & Scintillator Phase, \SI{2.2}{\gpl} PPO & \num{310294}; \num{310298}; \num{310303} \\\hline
         \end{tabulary}
     \end{center}
-    \caption[Datasets used in this analysis]
-    {Datasets used in this analysis.}
+    \caption[Datasets used in the SMELLIE extinction length analysis]
+    {Datasets used in the SMELLIE extinction length analysis.}
     \label{tab:smellie_ext_length_data}
 \end{table}
 
@@ -274,7 +274,7 @@ The datasets used in this analysis are summarised in Table~\ref{tab:smellie_ext_
 
 The sensitivity of the extinction length measurement is strongly dependent on the ratio of that extinction length to the length scale of the AV. Very long extinction lengths are difficult to measure because only a small amount of light is expected to be lost due to scattering or absorption. In contrast, at short extinction lengths only a very small amount of light will reach the other side without being extinguished; the dominant source of hits will come from scattered or re-emitted light.
 
-As an example, Fig.~\ref{fig:smellie_PQ375_far_pmts_components} shows the expected optical component breakdown for hits from far PMTs from fibre FS007 due to laser PQ375, using the current \texttt{RAT} model of the \SI{2.2}{\gpl} LABPPO scintillator phase detector. Because the short extinction length at this wavelength relative to the diameter of the AV, typically there would only be one hit in the beamspot region per event. This meant that $t_{\mathrm{med}}$ would correspond to that hit's time, and because there is an overlap between the beamspot and far PMTs for this fibre, a large spike at $\tres{} = 0$ can be observed. Importantly, the amount of direct light seen in the far PMTs in this simulation is entirely sub-dominant to the re-emitted light. Without accounting for this re-emitted light, this analysis would over-estimate the extinction length substantially. In contrast, it has already been shown in Fig.~\ref{fig:smellie_far_PMT_selection} that the contribution of re-emitted light to the PQ407 laser is expected to be sub-dominant.
+As an example, Fig.~\ref{fig:smellie_PQ375_far_pmts_components} shows the expected optical component breakdown for hits from far PMTs from fibre FS007 due to laser PQ375, using the current \texttt{RAT} model of the \SI{2.2}{\gpl} LABPPO scintillator phase detector. Because the short extinction length at this wavelength relative to the diameter of the AV, typically there would rarely be more than one hit in the beamspot region per event. This meant that $t_{\mathrm{med}}$ would correspond to that hit's time, and because there is an overlap between the beamspot and far PMTs for this fibre, a large spike at $\tres{} = 0$ can be observed. Importantly, the amount of direct light seen in the far PMTs in this simulation is entirely sub-dominant to the re-emitted light. Without accounting for this re-emitted light, this analysis would over-estimate the extinction length substantially. In contrast, it has already been shown in Fig.~\ref{fig:smellie_far_PMT_selection} that the contribution of re-emitted light to the PQ407 laser is expected to be negligible.
 
 \begin{figure}
     \centering
@@ -291,7 +291,7 @@ With similar simulations for all other fibres, it was found that all \ang{0} fib
 \begin{figure}
     \centering
     \includegraphics[width=\textwidth]{5_SMELLIEAnalysis/images/far_pmts_tres_components_nice_PQ407_FS107.pdf}
-    \caption[]
+    \caption[Far PMT time window selection applied to a simulation of the PQ407 laser fired through laser FS107]
     {Far PMT time window selection applied to a simulation of the PQ407 laser fired through laser FS107. The substantial background contribution from scattered light can be seen.}
     \label{fig:smellie_PQ407_FS107_far_pmts_components}
 \end{figure}
@@ -443,7 +443,7 @@ Fig.~\ref{fig:smellie_bad_lightpath_region_tracked} shows the time distribution 
 
 \begin{figure}
     \centering
-    \includegraphics[width=\textwidth]{5_SMELLIEAnalysis/images/bad_lightpaths_components_plot_FS055_PQ495_Jul2022.pdf}
+    \includegraphics[width=\textwidth]{5_SMELLIEAnalysis/images/bad_lightpaths_components_plot_FS055_PQ495_Jul2022_w_window.pdf}
     \caption[Timing distribution of a simulation of the observed hits in the bad light-path PMT selection, split by optical components]
     {Timing distribution of a simulation of the observed hits in the bad light-path PMT selection through fibre FS055, using the PQ495 laser. The distribution is split into the different optical components.}
     \label{fig:smellie_bad_lightpath_region_tracked}
@@ -454,7 +454,7 @@ In addition to having a high signal purity, this new scattered signal region has
 \begin{figure}
     \centering
     \includegraphics[width=\textwidth]{5_SMELLIEAnalysis/images/FS055_PQ495_new_vs_old_beam_profile_bad_lightpath_timeplot.pdf}
-    \caption[]
+    \caption[Comparison of timing distributions in the bad light-path PMT region for simulations of laser PQ495 through fibre FS055, comparing the old and new beam profile]
     {Comparison of timing distributions in the bad light-path PMT region for simulations of laser PQ495 through fibre FS055, comparing the old and new beam profile. Both distributions have been normalised by the number of non-skipped events. The fractional difference in the number of hits in the signal time window is 1.0\%.}
     \label{fig:smellie_bad_lightpath_region_beamprofile_comparison}
 \end{figure}
@@ -465,8 +465,7 @@ In the new signal region, some backgrounds to scattering are still present. Thes
 If the absolute shot-to-shot intensity of a SMELLIE subrun is known, and the models of the scintillator re-emission and PMT reflections are well-enough known for the wavelengths of interest, then the scattering length of the scintillator can be determined by comparing data in the signal region to matching simulations of varying scattering length. Sadly, at the time of writing, no method for determining the absolute intensity which is sufficiently robust to systematic uncertainties in the modelling of MC is known. Instead, it was decided for this analysis to use the back-scattered light region described in Section~\ref{sec:smellie_ext_length_params_and_uncs} as a measure of relative intensity.
 
 Without knowledge of the absolute intensity, absolute scattering lengths cannot be measured. However, by calculating the ratio of npe in the signal region to that of the back-scatter region for two equivalent scintillator subruns, denoted $R_{1}$ and $R_{2}$, any substantial change in the scattering length between datasets can be observed. Another restriction that this analysis has is that changes in the scattering length cannot be distinguished from changes in the background processes, in particular PMT reflections and scintillator re-emission. The reflectivity of the PMT concentrators is known to be changing slowly with time as the reflective petals of the concentrators degrade in the outer water~\cite{andersonOpticalCalibrationSNO2021}. % cite SNO, optics paper, Stringer thesis
-The fractional change in their reflectivity over the course of the two-year period in which SMELLIE scintillator phase data was taken is expected to be XX\%, % CALCULATE!
-assuming the same trends seen in SNO and the SNO+ water phase. Using the example shown in Fig.~\ref{fig:smellie_bad_lightpath_region_tracked}, 6.5\% of non-noise hits in the signal region came from PMT reflections, meaning that the overall systematic effect of concentrator degradation is expected to be merely XX\%. % CALCULATE!
+A. S. In\'{a}cio determined from comparing Laserball data taken in SNO and SNO+ that the PMT angular response had worsened over a period of 12 years by up to 8\% in the incident angle range up to \ang{42}~\cite{inacioDataAnalysisWater2022}. Therefore, an upper estimate of the fractional change in the PMT bucket reflectivity over the course of the two-year period in which SMELLIE scintillator phase data was taken is 1.4\%, assuming the same trend. Using the example shown in Fig.~\ref{fig:smellie_bad_lightpath_region_tracked}, 6.5\% of non-noise hits in the signal region came from PMT reflections, meaning that the overall systematic effect of concentrator degradation is expected to be merely 0.09\%.
  
 The other dominant source of background is scintillator re-emission. This is expected to change as a function of PPO concentration. However, because the absorption length of the scintillator at \SI{2.2}{\gpl} is substantially longer than the scattering length in the \SIrange{400}{500}{\nm} range according to the current \texttt{RAT} model, the proportion of this background component is expected to be small: see Figs.~\ref{fig:cherenkov_scintillator_abs_emit_dist}~\&~\ref{fig:scattering_lengths_upw_labppo_current}. According to the simulation shown in Fig~\ref{fig:smellie_bad_lightpath_region_tracked}, 7\% of non-noise hits in the signal region come from scintillator re-emission. This contribution is expected to be somewhat larger at shorter wavelengths. As a result, fractional changes in the measured value of $R$, $\frac{\left|R_{1}-R_{2}\right|}{R_{1}}\lesssim 10\%$, cannot be reasonably distinguished between changes in scintillator re-emission or scattering.
 
@@ -538,7 +537,7 @@ A na\"{i}ve reading of the above results would say that the scattering length ha
 There is an alternative interpretation which fits the observations of both analyses. Suppose that the scattering length did not change with time, but there was an additional non-re-emitting component of the scintillator added during the PPO loading. Then, this new component of the scintillator would be capable of absorbing light, shortening the observed extinction length, but the amount of re-emitted light could be much less than expectation in the wavelength range considered in this work. This would lead to a decrease in the amount of light observed in the scattered signal region, as the background re-emitted light substantially decreased in quantity. The expected fraction of light arriving in this region due to scintillator re-emission is, as seen in Section~\ref{sec:smellie_scatt_new_method}, of the correct magnitude to explain the change in the scattering signal region.
 
 In the process of building the current \SI{2.2}{\gpl} scintillator absorption and scattering model, S. Riccetto and B. Tam found that adding a non-re-emitting absorption component was necessary to fit their calibration data simultaneously~\cite{kaptanogluDocumentationAttenuationStudies2022}. % cite 2.2 g/l model building
-The origin of this new component was investigated by B. Tam, who concluded that near the end of the PPO top-up campaign some contaminants were likely added from the accidental overheating of the LABPPO during one of the distillation processes~\cite{}. % cite Ben's DocDB 7481; maybe thesis too?
+The origin of this new component was investigated by B. Tam, who concluded that near the end of the PPO top-up campaign some contaminants were likely added from the accidental overheating of the LABPPO during one of the distillation processes~\cite{tamAttenuationMeasurements2022}. % cite Ben's DocDB 7481; maybe thesis too?
 There is a slight difference between their results and the implication from work in this thesis. S. Riccetto and B. Tam sought little evidence of this new component impacting longer wavelengths, and instead preferred causing a significant impact at short wavelengths $\lambda\lesssim\SI{400}{\nm}$.
 
 \section{Summary and Suggestions for Future Work}
