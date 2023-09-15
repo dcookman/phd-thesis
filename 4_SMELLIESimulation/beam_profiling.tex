@@ -4,7 +4,7 @@
 Bart Simpson : \textit{Isn't that just the wrong way?}\\
 Max Power : \textit{Yes, but faster!}}{\textsc{The Simpsons}}
 \setlength{\epigraphwidth}{.4\textwidth}
-Critical to extraction of scattering information from SMELLIE data is an accurate Monte Carlo (MC) simulation of the SMELLIE system. By modelling the laser light emission into the detector correctly, we can simulate how SMELLIE light will be impacted by changing scattering lengths in the detector. Because of the complexity of the optics of the optical fibres used to direct the laser light into the detector, a given SMELLIE event is simulated as a partially-collimated ``flash'' of visible photons emanating from the emission point of the fibre into the detector. This flash then requires a number of parameters to be correctly described. In particular:
+Critical to extraction of scattering information from SMELLIE data is an accurate MC simulation of the SMELLIE system. By modelling the laser light emission into the detector correctly, we can simulate how SMELLIE light will be impacted by changing scattering lengths in the detector. Because of the complexity of the optics of the optical fibres used to direct the laser light into the detector, a given SMELLIE event is simulated as a partially-collimated ``flash'' of visible photons emanating from the emission point of the fibre into the detector. This flash then requires a number of parameters to be correctly described. In particular:
 \begin{itemize}
     \item \textbf{Fibre emission positions} were recorded during the installation of the fibres.
     \item \textbf{Wavelength and emission timing distributions} of light pulses were taken from measurements of the laser heads by their manufacturers~\cite{}, or by colleague Jeff Lidgard in the case of the SuperK wavelength distribution~\cite{}.
@@ -203,21 +203,19 @@ This scenario is very much reminiscent of rare-decay searches, and a similar app
     b'_{i,ulim} = -\frac{k_{i}^{MC}\sum_{j}\left[I_{j}N_{j}\right]}{\ln\left[1 - \operatorname{erf}\left(1/\sqrt{2}\right)\right]},
 \end{equation}
 where $\operatorname{erf}(x)$ is the error function.
-{
-    \color{blue}
-    [18 pages for above two sections]
-}
+% {
+%     \color{blue}
+%     [18 pages for above two sections]
+% }
 
-\subsection{Results \& Discussion}\label{sect:results}
-{
-    \color{blue}
-    WARNING: contents of this subsection will be gutted, focusing merely on impact of combining data sets. Details about discrepancies will be covered in the next section.
-    [Will just be ~1 page]
-}
+\section{Comparisons between Data and Simulation}\label{sec:smellie_systematics}
+In this section, the major systematic differences between simulations of SMELLIE and data that remain after the above improvements have been made are discussed. These fall into three broad categories. The two of these are the differences seen in the forward and back hemispheres of the detector relative to a given fibre; the third are differences in the timing distributions of the light.
+
+\subsection{Forward Hemisphere Discrepancies}
 Figure~\ref{fig:updated_beam_profile} shows the impact of using additional subruns of data on a typical beam profile. One can clearly see the great reduction in the number of PMTs with no hits in data. That many more data sets were included allowed for the major increase in dynamic range available for measuring these $b'_{i}$ values. One can also note that by including additional data the curious spot that was seen in the old beam profile our at $r\approx0.08$ has gone, further indicating that it was an artefact of that single data set.
 \begin{figure}
     \centering
-    \includegraphics[width=0.8\textwidth]{4_SMELLIESimulation/images/flat_plot_r_comparison_FS055_old_vs_new_empty_circles.pdf}
+    \includegraphics[width=\textwidth]{4_SMELLIESimulation/images/flat_plot_r_comparison_FS055_old_vs_new_empty_circles.pdf}
     \caption[Comparison between old and updated beam profiles for fibre FS055, after combining multiple data sets]{Comparison between old and updated beam profiles for fibre FS055, after combining multiple data sets. Once again, the relative intensities ($b'_{i}$) for each PMT are given by the colour of each point, the position of each plotted in the 2D $(r,\phi)$-space. The relative intensities have been both scaled here so that the largest value equals 1. Hollowed-out points are PMTs that, even after all relevant subruns have been combined, have no PMT hits.}
     \label{fig:updated_beam_profile}
 \end{figure}
@@ -243,35 +241,50 @@ This information was plotted for two different subruns from the same fibre, seen
 \end{figure}
 All three of these features --- rope shadows, AV reflections, and wavelength dependence --- add systematic uncertainty to the beam profiles, beyond the statistical uncertainty as measured by the width of the likelihood distribution. Certainly if one wanted to further improve the uncertainties in the beam profiles, tackling these challenges would be key.
 
-\section{Comparisons between Data and Simulation}\label{sec:smellie_systematics}
+    % \begin{itemize}
+    %     \item This focuses on disagreements noticed between data and MC even after the new generator and beam profiles have been used.
+    %     \item Important to mention that none of these are necessarily game-ending, they are just systematics that may or may not be substantial in a given analysis with SMELLIE.
+    % \end{itemize}
+    
+    
+    % \begin{itemize}
+    %     \item The continued disagreement between data and MC when it comes to measured npe in various parts of the ``forward" hemisphere. This includes:
+    %     \begin{itemize}
+    %         \item The central beamspot,
+    %         \item The TIR region,
+    %         \item Rope shadows,
+    %         \item A noticeable wavelength-dependence.
+    %     \end{itemize}
+    %     \item This is pretty much most of the contents of Section~\ref{sect:results}.
+    % \end{itemize}
+    % [4 pages]
+    
+\subsection{Emission Time Discrepancies}
+In addition to systematics in the spatial distribution of light observed in the forward distribution, for two sets of lasers there are notable emission timing discrepancies. The first is the double-peaked timing structure of the SuperK laser, which was discussed in Section~\ref{sec:smellie_triggering_daq}. The other main difference is associated with the PQ495 laser.
+
+Fig.~\ref{fig:smellie_pq495_prompt_timing_data_vs_mc} shows the time residual distribution of hits in the \ang{10} beamspot PMT region of fibre FS007, due to PQ495 laser light fired in July 2022. The ``$t_{\mathrm{med}}$'' approach to determining the emission time was used, as described in Section~\ref{sec:smellie_triggering_daq}. Also shown in this plot is the time distribution from a simulation of this same setup. The spike at $\tres{} = 0$ for both distributions corresponds to events with only a single hit in the beamspot. Almost all hits shown here are known to come from direct light. The shape of the distribution in MC is largely determined by the transit time distribution of the PMTs, which give rise to the four peaks seen in the MC. Aside from the prompt peak around $\tres{} = 0$, the earlier peak is associated with PMT pre-pulsing, and the latter two peaks with PMT late-pulsing~\cite{andersonDevelopmentCharacterisationDeployment2021}. % cite thesis which mentions this/optics paper?
+
+\begin{figure}
+    \centering
+    \includegraphics[width=\textwidth]{4_SMELLIESimulation/images/data_vs_mc_FS007_PQ495_nom_scatt_beamspot_tres_plot.pdf}
+    \caption[Time residual distribution in the beamspot region for data taken in July 2022 with PQ495 through fibre FS007, as compared to a matching simulation]
+    {Time residual distribution in the beamspot region for data taken in July 2022 with PQ495 through fibre FS007, as compared to a matching simulation. The width of the data's prompt peak is much broader than expected, and there is a notable bump at \SI{19}{\ns} not present in the MC.}
+    \label{fig:smellie_pq495_prompt_timing_data_vs_mc}
+\end{figure}
+
+The two major discrepancies between data and MC seen for this laser is the much broader prompt peak seen in data than expected, and the bump at $\sim\SI{19}{\ns}$. Neither of these effects are seen in the other PQ lasers. Because these hits come almost exclusively from direct light, the most likely explanation for this difference is a change in the emission time distribution of the PQ495 laser, relative to the timing distributions used in \texttt{RAT} which were provided by the laser's manufacturer. One method for resolving this problem could be to measure the laser's emission timing distribution with an oscilloscope, in the same manner used by J. Lidgard to determine the timing distribution for the SuperK laser~\cite{lidgardSupercontinuumAdditionSMELLIE2018}.
+
+    % \begin{itemize}
+    %     \item For certain lasers, a strong mismatch in the observed hit time residuals for prompt light.
+    %     \item A mysterious +18 ns bump seen for the PQ495 laser.
+    %     \item A trigger jitter in the SuperK laser.
+    % \end{itemize}
+    % [3 pages]
+
+\subsection{Backward Hemisphere Discrepancies}
+
 {
-    \color{blue}
-    \begin{itemize}
-        \item This focuses on disagreements noticed between data and MC even after the new generator and beam profiles have been used.
-        \item Important to mention that none of these are necessarily game-ending, they are just systematics that may or may not be substantial in a given analysis with SMELLIE..
-    \end{itemize}
-    
-    \subsection{Forward Hemisphere Discrepancies}
-    \begin{itemize}
-        \item The continued disagreement between data and MC when it comes to measured npe in various parts of the ``forward" hemisphere. This includes:
-        \begin{itemize}
-            \item The central beamspot,
-            \item The TIR region,
-            \item Rope shadows,
-            \item A noticeable wavelength-dependence.
-        \end{itemize}
-        \item This is pretty much most of the contents of Section~\ref{sect:results}.
-    \end{itemize}
-    [4 pages]
-    
-    \subsection{Emission Time Discrepancies}
-    \begin{itemize}
-        \item For certain lasers, a strong mismatch in the observed hit time residuals for prompt light.
-        \item A mysterious +18 ns bump seen for the PQ495 laser.
-        \item A trigger jitter in the SuperK laser.
-    \end{itemize}
-    [3 pages]
-    \subsection{Backward Hemisphere Discrepancies}
+\color{blue}
     \begin{itemize}
         \item The observed distribution of hits vs time and angle in MC does not match data in a number of ways for PMTs near the fibre emission point.
         \item Includes the outer-water scattering length, rope reflections, and investigations into whether certain modifications to the optics could plausibly fix things (so far, no).
