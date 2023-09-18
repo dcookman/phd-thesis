@@ -211,7 +211,7 @@ where $\operatorname{erf}(x)$ is the error function.
 \section{Comparisons between Data and Simulation}\label{sec:smellie_systematics}
 In this section, the major systematic differences between simulations of SMELLIE and data that remain after the above improvements have been made are discussed. These fall into three broad categories. The two of these are the differences seen in the forward and back hemispheres of the detector relative to a given fibre; the third are differences in the timing distributions of the light.
 
-\subsection{Forward Hemisphere Discrepancies}
+\subsection{Forward Hemisphere Discrepancies}\label{sec:smellie_systematics_forward}
 Figure~\ref{fig:updated_beam_profile} shows the impact of using additional subruns of data on a typical beam profile. One can clearly see the great reduction in the number of PMTs with no hits in data. That many more data sets were included allowed for the major increase in dynamic range available for measuring these $b'_{i}$ values. One can also note that by including additional data the curious spot that was seen in the old beam profile our at $r\approx0.08$ has gone, further indicating that it was an artefact of that single data set.
 \begin{figure}
     \centering
@@ -282,6 +282,9 @@ The two major discrepancies between data and MC seen for this laser is the much 
     % [3 pages]
 
 \subsection{Backward Hemisphere Discrepancies}
+A third class of systematic differences between data and simulation of SMELLIE events are those discrepancies observed in the distributions of hits near a given fibre emission point. Consider the region of 50 PMTs closest to a given fibre. This defines what shall be called the ``back-scatter'' region of PMTs, because these will be the PMTs which will see the greatest intensity of light that has Rayleigh scattered in the UPW outside the AV. For a given subrun, only the subset of these PMTs which were `good' in the sense described in Section~\ref{sec:combining_beam_profiles} were used. This PMT region will become useful to the analyses described in Chapter~\ref{chap:smellie_analysis}.
+
+Fig.~\ref{fig:smellie_tres_back_data_vs_mc_water} shows the time residual distributions for data taken in water phase run \num{114018} in the back-scatter PMT region, using the SuperK laser in the wavelength range \SIrange{490}{500}{\nm}. The method of emission time calculation used here is that of $t_{\mathrm{med}}$. Because it is not possible for light to travel straight from the fibre emission point to a PMT in the back-scatter region, the light-paths used for calculating the time-of-flight in the time residuals here correspond to those which reflect off of the AV surface.  Also shown in these plots are matching simulations of these subruns. The distributions from simulation are displayed as stacked histograms, where each individual histogram corresponds to the subset of hits associated with photons that underwent specific types of path. The overall intensity of the simulation has been scaled so that the number of hits in the $[-30,-10]\,\si{\ns}$ time residual window is equal in data and MC, corresponding to a window in which only light that back-scattered in the outer water was observed.
 
 \begin{figure}
     \centering
@@ -302,13 +305,32 @@ The two major discrepancies between data and MC seen for this laser is the much 
     \label{fig:smellie_tres_back_data_vs_mc_water}
 \end{figure}
 
-{
-\color{blue}
-    \begin{itemize}
-        \item The observed distribution of hits vs time and angle in MC does not match data in a number of ways for PMTs near the fibre emission point.
-        \item Includes the outer-water scattering length, rope reflections, and investigations into whether certain modifications to the optics could plausibly fix things (so far, no).
-    \end{itemize}
-   [6 pages]
+Looking at Fig.~\ref{fig:smellie_tres_back_data_vs_mc_fs007} in particular, corresponding to the \ang{0} fibre FS007, both data and simulation observe five distinct regions of interest. After the earliest peak from light which back-scattered in the outer water, there is a prominent peak near \SI{0}{\ns} arising from reflections off of the AV surface nearest to the fibre, as well as reflections from ropes. After this, in the \SIrange{10}{50}{\ns} range, there is a long tail of hits due to a number of effects, including back-scattering in the inner water. Much later, there are two further peaks: one at \SI{110}{\ns} due to reflections off of the far AV surface, and one at \SI{132}{\ns} due to reflections off of the PMTs and concentrators on the far side of the detector.
 
-   [32 PAGES TOTAL]
-}
+Although all the features described above are seen qualitatively in both data and MC, there are a couple of notable discrepancies. The first to note are the differences in shape seen in the PMT reflection peaks of both fibres shown. The FS007 data has a tighter peak than expected from simulation, whilst the FS155 data sees the opposite. These differences are likely due to the current limitations of the PMT reflection model used in \texttt{RAT}. Fig.~\ref{fig:smellie_laserball_late_light_data_vs_mc} shows the best-fit of Laserball data to simulations with varying PMT reflection models, taken from~\cite{andersonOpticalCalibrationSNO2021}. The last peak in this plot comes from PMT reflections, which shows a small disagreement between data and MC. It is presumably this residual systematic in the modelling of the PMT reflections that leads to the shape differences in the peaks seen in the SMELLIE data.
+
+\begin{figure}
+    \centering
+    \includegraphics[width=\textwidth]{4_SMELLIESimulation/images/latelight.pdf}
+    \caption[Comparison of Laserball data in the water phase to MC]
+    {Comparison of Laserball data in the water phase to MC, with a wavelength of \SI{420}{\nm}. The latest peak comes from PMT reflections. From~\cite{andersonOpticalCalibrationSNO2021}.}
+    \label{fig:smellie_laserball_late_light_data_vs_mc}
+\end{figure}
+
+
+The other prominent difference is the magnitude of the peak at \SI{0}{\ns}, with data appearing to have a peak over twice the size of simulation. This can clearly be seen for the results of both fibres in Fig.~\ref{fig:smellie_tres_back_data_vs_mc_water}. What could cause this discrepancy? One simple explanation is that the intensity calibration of the MC is wrong. Because the intensity of the simulation shown here has been forced to match that of the outer water back-scattered light, if the scattering length of this water is systematically off in simulation then so too would the intensity calibration. If this were the case, then the true Rayleigh scattering length of the outer water would have to be substantially longer than expected in order to explain the discrepancy in the peak at \SI{0}{\ns}. However, this would cause a substantial change in the magnitudes of the two later peaks. Given that these two late peaks have magnitudes which appear to agree with data under the current intensity calibration, a large systematic in the UPW scattering length does not seem like the primary cause of this systematic.
+
+A second hypothesis for explaining the difference in peak heights at \SI{0}{\ns} is that there is far more light being reflected off of the AV surface than expected. As discussed in Section~\ref{sec:optical_processes}, standard specular reflection is entirely determined by the refractive indices of the two media, and the angle of incidence of the light. The refractive indices of the UPW and acrylic are well-known, and because FS007 is a \ang{0} fibre, the angles of incidence of light rays will be close to \ang{0} also. The fact that there appears to be good agreement between data and MC in the peak from reflections off of the far AV surface casts strong doubt on a substantial miscalculation of the specular reflection. An alternative theory is the existence of a diffusive reflection component on the AV surface, due to a surface roughness. This could possibly explain the existence of a peak seen in data in Fig.~\ref{fig:smellie_tres_back_data_vs_mc_fs155}, but not in the MC.
+
+There are two further hypotheses which could possibly help to explain the \SI{0}{\ns} peak discrepancy. One is that the extra light in this peak comes from scattering in the acrylic, with the scattering length being much shorter than currently modelled. The current \texttt{RAT} model indicates that only a negligible fraction of light gets scattered in the acrylic, so there would need to be a dramatic change in the scattering length. The final hypothesis is that the rope reflections are currently being mismodelled. Currently, the model for rope reflections in \texttt{RAT} assumes 60\% reflectivity with the reflections being purely diffusive. However, this is based on preliminary estimates only, with no formal calibration to back this reflection model up. It could be the case that a different reflection model could help to alleviate the tension between data and model in the peak, although it is challenging to see how the all the difference could be attributed to purely this.
+
+% {
+% \color{blue}
+%     \begin{itemize}
+%         \item The observed distribution of hits vs time and angle in MC does not match data in a number of ways for PMTs near the fibre emission point.
+%         \item Includes the outer-water scattering length, rope reflections, and investigations into whether certain modifications to the optics could plausibly fix things (so far, no).
+%     \end{itemize}
+%    [6 pages]
+
+%    [32 PAGES TOTAL]
+% }
