@@ -26,7 +26,7 @@ The \textit{Standard Model} (SM) of Particle Physics is the culmination of a cen
 Crucial to understanding the nature of neutrinos is their interactions with other particles. Within the SM, the weak nuclear force and electromagnetism are unified into the Electroweak (EW) Theory by the work of Glashow, Salam, and Weinberg~\cite{glashowPartialsymmetriesWeakInteractions1961,weinbergModelLeptons1967,salamWeakElectromagneticInteractions1994}. % Cite foundational EW papers
 This is a so-called \textit{chiral gauge field theory}. Gauge field theories are a special type of quantum field theory which demand that the Lagrangian density $\mathcal{L}$ is invariant under certain kinds of transformation, in addition to the usual requirement of Lorentz invariance. For EW, the Lagrangian is invariant under `local' transformations of the fields' internal degrees of freedom, defined by the `gauge' group $SU(2)_{L}\times U(1)_{Y}$, where $L$ and $Y$ are known as the left-handed weak isospin and weak hypercharge, respectively.
 
-A local transformation is one which changes values of the fields at all points in spacetime. By demanding invariance under these gauge transformations, as well as Lorentz invariance, the theory naturally predicts the existence of vector (spin-1) boson particles. These are known as the `gauge' bosons of the theory, and they mediate the interactions defined by the gauge group. The massive $W^{\pm}$ and $Z^{0}$ bosons, discovered by the UA1 and UA2 experiments in 1983~\cite{arnisonExperimentalObservationIsolated1983,bannerObservationSingleIsolated1983,arnisonExperimentalObservationLepton1983}, % CITE!!!
+A local transformation is one which changes values of the fields in a manner that is dependent on the spacetime coordinates. By demanding invariance under these gauge transformations, as well as Lorentz invariance, the theory naturally predicts the existence of vector (spin-1) boson particles. These are known as the `gauge' bosons of the theory, and they mediate the interactions defined by the gauge group. The massive $W^{\pm}$ and $Z^{0}$ bosons, discovered by the UA1 and UA2 experiments in 1983~\cite{arnisonExperimentalObservationIsolated1983,bannerObservationSingleIsolated1983,arnisonExperimentalObservationLepton1983}, % CITE!!!
 mediate the weak nuclear force, whilst the massless photon $\gamma$ mediates the electromagnetic force.
 
 The theory of EW interactions is also \textit{chiral}. Any spinor that defines the wavefunction of a spin-$1/2$ field can be split into its left- and right-handed `chiral' components, defined through the projection operators $P_{L,R} = \frac{1\mp\gamma^{5}}{2}$. The force associated with the $SU(2)_{L}$ part of the EW gauge group only interacts with the left-handed components of particles, denoted with the subscript $L$ on their wavefunction.
@@ -66,8 +66,8 @@ So far in this description, no attempt has been made to explain the origin of th
 The weak vector bosons $W^{\pm}$ and $Z$ would then need to be massless, in contradiction with observations.
 
 \nomenclature{\textbf{BEH}}{Brout-Englert-Higgs (Mechanism)}
-The solution to this problem comes in the form of the \textit{Brout-Englert-Higgs (BEH) Mechanism}~\cite{englertBrokenSymmetryMass1964,higgsBrokenSymmetriesMasses1964,guralnikGlobalConservationLaws1964}, % cite BEH theory papers
-the final component of the SM.  In this Mechanism, an additional two-component ``Higgs'' field $H$ is proposed, which is able to interact with the other fields of the theory in a manner that preserves the SM gauge symmetries. One part of the added Higgs field interactions are the so-called Yukawa terms, which for interactions with leptons are given by:
+The solution to this problem comes in the form of the \textit{Brout-Englert-Higgs (BEH) Mechanism}~\cite{englertBrokenSymmetryMass1964,higgsBrokenSymmetriesMasses1964,guralnikGlobalConservationLaws1964}. % cite BEH theory papers
+In this Mechanism, an additional two-component ``Higgs'' field $H$ is proposed, which is able to interact with the other fields of the theory in a manner that preserves the SM gauge symmetries. One part of the added Higgs field interactions are the so-called Yukawa terms, which for interactions with leptons are given by:
 \begin{equation}\label{eq:SM_yukawa_leptons}
     -\mathcal{L}_{\mathrm{Yukawa,lep}} = \sum_{\ell}y_{\ell}\bar{L}^{\ell}H\ell^{c} + \mathrm{h.c.},
 \end{equation}
@@ -92,7 +92,8 @@ Even stronger limits are available from cosmology, by looking in part at the pow
 \subsection{The Evidence for Neutrino Oscillations}\label{sec:nu_osc_evidence}
 Despite the current lack of any direct measurements, we now know that at least some neutrino flavours must have mass. This is because of the phenomenon of \textit{neutrino oscillations}, which have been observed over a variety of experiments and contexts. The critical pieces of evidence for this process are described here; the underlying mathematical model that is used to explain them quantitatively is described in Section~\ref{sec:nu_osc_phenom}.
 
-\subsubsection{The Solar Neutrino Problem}
+% \subsubsection{The Solar Neutrino Problem}
+\subsubsection{Solar Neutrinos}
 \nomenclature{\textbf{SSM}}{Standard Solar Model}
 Neutrinos are generated from the Sun as a by-product of the fusion reactions at its core. At the highest level, protons fuse into alpha particles by the overall reaction \ce{4p \to ^{4}He{} + 2e^{+} + 2\nu_{e}}, generating also $\sim\SI{25}{\MeV}$ of energy that enables the Sun to shine~\cite{bahcallNeutrinoAstrophysics1989}. % cite Bahcall Neutrino Astrophysics.
 This process is known as `hydrogen burning'. The Standard Solar Model (SSM) is the current best quantitative description of stellar evolution for main sequence stars, and our Sun in particular. It covers the nuclear reactions that generate both the energy that powers the star and the changes in the relative isotopic abundances, how the energy is transported out through the star via radiation of photons and convection, and how the outward pressures caused by this radiation is balanced by gravity to maintain hydrostatic equilibrium. An introduction to the SSM can be found in~\cite{bahcallNeutrinoAstrophysics1989}. % cite Bahcall's book again.
@@ -121,22 +122,31 @@ The SSM quantitatively predicts the flux and energy spectra of neutrinos generat
     \label{fig:ssm_neutrino_spectra}
 \end{figure}
 
-The rate of the \beight{} interaction in the Sun, and hence the generated neutrino flux, depend strongly on the radial temperature distribution of the Sun, the cross-sections of the pp chain nuclear reactions, and the Sun's chemical composition. The latter point remains a topic of some controversy: measurements of the relative abundances in 1998 through spectroscopy of the Sun's photosphere as well as meteorites give a `metal-to-hydrogen' ratio of $Z/X = 0.023$~\cite{grevesseStandardSolarComposition1998}, whereas a more recent study in 2009 has a substantially lower value of $Z/X = 0.018$~\cite{asplundChemicalCompositionSun2009}. `Metal' here is used in the astrophysical sense: elements heavier than hydrogen or helium. These two models are called the `high-metallicity' \texttt{GS98} model and `low-metallicity' \texttt{AGSS09met} model, respectively. The current best SSM associated with these two abundance models, denoted \texttt{B16\_GS98} and \texttt{B16\_AGSS09met}, have \beight{} flux predictions of $\Phi_{\beight{}} = (5.46\pm12\%)\times 10^{6}\,\si{\per\cm\squared\per\second}$ and $\Phi_{\beight{}} = (4.50\pm12\%)\times 10^{6}\,\si{\per\cm\squared\per\second}$, respectively~\cite{vinyolesB16StandardSolar2018}.
+The rate of the \beight{} decays in the Sun, and hence the generated neutrino flux, depend strongly on the radial temperature distribution of the Sun, the cross-sections of the pp chain nuclear reactions, and the Sun's chemical composition. The latter point remains a topic of some controversy: measurements of the relative abundances in 1998 through spectroscopy of the Sun's photosphere as well as meteorites give a `metal-to-hydrogen' ratio of $Z/X = 0.023$~\cite{grevesseStandardSolarComposition1998}, whereas a more recent study in 2009 has a substantially lower value of $Z/X = 0.018$~\cite{asplundChemicalCompositionSun2009}.
+\footnote{`Metal' here is used in the astrophysical sense: elements heavier than hydrogen or helium.} 
+These two models are called the `high-metallicity' \texttt{GS98} model and `low-metallicity' \texttt{AGSS09met} model, respectively. The current best SSM associated with these two abundance models, denoted \texttt{B16\_GS98} and \texttt{B16\_AGSS09met}, have \beight{} flux predictions of $\Phi_{\beight{}} = (5.46\pm12\%)\times 10^{6}\,\si{\per\cm\squared\per\second}$ and $\Phi_{\beight{}} = (4.50\pm12\%)\times 10^{6}\,\si{\per\cm\squared\per\second}$, respectively~\cite{vinyolesB16StandardSolar2018}.
 
-\nomenclature{\textbf{SNU}}{Solar Neutrino Unit, defined as $10^{-36}$ neutrino interactions per second}
-The first experiment built to measure solar neutrinos was that of the Homestake Chlorine Detector, starting in the late 1960s~\cite{davisSearchNeutrinosSun1968}. A large tank of \ce{C_{2}Cl_{4}} was put deep underground, whereby electron neutrinos could be captured by the \ce{^{37}Cl} nuclei: \ce{^{37}Cl{} + \nu_{e} \to ^{37}Ar{} + e^{-}}. Through a careful chemical extraction process, any atoms of \ce{^{37}Ar} generated in the tank could be counted with an efficiency over 90\%. After running the experiment for a period of almost 30 years, a final measurement of the solar neutrino interaction rate was $2.56\pm0.16(\mathrm{stat.})\pm0.16(\mathrm{sys.})\,\mathrm{ SNU}$~\cite{clevelandMeasurementSolarElectron1998}, % cite Ray davis
-where 1 SNU (`Solar Neutrino Unit') is defined as $10^{-36}$ events per target atom per second. The results as a function of time can be seen in Fig.~\ref{fig:homestake_results}.
+% Rest of this subsubsection had a bunch of stuff on the history of the solar neutrino problem.
+% Armin rightly points out that I can save space here by not covering this in much detail at all!
+% I do need to make sure I explain neutrino-electron elastic scattering theory, though.
 
-\begin{figure}
-    \centering
-    \includegraphics[width=0.8\textwidth]{1_NeutrinoTheory/Figs/homestake_summary_results.png}
-    \caption[]{Observed rate in the Homestake Chlorine detector, over the lifetime of the experiment. Taken from~\cite{clevelandMeasurementSolarElectron1998}.}
-    \label{fig:homestake_results}
-\end{figure}
+Since the late 1960s, a number of experiments have been able to detect solar neutrinos, using different techniques. The earliest of these was the Homestake Chlorine detector, which used the capture of electron neutrinos on \ce{^{37}Cl} nuclei to generate \ce{^{37}Ar{}} atoms that could be chemically extracted and counted~\cite{davisSearchNeutrinosSun1968}. In a similar vein, the SAGE and GALLEX/GNO experiments detected the capture of electron neutrinos on \ce{^{71}Ga}~\cite{abdurashitovMeasurementSolarNeutrino2009,altmannCompleteResultsFive2005}.
 
-In contrast, according to one particular recent SSM using the GS98 metallicity model, the expected rate is $8.46^{+0.87}_{-0.88}\,\mathrm{ SNU}$~\cite{pena-garaySolarNeutrinosSolar2008}, highly inconsistent with the results at Homestake. This disagreement became known as the \textit{Solar Neutrino Problem}, and was the first piece of evidence towards neutrino oscillations.
 
-Since the Homestake experiment, a series of solar neutrino experiments used a variety of different target isotopes to measure the rate of solar neutrinos. In all cases, the measured rates were substantially below what is expected from the SSM. The SAGE and GALLEX/GNO experiments used the capture of electron neutrinos on \ce{^{71}Ga} to measure the capture rate: the final observations were $65.4^{+3.1}_{-3.0}(\mathrm{stat.})\,^{+2.6}_{-2.8}(\mathrm{sys.})\,\mathrm{ SNU}$~\cite{abdurashitovMeasurementSolarNeutrino2009} and $69.3\pm4.1\pm3.6\,\mathrm{ SNU}$~\cite{altmannCompleteResultsFive2005}, respectively. An SSM expectation is $127.9^{+8.1}_{-8.2}$~\cite{pena-garaySolarNeutrinosSolar2008}. Because the capture on \ce{^{71}Ga} has a much lower energy threshold than \ce{^{37}Cl}, these experiments were able to show that the Solar Neutrino Problem was associated with the low-energy pp neutrinos as much as the higher energy \beight{} and \ce{^{7}Be} neutrinos.
+% \nomenclature{\textbf{SNU}}{Solar Neutrino Unit, defined as $10^{-36}$ neutrino interactions per second}
+% The first experiment built to measure solar neutrinos was that of the Homestake Chlorine Detector, starting in the late 1960s~\cite{davisSearchNeutrinosSun1968}. A large tank of \ce{C_{2}Cl_{4}} was put deep underground, whereby electron neutrinos could be captured by the \ce{^{37}Cl} nuclei: \ce{^{37}Cl{} + \nu_{e} \to ^{37}Ar{} + e^{-}}. Through a careful chemical extraction process, any atoms of \ce{^{37}Ar} generated in the tank could be counted with an efficiency over 90\%. After running the experiment for a period of almost 30 years, a final measurement of the solar neutrino interaction rate was $2.56\pm0.16(\mathrm{stat.})\pm0.16(\mathrm{sys.})\,\mathrm{ SNU}$~\cite{clevelandMeasurementSolarElectron1998}, % cite Ray davis
+% where 1 SNU (`Solar Neutrino Unit') is defined as $10^{-36}$ events per target atom per second. The results as a function of time can be seen in Fig.~\ref{fig:homestake_results}.
+
+% \begin{figure}
+%     \centering
+%     \includegraphics[width=0.8\textwidth]{1_NeutrinoTheory/Figs/homestake_summary_results.png}
+%     \caption[]{Observed rate in the Homestake Chlorine detector, over the lifetime of the experiment. Taken from~\cite{clevelandMeasurementSolarElectron1998}.}
+%     \label{fig:homestake_results}
+% \end{figure}
+
+% In contrast, according to one particular recent SSM using the GS98 metallicity model, the expected rate is $8.46^{+0.87}_{-0.88}\,\mathrm{ SNU}$~\cite{pena-garaySolarNeutrinosSolar2008}, highly inconsistent with the results at Homestake. This disagreement became known as the \textit{Solar Neutrino Problem}, and was the first piece of evidence towards neutrino oscillations.
+
+% Since the Homestake experiment, a series of solar neutrino experiments used a variety of different target isotopes to measure the rate of solar neutrinos. In all cases, the measured rates were substantially below what is expected from the SSM. The SAGE and GALLEX/GNO experiments used the capture of electron neutrinos on \ce{^{71}Ga} to measure the capture rate: the final observations were $65.4^{+3.1}_{-3.0}(\mathrm{stat.})\,^{+2.6}_{-2.8}(\mathrm{sys.})\,\mathrm{ SNU}$~\cite{abdurashitovMeasurementSolarNeutrino2009} and $69.3\pm4.1\pm3.6\,\mathrm{ SNU}$~\cite{altmannCompleteResultsFive2005}, respectively. An SSM expectation is $127.9^{+8.1}_{-8.2}$~\cite{pena-garaySolarNeutrinosSolar2008}. Because the capture on \ce{^{71}Ga} has a much lower energy threshold than \ce{^{37}Cl}, these experiments were able to show that the Solar Neutrino Problem was associated with the low-energy pp neutrinos as much as the higher energy \beight{} and \ce{^{7}Be} neutrinos.
 
 \nomenclature{\textbf{ES}}{Elastic Scattering}
 The Kamiokande experiment, and its successor Super-Kamiokande, are large water Cherenkov detectors, sensitive to neutrinos through neutrino-electron elastic scattering (ES): $\nu_{x} + e^{-}\to\nu_{x} + e^{-}$. All flavours of neutrino are capable of scattering through a NC process, but there is an additional CC mode for electron neutrinos, as shown in Fig.~\ref{fig:nu_e_es_feynman_diagrams}. The differential cross-section for this interaction as a function of the scattered electron's kinetic energy $T$ is given by~\cite{bahcallSolarNeutrinosRadiative1995}: % cite Bahcall
@@ -174,11 +184,11 @@ where $i = e, \mu$\footnote{
 %     \label{fig:nu_e_es_xsec}
 % \end{figure}
 
-The most recent combined measurement of the \beight{} solar neutrino flux in Super-Kamiokande is $(2.345\pm0.014(\mathrm{stat.})\pm0.036(\mathrm{sys.}))\times10^{6}\,\si{\per\cm\squared\per\second}$~\cite{abeSolarNeutrinoMeasurements2016}, roughly half the amount expected from the SSM~\cite{vinyolesB16StandardSolar2018}.
+% The most recent combined measurement of the \beight{} solar neutrino flux in Super-Kamiokande is $(2.345\pm0.014(\mathrm{stat.})\pm0.036(\mathrm{sys.}))\times10^{6}\,\si{\per\cm\squared\per\second}$~\cite{abeSolarNeutrinoMeasurements2016}, roughly half the amount expected from the SSM~\cite{vinyolesB16StandardSolar2018}.
 
 \nomenclature{\textbf{SNO}}{Sudbury Neutrino Observatory}
 \nomenclature{\textbf{UPW}}{Ultra-pure water}
-One of the most important experiments for demonstrating that neutrino oscillations are the solution to the Solar Neutrino Problem was the Sudbury Neutrino Observatory, SNO. A large spherical acrylic vessel \SI{2.2}{\km} underground was filled with \num{1000} tonnes of heavy water, \ce{D_{2}O}, from which Cherenkov light due to particle interactions could be detected~\cite{BOGER2000172}. Neutrinos were able to interact with the heavy water via three complementary modes: the CC process \ce{\nu_{e} + d \to e^{-} + 2p}, the NC process \ce{\nu_{x} + d \to \nu_{x} + p{} + n}, and the ES process described above.
+A consistent finding in all of these solar neutrino experiments was that the measured rate of neutrino interactions was substantially less the expectation given by the SSM~\cite{clevelandMeasurementSolarElectron1998,abdurashitovMeasurementSolarNeutrino2009,altmannCompleteResultsFive2005,abeSolarNeutrinoMeasurements2016}. This was known as the \textit{Solar Neutrino Problem}. To solve it, the Sudbury Neutrino Observatory, SNO, was built. A large spherical acrylic vessel \SI{2.2}{\km} underground was filled with \num{1000} tonnes of heavy water, \ce{D_{2}O}, from which Cherenkov light due to particle interactions could be detected~\cite{BOGER2000172}. Neutrinos were able to interact with the heavy water via three complementary modes: the CC process \ce{\nu_{e} + d \to e^{-} + 2p}, the NC process \ce{\nu_{x} + d \to \nu_{x} + p{} + n}, and the ES process described above.
 
 Results of the measured fluxes of $\nu_{e}$ and $\nu_{\mu,\tau}$ solar neutrinos for the three detection modes in SNO, ES results from Super-Kamiokande, and comparison to the SSM are shown in Fig.~\ref{fig:sno_flux_results}. Because the NC interaction is insensitive to neutrino flavour, it is able to directly measure the total flux of \beight{} solar neutrinos, regardless of flavour. One can see that, from the results, the NC flux measurement is consistent with the SSM. In contrast, the CC mode is only sensitive to the $\nu_{e}$ flux, whilst the ES mode is sensitive to an admixture of the different neutrino flavours. The results of all measurements of solar neutrinos from both SNO and Super-Kamiokande lead to consistent values of the flux of \beight{} neutrinos for each flavour, consistent also with the SSM.
 
@@ -190,66 +200,75 @@ Results of the measured fluxes of $\nu_{e}$ and $\nu_{\mu,\tau}$ solar neutrinos
     \label{fig:sno_flux_results}
 \end{figure}
 
-% ADD BOREXINO, KamLAND results???
-
-\subsubsection{The Atmospheric Neutrino Anomaly}
-Atmospheric neutrinos come from the decays of cosmic ray pions and muons in the Earth's atmosphere. One can show that the expected ratio of the flux of muon neutrinos to electron neutrinos generated in the atmosphere should be about 2~\cite{fukudaEvidenceOscillationAtmospheric1998}. % cite something!
-The IBM~\cite{becker-szendyElectronMuonneutrinoContent1992}, % cite
+\subsubsection{Other Evidence for Neutrino Oscillations}
+% Deliberately trying to be brief here! There's no real need to go into gory detail about a full play-by-play.
+There are three other major areas in which neutrino oscillations have been observed. The first are atmospheric neutrinos, which come from the decays of cosmic rays in the Earth's atmosphere. In the  IBM~\cite{becker-szendyElectronMuonneutrinoContent1992}, % cite
 Kamiokande~\cite{fukudaAtmosphericVmveRatio1994}, % cite
 and Super-Kamiokande~\cite{fukudaEvidenceOscillationAtmospheric1998} % cite
-experiments were able to detect atmospheric neutrinos through CC interactions with electrons in the water, generating electron or muon tracks (depending on the neutrino flavour) that could be distinguished by the shape of their Cherenkov rings. In all cases, the observed ratio of $\nu_{\mu}$ to $\nu_{e}$ events was consistently below expectations. This was known as the Atmospheric Neutrino Anomaly.
+experiments, these neutrinos were detected via CC interactions in water, with the ability to distinguish between electron and muon tracks coming from electron and muon neutrinos, respectively. It was consistently observed that the observed ratio of $\nu_{\mu}$ to $\nu_{e}$ events was consistently below expectations, a phenomenon known at the time as the \textit{Atmospheric Neutrino Anomaly}. Super-Kamiokande was able to show~\cite{ashieEvidenceOscillatorySignature2004} that the anomaly could be explained by a disappearance of muon neutrinos that depends on the ratio $L/E$, where $L$ is the estimated distance from production of the neutrino, and $E$ is the neutrino energy.
 
-Super-Kamiokande was able to gather enough statistics from atmospheric neutrino interactions to demonstrate that there was a clear dependence on the rate of muon neutrino interactions as a function of the event direction. In particular, the asymmetry $A$ between the number of upward-going muon neutrino events $U$, and downward-going events $D$, was measured in one dataset to be~\cite{fukudaEvidenceOscillationAtmospheric1998}: % cite SK
-\begin{equation*}
-    A = \frac{U-D}{U+D} = -0.296 \pm 0.048(\mathrm{stat.}) \pm 0.01(\mathrm{sys.}),
-\end{equation*}
-a deviation from zero by over 6$\sigma$. In contrast, the asymmetry measured for atmospheric $\nu_{e}$ events was consistent with zero. Further analysis on the experiment looked at the rate of atmospheric $\nu_{\mu}$ events as a function of the ratio $L/E$, where $L$ is the estimated distance from production of the neutrino, and $E$ is the neutrino energy. The relative rate compared to expectations is shown in Fig.~\ref{fig:LE_plot_SK_atmos}. Taken together, these atmospheric neutrino results demonstrate that there is a disappearance of muon neutrinos which depends on the ratio $L/E$, whereas there is no similar effect for the electron neutrinos.
+The next class of evidence comes from the detection of electron anti-neutrinos from nuclear reactors. These have consistently been detected through the use of IBD, all the way back to the first observation of neutrinos by Cowan and Reines~\cite{cowanDetectionFreeNeutrino1956,reinesNeutrino1956}. Contemporary experiments such as KamLAND~\cite{gandoReactorOnoffAntineutrino2013}, Daya Bay~\cite{adeyMeasurementElectronAntineutrino2018}, Double Chooz~\cite{dekerretDoubleChoozTh132020}, and RENO~\cite{bakMeasurementReactorAntineutrino2018}, have all measured disappearances in the rate of IBD interactions that depended in an oscillatory manner on the ratio $L/E$.
 
-\begin{figure}
-    \centering
-    \begin{subfigure}{0.48\textwidth}
-        \centering
-        \includegraphics[width=0.95\linewidth]{1_NeutrinoTheory/Figs/sk_atmospherics_LE_plot.png}
-        \caption{}
-        \label{fig:LE_plot_SK_atmos}
-    \end{subfigure}
-    \begin{subfigure}{0.48\textwidth}
-        \centering
-        \includegraphics[width=0.95\linewidth]{1_NeutrinoTheory/Figs/kamland_reactor_LE_plot.png}
-        \caption{}
-        \label{fig:LE_plot_KamLAND_antinu}
-    \end{subfigure}
-    \begin{subfigure}{0.48\textwidth}
-        \centering
-        \includegraphics[width=0.95\linewidth]{1_NeutrinoTheory/Figs/dayabay_reactor_e_plot.png}
-        \caption{}
-        \label{fig:LE_plot_DayaBay}
-    \end{subfigure}
-    \begin{subfigure}{0.48\textwidth}
-        \centering
-        \includegraphics[width=0.95\linewidth]{1_NeutrinoTheory/Figs/T2K_numu_E_plot.png}
-        \caption{}
-        \label{fig:LE_plot_T2K_numu}
-    \end{subfigure}
-    \caption[]
-    {Plots of measured survival probability for various types of neutrinos, in different experiments, as a function of $L/E$ (or just $E$ when $L$ is fixed). \textbf{(a)}: Atmospheric neutrinos from Super-Kamiokande~\cite{ashieEvidenceOscillatorySignature2004}. The solid line indicates the best-fit expectation from 2-flavour neutrino oscillations; the dashed and dotted lines correspond to the alternative hypotheses of neutrino decay and decoherence, respectively. \textbf{(b)}: Reactor anti-neutrinos from KamLAND~\cite{gandoReactorOnoffAntineutrino2013}. $L_{0} = \SI{180}{\km}$ is the flux-weighted average reactor baseline; the blue bins and black dotted line correspond to the 3-flavour neutrino oscillation best-fit curve. \textbf{(c)}: Reactor anti-neutrinos from Daya Bay~\cite{adeyMeasurementElectronAntineutrino2018}. The expected number of events in the far site with/without neutrino oscillations (blue/red lines) based on the observations in the near site is compared to observations in the far site. \textbf{(d)}: Accelerator muon neutrinos from T2K~\cite{abeImprovedConstraintsNeutrino2021}.}
-    \label{fig:LE_plots}
-\end{figure}
+Finally, a variety of experiments have observed neutrinos that were generated from particle accelerators. In particular, the T2K~\cite{abeImprovedConstraintsNeutrino2021,abeObservationElectronNeutrino2014} and NOvA~\cite{adamsonConstraintsOscillationParameters2017,adamsonFirstMeasurementElectron2016} experiments have both been able to show the disappearance of both $\nu_{\mu}$ and $\bar{\nu}_{\mu}$ from their accelerator beams, along with the appearance of $\nu_{e}$ and $\bar{\nu}_{e}$. Recently, the two experiments have seen evidence for differences in the appearance and disappearance rates of neutrinos and antineutrinos~\cite{abeConstraintMatterAntimatter2020,aceroFirstMeasurementNeutrino2019}. In addition, the OPERA experiment was able to demonstrate the appearance of $\nu_{\tau}$ in their detector~\cite{agafonovaFinalResultsOPERA2018}.
 
-\subsubsection{Reactor Anti-neutrinos}
-The detection of $\bar{\nu}_{e}$ from nuclear reactors via IBD has been used not just to first detect the existence of neutrinos by Cowan and Reines~\cite{cowanDetectionFreeNeutrino1956,reinesNeutrino1956}, but also to provide evidence for neutrino oscillations. For example, the KamLAND experiment is a large-scale liquid scintillator detector based in Japan in which IBD events can be detected~\cite{gandoReactorOnoffAntineutrino2013}. % cite KamLAND
-The expected rate of these events could be derived from the known powers of the various Japanese nuclear reactors, as well as their distances from the experiment. The ratio of the measured rate to expectation as a function of $L_{0}/E$, where $L_{0}$ is the flux-averaged distance to the reactors, is shown in Fig.~\ref{fig:LE_plot_KamLAND_antinu}. The plot shows clear evidence of $\bar{\nu}_{e}$ disappearance, with an oscillatory dependence on $L_{0}/E$.
+% \subsubsection{The Atmospheric Neutrino Anomaly}
+% Atmospheric neutrinos come from the decays of cosmic ray pions and muons in the Earth's atmosphere. One can show that the expected ratio of the flux of muon neutrinos to electron neutrinos generated in the atmosphere should be about 2~\cite{fukudaEvidenceOscillationAtmospheric1998}. % cite something!
+% The IBM~\cite{becker-szendyElectronMuonneutrinoContent1992}, % cite
+% Kamiokande~\cite{fukudaAtmosphericVmveRatio1994}, % cite
+% and Super-Kamiokande~\cite{fukudaEvidenceOscillationAtmospheric1998} % cite
+% experiments were able to detect atmospheric neutrinos through CC interactions with electrons in the water, generating electron or muon tracks (depending on the neutrino flavour) that could be distinguished by the shape of their Cherenkov rings. In all cases, the observed ratio of $\nu_{\mu}$ to $\nu_{e}$ events was consistently below expectations. This was known as the Atmospheric Neutrino Anomaly.
 
-The Daya Bay~\cite{adeyMeasurementElectronAntineutrino2018}, Double Chooz~\cite{dekerretDoubleChoozTh132020}, and RENO~\cite{bakMeasurementReactorAntineutrino2018} experiments are all also liquid scintillator detectors that measured IBD interactions from reactors, but unlike KamLAND they were each placed only $\sim\SI{1}{\km}$ from a nuclear reactor. Each detector observed $\bar{\nu}_{e}$ disappearance over this much shorter length scale, also with a dependence on energy. The results from Daya Bay, as an example, are shown in Fig.~\ref{fig:LE_plot_DayaBay}. Interestingly, the magnitude of the disappearance observed in these `short-baseline' reactor antineutrino experiments is different to those seen in the `long-baseline' KamLAND experiment.
+% Super-Kamiokande was able to gather enough statistics from atmospheric neutrino interactions to demonstrate that there was a clear dependence on the rate of muon neutrino interactions as a function of the event direction. In particular, the asymmetry $A$ between the number of upward-going muon neutrino events $U$, and downward-going events $D$, was measured in one dataset to be~\cite{fukudaEvidenceOscillationAtmospheric1998}: % cite SK
+% \begin{equation*}
+%     A = \frac{U-D}{U+D} = -0.296 \pm 0.048(\mathrm{stat.}) \pm 0.01(\mathrm{sys.}),
+% \end{equation*}
+% a deviation from zero by over 6$\sigma$. In contrast, the asymmetry measured for atmospheric $\nu_{e}$ events was consistent with zero. Further analysis on the experiment looked at the rate of atmospheric $\nu_{\mu}$ events as a function of the ratio $L/E$, where $L$ is the estimated distance from production of the neutrino, and $E$ is the neutrino energy. The relative rate compared to expectations is shown in Fig.~\ref{fig:LE_plot_SK_atmos}. Taken together, these atmospheric neutrino results demonstrate that there is a disappearance of muon neutrinos which depends on the ratio $L/E$, whereas there is no similar effect for the electron neutrinos.
 
-\subsubsection{Accelerator Neutrinos}
-Neutrinos generated from accelerators have been able to demonstrate numerous pieces of direct evidence for neutrino oscillations. These accelerators are able to generate very high intensity beams of $\nu_{\mu}$ and $\bar{\nu}_{\mu}$, with some background of $\nu_{e}$ and $\bar{\nu}_{e}$. Much like experiments designed for reactor antineutrino measurements, accelerator neutrino detectors tend to come in two main varieties: long- and short-baseline. Typically, long-baseline experiments have two detectors, one near to the point of neutrino generation, and the much-larger far detector where the main oscillation measurements take place. The near-detector is used to ascertain the precise composition of neutrino beam, in order to minimise systematics in the composition of the beam as well as interaction cross-sections.
+% \begin{figure}
+%     \centering
+%     \begin{subfigure}{0.48\textwidth}
+%         \centering
+%         \includegraphics[width=0.95\linewidth]{1_NeutrinoTheory/Figs/sk_atmospherics_LE_plot.png}
+%         \caption{}
+%         \label{fig:LE_plot_SK_atmos}
+%     \end{subfigure}
+%     \begin{subfigure}{0.48\textwidth}
+%         \centering
+%         \includegraphics[width=0.95\linewidth]{1_NeutrinoTheory/Figs/kamland_reactor_LE_plot.png}
+%         \caption{}
+%         \label{fig:LE_plot_KamLAND_antinu}
+%     \end{subfigure}
+%     \begin{subfigure}{0.48\textwidth}
+%         \centering
+%         \includegraphics[width=0.95\linewidth]{1_NeutrinoTheory/Figs/dayabay_reactor_e_plot.png}
+%         \caption{}
+%         \label{fig:LE_plot_DayaBay}
+%     \end{subfigure}
+%     \begin{subfigure}{0.48\textwidth}
+%         \centering
+%         \includegraphics[width=0.95\linewidth]{1_NeutrinoTheory/Figs/T2K_numu_E_plot.png}
+%         \caption{}
+%         \label{fig:LE_plot_T2K_numu}
+%     \end{subfigure}
+%     \caption[]
+%     {Plots of measured survival probability for various types of neutrinos, in different experiments, as a function of $L/E$ (or just $E$ when $L$ is fixed). \textbf{(a)}: Atmospheric neutrinos from Super-Kamiokande~\cite{ashieEvidenceOscillatorySignature2004}. The solid line indicates the best-fit expectation from 2-flavour neutrino oscillations; the dashed and dotted lines correspond to the alternative hypotheses of neutrino decay and decoherence, respectively. \textbf{(b)}: Reactor anti-neutrinos from KamLAND~\cite{gandoReactorOnoffAntineutrino2013}. $L_{0} = \SI{180}{\km}$ is the flux-weighted average reactor baseline; the blue bins and black dotted line correspond to the 3-flavour neutrino oscillation best-fit curve. \textbf{(c)}: Reactor anti-neutrinos from Daya Bay~\cite{adeyMeasurementElectronAntineutrino2018}. The expected number of events in the far site with/without neutrino oscillations (blue/red lines) based on the observations in the near site is compared to observations in the far site. \textbf{(d)}: Accelerator muon neutrinos from T2K~\cite{abeImprovedConstraintsNeutrino2021}.}
+%     \label{fig:LE_plots}
+% \end{figure}
 
-A wide variety of accelerator neutrino experiments have taken place over the past 25 years. The long-baseline experiments T2K and NOvA have both demonstrated disappearance of both $\nu_{\mu}$ and $\bar{\nu}_{\mu}$ from their accelerator beams with high statistical significance~\cite{abeImprovedConstraintsNeutrino2021,adamsonConstraintsOscillationParameters2017}. % cite T2K, Nova
-An example of the observed energy spectrum from a predominantly $\nu_{\mu}$-type beam, as seen by T2K, is shown in Fig.~\ref{fig:LE_plot_T2K_numu}. In contrast to the energy spectrum of the neutrinos at production, which is unimodal, this plot shows oscillations in the observed rate as a function of neutrino energy. 
+% \subsubsection{Reactor Anti-neutrinos}
+% The detection of $\bar{\nu}_{e}$ from nuclear reactors via IBD has been used not just to first detect the existence of neutrinos by Cowan and Reines~\cite{cowanDetectionFreeNeutrino1956,reinesNeutrino1956}, but also to provide evidence for neutrino oscillations. For example, the KamLAND experiment is a large-scale liquid scintillator detector based in Japan in which IBD events can be detected~\cite{gandoReactorOnoffAntineutrino2013}. % cite KamLAND
+% The expected rate of these events could be derived from the known powers of the various Japanese nuclear reactors, as well as their distances from the experiment. The ratio of the measured rate to expectation as a function of $L_{0}/E$, where $L_{0}$ is the flux-averaged distance to the reactors, is shown in Fig.~\ref{fig:LE_plot_KamLAND_antinu}. The plot shows clear evidence of $\bar{\nu}_{e}$ disappearance, with an oscillatory dependence on $L_{0}/E$.
 
-T2K and NOvA have also been able to observe the appearance of $\nu_{e}$ and $\bar{\nu}_{e}$ (as appropriate) in their far detectors, well above the background rate expected~\cite{abeObservationElectronNeutrino2014,adamsonFirstMeasurementElectron2016}. Recently, the two experiments have seen evidence for differences in the appearance and disappearance rates of neutrinos and antineutrinos~\cite{abeConstraintMatterAntimatter2020,aceroFirstMeasurementNeutrino2019}. % cite CP violation papers.
-In addition to the appearance of $\nu_{e}$ shown by T2K and NOvA, the OPERA long-baseline neutrino experiment was able to show the appearance of $\nu_{\tau}$ in detector~\cite{agafonovaFinalResultsOPERA2018}. % cite OPERA
+% The Daya Bay~\cite{adeyMeasurementElectronAntineutrino2018}, Double Chooz~\cite{dekerretDoubleChoozTh132020}, and RENO~\cite{bakMeasurementReactorAntineutrino2018} experiments are all also liquid scintillator detectors that measured IBD interactions from reactors, but unlike KamLAND they were each placed only $\sim\SI{1}{\km}$ from a nuclear reactor. Each detector observed $\bar{\nu}_{e}$ disappearance over this much shorter length scale, also with a dependence on energy. The results from Daya Bay, as an example, are shown in Fig.~\ref{fig:LE_plot_DayaBay}. Interestingly, the magnitude of the disappearance observed in these `short-baseline' reactor antineutrino experiments is different to those seen in the `long-baseline' KamLAND experiment.
+
+% \subsubsection{Accelerator Neutrinos}
+% Neutrinos generated from accelerators have been able to demonstrate numerous pieces of direct evidence for neutrino oscillations. These accelerators are able to generate very high intensity beams of $\nu_{\mu}$ and $\bar{\nu}_{\mu}$, with some background of $\nu_{e}$ and $\bar{\nu}_{e}$. Much like experiments designed for reactor antineutrino measurements, accelerator neutrino detectors tend to come in two main varieties: long- and short-baseline. Typically, long-baseline experiments have two detectors, one near to the point of neutrino generation, and the much-larger far detector where the main oscillation measurements take place. The near-detector is used to ascertain the precise composition of neutrino beam, in order to minimise systematics in the composition of the beam as well as interaction cross-sections.
+
+% A wide variety of accelerator neutrino experiments have taken place over the past 25 years. The long-baseline experiments T2K and NOvA have both demonstrated disappearance of both $\nu_{\mu}$ and $\bar{\nu}_{\mu}$ from their accelerator beams with high statistical significance~\cite{abeImprovedConstraintsNeutrino2021,adamsonConstraintsOscillationParameters2017}. % cite T2K, Nova
+% An example of the observed energy spectrum from a predominantly $\nu_{\mu}$-type beam, as seen by T2K, is shown in Fig.~\ref{fig:LE_plot_T2K_numu}. In contrast to the energy spectrum of the neutrinos at production, which is unimodal, this plot shows oscillations in the observed rate as a function of neutrino energy. 
+
+% T2K and NOvA have also been able to observe the appearance of $\nu_{e}$ and $\bar{\nu}_{e}$ (as appropriate) in their far detectors, well above the background rate expected~\cite{abeObservationElectronNeutrino2014,adamsonFirstMeasurementElectron2016}. Recently, the two experiments have seen evidence for differences in the appearance and disappearance rates of neutrinos and antineutrinos~\cite{abeConstraintMatterAntimatter2020,aceroFirstMeasurementNeutrino2019}. % cite CP violation papers.
+% In addition to the appearance of $\nu_{e}$ shown by T2K and NOvA, the OPERA long-baseline neutrino experiment was able to show the appearance of $\nu_{\tau}$ in detector~\cite{agafonovaFinalResultsOPERA2018}. % cite OPERA
  
 % short-baseline neutrino anomaly???
 
@@ -317,8 +336,8 @@ $E_{i}$ is the energy eigenvalues corresponding to the associated mass eigenstat
 \begin{align}\label{eq:nu_osc_vacuum}
     P\left(\nu_{\alpha}\to\nu_{\beta}\right) &=
         \delta_{\alpha\beta} 
-        - 4\sum_{i<j}\Re\left\{W_{\alpha\beta,ij}\right\}\sin^{2}\left(\frac{\Delta m^{2}_{ij}L}{4E}\right)\nonumber\\
-        &- 2\sum_{i<j}\Im\left\{W_{\alpha\beta,ij}\right\}\sin\left(\frac{\Delta m^{2}_{ij}L}{2E}\right),
+        - 4\sum_{i<j}\operatorname{Re}\left\{W_{\alpha\beta,ij}\right\}\sin^{2}\left(\frac{\Delta m^{2}_{ij}L}{4E}\right)\nonumber\\
+        &- 2\sum_{i<j}\operatorname{Im}\left\{W_{\alpha\beta,ij}\right\}\sin\left(\frac{\Delta m^{2}_{ij}L}{2E}\right),
 \end{align}
 where $\delta_{\alpha\beta}$ is the usual Kronecker delta, $W_{\alpha\beta,ij}=U_{\alpha i}U_{\beta i}^{*}U_{\alpha j}^{*}U_{\beta j}$, $\Delta m^{2}_{ij}=m^{2}_{i} - m^{2}_{j}$, $L$ is the distance between the creation and detection of the neutrinos, and $E_{i}\approx E$ is the average energy of the neutrino. As can be seen, the probability will oscillate as a function of $L/E$, in accordance with what was seen in Section~\ref{sec:nu_osc_evidence}.
 
@@ -334,9 +353,9 @@ An experiment is only sensitive to neutrino oscillations from mass splitting $\D
 \begin{equation}\label{eq:nu_osc_phase}
     X_{ij} = \frac{\Delta m^{2}_{ij} L}{4E} = 1.27 \frac{\Delta m^{2}_{ij} [10^{-3}\,\si{\eV\squared}] L [\si{\km}]}{E [\si{MeV}]}.
 \end{equation}
-If $X_{ij}\ll 1$, then $\sin^{2}\left(X_{ij}\right)\to 0$, and no oscillations are seen due to that mass splitting. If instead $X_{ij}\gg 1$, then what can only be observed is the average effect over many oscillations, $\left<\sin^{2}\left(X_{ij}\right)\right> = 1/2$.
+If $X_{ij}\ll 1$, then $\sin^{2}\left(X_{ij}\right)\to 0$, and no oscillations are seen due to that mass splitting. If instead $X_{ij}\gg 1$, then as detectors have limited distance and energy resolutions, what can only be observed is the average effect over many oscillations, $\left<\sin^{2}\left(X_{ij}\right)\right> = 1/2$.
 
-From the results of a variety of neutrino oscillation experiments, the oscillation parameters and magnitudes of the mass splittings have now been measured, with varying degrees of precision. A global fit of the experimental data by the NuFit group in October 2021~\cite{estebanFateHintsUpdated2020} give the values shown in Table~\ref{tab:nufit_osc_params}. All the parameters appear to have no-zero values, implying that mixing between all neutrino flavours is possible. Furthermore, $|\dmsq{}|\ll|\Delta m^{2}_{31}|\sim|\Delta m^{2}_{32}|$, meaning there are two distinct `scales' in $L/E$ that are sensitive to neutrino oscillations.
+From the results of a variety of neutrino oscillation experiments, the oscillation parameters and magnitudes of the mass splittings have now been measured, with varying degrees of precision. A global fit of the experimental data by the NuFit group in October 2021~\cite{estebanFateHintsUpdated2020} give the values shown in Table~\ref{tab:nufit_osc_params}. All the parameters appear to have no-zero values, implying that mixing between all neutrino flavours is possible. Furthermore, $|\dmsq{}|\ll|\Delta m^{2}_{31}|\sim|\Delta m^{2}_{32}|$, meaning there are two distinct `scales' in $L/E$ that are sensitive to neutrino oscillations: $L/E\sim\SI{10}{\km\per\MeV}$ and $L/E\sim\SI{0.3}{\km\per\MeV}.$
 
 \begin{table}
     \centering
@@ -358,7 +377,7 @@ From the results of a variety of neutrino oscillation experiments, the oscillati
 
 \nomenclature{\textbf{IH}}{Normal Hierarchy (of neutrino masses)}
 \nomenclature{\textbf{NH}}{Inverted Hierarchy (of neutrino masses)}
-In addition to this information, we also know from solar data that the sign of \dmsq{} must be positive, for reasons that will be explained in the next section. However, the same cannot be yet said for $\Delta m^{2}_{31}$. This leads to two possible scenarios of the ordering of the neutrino mass states. If the sign of $\Delta m^{2}_{31}$ is positive, then $m_{\nu_{1}}<m_{\nu_{2}}<m_{\nu_{3}}$, known as the Normal Hierarchy (NH). Alternatively, $m_{\nu_{3}}<m_{\nu_{1}}<m_{\nu_{2}}$, known as the Inverted Hierarchy (IH).
+In addition to this information, we also know from solar data that the sign of \dmsq{} must be positive, due to the MSW Effect: this will be explained in the next section. However, the same cannot be yet said for $\Delta m^{2}_{31}$. This leads to two possible scenarios of the ordering of the neutrino mass states. If the sign of $\Delta m^{2}_{31}$ is positive, then $m_{\nu_{1}}<m_{\nu_{2}}<m_{\nu_{3}}$, known as the Normal Hierarchy (NH). Alternatively, $m_{\nu_{3}}<m_{\nu_{1}}<m_{\nu_{2}}$, known as the Inverted Hierarchy (IH).
 
 \subsubsection{Neutrino Oscillations in Matter}
 Considering only neutrino oscillations in vacuum is insufficient to understanding the results of certain neutrino experiments, especially those detecting high-energy solar neutrinos, such as those from the \beight{} chain. Using Eq.~\ref{eq:nu_osc_phase} for the case of solar neutrinos, one finds that $X_{ij}\gg 1$ for all $i,j$, so all effects of neutrino oscillations in the vacuum should be washed out. This leads to an expected electron neutrino survival probability for solar neutrinos of:
@@ -372,8 +391,7 @@ using the parameters in Table~\ref{tab:nufit_osc_params}. This survival probabil
 \nomenclature{\textbf{MSW effect}}{Mikheyev-Smirnov-Wolfenstein effect (of neutrinos)}
 The resolution of this apparent problem is that the effect of matter on neutrino oscillations have not been considered. When neutrinos travel through a medium, the electrons, protons, and neutrons within that medium interact weakly with those neutrinos, leading to coherent forward elastic scattering. The resulting phenomenon is known as the \textit{MSW effect}, after its discovery by Mikheyev, Smirnov, and Wolfenstein~\cite{wolfensteinNeutrinoOscillationsMatter1978,mikheyevResonantAmplificationOscillations1986}. %cite MSW effect papers
 
-One can show that there is an effective potential due to these weak interactions of the form $V_{CC}(x) = \sqrt{2}G_{F}n_{e}(x)$, where $n_{e}(x)$ is the electron number density at a position $x$~\cite{giuntiChapterNeutrinoOscillations2007}. % cite something
-This effective potential is only felt by electron neutrinos, because of the additional CC interaction possible, as seen in Fig.~\ref{fig:nu_e_es_feynman_diagrams}. All neutrino flavours experience NC interactions identically, and so can be ignored in what follows. The effective potential modifies the Hamiltonian, and therefore by the Schr\"{o}dinger Equation the propagation of the neutrino wavefunctions are modified.
+One can show~\cite{giuntiChapterNeutrinoOscillations2007} that there is an effective potential due to the CC weak interactions from the electrons within the medium of the form $V_{CC}(x) = \sqrt{2}G_{F}n_{e}(x)$, where $n_{e}(x)$ is the electron number density at a position $x$. This effective potential is only felt by electron neutrinos, because of the additional CC interaction possible, as seen in Fig.~\ref{fig:nu_e_es_feynman_diagrams}. All neutrino flavours experience NC interactions identically, and so the effective potential generated by NC interactions from electrons, protons, and neutrons can be ignored in what follows. The effective potential modifies the Hamiltonian, and therefore by the Schr\"{o}dinger Equation the propagation of the neutrino wavefunctions are modified.
 
 The resulting dynamics of the MSW effect for 3-$\nu$ oscillations in a general medium can become quite complex. However, for the case of solar neutrinos two simplifying assumptions can be made that make many of the equations far more tractable: a full discussion can be read in e.g.~\cite{giuntiChapter13Phenomenology2007}. % cite Giutti
 Firstly, for solar neutrinos it can be shown that $A_{CC} = 2EV_{CC} \ll \Delta m^{2}_{31}$, leading to the evolution of the $\nu_{3}$ state decoupling from the $\nu_{1}$ and $\nu_{2}$ states. There exists a new basis in which the Hamiltonian is diagonalised, known as the matter eigenstate basis, leading to new effective oscillation parameters: %cite Giutti
@@ -384,7 +402,7 @@ Firstly, for solar neutrinos it can be shown that $A_{CC} = 2EV_{CC} \ll \Delta 
 \end{align}
 $A_{res}$ is the value of $A_{CC}$ at which a resonance occurs, leading to the effective mass splitting $\Delta m^{2}_{M,21}$ being minimised. In the core of the Sun, this resonance occurs at an energy of $E\sim \SI{2}{\MeV}$. If $A_{CC} \ll A_{res}$, then the effective oscillation parameters reduce back to the vacuum oscillation parameters, as expected. If instead $A_{res} \ll A_{CC} \ll \Delta m^{2}_{31}$, then $\theta_{12}^{M}\to \pi/2$. In this case, $\nu_{e}$ that are created in the medium are completely driven into the $\ket{\nu_{2}^{M}}$ effective mass eigenstate.
 
-Because the values of the effective oscillation parameters are a function of the electron density of the medium, calculating the full impact of the MSW effect of a medium with strongly-changing density can be challenging. However, If the rate of change of electron density is slow enough as a function of distance, a second approximation can be made: this is known as the \textit{adiabatic approximation}. For solar neutrinos, this approximation has been shown to be valid assuming the SSM and the measured values of the oscillation parameters. Under this approximation, states that are in a given effective mass eigenstate smoothly transform into one another as the neutrinos propagate. Therefore, an electron neutrino with high-enough energy that it has been driven into the $\ket{\nu_{2}^{M}}$ state in the Sun's core will then smoothly transform into the equivalent $\ket{\nu_{2}}$ mass eigenstate once it has reached the Sun's surface. This state then travels through space without any further oscillations occurring, because the neutrino has been transformed into a mass eigenstate. For such a neutrino, the detection probability becomes simply:
+Because the values of the effective oscillation parameters are a function of the electron density of the medium, calculating the full impact of the MSW effect of a medium with strongly-changing density can be challenging. However, If the rate of change of electron density is slow enough as a function of distance, a second approximation can be made: this is known as the \textit{adiabatic approximation}. For solar neutrinos, this approximation has been shown to be valid assuming the SSM and the measured values of the oscillation parameters. Under this approximation, states that are in a given effective mass eigenstate smoothly transform into one another as the neutrinos propagate. Therefore, an electron neutrino with energies $\gg\SI{2}{\MeV}$ will have been driven into the $\ket{\nu_{2}^{M}}$ state in the Sun's core, and then smoothly transformed into the equivalent $\ket{\nu_{2}}$ mass eigenstate once it has reached the Sun's surface. This state then travels through space without any further oscillations occurring, because the neutrino has been transformed into a mass eigenstate. For such a neutrino, the detection probability becomes simply:
 \begin{align}
     P(\nu_{2}\to\nu_{e}) &= |\Braket{\nu_{e}|\nu_{2}}|^{2} = |U_{e2}|^{2}\\
                          &= \sin^{2}\tonetwo{}\cos^{2}\theta_{13}\\
@@ -392,7 +410,7 @@ Because the values of the effective oscillation parameters are a function of the
 \end{align}
 using the oscillation parameters from Table~\ref{tab:nufit_osc_params}. This survival probability is almost half of the value seen in Eq.~\ref{eq:solar_pee_naive}.
 
-At intermediate energies, solar neutrinos are only partly driven into the $\ket{\nu_{2}^{M}}$ eigenstate, leading to a survival probability that is somewhere in-between the two extremes: $0.30\leq P_{ee} \leq 0.55$. The value of $P_{ee}$ for a given neutrino will be dependent on both the neutrino's energy and its location of production in the Sun: a neutrino generated closer to the core of Sun will have to travel through regions of greater electron density, driving the effective mixing angle $\theta_{12}^{M}$ larger.
+At intermediate energies, $E_{\nu}\sim\SI{2}{\MeV}$, solar neutrinos are only partly driven into the $\ket{\nu_{2}^{M}}$ eigenstate, leading to a survival probability that is somewhere in-between the two extremes: $0.30\leq P_{ee} \leq 0.55$. The value of $P_{ee}$ for a given neutrino will be dependent on both the neutrino's energy and its location of production in the Sun: a neutrino generated closer to the core of Sun will have to travel through regions of greater electron density, driving the effective mixing angle $\theta_{12}^{M}$ larger.
 
 Looking at data, Fig.~\ref{fig:pee_solar_data} shows the measured values of $P_{ee}$ for a number of different types of solar neutrino, each with their own characteristic energy spectrum. Also shown is the expectation after considering the MSW effect: as can be seen, the solar neutrino data appears consistent with this model.
 
@@ -403,7 +421,7 @@ Looking at data, Fig.~\ref{fig:pee_solar_data} shows the measured values of $P_{
     \label{fig:pee_solar_data}
 \end{figure}
 
-Important to note is that the resonance phenomenon of the MSW effect requires a positive sign for \dmsq{} to occur, given that $0\leq\tonetwo{}\leq\pi/4$. If $\dmsq{}<0$, then in the case where $|A_{CC}|\gg |A_{res}|$, $\theta_{12}^{M}$ will be driven to 0 instead of $\pi/2$. This would lead to the survival probability of solar neutrinos increasing at higher energies, entirely counter to what is seen in data. Because of this, the sign of \dmsq{} is known to be positive.
+Important to note is that the resonance phenomenon of the MSW effect requires a positive sign for \dmsq{} to occur, given that $0\leq\tonetwo{}\leq\pi/4$. If $\dmsq{}<0$, then in the case where $|A_{CC}|\gg |A_{res}|$, $\theta_{12}^{M}$ will be driven to 0 instead of $\pi/2$. This would lead to the survival probability of solar neutrinos increasing at higher energies, entirely counter to what is seen in data. Because of this, the sign of \dmsq{} is known to be positive, as mentioned in the previous section.
 
 % \begin{itemize}
 %     \item Describe the current phenomenological model of 3-flavour neutrino oscillations that can explain all of this evidence: the PMNS mixing matrix.
@@ -433,13 +451,13 @@ where there is now no longer a coupling to the Higgs field, and instead the char
 Many of these BSM theories, for example ones that include a so-called `Seesaw Mechanism', also have a means of explaining why neutrinos have such light masses, without having to resort to `unnatural' Yukawa coupling strengths~\cite{minkowskiEgRateOne1977}. % cite 
 For this term to exist neutrinos must be a `Majorana particle', in which they are their own antiparticle, expressed mathematically as $\nu^{c} = \nu$. This is named after Ettore Majorana, who realised that a mass term such as the above could exist under these special conditions~\cite{majoranaTeoriaSimmetricaElettrone1937}. % cite Majorana
 
-The existence of this Majorana mass term would have major consequences, beyond just allowing for neutrino masses. Crucially, the term violates lepton number, as it allows for neutrinos to annihilate one another. Because all other terms in the SM conserve the `accidental' symmetry of lepton number conservation, any evidence of lepton number violation with neutrinos can provide strong evidence that neutrinos are Majorana particles.
+The existence of this Majorana mass term would have major consequences, beyond just allowing for neutrino masses. Crucially, the term violates lepton number, as it allows for neutrinos to annihilate one another. Fig.~\ref{fig:feynman_diagram_ovbb} shows an example of a process which violates lepton number by two, as two electrons have been created without any anti-leptons. Because all other terms in the SM conserve the `accidental' symmetry of lepton number conservation, any evidence of lepton number violation with neutrinos can provide strong evidence that neutrinos are Majorana particles.
 
 \nomenclature{\textbf{\onbb{}}}{Neutrinoless double beta decay}
 \nomenclature{\textbf{\twonbb{}}}{Two-neutrino double beta decay}
 One prominent search mode for determining whether neutrinos have a Majorana mass term is by looking for \textit{neutrinoless double beta decay}, \onbb{}. This is a variant of the radioactive decay known as \textit{two-neutrino double beta decay}, \twonbb{}, and was first hypothesised by Wendell H Furry~\cite{furryTransitionProbabilitiesDouble1939}. % cite Furry paper
 \twonbb{} is a nuclear process theorised by Maria Goeppert-Mayer~\cite{goeppert-mayerDoubleBetaDisintegration1935}, % cite
-in which two $\beta$-decays occur simultaneously in one nucleus, generating two electrons and two electron anti-neutrinos. This is only possible in the subset of isotopes for which \twonbb{} is energetically favourable, but the usual single $\beta$-decay is not (or indeed any other form of nuclear decay).
+in which two $\beta$-decays occur simultaneously in one nucleus, generating two electrons and two electron anti-neutrinos. This is only possible in the subset of isotopes for which \twonbb{} is energetically allowed, but the usual single $\beta$-decay is not (or indeed any other form of nuclear decay).
 
 One example of an isotope capable of \twonbb{} is \ce{^{130}Te}. Fig.~\ref{fig:bb_isobar_example} shows the mass excesses of the nuclear ground state energy levels for isotopes in the isobar $A = 130$. As can be seen, \ce{^{130}Te} is not capable of $\beta^{-}$-decay to \ce{^{130}I}, but decay via \twonbb{} down to the stable isotope \ce{^{130}Xe} is possible. This process has been observed by the CUORE experiment~\cite{adamsMeasurementEnsuremathNu2021}, % cite CUORE
 and \twonbb{} has been similarly observed in a number of other isotopes such as \ce{^{76}Ge}~\cite{agostiniResultsBetaBeta2015}, % cite
