@@ -11,7 +11,7 @@ This chapter begins by explaining how it is possible to measure the solar oscill
 
 \section{Analysis Methodology}\label{sec:analysis_method}
 \subsection{Observational Principle}\label{sec:solar_obs_principle}
-There are two key properties of solar neutrinos and their interactions that enable neutrino oscillations from solar neutrinos to be measured. The first of these is the dependence of the electron neutrino survival probability, $P_{ee}$, on both the individual oscillation parameters and the neutrino energy. As discussed in Section~\ref{sec:nu_osc_phenom}, $P_{ee}$ is dependent on the oscillation parameters \tonetwo{} and $\theta_{13}$ when propagating through the vacuum of space (after averaging over very many oscillations), and the effective oscillation parameters $\theta_{12}^{M}$ and $\Delta m^{2}_{M,21}$ when passing through the Sun or Earth. By Eq.~\ref{eq:matter_osc_params}, this leads to an overall dependence of $P_{ee} = P_{ee}\left(\theta_{12}, \theta_{13}, \Delta m^{2}_{12}\right)$.
+There are three key properties of solar neutrinos and their interactions that enable neutrino oscillations to be measured. The first of these is the dependence of the electron neutrino survival probability, $P_{ee}$, on both the individual oscillation parameters and the neutrino energy. As discussed in Section~\ref{sec:nu_osc_phenom}, $P_{ee}$ is dependent on the oscillation parameters \tonetwo{} and $\theta_{13}$ when propagating through the vacuum of space (after averaging over very many oscillations), and the effective oscillation parameters $\theta_{12}^{M}$ and $\Delta m^{2}_{M,21}$ when passing through the Sun or Earth. By Eq.~\ref{eq:matter_osc_params}, this leads to an overall dependence of $P_{ee} = P_{ee}\left(\theta_{12}, \theta_{13}, \Delta m^{2}_{12}\right)$.
 
 Fig.~\ref{fig:pee_osc_param_dependence} shows the dependence of each of these oscillation parameters on $P_{ee}(E)$, as well as the oscillation parameter $\Delta m^{2}_{13}$ for comparison. It is clear that only the parameters \dmsq{} and \tonetwo{} have a substantial impact on $P_{ee}(E)$. Because of this, only \dmsq{} and \tonetwo{} will be varied in this analysis, with $\theta_{13}$ and $\Delta m^{2}_{13}$ being fixed at the global fit values shown in Table~\ref{tab:nufit_osc_params}.
 
@@ -19,7 +19,7 @@ Fig.~\ref{fig:pee_osc_param_dependence} shows the dependence of each of these os
 % that, after considering matter-induced oscillations due to neutrinos passing through the Sun and possibly the Earth, $P_{ee} = P_{ee}\left(\tan2\theta^{M}_{12}, \sin\theta^{M}_{13}, \Delta m^{2}_{21,M}\right) = P_{ee}\left(\theta_{12}, \theta_{13}, \Delta m^{2}_{12}, \Delta m^{2}_{13}\right)$. Fig.~\ref{fig:pee_osc_param_dependence} shows the dependence of each of these four oscillation parameters on $P_{ee}(E)$. We can see that in reality only the two parameters \dmsq{} and \tonetwo{} have a substantial impact on $P_{ee}(E)$ and hence the observed electron energy spectrum. Because of this, for this analysis we will only ever vary these two oscillation parameters, and keep $\theta_{13}$ and $\Delta m^{2}_{13}$ at their current ``NuFit 5.1'' global fit values\footnote{We use the global fit results excluding Super-Kamiokande's atmospheric data, and assuming normal ordering of the neutrino mass hierarchy. This choice has a tiny impact on the magnitudes of these two fixed parameters, the main impact being the sign of $\Delta m^{2}_{13}$.} % Confirm that mass hierarchy has no impact on Pee.
 % of $\sin^{2}\theta_{13} = 0.0222$ and $\Delta m^{2}_{13} = +\SI{2.515e-3}{\eV\squared}$~\cite{estebanFateHintsUpdated2020}.% nufit citation
 
-\begin{figure}
+\begin{figure}[!th]
     \centering
     \includegraphics[width=\textwidth]{6_SolarAnalysis/images/pee_scan_plots.pdf}
     \caption[$P_{ee}$ as a function of true neutrino energy, scanned over a variety of oscillation parameter values]
@@ -27,8 +27,7 @@ Fig.~\ref{fig:pee_osc_param_dependence} shows the dependence of each of these os
     \label{fig:pee_osc_param_dependence}
 \end{figure}
 
-This dependence of $P_{ee}$ on the oscillation parameters is not enough on its own to allow \dmsq{} and \tonetwo{} to be measured. If a purely NC weak interaction was used to detect the solar neutrinos, then there would be no way of telling the flavour-state of an interacting neutrino. To avoid this problem, this analysis used neutrino-electron elastic scattering as the interaction mechanism. As discussed in Section~\ref{sec:nu_osc_evidence}, this interaction has an additional CC mode for electron neutrinos only, on top of an NC mode for all flavours of neutrino. This modifies the differential cross-section for electron neutrinos compared to other neutrino flavours. As a result, the resulting differential interaction rate $R$ for solar neutrinos in the detector as a function of the neutrino energy $E_{\nu}$, is given by:
-
+This dependence of $P_{ee}$ on the oscillation parameters is not enough on its own to allow \dmsq{} and \tonetwo{} to be measured. If a purely NC weak interaction was used to detect the solar neutrinos, then there would be no way of telling the flavour-state of an interacting neutrino. The second property that enables solar neutrino oscillation measurements is that of neutrino-electron elastic scattering, the interaction mechanism used in this analysis. As discussed in Section~\ref{sec:nu_osc_evidence}, this interaction has an additional CC mode for electron neutrinos only, on top of an NC mode for all flavours of neutrino. This modifies the differential cross-section for electron neutrinos compared to other neutrino flavours. As a result, the resulting differential interaction rate $R$ for solar neutrinos in the detector as a function of the neutrino energy $E_{\nu}$, is given by:
 % As discussed in Section~\ref{sec:nu_osc_evidence}, % link to theory section on solar oscillations
 % it is possible to detect all flavours of neutrino through elastic scattering with electrons in the detector. Neutrinos can interact with the nuclei also, but generally the cross-sections of these interactions are orders of magnitude weaker than neutrino-electron elastic scattering~\cite{}, % CITE SOMETHING!
 % so are not considered in this analysis. If the neutrino-electron elastic scattering interaction was purely neutral-current, then there would be no way of telling the flavour-state of an interacting neutrino. However, electron neutrinos are able to interact through an additional charged-current mode, which modifies the cross-section for electron neutrinos. The Sun only generates electron neutrinos, so as the survival probability for electron neutrinos ($P_{ee}$) is modified due to a change in the neutrino oscillation parameters, the interaction probability of neutrinos with the detector will also. The resulting differential interaction rate $R$ for solar neutrinos in the detector as a function of the neutrino's energy, $E_{\nu}$, is given by:
@@ -42,67 +41,93 @@ This dependence of $P_{ee}$ on the oscillation parameters is not enough on its o
 \end{equation}
 where $\Phi_{\beight{}}$ is the total flux of \beight{} solar neutrinos, $S_{\nu}$ is the normalised incident energy spectrum of the solar neutrinos for all flavours, $n_{e}$ is the number of electron targets in the detector detection medium, and $\sigma_{\nu_{i}}$ is the neutrino-electron elastic scattering cross-section for flavour $i$.
 
-Of course, we do not directly measure neutrino energies in the detector --- only the associated scattered electron. If there were no correlation between the observed electron energy and its associated neutrino, then the only effect of neutrino oscillations would be to change the overall observed rate of events due to this process. There would be no change in the shape of the event's energy spectrum, even though neutrino oscillations are a function of neutrino energy. Fortunately, there is some dependence of $E_{\nu}$ on that of the scattered electron, $E_{e}$. This dependence can be seen in Fig.~\ref{fig:nu_elec_energy_dependence} for \beight{} electron neutrinos interacting in SNO+. % Expected analytical dependence?
-As can be seen, the dependence is weak, and comes mostly from basic energy conservation: If one observes a \SI{10}{\MeV} electron event in the detector, it cannot have come from a \SI{5}{\MeV} neutrino.
+Of course, neutrino energies are not directly measured in the detector --- only the associated scattered electron. The final property needed to observe solar neutrino oscillations is a correlation between the energies of the incident neutrino and the scattered electron. Using the formula in Eq.~\ref{eq:enu_es_xsec}, the differential cross-sections of electron neutrinos at different incident energies, as a function of the scattered electron's kinetic energy is shown in Fig.~\ref{fig:nu_elec_energy_dependence}. For a given value of $E_{\nu}$, conservation of energy limits the maximum allowed kinetic energy of the scattered electron, $T_{\mathrm{max}}$, to be:
+\begin{equation}
+    T_{\mathrm{max}} = \frac{2E_{\nu}^{2}}{m_{e}+2E_{\nu}}.
+\end{equation}
+This kinematic limit can be very clearly seen in the shapes of the differential cross-sections. As a result, a higher energy neutrino will generate a higher energy scattered electron, on average.
 
-\begin{figure}
+\begin{figure}[!th]
     \centering
-    \includegraphics[width=0.8\textwidth]{6_SolarAnalysis/images/b8_eelectrue_vs_enutrue.pdf}
-    \caption[True \beight{} $E_{\nu}$ versus true $E_{e}$.]{2D probability distribution comparing the true neutrino energy from a \beight{} $\nu_{e}$ to the true energy of the scattered electron. Also shown in red is the line $E_{\nu} = E_{e}$.}
+    \includegraphics[width=\textwidth]{6_SolarAnalysis/images/neutrino_electron_elastic_scattering_diff_xsecs.pdf}
+    \caption[differential cross-section for neutrino-electron elastic scattering of electron neutrinos as a function of $T$ and $E_{\nu}$]
+    {Plot showing the differential cross-section for neutrino-electron elastic scattering of electron neutrinos, $\frac{d\sigma_{\nu_{e}}}{dT}$, as a function of the kinetic energy of the scattered electron, $T$. This is shown for a variety of different incident neutrino energies.}
     \label{fig:nu_elec_energy_dependence}
 \end{figure}
 
-\begin{figure}
+\begin{figure}[!th]
     \centering
-    \includegraphics[width=0.75\textwidth]{6_SolarAnalysis/images/b8_energy_evolution.pdf}
-    \caption[The evolution of energy distributions related to \beight{} solar neutrino detection.]{The evolution of energy distributions related to \beight{} solar neutrino detection. The unoscillated neutrino spectrum is taken from~\cite{winterB8NeutrinoSpectrum2006}; % cite relevant SSM paper RAT uses
-    neutrino oscillations assume oscillation parameters from the current global fit results~\cite{estebanFateHintsUpdated2020} % NuFit
-    and $\nu_{e}$ survival probabilities calculated via the method described in Section~\ref{sec:osc_in_fit}. The latter three distributions were obtained from MC production as described in Section~\ref{sec:solar_dataset_livetime}, with the cross-section formula coming from~\cite{bahcallSolarNeutrinosRadiative1995}.% Bahcall radiative corrections paper
+    \includegraphics[width=\textwidth]{6_SolarAnalysis/images/b8_energy_evolution_new.pdf}
+    \caption[The evolution of energy distributions related to \beight{} solar neutrino detection]{The evolution of energy distributions related to \beight{} solar neutrino detection. The unoscillated neutrino spectrum is taken from~\cite{winterB8NeutrinoSpectrum2006}; % cite relevant SSM paper RAT uses
+    neutrino oscillations assume oscillation parameters from the current global fit results. The latter three distributions were obtained from MC production as described in Section~\ref{sec:solar_dataset_livetime}.% Bahcall radiative corrections paper
     }
     \label{fig:nu_elec_energy_dependence2}
 \end{figure}
 
-In Fig.~\ref{fig:nu_elec_energy_dependence2}, the impact each physical process has on the energy spectrum of the solar neutrinos can be seen. A broad energy distribution of \beight{} electron neutrinos are generated in the Sun. These neutrinos then oscillate their flavour state as they propagate to the detector, in an energy-dependent manner. When a (tiny) fraction of these neutrinos interact with the electrons in the detector, there is both an energy- and flavour-dependence on the cross-section. The scattered electrons gain a kinetic energy with some mild dependence on the inciting neutrino's energy, which is then measured by the detector to within some energy resolution.
+The combined effect that each of the above physical processes has on the energy spectrum of the solar neutrinos can be seen in Fig.~\ref{fig:nu_elec_energy_dependence2}. A broad energy distribution of \beight{} electron neutrinos are generated in the Sun. These neutrinos then oscillate their flavour state as they propagate to the detector, in an energy-dependent manner. When neutrinos interact with the electrons in the detector, there is both an energy- and flavour-dependence on the cross-section. The scattered electrons gain a kinetic energy with some mild dependence on the inciting neutrino's energy, which is then measured by the detector to within some energy resolution.
 
 \subsection{Background Processes}\label{sec:background_processes}
-Sadly, elastically-scattered electrons from \beight{} neutrinos are not the only events we see in the SNO+ detector during the scintillator phase. There are a number of background processes that our signal must compete against. Below a reconstructed energy of $\sim\SI{2.5}{\MeV}$, it is known that various backgrounds completely swamp any possible \beight{} signal, and so for this analysis we only consider processes that can generate reconstructed energies of at least $E_{\textrm{min}} = \SI{2.5}{\MeV}$. The following subsections explain each of these backgrounds, as well as methods that have been used to mitigate them as much as possible.
+There are a number of background processes that the solar signal must compete against. Below a reconstructed energy of $\sim\SI{2.5}{\MeV}$, it is known that low-energy backgrounds coming mainly from Uranium- and Thorium-chain isotopes coming from the natural radioactivity of the detector materials completely dominate over the \beight{} signal, and so for this analysis only processes that can generate reconstructed energies of at least $E_{\textrm{min}} = \SI{2.5}{\MeV}$ are considered. The following subsections explain each of the backgrounds present in the dataset above $E_{\mathrm{min}}$, as well as methods that have been used to mitigate them as much as possible.
 
 \subsubsection{Internal Uranium- and Thorium-Chain Backgrounds}\label{sec:u_th_internals}
-Although every effort has been made to make the scintillator cocktail that fills SNO+ to be as radio-pure as possible, there inevitably remain trace amounts of the radioactive isotopes that derive from the decay chains of the \ce{^{238}U} and \ce{^{232}Th} isotopes. Fig.~\ref{fig:u_th_decay_chains} shows these two decay chains. Fortunately, only a fraction of the radioactive isotopes in these chains actually are capable of generating events in the detector with energies above $E_{\textrm{min}}$: these have been highlighted in Fig.~\ref{fig:u_th_decay_chains} in gold.
+Although every effort has been made to make the scintillator cocktail that fills SNO+ to be as radio-pure as possible, there inevitably remain trace amounts of the radioactive isotopes that derive from the decay chains of the \ce{^{238}U} and \ce{^{232}Th} isotopes. Fig.~\ref{fig:u_th_decay_chains} shows these two decay chains. Only a fraction of the radioactive isotopes in these chains actually are capable of generating events in the detector with energies above $E_{\textrm{min}}$: these have been highlighted in Fig.~\ref{fig:u_th_decay_chains} in gold.
 
-\begin{figure}
+\begin{figure}[!th]
     \centering
-    \includegraphics[width=0.75\textwidth]{6_SolarAnalysis/images/U238_Th232_decay_chains_tereza.png}
+    \includegraphics[width=\textwidth]{6_SolarAnalysis/images/U238_Th232_decay_chains_tereza.png}
     \caption[The \ce{^{238}U} and \ce{^{232}Th} decay chains.]{The \ce{^{238}U} and \ce{^{232}Th} decay chains, taken from~\cite{kroupovaImprovingSensitivityNeutrinoless2020}. % Tereza's thesis
     Isotopic half-lives are given below their symbol; the Q-values for each decay, in MeV, is given in green. Downward arrows indicate an $\alpha$-decay; diagonal arrows indicate $\beta$-decay. Isotopes highlighted in gold are potential backgrounds for this solar analysis.}
     \label{fig:u_th_decay_chains}
 \end{figure}
 
-Of particular note are the decays of \ce{^{212}Bi} and \ce{^{214}Bi}. Both are capable of either $\alpha\textrm{-}$ or $\beta\textrm{-decays}$ to \ce{Tl} or \ce{Po} isotopes, respectively. For the former, it is the subsequent $\beta$-decay of the \ce{Tl} that can have a reconstructed energy above $E_{\textrm{min}}$. For the latter, the \ce{Bi} decay is the part of the pair of decays that can lie above $E_{\textrm{min}}$. Although the $\alpha$-decays here certainly have Q-values well above \SI{2.5}{\MeV}, the liquid scintillator quenches the observed energy well below $E_{\mathrm{min}}$. The so-called ``\ce{Bi-Po}'' decays are particularly special because the lifetimes of \ce{^{212}Po} and \ce{^{214}Po} are \SI{300}{\nano\second} and \SI{164}{\micro\second}, respectively, which are short enough to allow for highly-effective coincidence tagging.
+Of particular note are the decays of \ce{^{212}Bi} and \ce{^{214}Bi}, both of which can either $\alpha-\beta$ decay via \ce{Tl}, or $\beta-\alpha$ decay via \ce{Po}. For the former, it is the subsequent $\beta$-decay of the \ce{Tl} that can have a reconstructed energy above $E_{\textrm{min}}$. For the latter, the \ce{Bi} decay is the part of the pair of decays that can lie above $E_{\textrm{min}}$. Although the $\alpha$-decays here certainly have Q-values well above \SI{2.5}{\MeV}, the liquid scintillator quenches the observed energy to well below \SI{2.5}{\MeV}. The so-called ``\ce{Bi-Po}'' decays are particularly special because the lifetimes of \ce{^{212}Po} and \ce{^{214}Po} are \SI{300}{\nano\second} and \SI{164}{\micro\second}, respectively, which are short enough to allow for highly-effective coincidence tagging of these events.
 
 \nomenclature{\textbf{OOW}}{Out-of-window events}
 \nomenclature{\textbf{IW}}{In-window events}
-There are two main classes of \ce{Bi-Po} event in the detector: ``out-of-window'' (OOW) events for which the \ce{Bi} and \ce{Po} occur in separate triggered event windows, and ``in-window'' (IW) events whereby the \ce{Bi} and \ce{Po} occur within the same event window. These lead to two distinct strategies for tagging these kinds of events. For out-of-window \ce{Bi-Po}s, we look for a delayed coincidence of two events. Using the tagging algorithm suggested in~\cite{wilsonBiPoRejectionFactors2017,kroupovaImprovingSensitivityNeutrinoless2020} % Jeanne's BiPo tagging DocDB
-as a starting point, the chosen procedure was as follows. There must be two events that trigger the detector within \SI{4}{\micro\second} of one another, and both have a valid \texttt{scintFitter} position reconstruction within \SI{2}{\metre} of one another. The delayed candidate event must also have at least 100 cleaned PMT hits. %Must ensure cleaned nhits has been explained earlier
-This very broad coincidence tagging procedure was designed to ensure that the cut was as \textit{efficient} in tagging (and hence, rejecting) \ce{Bi-Po}s as possible, whilst negligibly impacting the solar signal. This is in contrast to the cuts chosen by Rafael Hunt-Stokes in~\cite{hunt-stokesUraniumThoriumBackground2022}, % Raf's BiPo tagging tech note on DocDB
-which try and obtain a highly \textit{pure} sample of \ce{Bi-Po} tags.
+There are two main classes of \ce{Bi-Po} event in the detector: ``out-of-window'' (OOW) events for which the \ce{Bi} $\beta$-decay and \ce{Po} $\alpha$-decay events occur in separate triggered events, and ``in-window'' (IW) events whereby the \ce{Bi} and \ce{Po} occur within the same event. These lead to two distinct strategies for tagging these kinds of events. For out-of-window \ce{Bi-Po}s, a delayed coincidence of two events is searched for in the same position: it is assumed that in the short time between the creation and decay of the daughter nucleus, there is negligible movement relative to the mother nucleus. Using the tagging algorithm suggested in~\cite{wilsonBiPoRejectionFactors2017,kroupovaImprovingSensitivityNeutrinoless2020} % Jeanne's BiPo tagging DocDB
+as a starting point, the chosen procedure is described in Table~\ref{tab:bipo_oow_tagging_requirements}. This choice of cuts was designed to be very broad, to ensure that the tagging was as \textit{efficient} in rejecting \ce{Bi-Po}s as possible, whilst negligibly impacting the solar signal. This is in contrast to the cuts chosen by Rafael Hunt-Stokes in~\cite{hunt-stokesUraniumThoriumBackground2022}, % Raf's BiPo tagging tech note on DocDB
+which uses a much tighter cut on position as well as cuts on the energies of the prompt and delayed events, to try and obtain a highly \textit{pure} sample of \ce{Bi-Po} tags.
 
-Of course, the above delayed coincidence procedure cannot catch any of the in-window \ce{Bi-Po} events. For these, we use a different approach. Because two decays happened in the same event window, we expect to see two distinct peaks in the event's time residual spectrum. In order to look for this event topology, a likelihood-ratio classifier was run over events, first developed by Eric Marzec~\cite{marzecBiPoEventReduction2013} % Eric's tech note on DocDB
+\begin{table}
+    \centering
+    \begin{tabular}{c >{\centering\arraybackslash}m{7.5 cm}}
+        \hline
+        Property      & Requirement \\ \hline \hline
+        Prompt Event  & Triggers detector, valid position reconstruction \\
+        Delayed Event & Triggers detector, valid position reconstruction, $\texttt{nhitsCleaned} \geq 100$ \\
+        $\Delta t$    & $<\SI{4}{\micro\second}$ \\
+        $\Delta R$    & $<\SI{2}{\metre}$ \\
+        \hline
+    \end{tabular}
+    \caption[Summary of cuts used for coincidence tagging]
+    {Summary of cuts used for coincidence tagging.}
+    \label{tab:bipo_oow_tagging_requirements}
+\end{table}
+
+The above delayed coincidence procedure cannot catch any of the IW \ce{Bi-Po} events. For these, a different approach is used. Because two decays happened in the same event, two distinct peaks in the event's time residual spectrum are expected to be seen. In order to look for this event topology, a likelihood-ratio classifier was run over events, first developed by Eric Marzec~\cite{marzecBiPoEventReduction2013} % Eric's tech note on DocDB
 and re-coordinated for the \SI{2.2}{\gpl} LABPPO scintillator optics by Ziping Ye~\cite{yeTaggingInwindowBiPo2022}. % Ziping's presentation on DocDB
-This classifier calculates the likelihood ratio between the null hypothesis of a \onbb{} event (a proxy in this analysis for single-site events such as our \beight{} signal) and the alternative hypothesis of an in-window \ce{Bi-Po} event. The more negative the value of the result, \texttt{alphabeta212}, the greater the evidence there is for rejecting the null hypothesis of a single-site event. Events with $\texttt{alphabeta212} < 0$, % WRITE FINAL CHOICE OF CUT!
+This classifier calculates the likelihood ratio between the null hypothesis of a \onbb{} event (a proxy in this analysis for single-decay events such as the \beight{} signal) and the alternative hypothesis of an IW \ce{Bi-Po} event. The results of this classifier are shown in Fig.~\ref{fig:bipo_tagging_IW}. As can be seen, the more negative the value of the result, \texttt{alphabeta212}, the greater the evidence there is for rejecting the null hypothesis of a single-site event. Events with $\texttt{alphabeta212} < 0$, % WRITE FINAL CHOICE OF CUT!
 or the equivalent for \ce{^{214}Bi-Po} events, \texttt{alphabeta214}, were then rejected.
 
+\begin{figure}[!th]
+    \centering
+    \includegraphics[width=\textwidth]{6_SolarAnalysis/images/bipo_tagging_1d.pdf}
+    \caption[The distributions of the IW \ce{^{212}Bi-Po} classifier for \ce{Bi-Po} and \beight{} events in simulation, within the analysis ROI]
+    {The distributions of the IW \ce{^{212}Bi-Po} classifier for \ce{Bi-Po} and \beight{} events in simulation, within the analysis ROI. The cut of $\texttt{alphabeta212} < 0$ clearly removes a large fraction of \ce{^{212}Bi-Po} events, and 2\% of \ce{^{214}Bi-Po} events, while keeping 99.89\% of the \beight{} signal. The relative normalisations before these cuts have been applied is arbitrary.}
+    \label{fig:bipo_tagging_IW}
+\end{figure}
+
 \nomenclature{\textbf{ROI}}{Region of Interest (of a physics analysis)}
-Combining both out-of-window and in-window \ce{Bi-Po} tagging, the impact on \ce{^{212}Bi-Po}, \ce{^{214}Bi-Po}, and \beight{} $\nu_e$ events can be seen in Fig.~\ref{fig:bipo_tagging_efficiency}. We consider here only events that pass all other cuts used in this analysis (other than the cuts for externals defined shortly): see Section~\ref{sec:event_selection} % link to cuts subsection
-for the specifics of the cuts used. Because of the different lifetimes of the decays, \ce{^{214}Bi-Po} decays predominantly fall out-of-window whilst \ce{^{212}Bi-Po} events are typically in-window. This explains why the out-of-window tagging is substantially better at cutting \ce{^{214}Bi-Po} decays, whereas the in-window tagging far better tags \ce{^{212}Bi-Po} decays. Overall, within the analysis region of interest (ROI), the two combined cuts are able to tag 99.77\% % CALCULATE
+Combining both OOW and IW \ce{Bi-Po} tagging, the impact on \ce{^{212}Bi-Po}, \ce{^{214}Bi-Po}, and \beight{} $\nu_e$ events can be seen in Fig.~\ref{fig:bipo_tagging_efficiency}. Only events that pass all other cuts used in this analysis (other than the cuts for externals defined shortly) are considered: these will be explained in Section~\ref{sec:event_selection}. % link to cuts subsection
+Because of the different lifetimes of the decays relative to the length of the event trigger window, \ce{^{214}Bi-Po} decays predominantly fall out-of-window whilst \ce{^{212}Bi-Po} events are typically in-window. This explains why the out-of-window tagging is substantially better at cutting \ce{^{214}Bi-Po} decays, whereas the in-window tagging far better tags \ce{^{212}Bi-Po} decays. Overall, within the analysis region of interest (ROI), the two combined cuts are able to tag 99.77\% % CALCULATE
 of \ce{^{214}Bi-Po} triggered events, 94.84\% % CALCULATE
 of \ce{^{212}Bi-Po} triggered events, whilst retaining 99.85\% % CALCULATE
 of \beight{} $\nu_e$ signal events.
 
-\begin{figure}
+\begin{figure}[!th]
     \centering
-    \includegraphics[width=0.8\textwidth]{6_SolarAnalysis/images/bipo_tagging_eff.pdf}
-    \caption[\ce{^{214}Bi-Po}, \ce{^{212}Bi-Po}, and \beight{} observed energy spectra before and after out-of-window and in-window cuts]{\ce{^{214}Bi-Po}, \ce{^{212}Bi-Po}, and \beight{} observed energy spectra in MC before and after out-of-window and in-window cuts. The relative normalisations before these cuts have been applied is arbitrary.}
+    \includegraphics[width=\textwidth]{6_SolarAnalysis/images/bipo_tagging_eff.pdf}
+    \caption[\ce{^{214}Bi-Po}, \ce{^{212}Bi-Po}, and \beight{} observed energy spectra before and after OOW and IW cuts]{\ce{^{214}Bi-Po}, \ce{^{212}Bi-Po}, and \beight{} observed energy spectra in MC before and after OOW and IW cuts. The relative normalisations before these cuts have been applied is arbitrary.}
     \label{fig:bipo_tagging_efficiency}
 \end{figure}
 
@@ -110,12 +135,13 @@ of \beight{} $\nu_e$ signal events.
 The impact of \ce{^{238}U}- and\ce{^{232}Th}-chain isotopes does not simply end at their direct decays. It is possible for the $\alpha$s generated during these decays to undergo their own interactions with nuclei in the detector. Within the organic scintillator of SNO+, the dominant interaction of this type is when an $\alpha$ collides with a \ce{^{13}C} nucleus, emitting a neutron: \ce{\alpha{} + ^{13}C -> ^{16}O + n}. This is known as an \alphan{} reaction.
 
 The topology of this reaction in the detector is a delayed coincidence, as shown in Fig.~\ref{fig:alpha_n_drawing}. % Iwan's alpha-n sketch
-The prompt signal can be generated through a number of processes, including the decay of an excited \ce{^{16}O} state. The neutron generated in the interaction then thermalises and gets captured by another nucleus --- usually hydrogen in SNO+ --- which creates an excited state that then eventually decays, creating a \ce{\gamma} that creates the delayed signal in the detector.
+The prompt signal can be generated through a number of processes, including the decay of an excited \ce{^{16}O} state. The neutron generated in the interaction then thermalises and gets captured by another nucleus --- usually hydrogen in SNO+ --- which creates an excited state that then eventually decays, creating a \ce{\gamma} that Compton scatters to create the delayed signal in the detector.
 
 \begin{figure}
     \centering
     \includegraphics[width=0.8\textwidth]{6_SolarAnalysis/images/alpha_n_schematic_Iwan_modified.pdf}
-    \caption[Schematic of \alphan{} interactions.]{Schematic of the three dominant modes of \alphan{} interaction, taken from~\cite{morton-blakeFirstMeasurementReactor2021}. % Iwan's thesis
+    \caption[Schematic of \alphan{} interactions]
+    {Schematic of the three dominant modes of \alphan{} interaction, taken from~\cite{morton-blakeFirstMeasurementReactor2021}. % Iwan's thesis
     }
     \label{fig:alpha_n_drawing}
 \end{figure}
@@ -132,40 +158,39 @@ As can be seen in Fig.~\ref{fig:alpha_n_coincidence_cut_impact}, \alphan{} inter
 
 
 \subsubsection{External Backgrounds}
-All materials within the SNO+ detector are radioactive, not just the liquid scintillator cocktail. This includes the acrylic, ropes, external water, and PMTs. These components have had their radiopurity ``assayed'' (that is, measured) throughout the detector's lifetime, often back to the construction of the original SNO detector itself. The materials other than the liquid scintillator are known to have far higher background levels, especially in the important \ce{^{238}U}- and \ce{^{232}Th}-chain backgrounds~\cite{andringaCurrentStatusFuture2016}. % good ref for this
-To distinguish between the inherent backgrounds within the scintillator, and the backgrounds from materials at larger radii, we use the terminology ``internal'' and ``external'', respectively.
+To distinguish between the inherent backgrounds within the scintillator, and the backgrounds from materials at larger radii, the terminology ``internal'' and ``external'', is used, respectively. External backgrounds can come from the acrylic, ropes, external water, and PMTs. These components have had their radiopurity measured throughout the detector's lifetime, often back to the construction of the original SNO detector itself. The materials other than the liquid scintillator are known to have far higher background levels, especially in the important \ce{^{238}U}- and \ce{^{232}Th}-chain backgrounds~\cite{andringaCurrentStatusFuture2016}. % good ref for this
 
 \nomenclature{\textbf{FV}}{Fiducial Volume}
-Although there are numerous external backgrounds, with a suitably accurate and precise position reconstruction algorithm they can be suitably handled. The simplest approach is with a so-called ``fiducial volume'' (FV) cut: just throw out all events that reconstruct beyond some radius. The only external background events that will reach within the FV are those that have reconstructed very poorly, or have some long-distance radiation that manages to deposit radiation close to the centre of the AV. % FOM cut?
+Although there are numerous external backgrounds, with an accurate and precise position reconstruction algorithm they can be efficiently rejected. The simplest approach is with a ``fiducial volume'' (FV) cut: all events that reconstruct beyond some radius are cut. The only external background events that will reach within the FV are those that have reconstructed very poorly, or have some long-distance radiation that manages to deposit radiation towards the centre of the AV. % FOM cut?
 Because $\alpha$ and $\beta$ radiation can only travel short distances through the detector, it is only $\gamma$ % and neutron?
-radiation that can realistically travel far enough into the detector to be able to reconstruct anywhere near the centre. Moreover, the intensity of this $\gamma$ radiation attenuates exponentially towards the centre of the detector, meaning only a tiny fraction of the total number of external events reconstruct within a \SI{3.5}{\metre} FV, say. This strong radial-dependence can be seen in Fig.~\ref{fig:external_radial_dependence}.
+radiation that can realistically travel far enough into the detector to be able to reconstruct anywhere near the centre. Moreover, the intensity of this $\gamma$ radiation attenuates exponentially with the Compton scattering length towards the centre of the detector. This strong radial-dependence can be seen in Fig.~\ref{fig:external_radial_dependence}.
 
 \begin{figure}
     \centering
     \includegraphics[width=0.8\textwidth]{6_SolarAnalysis/images/externals_radial_plot.pdf}
-    \caption[Radial dependence of external backgrounds considered in this analysis, as compared to the \beight{} signal]
-    {Radial dependence of external backgrounds considered in this analysis, as compared to the \beight{} signal. Events for all processes shown here had to pass the first 6 cuts of Table~\ref{tab:ev_selection}.}
+    \caption[Radial dependence of external backgrounds relevant in this analysis, as compared to the \beight{} signal]
+    {Radial dependence of external backgrounds relevant in this analysis, as compared to the \beight{} signal. Events for all processes shown here had to pass the first 6 cuts of Table~\ref{tab:ev_selection}.}
     \label{fig:external_radial_dependence}
 \end{figure}
 
-What this figure also demonstrates is that our solar signal has a completely different radial dependence to these backgrounds. As a result, if one considers not just the energy of events but also their reconstructed radius, then it is possible to get an additional handle on the external backgrounds. The FV cut can then be pushed further out to larger radii, allowing one to gain more signal statistics.
+What this figure also demonstrates is that the solar signal has a completely different radial dependence to these backgrounds. As a result, if one considers not just the energy of events but also their reconstructed radius, then it is possible to get an additional handle on the external backgrounds. The FV cut can then be pushed further out to larger radii, allowing one to gain more signal statistics.
 
 Work by Tereza Kroupova~\cite{kroupovaImprovingSensitivityNeutrinoless2020} % Tereza's thesis & full-scint re-coordination
-allows for additional means of distinguishing external backgrounds from the solar signal. The underlying assumption in the reconstruction of SNO+ events is that there was an electron at a single point, which is entirely valid for \beight{} elastic scattering events. However, external backgrounds can fail this assumption in two ways. Firstly, these radioactive decays often generate $\gamma$ radiation in addition to the main $\alpha$/$\beta$ particle, which creates a multi-site event. Because the \texttt{scintFitter} position reconstruction algorithm is not prepared for a distribution of energy depositions in the scintillator, the \tres{} distribution will broaden. This allows an event classifier to be built that distinguishes between the \tres{} distributions of single-site events and externals, known as the ``external background timing classifier'' (\texttt{ext0NuTimeTl208AVNaive}).
+allows for additional means of distinguishing external backgrounds from the solar signal. The underlying assumption in the reconstruction of SNO+ events is that photons were created from an electron which lost its kinetic energy in a near-point-like region of the scintillator. This is a reasonable assumption for \beight{} elastic scattering events. However, external backgrounds can fail this assumption in two ways. Firstly, these radioactive decays often generate $\gamma$ radiation in addition to the main $\alpha$/$\beta$ particle, which creates an event with energy depositions in multiple different positions: a ``multi-site'' event. Because the \texttt{scintFitter} position reconstruction algorithm is not designed to deal with multi-site events in the scintillator, the time residual distribution will change. This allows an event classifier to be built that distinguishes between the \tres{} distributions of single-site events and externals, known as the ``external background timing classifier'' (\texttt{ext0NuTimeTl208AVNaive}).
 
-Secondly, because external backgrounds that do reconstruct close to the centre of the detector typically have a $\gamma$ that travelled a long distance towards the centre of the detector, we expect the earliest light that hits the PMTs to arrive most often along the direction of the reconstructed position vector. A distribution of PMT hits for a given event as a function of their angular distribution relative to the direction of position reconstruction can be built, and compared to the expected distributions for single-site and external background events. This is known as the ``external background topological classifier'' (\texttt{ext0NuAngleTl208AV}). Much like the classifier described in Section~\ref{sec:u_th_internals}, the single-site events used for comparison were \onbb{} events, but these have a similar single-site structure to the solar signal of interest in this analysis.
+Secondly, external backgrounds should have the earliest PMT hits associated with PMTs closest to the main site of energy deposition. Because external events that reconstruct at small radii typically have a $\gamma$ that travelled a long distance towards the centre of the detector, the direction from the centre of the detector to the reconstructed position should point in the direction of the deposition from the $\gamma$, the main decay site, and hence the PMTs which were hit first. A distribution of PMT hits for a given event as a function of their angular distribution relative to this direction can be built, and compared to the expected distributions for single-site and external background events. This is known as the ``external background topological classifier'' (\texttt{ext0NuAngleTl208AV}).
 
-Fig.~\ref{fig:external_classifier_corr} shows the correlation between the two classifier results for both acrylic \ce{^{208}Tl} and \beight{} $\nu_{e}$ events in MC. These events were within the analysis ROI and also below \SI{5}{\MeV}, as external backgrounds never reconstruct above this energy. The other external backgrounds in MC have a similar distribution to that of the acrylic \ce{^{208}Tl}.
+Fig.~\ref{fig:external_classifier_corr} shows the correlation between the two classifier results for both \ce{^{208}Tl} decays in the acrylic, and \beight{} $\nu_{e}$ events, using MC. The other external backgrounds in MC have a similar distribution in the external classifiers to that of the \ce{^{208}Tl} decays in the acrylic.
 
 \begin{figure}
     \centering
     \includegraphics[width=0.8\textwidth]{6_SolarAnalysis/images/externals_tagging_eff.pdf}
-    \caption[]
-    {Distributions of the two external classifiers, for both the \beight{} signal and acrylic \ce{^{208}Tl} background MC. Contours indicate lines of equal probability density. All events shown were not just in the analysis ROI, but also below \SI{5}{\MeV}. Grey regions indicate the cuts used in this analysis.}
+    \caption[Distributions of the two external classifiers, for both the \beight{} signal and \ce{^{208}Tl} decays in the acrylic]
+    {Distributions of the timing and topological external classifiers, for both the \beight{} signal and \ce{^{208}Tl} decays in the acrylic. Contours indicate lines of equal probability density. All events shown were in the analysis ROI, and below \SI{5}{\MeV}. Grey regions indicate the cuts used in this analysis.}
     \label{fig:external_classifier_corr}
 \end{figure}
 
-As can be seen, the external background is far more spread out along both axes compared to the signal. This allows for discrimination of external backgrounds from the signal in the \SIrange{2.5}{5.0}{\MeV} range. For this analysis, a cut on both discriminants were used: to pass, an event required $\mathtt{ext0NuTimeTl208AVNaive} > -0.007$ and $\mathtt{ext0NuAngleTl208AV} > -4.7$. By using these cuts, 37.4\% of external acrylic \ce{^{208}Tl} were cut in the analysis ROI in MC, whilst keeping 99.3\% of the \beight{} $\nu_{e}$ signal.
+As can be seen, the external background is far more spread out along both axes compared to the signal. This allows for discrimination of external backgrounds from the signal in the \SIrange{2.5}{5.0}{\MeV} range. For this analysis, a cut on both classifiers were used: to pass, an event required $\mathtt{ext0NuTimeTl208AVNaive} > -0.007$ and $\mathtt{ext0NuAngleTl208AV} > -4.7$. By using these cuts, 37.4\% of external acrylic \ce{^{208}Tl} were cut in the analysis ROI in MC, whilst keeping 99.3\% of the \beight{} $\nu_{e}$ signal.
 
 % ~~~~~~~~~~~~~~~~~~~~~~~
 % TODO IF TIME!!!!
@@ -187,7 +212,7 @@ As can be seen, the external background is far more spread out along both axes c
 % but not used for this analysis currently.% Maybe this changes? will see if constraint needed.
 
 \subsection{The Log-likelihood Test Statistic}\label{sec:test_statistic}
-At the highest level, this analysis involves taking the data observed in the scintillator-fill after applying a certain set of cuts, along with simulated PDFs for all processes believed to build up the observed data with those same cuts applied, and then attempting to fit the combined energy and radial distributions of the MC to that of the data. Given a set of PDFs, to try and match the distribution of observables in data we can modify a number of parameters. These consist of the normalisations of each PDF (i.e. the total number of events observed due to that process), and any systematic parameters that could modify the shapes of these distributions. For this analysis, the neutrino oscillation parameters act as \textit{de facto} systematic parameters, as they modify the shape of the \beight{} PDFs. Of course, unlike usual systematics the oscillation parameters are what we are actively trying to measure.
+At the highest level, this analysis involves taking the data observed in the scintillator-fill after applying a certain set of cuts, along with simulated PDFs for all processes believed to constitute the observed data with those same cuts applied. Using these, the combined energy and radial distributions of the MC are fit to that of the data. Given a set of PDFs, a number of parameters can be modified to try and match the distribution of observables in data. These consist of the normalisations of each PDF (i.e. the total number of events observed due to that process), and any systematic parameters that could modify the shapes of these distributions. For this analysis, the neutrino oscillation parameters act as \textit{de facto} systematic parameters, as they modify the shape of the \beight{} PDFs.
 
 The test statistic used for this analysis is the \textit{binned extended log-likelihood}:
 \begin{align}
@@ -197,7 +222,7 @@ The test statistic used for this analysis is the \textit{binned extended log-lik
     % &-\sum_{k=1}^{N_{\mathcal{N}'}}\frac{\left(\mathcal{N}_{k}' - \mathcal{N}_{k}^{\mathrm{nom}}\right)^2}{2(\sigma_{k}^{\mathcal{N}})^{2}}
     % -\sum_{\ell=1}^{N_{\theta'}}\frac{\left(\theta_{\ell}' - \theta_{\ell}^{\mathrm{nom}}\right)^2}{2(\sigma_{\ell}^{\theta})^{2}}.
 \end{align}
-where $\mathcal{N}_{i}$ is the normalisation parameter for the $i^{\mathrm{th}}$ PDF out of $N_{\mathrm{PDFs}}$ in total, $n_{j}$ is the number of observed events in the $j^{\mathrm{th}}$ bin of data out of $N_{\mathrm{bins}}$ total bins, and $P_{ij}\left(\bm{\theta}\right)$ is the probability of observing an event of type $j$ in bin $i$, assuming a set of systematic parameters $\bm{\theta}$. $\bm{\mathcal{N}}$ and $\bm{n}$ are the set of normalisation parameters and observed bin values, respectively.
+where $\mathcal{N}_{i}$ is the normalisation parameter for the $i^{\mathrm{th}}$ PDF out of $N_{\mathrm{PDFs}}$ in total, $n_{j}$ is the number of observed events in the $j^{\mathrm{th}}$ bin of data out of $N_{\mathrm{bins}}$ total bins, and $P_{ij}\left(\bm{\theta}\right)$ is the probability of observing an event of type $j$ in bin $i$, assuming a set of systematic parameters $\bm{\theta}$.
 
 % In order to perform a fit to data in this way, we must first answer a set of questions:
 % \begin{enumerate}
@@ -245,19 +270,18 @@ where $\mathcal{N}_{i}$ is the normalisation parameter for the $i^{\mathrm{th}}$
 
 
 \subsection{The Bayesian Statistical Approach}
-There are two main schools of statistical inference, ``Frequentist'' and ``Bayesian''. In the former, probabilities describe the fraction of times a situation can be found within the whole ensemble of possible worlds. For the latter, we care not about an ensemble of worlds but instead our degree of belief about matters in this current one. We update our beliefs as we acquire knowledge about the world through Bayes' Theorem:
+There are two main schools of statistical inference, ``Frequentist'' and ``Bayesian''. In the former, probabilities describe the fraction of times a situation can be found within the whole ensemble of possible worlds. For the latter, what matters instead is our degree of belief about matters in this current one. Our beliefs are updated as knowledge is acquired about the world through Bayes' Theorem:
 \begin{equation}
     P\left(\bm{\mu}|\bm{x}\right) = \frac{\mathcal{L}\left(\bm{\mu}|\bm{x}\right)P\left(\bm{\mu}\right)}{P\left(\bm{x}\right)}.
 \end{equation}
-Here, $\bm{\mu}$ is the set of parameters that model our system, $P\left(\bm{\mu}\right)$ is our \textit{prior} (pre-existing) distribution for those model parameters, and $\bm{x}$ is the data taken in our experiment. The updated, \textit{posterior} distribution $P\left(\bm{\mu}|\bm{x}\right)$ is then the prior multiplied by the likelihood of parameters $\bm{\mu}$ given observations $\bm{x}$, $L\left(\bm{\mu}|\bm{x}\right)$, and divided by the total probability $P\left(\bm{x}\right)$ of observing $\bm{x}$ under any circumstance.
-
-Both approaches to statistics are widely-used in statistical analysis, in both particle physics and beyond. The Bayesian approach was used for this analysis, as it was believed that this helps keep transparent what assumptions are being made in the analysis. 
+Here, $\bm{\mu}$ is the set of parameters that model a given system, $P\left(\bm{\mu}\right)$ is our \textit{prior} (pre-existing) distribution for those model parameters, and $\bm{x}$ is the data taken in an experiment. The updated, \textit{posterior} distribution $P\left(\bm{\mu}|\bm{x}\right)$ is then the prior multiplied by the likelihood of parameters $\bm{\mu}$ given observations $\bm{x}$, $L\left(\bm{\mu}|\bm{x}\right)$, and divided by the total probability $P\left(\bm{x}\right)$ of observing $\bm{x}$ under any circumstance. It is the Bayesian approach that has been used in this analysis.
 
 \nomenclature{\textbf{CI}}{Credible Interval}
 \nomenclature{\textbf{HPD}}{(The point of) Highest Posterior Density}
-Now, if one is able to determine the overall posterior distribution, then it is possible to derive best-fit values with uncertainties for all parameters in the fit. This is done by ``marginalising'' the posterior distribution, i.e. integrating over all parameters other than the one of interest. A sensible best-fit value is then the point of Highest Posterior Density (HPD). The uncertainty on this value is derived from the spread of the marginalised posterior, by the calculation of the $1\sigma$ Credible Interval (CI): this is the set of values for a given parameter which has a total posterior probability of 68.3\%, and contain the best-fit value. There are in fact an infinite number of CIs that satisfy this property; for this analysis, the values are chosen in decreasing order of marginalised posterior probability density.
+If one is able to determine the overall posterior distribution, then it is possible to derive best-fit values with uncertainties for all parameters in the fit. This is done by ``marginalising'' the posterior distribution, i.e. integrating over all parameters other than the one of interest. A sensible best-fit value is then the point of Highest Posterior Density (HPD). The uncertainty on this value is derived from the spread of the marginalised posterior, by the calculation of a $1\sigma$ Credible Interval (CI): this is a set of values for a given parameter which has a total posterior probability of 68.3\%, and contain the best-fit value. There are an infinite number of CIs that satisfy this property; for this analysis, the values have been chosen in decreasing order of marginalised posterior probability density.
+
 \subsection{Markov Chain Monte Carlo}
-Of course, all of this assumes that one can accurately determine the posterior density distribution. Whilst the likelihood and prior distribution are straightforward enough to calculate, often-times $P\left(\bm{x}\right)$ (which acts as a normalisation) is very challenging to determine. This is because calculating this normalisation involves integrating the likelihood over all the parameter space, and if there are a large number of parameters this can become enormously numerically complex. An alternative approach is needed!
+The above discussion of Bayesian statistics assumes that one can accurately determine the posterior density distribution. Whilst the likelihood and prior distribution are straightforward enough to calculate, often-times $P\left(\bm{x}\right)$ (which acts as a normalisation) is very challenging to determine. This is because calculating this normalisation involves integrating the likelihood over all the parameter space, and if there are a large number of parameters this can become enormously numerically complex. An alternative approach is needed!
 
 That alternative comes in the form of \textit{Markov Chain Monte Carlo}, MCMC. A Markov Chain is any mathematical system for which the next state of the system is dependent only on its current state; the system is in some sense ``memoryless''. For a large class of Markov Chains --- those that are ``ergodic'' and ``aperiodic'' --- one can prove that regardless of the initial position on the chain, the probability distribution converges to the same distribution~\cite{fellerIntroductionProbabilityTheory1968}. % CITE Feller, W. (1968). An Introduction to Probability Theory and its Applications
 MCMC uses such a Markov Chain which attempts to converge towards the posterior density distribution in particular. In MCMC, after choosing the initial position in the parameter space, successive states are chosen at random with a probability dependent only on the properties of the current position in parameter space and the proposed position. The convergence property of Markov Chains means that the set of steps made in the parameter space will have a distribution that converges to that of the posterior density distribution.
