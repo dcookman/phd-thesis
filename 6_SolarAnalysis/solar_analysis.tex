@@ -384,8 +384,8 @@ Even after using the Large Mixing Angle approximation, having to call \texttt{PS
     % [19 pages currently, without figures; probably +5 pages for figures.]
 \section{Analysis on Scintillator-Phase data}\label{sec:solar_analysis_results}
 \subsection{Dataset and Livetime}\label{sec:solar_dataset_livetime}
-The data used in this analysis was chosen to be scintillator phase data after the end of the PPO top-up campaign that completed in April 2022. Following an initial validation of the analysis tools was performed on data between 29\textsuperscript{th} April and 10\textsuperscript{th} May 2022~\cite{cookmanSolarOscillationAnalysis2023}, % cite presentation of my high-background results
-data for the full analysis was chosen from runs taken after these dates. Not all data taken during this time was considered usable for this analysis, however: this is the role of \textit{run selection}. The Collaboration's `Preliminary Scintillator Gold' run selection list was used as the basis for this analysis. This run list requires:
+The data used in this analysis was chosen to be scintillator phase data after the end of the PPO top-up campaign that completed in April 2022. An initial validation of the analysis tools was performed on data between 29\textsuperscript{th} April and 10\textsuperscript{th} May 2022~\cite{cookmanSolarOscillationAnalysis2023}. % cite presentation of my high-background results
+For the full analysis, data was chosen from runs taken after these dates. Not all data taken during this time was considered usable for this analysis, however. The Collaboration's `Preliminary Scintillator Gold' run selection list was used as the basis for this analysis. This run list requires:
 \begin{itemize}
     \item The run type must be in `Physics', as opposed to running in calibration or maintenance;
     \item The run must last at least 30 minutes;
@@ -393,17 +393,17 @@ data for the full analysis was chosen from runs taken after these dates. Not all
     \item There are no abnormal rates of tagged muons, and the OWL PMTs are correctly functioning;
     \item There are no unusual conditions from e.g. earthquakes, blasting activity in the mine, or loss of power. 
 \end{itemize}
-In the end, data for this analysis used `Gold' runs selected between 17\textsuperscript{th} May--30\textsuperscript{th} November 2022, run numbers 300733--306498. The raw livetime associated with this dataset was calculated by looking at the start and end times of each run using the detector's \SI{10}{\MHz} clock: 84.977 days.
+In the end, data for this analysis used `Gold' runs selected between 17\textsuperscript{th} May--30\textsuperscript{th} November 2022, run numbers 300733--306498. The total livetime associated with this dataset was calculated by looking at the start and end times of each run using the detector's \SI{10}{\MHz} clock: 84.977 days.
 
-Importantly, the livetime of the data actually used in the analysis ends up being somewhat less than this raw value. This is because two of the cuts used in the analysis (described in Section~\ref{sec:event_selection}), the muon tagger and the high-\texttt{nhit} event tagger, also veto events for a time period following a tagged event. This means that any events in such a time window are automatically thrown out of consideration for analysis. An algorithm was written to determine the loss of livetime from both of these tagging processes for all the runs selected in this analysis, allowing for the net livetime to be calculated. To ensure accuracy in the value of this lost livetime, the algorithm took care to handle any overlaps in the time veto windows. This ends up being a quite common occurrence, as tagged muon events and their followers often have a very high \texttt{nhit}. The net livetime was calculated to be 80.615 days. Data processing and simulations used RAT versions 7.0.8 and 7.0.9.
+The livetime of the data actually used in the analysis ends up being somewhat less than this raw value, because of the muon tagger and the high-\texttt{nhit} event tagger described in Section~\ref{sec:event_selection}. This is because these tagging algorithms veto events for a time period following a tagged event. Any events in such a time window are automatically thrown out of consideration for analysis. An algorithm was written to determine the loss of livetime from both of these tagging processes for all the runs selected in this analysis, allowing for the net livetime to be calculated. To ensure accuracy in the value of this lost livetime, the algorithm took care to handle any overlaps in the time veto windows. This ends up being a quite common occurrence, as tagged muon events and their followers often have a very high \texttt{nhit}. The net livetime was calculated to be 80.615 days. Data processing and simulations used RAT versions 7.0.8 and 7.0.9.
 
-As discussed in Section~\ref{sec:osc_in_fit}, in order to account for the impact of the MSW effect through the Earth on $P_{ee}$, the solar zenith angular distribution of the dataset is needed. This was achieved by taking the recorded trigger time of each event within the dataset as given by the GPS-calibrated \SI{10}{\MHz} clock, determining the position of the Sun at that time, and then deriving the value of $\cos{\theta_{z}}$ given that solar position. The resulting distribution of $\cos{\theta_{z}}$ is shown in Fig.~\ref{fig:solar_zenith_distribution}. The structure of this distribution are a result of the times of day and year of the runs selected for this analysis.
+As discussed in Section~\ref{sec:osc_in_fit}, in order to account for the impact of the MSW effect through the Earth on $P_{ee}$, the solar zenith angular distribution of the dataset is needed. This was achieved by taking the recorded trigger time of each event within the dataset as given by the GPS-calibrated \SI{10}{\MHz} clock, determining the position of the Sun at that time, and then deriving the value of $\cos{\theta_{z}}$ given that solar position. The resulting distribution of $\cos{\theta_{z}}$ is shown in Fig.~\ref{fig:solar_zenith_distribution}. Also shown in this plot is the zenith distribution expected if data was taken uniformly over the time period between 17\textsuperscript{th} May--30\textsuperscript{th} November 2022. While both distributions have peaks at $\cos{\theta_{z}} =$ -0.3, 0.4, and 0.9, the data distribution has a far more complex structure due to the times of day and year of the runs selected for this analysis.
 
-\begin{figure}
+\begin{figure}[!th]
     \centering
-    \includegraphics[width=\textwidth]{6_SolarAnalysis/images/solar_zenith_dist.pdf}
-    \caption[Distribution of $\cos{\theta_{z}}$, for the events within this dataset]
-    {Distribution of the cosine of the solar zenith angle, $\cos{\theta_{z}}$, for the events within this dataset. If an event has $\cos{\theta_{z}}>0$, then at the time of that event the position of the Sun is above the detector's equator.}
+    \includegraphics[width=\textwidth]{6_SolarAnalysis/images/solar_zenith_dist_versus_uniform.pdf}
+    \caption[Distribution of $\cos{\theta_{z}}$, for the events within this dataset, compared to a uniform time distribution]
+    {Distribution of the cosine of the solar zenith angle, $\cos{\theta_{z}}$, for the events within this dataset. If an event has $\cos{\theta_{z}}>0$, then at the time of that event the position of the Sun is above the detector's equator. Also shown is the zenith distribution expected if data was taken uniformly in the period 17\textsuperscript{th} May--30\textsuperscript{th} November 2022.}
     \label{fig:solar_zenith_distribution}
 \end{figure}
 
@@ -415,7 +415,7 @@ As discussed in Section~\ref{sec:osc_in_fit}, in order to account for the impact
     % \end{itemize}
     % [2 pages]
 \subsection{Event Selection}\label{sec:event_selection}
-Once the runs of processed data and matching MC have been selected, the next step was to perform cuts on both in order to obtain our analysis ROI. The full list of cuts used are shown in Table~\ref{tab:ev_selection}, most of which have already been explained in Section~\ref{sec:background_processes}.
+Once the runs of processed data and matching MC have been selected, the next step was to perform cuts on both in order to obtain the analysis ROI. The full list of cuts used are shown in Table~\ref{tab:ev_selection}, most of which have already been explained in Section~\ref{sec:background_processes}. The energy and position cuts are contingent on a valid reconstruction having been performed on a given event; however, the \texttt{ScintFitter} is only run on events with a minimum number of hits, and even then the results may not be valid. Therefore, two important cuts in this analysis are to confirm that the \texttt{ScintFitter} was actually run, and that the results are valid.
 
 \begin{table}
     \centering
@@ -438,11 +438,11 @@ Once the runs of processed data and matching MC have been selected, the next ste
     \label{tab:ev_selection}
 \end{table}
 
-Most of the other cuts used in this analysis that haven't yet been discussed come from handling differences between data and MC. In MC, it is possible to simulate an event but not have it trigger the detector. In this case, the stored index of that event (\texttt{evIndex}) will be less than zero. We never see these `events' in data of course, but they do need to be removed from simulation. On the flip side, there are types of events that we observe in the detector but do not simulate. Many of these events are caught during `data cleaning', which looks for a wide variety of problems in the data when the data is being processed. Any subset of the checks made during data cleaning can be chosen to consider in a given analysis by defining a specific `analysis mask'; a number that specifies for each of its binary digits whether to consider the data cleaning process associated with that bit. The mask chosen used in this analysis is the Collaboration's current standard for the scintillator phase, \texttt{0x2100000042c2}, which corresponds to:
+Most of the other cuts used in this analysis that have not yet been discussed come from handling differences between data and MC. In MC, it is possible to simulate an event but not have it trigger the detector. In this case, the stored index of that event (\texttt{evIndex}) will be less than zero. These `events' are never seen in data, but they do need to be removed from simulation. On the flip side, there are types of events that are observed in the detector but do not get simulated. Many of these events are caught during `data cleaning', which looks for a wide variety of problems in the data when the data is being processed. Any subset of the checks made during data cleaning can be chosen to consider in a given analysis by defining a specific `analysis mask'; a number that specifies for each of its binary digits whether to consider the data cleaning process associated with that bit. The mask used in this analysis is the Collaboration's current standard for the scintillator phase, \texttt{0x2100000042c2}, which corresponds to:
 
 \begin{itemize}
-    \item \textbf{00 cut}: Tags every event which has a GTID ending in 00 in hexadecimal, which is associated with a long-standing issue in the detector triggering system.
-    \item \textbf{Junk cut}: Tags events that have channels with multiple recorded hits for that event. These are associated with so-called `orphaned' hits that the event building process doesn't know what to do with.
+    \item \textbf{00 cut}: Tags every event which has a GTID ending in 00 in hexadecimal, which is associated with a long-standing issue in the detector triggering system that occurs when the GTID rolls over.
+    \item \textbf{Junk cut}: Tags events that have a channel with multiple recorded hits, which is not possible for a normal event. These are associated with so-called `orphaned' hits that the event building process does not know what to do with.
     \item \textbf{OWL cut}: Tags events that have at least three OWL PMTs hit, a sign that the event came from a cosmic-ray muon.
     \item \textbf{Polling cut}: Tags all events that occur during `polling', a detector monitoring process.
     \item \textbf{CAEN cut}: Tags all events that have missing CAEN trace data.
@@ -450,9 +450,9 @@ Most of the other cuts used in this analysis that haven't yet been discussed com
     \item \textbf{Muon follower cut}: Tags all events coming up to \SI{20}{\second} after a tagged muon event.
 \end{itemize}
 
-Beyond the formal data cleaning cuts, a high-\texttt{nhit} veto was used to tag and remove various instrumental backgrounds which can generate large amounts of light in the detector. This method also catches any muons left untagged by the data cleaning mask. After any event with a sufficiently large number of hits, both that event and any following it for \SI{20}{\second} are removed. This method is likely to be fairly conservative, and there exist different methods for cutting flashers within data cleaning. However, these were originally coordinated for the water phase, and had not been updated for the scintillator phase at the time of writing.
+Beyond the formal data cleaning cuts, a high-\texttt{nhit} veto was used to tag and remove various instrumental backgrounds which can generate large amounts of light in the detector. This method also catches any muons left untagged by the data cleaning mask. After any event with a sufficiently large number of hits, both that event and any following it for \SI{20}{\second} are removed. This method is likely to be fairly conservative, and there exist different methods for cutting high-\texttt{nhit} instrumental backgrounds within data cleaning. However, these methods were originally coordinated for the water phase, and had not been updated for the scintillator phase at the time of writing.
 
-The results of all these cuts can be seen for the data in Table~\ref{tab:data_cut_effs}. 654 out of the \num{18112495770} events within the dataset pass all cuts. These same cuts were also run over the MC, with results summarised in Table~\ref{tab:MC_cut_effs}. Important to note was the difference between the number of physics events simulated for a given process and the number of triggered events. The latter ends up being larger than the former for all processes discussed here, because a given physics event in the detector will often generate a retrigger event following the primary triggered event. Also shown in this table are the combined cut efficiencies for each process. This efficiency is defined as the number of triggered events that pass all cuts, divided by the number of simulated physics events for that process.
+The results of all these cuts can be seen for the data in Table~\ref{tab:data_cut_effs}. 654 out of the \num{18112495770} events within the dataset pass all cuts. These same cuts were also run over the MC, with results summarised in Table~\ref{tab:MC_cut_effs}. Important to note was the difference between the number of physics events simulated for a given process and the number of triggered events. The latter ends up being larger than the former for all processes discussed here, because a given physics event in the detector will often generate a retrigger event following the primary triggered event. Also shown in this table are the combined cut efficiencies for each process. This efficiency is defined as the number of triggered events that pass all cuts, divided by the number of simulated physics events for that process. It is this value that can be used to convert between the number of physics events expected in a given time period, and the number of observed triggered events observed.
 
 \begin{table}
     \centering
@@ -472,7 +472,7 @@ The results of all these cuts can be seen for the data in Table~\ref{tab:data_cu
         Externals cut               & \num{652}         & 90.68   \\
         \hline
     \end{tabular}
-    \caption{Impact of each cut on the quantity of events in data.}
+    \caption{Impact of each cut on the quantity of events in data. The efficiency for a given cut is defined here as the fraction of events which have survived all previous cuts, which also survive that cut.}
     \label{tab:data_cut_effs}
 \end{table}
 
@@ -504,12 +504,12 @@ The results of all these cuts can be seen for the data in Table~\ref{tab:data_cu
             \hline
         \end{tabulary}
     \end{center}
-    \caption[Combined impact of cuts on each MC process.]
-    {Combined impact of cuts on each MC process. Overall cut efficiency is defined as the number of remaining triggered events after all cuts have been applied, divided by the number of physics events simulated for that process. Processes have been split into three general categories: signal, externals, and internals. A final category corresponds to various processes that have been considered for this analysis, but either all events are cut out, or Section~\ref{sec:exp_rates_constraints} will show a negligible number of these events are expected in our dataset.}
+    \caption[Combined impact of cuts on each MC process]
+    {Combined impact of cuts on each MC process. Overall cut efficiency is defined as the number of remaining triggered events after all cuts have been applied, divided by the number of physics events simulated for that process. Processes have been split into three general categories: signal, external backgrounds, and internal backgrounds. A final category corresponds to other processes that were considered for this analysis, but either all events are cut out, or Section~\ref{sec:exp_rates_constraints} will show a negligible number of these events are expected in our dataset.}
     \label{tab:MC_cut_effs}
 \end{table}
 
-Variable bin widths in energy were chosen for this analysis: \SI{0.1}{\MeV} bins between \SI{2.5}{\MeV}--\SI{5.0}{\MeV}, \SI{0.25}{\MeV} bins between \SI{5.0}{\MeV}--\SI{13.0}{\MeV}, and a single energy bin between \SI{13.0}{\MeV}--\SI{14.0}{\MeV}. Four equally-spaced bins were used in the parameter $r_{3} = (r_{\mathrm{reco}}/R_{\mathrm{AV}})^{3}$ in the range $\SI{0}{\m}\le r_{\mathrm{reco}} < \SI{5.0}{\m}$. The $r_{3}$ parameter was used to allow for equal volume weighting for each radial bin.
+Variable bin widths in energy were chosen for this analysis: \SI{0.1}{\MeV} bins between \SI{2.5}{\MeV}--\SI{5.0}{\MeV}, \SI{0.25}{\MeV} bins between \SI{5.0}{\MeV}--\SI{13.0}{\MeV}, and a single energy bin between \SI{13.0}{\MeV}--\SI{14.0}{\MeV}. Four equally-spaced bins were used in the parameter $r_{3} = (r_{\mathrm{reco}}/R_{\mathrm{AV}})^{3}$ in the range $\SI{0}{\m}\le r_{\mathrm{reco}} < \SI{5.0}{\m}$. The $r_{3}$ parameter was used to allow for equal volume weighting for each radial bin. This binning for energy and $r_{3}$ was chosen as a balance between wanting to get as much information about the distributions of each process as possible, whilst ensuring that there were sufficient statistics for the MC PDFs in every bin.
 
 
     % \begin{itemize}
@@ -532,106 +532,9 @@ Variable bin widths in energy were chosen for this analysis: \SI{0.1}{\MeV} bins
     % \end{itemize}
     % [4 pages]
 \subsection{Expected Rates and their Constraints}\label{sec:exp_rates_constraints}
-Because this analysis is dependent on deriving the shape and size of the \beight{} spectrum from the data observed, it is important to have expectations about the number of events expected to be seen within the dataset for each process, both signal and background. This is done in two stages: firstly, the expected rates for each process before any cuts applied is determined, along with any constraints. Then, by using the cut efficiencies calculated in the previous section, we can derive estimates for the expected number of events after cuts. When combined with a constraining uncertainty, this can be used as a prior within the MCMC fit. The resulting expected rates before and after cuts, along with any constraints being used, afer shown in Table~\ref{tab:MC_expected_rates_constraints}.
+Because this analysis is dependent on deriving the shape and normalisation of the \beight{} spectrum from the data observed, it is important to know the number of events expected to be seen within the dataset for each process, both signal and background. This is done in two stages: firstly, the expected rates for each process before any cuts applied is determined, along with any constraints. Then, by using the cut efficiencies calculated in the previous section, estimates for the expected number of events after cuts can be derived. When combined with a constraining uncertainty, this can be used as a prior within the MCMC fit. The resulting expected rates before and after cuts, along with any constraints being used, are shown in Table~\ref{tab:MC_expected_rates_constraints}. Details of how the rates and constraints were calculated can be found in Appendix~\ref{chap:appendix_solar_rates}.
 
-\subsubsection{\beight{} Signal}
-Starting with the \beight{} signal, numerous theoretical predictions and experimental measurements have been made of the \beight{} flux. For this analysis, two different values have been used. The SSM predicts a relatively loose constraint of $\Phi_{\beight{}} = (5.46\pm 12\%)\times 10^{6}\,\si{\per\cm\squared\per\second}$~\cite{vinyolesB16StandardSolar2018}, % cite SSM flux
-whereas a recent global fit of neutrino oscillation experiments by Bergstr\"{o}m \textit{et al} leads to a much stronger constraint of $\Phi_{\beight{}} = (5.16\,^{+2.5\%}_{-1.7\%})\times 10^{6}\,\si{\per\cm\squared\per\second}$~\cite{bergstromUpdatedDeterminationSolar2016}. % cite Bergstrom et al
-We shall mainly use the latter result to both calculate the expected rate of the signal events in the detector, and the fractional uncertainties used to constrain this rate. The looser constraint coming from the SSM will be used for comparison.
-
-To calculate the number of electrons within the liquid scintillator, we follow the method used in~\cite{inacioDataAnalysisWater2022}, % cite Ana Sofia's thesis
-which uses the formula:
-\begin{equation}
-    n_{e} = \frac{\left(f_{\mathrm{LAB}}n_{\mathrm{LAB}} +
-                        f_{\mathrm{PPO}}n_{\mathrm{PPO}}\right)
-                  N_{A}M_{\mathrm{LAB}}}
-                 {m}.
-\end{equation}
-Here, $f_{\mathrm{LAB}}$ and $f_{\mathrm{PPO}}$ are the fraction by weight of the LAB and PPO within the scintillator cocktail, respectively. Because this analysis is done over data taken during the scintillator phase with a PPO concentration of \SI{2.2}{\g} for every litre of LAB, these take values 99.744\% and 0.256\%, respectively. $n_{\mathrm{LAB}}$ and $n_{\mathrm{PPO}}$ are the mean number of electrons per molecule of LAB and PPO, respectively. PPO has the chemical formula \ce{C_{15}H_{11}NO}, leading to $n_{\mathrm{PPO}} = 116$. The LAB used in SNO+ has varying alkyl chain lengths, leading to a varying number of electrons per molecule. This distribution is known to have changed between batches of LAB made by the manufacturer, and is also impacted by the distillation process used during the purification of the LAB before it was put into the AV. At the time of writing, no final molecular breakdown has been made for the LAB within the detector; for now we shall use the breakdown provided here~\cite{lebeufLABCertificateAnalysis2020}, % cite LAB breakdown DocDB #7572
-from a representative tanker truck of LAB: there $n_{\mathrm{LAB}} = 131.68$. Finally, $N_{A} = \SI{6.02e23}{\per\mol}$ is Avogadro's Constant, $M_{\mathrm{LAB}} = \SI{780.2}{\tonne}$ is the total mass of scintillator within a sphere of radius the size of the AV, and $m = \SI{235}{\g\per\mol}$ is the molecular weight of the scintillator. This leads to a value for the number of electron targets:
-\begin{equation*}
-    n_{e} = \num{2.63e32}\; \mathrm{electrons}.
-\end{equation*}
-
-We can modify Eq.~\ref{eq:solar_rate} to get an equation for the total rate of solar neutrino events by flavour, before oscillations or analysis cuts are considered:\
-\begin{equation}
-    R_{i} = \Phi_{\beight{}}n_{e}
-                \int S_{\nu}\left(E_{\nu}\right)\sigma_{\nu_{i}}\left(E_{\nu}\right)\,dE_{\nu}.
-\end{equation}
-Note that for $i=\mu,\tau$, this rate corresponds to the interaction rate if 100\% of the neutrinos have flavour $\nu_{\mu,\tau}$.
-
-Using the cross-section formula from Eq.~\ref{eq:enu_es_xsec}, the \beight{} spectral shape from~\cite{winterB8NeutrinoSpectrum2006}, and $\Phi_{\beight{}} = \SI{5.46e6}{\per\cm\squared\per\second} \left(\SI{5.16e6}{\per\cm\squared\per\second}\right)$, we expect a rate before considering oscillations or cuts of:
-\begin{equation*}
-    R_{i} = 
-    \begin{cases}
-        2743.2 (2592.5)\; \text{events/yr} & \quad \text{for } i = e,\\
-        489.7 (462.8)\;  \text{events/yr} & \quad \text{for } i = \mu,\tau.
-    \end{cases}
-\end{equation*}
-In the above rates, we have included an additional volume correction factor of 1.0139, because in MC events are simulated within the neck of the AV in addition to the main spherical bulk~\cite{caravacaValidationSNOProduction2019}. % cite Javi, DocDB 5519
-
-\subsubsection{Internal Uranium- and Thorium-Chain Backgrounds}
-As mentioned in Section~\ref{sec:u_th_internals}, \ce{^{214}Bi-Po} and \ce{^{212}Bi-Po} decays, coming from the \ce{^{238}U} and \ce{^{232}Th} decay chains respectively, are capable of generating distinctive delayed coincidence events. Rafael Hunt-Stokes was able to use a series of cuts to isolate both types of coincidence signals~\cite{hunt-stokesUraniumThoriumBackground2022}, % cite Rafa's tech note?
-looking at coincidence signals within the same \SI{5.0}{\m} FV as my analysis. After correcting for his cut efficiencies, he obtained a derived rate in the whole detector of~\cite{hunt-stokesPrivateCommunication2023}: % cite Rafa
-\begin{equation*}
-    \text{BiPo rate} = 
-    \begin{cases}
-        0.94\; \text{events/hour} & \quad \text{for } ^{212}\text{Bi-Po},\\
-        6.06\; \text{events/hour} & \quad \text{for } ^{214}\text{Bi-Po}.
-    \end{cases}
-\end{equation*}
-These rates assume a uniform concentration of \ce{^{222}Rn} and \ce{^{220}Rn} throughout the detector: this is how internal backgrounds are simulated by default in \texttt{RAT}. However, it has been shown that this is not at all the case within SNO+; radon ingress from the AV neck propagates through the bulk of the detector via convection currents induced by the thermal gradient present throughout the detector~\cite{wilsonThermallydrivenScintillatorFlow2023}. % Cite John wilson's paper, JoshW's & Rafa's tagging
-This radon ingress also breaks the secular equilibrium of the two decay chains, so that one can no longer make straightforward predictions about rates for decays in the chains above radon. Fortunately for this analysis, Table~\ref{tab:MC_cut_effs} showed that the cut efficiencies for \ce{^{228}Ac} and \ce{^{234m}Pa} decays, both in their respective decay chain above radon, are negligible. This means that even if their decay rates were much greater than what would be predicted from the tagged BiPo rates, a negligible number of events are expected for both in the livetime of the dataset considered in this analysis.
-
-The combination of broad coincidence tagging as well as using an in-window BiPo classifier cut ensures that the expected rate of BiPo events that survive all the cuts is 1.5 and 2.5 for \ce{^{212}Bi-Po} and \ce{^{214}Bi-Po}, respectively. Because the branching ratio of \ce{^{212}Bi\to^{208}Tl} is 36\%, and the branching ratio of \ce{^{214}Bi\to^{210}Tl} is 0.021\%~\cite{martinNuclearDataSheets2007,shamsuzzohabasuniaNuclearDataSheets2014}, % cite some table of decays
-after considering the cut efficiencies in this analysis we expect 512.4 internal \ce{^{208}Tl} and 1.1 internal \ce{^{210}Tl} events.
-
-In theory, the non-uniformity of all the radon-induced backgrounds could impact the results of the oscillation analysis. However, the rates of each after cuts have been applied mean that only the internal \ce{^{208}Tl} could plausibly have any effect. For this particular background, each slice of the binned PDF in $r_{3}$ was allowed to float independently, with no constraints. The other three related backgrounds considered in the fit (\ce{^{210}Tl}, \ce{^{212}Bi-Po}, and \ce{^{214}Bi-Po}) did not have this splitting applied to them. A loose 25\% constraint on each of these three processes' rates was applied, to account for the current uncertainty in the calculation of R. Hunt-Stokes' tagging efficiency.
-
-\subsubsection{\alphan{} Reactions}
-As discussed in Section~\ref{sec:alphans}, \alphan{} reactions are induced by $\alpha$-particles generated in the detector. In the SNO+ scintillator phase, the dominant source of $\alpha$-particles are decays of \ce{^{210}Po} located both within the scintillator and on the AV surfaces. Because of substantial quenching by the scintillator, the reconstructed energy of the \ce{^{210}Po} $\alpha$ events fall substantially below $E_{\textrm{min}}$. The rate of the internal and surface \ce{^{210}Po} events have been tracked throughout the scintillator phase by Serena Riccetto and Shengzhao Yu, respectively.
-
-Within the \SI{5}{\m} FV, S. Riccetto measured a total of \num{1.60e8} \ce{^{210}Po} events over the runs considered for this analysis~\cite{riccettoPrivateCommunication2023,riccettoFullFillInternal2023}. % cite Serena (private comm?)
-Assuming the internal rate of these events are uniform throughout the scintillator, this leads to a total rate of \num{2.78e8} events for all the scintillator. After using a conversion rate of \num{6e-8} neutrons generated per $\alpha$ on \ce{^{13}C} in liquid scintillator~\cite{morton-blakeFirstMeasurementReactor2021,lozzaNeutronSourcesBackgrounds2015}, % where did this come from?
-we can derive an expected number of internal \alphan{} events before cuts to be 17. However, because a coincidence cut is used in this analysis, the vast majority of these should be removed, leading to merely 0.009 events expected after cuts.
-
-Similarly, S. Yu measured the surface \ce{^{210}Po} rate to vary between \SIrange{2}{5}{\Bq\per\square\metre} over the time period of this analysis as well as a function of height in the detector~\cite{yuAVSurfacePo2102023}. % cite Shengzhao's work
-Using the midpoint value of \SI{3.5}{\Bq\per\square\metre}, one can derive an expected rate of 554.4 surface \alphan{} events occurring over the dataset's livetime, before cuts. Once again, the coincidence cut as well as the FV cut removes the vast majority of these events, so that only 0.07 events are expected after all cuts have been applied. Because both classes of \alphan{} events have negligible expected rates in our dataset, they were not included within the MCMC fit.
-
-\subsubsection{External Backgrounds}
-During the water phase of SNO+, an analysis of the rates of the external backgrounds was performed by Tony Zummo~\cite{zummoExternalBackgroundBox2022}. % cite Zummo's externals results
-The results of this analysis are shown in Table~\ref{tab:externals_rates_zummo}, giving the measured rates as a fraction of the nominal values given in~\cite{andringaCurrentStatusFuture2016}. % cite white paper.
-Although the statistical uncertainty for these measurements were quite small, the total systematic uncertainty was substantial because T. Zummo's analysis involved looking at events in the tail of energy distributions, so that any uncertainty in the energy scale systematic had an outsized impact on the number of events observed within that energy window. These measured rates and their systematic uncertainties were used to predict the expected rate and constrain the external backgrounds in this scintillator phase solar analysis. For the AV, ropes, and PMTs, this seems reasonable as we do not expect there to be any substantial change in these backgrounds between the phases. The exception to this is the external water, where various aspects of the water purification process over the years since T. Zummo's analysis dataset was taken~\cite{kaptanogluFirstLookExternal2023}. Because of this, the water phase measured rate was used as a starting point for the fit, but no constraint was applied.
-
-\begin{table}
-    \centering
-    \begin{tabular}{c r}
-        \hline
-        Background Type & Rate (Fraction of Nominal)  \\ \hline \hline
-        AV \& Ropes    & $0.21\pm0.009^{+0.64}_{-0.21}$  \\
-        External Water & $0.44\pm0.003^{+0.32}_{-0.27}$  \\
-        PMTs           & $1.48\pm0.002^{+1.65}_{-0.60}$  \\
-        \hline
-    \end{tabular}
-    \caption[Measured rates of the external backgrounds during the water phase of SNO+, by Tony Zummo]
-    {Measured rates of the external backgrounds during the water phase of SNO+, by Tony Zummo~\cite{zummoExternalBackgroundBox2022}. % cite Zummo
-    }
-    \label{tab:externals_rates_zummo}
-\end{table}
-
-Before the expected number of triggered events can be calculated for each external background process, two subtleties must be dealt with. Firstly, MC production of the externals did not include the hold-up ropes at the time of performing the analysis. This is not a major problem, because the hold-up ropes are of substantially lower mass than the hold-down ropes, and also their average radius from the centre of the detector is much larger. This means that the expected rate of events from the hold-up ropes that manage to reconstruct inside the FV should be sub-dominant to their hold-down counterparts. For the purposes of this thesis, the combined rate for both kinds of ropes were calculated, with the overall cut efficiency and derived PDFs coming from just the hold-down ropes.
-
-Secondly, because the attenuation length of a \SI{2.6}{\MeV} $\gamma$ particle is \SI{23}{\cm} in water~\cite{bergerXCOMPhotonCross2009,heintzelmanSurvivalRadiiPSUP2012}, % cite xsec database (see W.Heintzelman DocDBs!)
-the vast majority of external backgrounds which start from a substantial distance away from the AV do not generate $\gamma$s that make it into the scintillator. As a result, an enormous amount of computational resources could be wasted on simulating events that never get into the ROI. To work around this, PMT $\beta-\gamma$ events are modelled as \SI{2.6}{\MeV} $\gamma$s generated at a radius of \SI{6.2}{\m} (just outside the AV), pointing radially inwards. Making some basic assumptions about these events, one can derive the expected survival rate of these $\gamma$ particles as a function of radius~\cite{heintzelmanSurvivalRadiiPSUP2012,heintzelmanAngularDistributionSurviving2013}, % cite Heintzelman #1712, 1729
-which leads to a correction factor of \num{1.17e-6}.
-
-Similarly, simulations of background events in the external water and ropes are restricted from starting beyond certain maximum radii depending on the specific process, such that there remains a negligible impact on the fraction of simulated events that actually deposit any energy into the scintillator. This leads to rate correction factors of 0.35 and 0.50 for external water \ce{^{214}Bi} and \ce{^{208}Tl} events, as well as 0.50 and 0.35 for hold-down and hold-up ropes~\cite{inacioUsingSmallerShell2019}. % cite Ana Sofia's DocDB #5154
-
-% \subsubsection{Cosmogenic Backgrounds}
-% The final background in consideration is decays of the cosmogenically-induced isotope \ce{^{11}C}. Extrapolating from the KamLAND experiment, we expect before cuts 889 of these events a year~\cite{}. % cite KamLAND, someone in SNO+ who's done this?
-% However, the cut efficiency for this background is zero, 
-
-\begin{table}
+\begin{table}[!th]
     \begin{center}
         \begin{tabulary}{\textwidth}{c R R R R}
             \hline
@@ -659,13 +562,18 @@ Similarly, simulations of background events in the external water and ropes are 
             \hline
         \end{tabulary}
     \end{center}
-    \caption[Number of events expected both before and after cuts have been applied, along with any constraints.]
-    {Number of events expected both before and after cuts have been applied, along with any constraints. As in Table~\ref{tab:MC_cut_effs}, processes have been split into broad categories, with the last one being processes which have negligible rates after cuts. These processes are not included within the analysis fit.}
+    \caption[Number of events expected both before and after cuts, along with any constraints]
+    {Number of events expected both before and after cuts, along with any constraints. As in Table~\ref{tab:MC_cut_effs}, processes have been split into broad categories, with the last one being processes which have negligible rates after cuts. These processes are not included within the analysis fit.}
     \label{tab:MC_expected_rates_constraints}
 \end{table}
 
+
+% \subsubsection{Cosmogenic Backgrounds}
+% The final background in consideration is decays of the cosmogenically-induced isotope \ce{^{11}C}. Extrapolating from the KamLAND experiment, we expect before cuts 889 of these events a year~\cite{}. % cite KamLAND, someone in SNO+ who's done this?
+% However, the cut efficiency for this background is zero, 
+
 \subsection{Systematics}
-There are a number of systematic effects in the analysis that could possibly have some impact on the resulting posterior densities of \tonetwo{} and \dmsq{}. Consideration of these effects is important to ensure that the uncertainty in the measurement is not underestimated. However, we shall find in Section~\ref{sec:solar_projections} that for this dataset, the analysis is statistically-limited, and so it is not necessary to perform exhaustive measurements to determine the contribution of all possible systematic contributions. Instead, the focus shall be on the subset of the systematics that can plausibly have the most impact on the final measurement.
+There are a number of systematic effects in the analysis that could possibly have some impact on the resulting posterior densities of \tonetwo{} and \dmsq{}. Consideration of these effects is important to ensure that the uncertainty in the measurement is not underestimated. However, Section~\ref{sec:solar_projections} will show that the analysis is statistically-limited for this dataset, and so it is not necessary to perform exhaustive measurements to determine the contribution of all possible systematic contributions. Instead, the focus shall be on the subset of the systematics that can plausibly have the most impact on the final measurement.
 
 In this analysis, the measurement of the oscillation parameters is based on the fitted shape and normalisation of the \beight{} signal energy spectrum. Therefore, for a systematic effect to have an impact on the final measurement it must first impact the fit of the signal PDF. One straightforward way this could occur is for some background events to be misattributed as signal events within the fit (or vice versa). If the rates of signal and background processes are strongly constrained to incorrect values, then this could easily happen. This could be a result of either getting the rate pre-cuts or the cut efficiencies incorrect. In this analysis, the strongest constraint on the rate of events comes from the global fit constraint of $\Phi_{\beight{}}$. Because of this, the fit will also be run with the looser SSM constraint on the signal flux as a means of comparison.
 
@@ -690,11 +598,11 @@ Values of $\alpha$ were scanned over, generating a log-likelihood distribution. 
     \label{fig:bi214_escale_calibration}
 \end{figure}
 
-To handle energy scaling as a systematic in this analysis, we allow the energy scale to be floated within the MCMC fit, with the constraint given above. The first and last energy bin of the MCMC fit were used as buffer bins to let this floating occur; this allows for the energy scale to float in the range $\frac{13}{14}\leq\alpha\leq\frac{2.6}{2.5}$.
+To handle energy scaling as a systematic in this analysis, the energy scale is floated within the MCMC fit, with the constraint given above. The first and last energy bins of the MCMC fit, \SIrange{2.5}{2.6}{\MeV} and \SIrange{13}{14}{\MeV}, were used as buffer bins to let this floating occur; this allows for the energy scale to float in the range $\frac{13}{14}\leq\alpha\leq\frac{2.6}{2.5}$.
 
-In addition to a global energy scaling, it is possible that the resolution of the energy reconstruction could be systematically off. Because of the effects discussed in Section~\ref{sec:solar_obs_principle}, changes to the oscillation parameters only impact the observed signal distribution over a broad range of energies. This means that mismodelling the energy resolution of the detector is only liable to have an impact on the measurement if that mismodelling is substantial. However, by looking again at Fig.~\ref{fig:bi214_escale_calibration} we see that there appears to be a good qualitative match of the energy resolution between data and MC for the tagged \ce{^{214}Bi} events. As a result, the systematic effect of additional energy smearing will not be considered in this thesis.
+In addition to a global energy scaling, it is possible that the resolution of the energy reconstruction could be systematically off. Because of the effects discussed in Section~\ref{sec:solar_obs_principle}, changes to the oscillation parameters only impact the observed signal distribution over a broad range of energies. This means that mismodelling the energy resolution of the detector is only liable to have an impact on the measurement if that mismodelling is substantial. However, by looking again at Fig.~\ref{fig:bi214_escale_calibration} there appears to be a good qualitative match of the energy resolution between data and MC for the tagged \ce{^{214}Bi} events. As a result, the systematic effect of additional energy smearing will not be considered in this thesis.
 
-Similar to the systematics in reconstructed energy, there are also systematics possible in reconstructed position. These can be decomposed into three kinds of systematic: radial scaling, radial resolution, and position bias along each coordinate axis. The dominant effect that these systematics will have on the PDFs is to change their normalisations. Because we are floating all normalisations within the MCMC fit, and the normalisation constraints of almost all PDFs are relative large, we expect the impact of these systematics to be sub-dominant.
+Similar to the systematics in reconstructed energy, there are also systematics possible in reconstructed position. These can be decomposed into three kinds of systematic: radial scaling, radial resolution, and position bias along each coordinate axis. The dominant effect that these systematics will have on the PDFs is to change their normalisations. Because all normalisations are being floated within the MCMC fit, and the normalisation constraints of almost all PDFs are relative large, the impact of these systematics is expected to be sub-dominant.
 
 Finally, there can also be mismodelling of the radial distributions for given processes in MC compared to data. For example, it is known that the internal \ce{^{208}Tl} events are non-uniform as a function of radius; this is why the normalisation of each radial slice for this background is floated independently. The external backgrounds can also plausibly have PDF shape systematics, especially if the assumptions made to model them (such as the use of simulation shells) are not fully accurate. These shape systematics can also arise from the lack of statistics in the PDFs used to model them: as an example, Table~\ref{tab:MC_cut_effs} shows that only 62 external water \ce{^{214}Bi} events are used in the creation of the associated PDF. Handling this type of modelling uncertainties for the external backgrounds is not considered in this thesis.
 
@@ -721,10 +629,10 @@ Finally, there can also be mismodelling of the radial distributions for given pr
 
 \subsection{Results}
 \subsubsection{Fit Validation}
-In theory, the convergence of the sampled distribution within an MCMC fit to the posterior density distribution is guaranteed to eventually occur, regardless of the specific shape of the multivariate Gaussian proposal distribution. However, the speed of this convergence is highly dependent on the widths of the proposal distribution. This is very important as in practice we can only run the MCMC fit for a finite amount of time. For a given parameter within the fit, if the associated width (also known as the step size) in the proposal distribution is too large, then the vast majority of proposals will be to points in the parameter space where the log-likelihood is less than before, and so these proposals will be consistently rejected. Alternatively,  if the width is chosen too small, the acceptance rate of the chain will be very high, but too much time will be spent for the chain to go from sampling one point in the space to another.
+In theory, the convergence of the sampled distribution within an MCMC fit to the posterior density distribution is guaranteed to eventually occur, regardless of the specific shape of the multivariate Gaussian proposal distribution. However, the speed of this convergence is highly dependent on the widths of the proposal distribution. This is very important as in practice the MCMC fit can only be run for a finite amount of time. For a given parameter within the fit, if the associated width (also known as the step size) in the proposal distribution is too large, then the vast majority of proposals will be of positions in the parameter space where the log-likelihood is less than before, and so these proposals will be consistently rejected. Alternatively,  if the width is chosen too small, the acceptance rate of the chain will be very high, but too much time will be spent for the chain to simply explore the space.
 
-By choosing sensible width parameters for the proposal distribution, as well as running the chain for as long as possible, one can attempt to maximise the ``effective sample size'' of the MCMC fit. It has been shown that, for a wide variety of situations, an appropriate size for the width of a given parameter is the standard deviation of the true posterior density distribution~\cite{gelmanChapter11Basics2013}. % cite appropriate
-Because knowing this posterior density distribution is precisely the aim of the whole MCMC procedure, this can make choosing these widths challenging in practice. In this analysis, an iterative approach was used: an MCMC fit was first run using width parameters that were guessed. Once this fit completed, the resulting sampled distribution marginalised onto each fit parameter were looked at to find approximately the magnitude of their standard deviations. This then informed the widths chosen for the next MCMC fit. This process was repeated until the autocorrelation of the sampled distribution for each fit parameter appeared to be minimal; this is an indication that the effective sample size has been maximised. A chain length of \num{1000000} steps was found to be sufficient to obtain large enough effective sample sizes for this analysis.
+By choosing sensible width parameters for the proposal distribution, as well as running the chain for as long as possible, one can attempt to maximise the ``effective sample size'' of the MCMC fit. The effective sample size is the theoretical number of independent samples that would need to be drawn from the posterior density distribution to have equivalent statistics to that of the MCMC sampling process. It has been shown that~\cite{gelmanChapter11Basics2013}, for a wide variety of situations, an appropriate size for the width of a given parameter is the standard deviation of the true posterior density distribution. % cite appropriate
+Because knowing this posterior density distribution is precisely the aim of the whole MCMC procedure, this can make choosing these widths challenging in practice. In this analysis, an iterative approach was used: an MCMC fit was first run using width parameters that were guessed. Once this fit completed, the resulting sampled distribution marginalised onto each fit parameter were looked at to find approximately the magnitude of their standard deviations. This then informed the widths chosen for the next MCMC fit. This process was repeated until the autocorrelation of the sampled distribution for each fit parameter appeared to become zero for any step delay that was a substantial fraction of the whole chain length. Such a result indicated that the effective sample size has been maximised. A chain length of \num{1000000} steps was found to be sufficient to obtain large enough effective sample sizes for this analysis.
 
 In order to guard against the possibility of a given chain missing some important part of the parameter space because of its starting position, 100 chains were run simultaneously. The initial positions of each in the parameter space were chosen randomly according to the overall prior distribution. Fig.~\ref{fig:params_vs_step_plots} shows the sampled values for four different parameters in a given chain, after the tuning of the width parameters had been completed.
 
@@ -732,33 +640,35 @@ In order to guard against the possibility of a given chain missing some importan
     \centering
     \begin{subfigure}{0.98\textwidth}
         \centering
-        \includegraphics[width=0.9\textwidth]{6_SolarAnalysis/images/beight_flux_vs_step_MCMC.png}
+        \includegraphics[width=\textwidth]{6_SolarAnalysis/images/b8_flux_vs_step_MCMC_2.png}
         \caption{$\Phi_{\beight{}}$ (normalised so that the nominal rate equals 1)}
         \label{fig:b8_flux_factor_vs_step}
     \end{subfigure}
     \begin{subfigure}{0.98\textwidth}
         \centering
-        \includegraphics[width=0.9\textwidth]{6_SolarAnalysis/images/pmt_betagamma_vs_step_MCMC.png}
+        \includegraphics[width=\textwidth]{6_SolarAnalysis/images/pmt_betagamma_vs_step_MCMC_2.png}
         \caption{Normalisation of the PMT $\beta-\gamma$ background}
         \label{fig:pmt_vs_step}
     \end{subfigure}
     \begin{subfigure}{0.98\textwidth}
         \centering
-        \includegraphics[width=0.9\textwidth]{6_SolarAnalysis/images/dmsq_21_vs_step_MCMC.png}
+        \includegraphics[width=\textwidth]{6_SolarAnalysis/images/dmsq_21_vs_step_MCMC_2.png}
         \caption{\dmsq{}}
         \label{fig:dmsq_21_vs_step}
     \end{subfigure}
     \begin{subfigure}{0.98\textwidth}
         \centering
-        \includegraphics[width=0.9\textwidth]{6_SolarAnalysis/images/theta_12_vs_step_MCMC.png}
+        \includegraphics[width=\textwidth]{6_SolarAnalysis/images/theta_12_vs_step_MCMC_2.png}
         \caption{\tonetwo{}}
         \label{fig:theta_12_vs_step}
     \end{subfigure}
-    \caption{Examples of the sampled values for parameters within a given MCMC chain as a function of the step number, after tuning the proposal distribution width parameters.}
+    \caption[Examples of the sampled values for parameters within a given MCMC chain as a function of the step number]
+    {Examples of the sampled values for parameters within a given MCMC chain as a function of the step number, after tuning the proposal distribution width parameters.}
     \label{fig:params_vs_step_plots}
 \end{figure}
 
-Given some initial start point in the parameter space, a given chain will typically take some time in finding where the region of greatest likelihood is. This leads to an initial set of steps where the chain moves a large distance in the parameter space in the same direction, so that the autocorrelation of the chain in this period is substantial. These initial samples are not representative of the actual posterior density distribution: as a result, in this analysis the first \num{100000} steps of each chain were declared as a ``burn-in'' period. This number of steps for the burn-in was motivated in part by looking at auto-correlation plots for the MCMC chains, as seen in Fig.~\ref{fig:auto_corr}. By the time the number of steps differed by \num{100000}, the autocorrelation of parameters and the log-likelihood itself of each chain was at zero, indicating the likelihood evaluations in the chains were independent when they differed by at least \num{100000} steps. The overall set of samples used to approximate the posterior density distribution corresponds to collection of all sampled points on all the chains, after burn-in.
+Given some initial start point in the parameter space, a given chain will typically take some time in finding where the region of greatest likelihood is. This leads to an initial set of steps where the chain moves a large distance in the parameter space in the same direction, so that the autocorrelation of the chain in this period is substantial for any chosen step delay. These initial samples are not representative of the actual posterior density distribution, and are called the ``burn-in'' period. Fig.~\ref{fig:auto_corr} shows the auto-correlation distributions in a typical chain for a couple of parameters, as well as the log-likelihood. As can be seen, by the time the number of steps differed by \num{1000}, the autocorrelation of parameters and the log-likelihood itself of each chain was at zero, indicating the likelihood evaluations in the chains were independent when they differed by at least \num{1000} steps. To be very safe, for all chains the first \num{100000} steps were declared as the burn-in period. The overall set of samples used to approximate the posterior density distribution corresponds to collection of all sampled points on all the chains, after burn-in.
+
 
 \begin{figure}
     \centering
@@ -775,25 +685,25 @@ Given some initial start point in the parameter space, a given chain will typica
     % [6 pages]
 
 \subsubsection{Oscillation Fit Results}
-Now that there is confidence in the convergence of the MCMC fit to the posterior density distribution, we can look at this distribution to obtain the results of this analysis. Fig.~\ref{fig:nuisance_params_marged} shows the posterior density distribution, marginalised onto each parameter of the fit other than the two oscillation parameters. We can see that each marginalised distribution appears smooth, another qualitative indication of a sufficient effective sample size in the MCMC fit. For each 1D distribution, the bin centre associated with the HPD has been indicated, and the vertical band indicates the Bayesian 1$\sigma$ CI for that parameter. Also shown in these plots is the prior distribution for each of the parameters, for comparison.
+Now that there is confidence in the convergence of the MCMC fit to the posterior density distribution, the results of this analysis can be obtained. Fig.~\ref{fig:nuisance_params_marged} shows the posterior density distribution, marginalised onto each parameter of the fit other than the two oscillation parameters. Each marginalised distribution appears smooth, another qualitative indication of a sufficient effective sample size in the MCMC fit. For each 1D distribution, the bin centre associated with the HPD has been indicated, and the vertical band indicates the Bayesian 1$\sigma$ CI for that parameter. Also shown in these plots is the prior distribution for each of the parameters, for comparison.
 
 \begin{figure}
     \centering
-    \includegraphics[width=\textwidth]{6_SolarAnalysis/images/posterior_densities_plot_no_osc.pdf}
-    \caption[Marginalised 1D posterior density distributions for all non-oscillation parameters.]
+    \includegraphics[width=0.8\textwidth]{6_SolarAnalysis/images/posterior_densities_plot_no_osc.pdf}
+    \caption[Marginalised 1D posterior density distributions for all non-oscillation parameters]
     {Marginalised 1D posterior density distributions for all non-oscillation parameters, shown in blue. The HPD and 1$\sigma$ Bayesian CI are shown for each parameter. Also shown in dashed red are the associated prior distributions.}
     \label{fig:nuisance_params_marged}
 \end{figure}
 
-For a number of the parameters, the posterior distributions are more strongly peaked than their associated priors. This indicates that there was enough information in the dataset further constrain those parameters. One such parameter is the rate of the external water \ce{^{214}Bi}. The resulting measurement of this is $34.1^{+18.5}_{-18.9}$ events in the dataset. This is 10 times larger than the expected rate shown in Table~\ref{tab:MC_expected_rates_constraints}, providing good evidence for a change in the level of this particular background relative to the water phase. In contrast, all other external backgrounds have HPDs consistent with their prior expected values.
+For a number of the parameters, the posterior distributions are more strongly peaked than their associated priors. This indicates that there was enough information in the dataset to further constrain those parameters. One such parameter is the rate of the external water \ce{^{214}Bi}. The resulting measurement of this is $34.1^{+18.5}_{-18.9}$ events in the dataset. This is 10 times larger than the expected rate shown in Table~\ref{tab:MC_expected_rates_constraints}, providing good evidence for a change in the level of this particular background relative to the water phase. In contrast, all other external backgrounds have HPDs consistent with their prior expected values.
 
 Another set of parameters that have been well-constrained in the fit are the normalisations of each of the internal \ce{^{208}Tl} slices. As expected, slices corresponding to larger radii have a greater fitted rate, with the number of events measured in the outermost radial slice to be twice that of the innermost one. However, the posteriors of the other internal \ce{^{238}U}- and \ce{^{232}Th}-chain are the same as their priors, indicating there was no evidence from data within the fit to constrain those processes any further. Similarly, the posteriors of the energy scale parameter and $\Phi_{\beight{}}$ only show very mild differences with their strong priors.
 
-If instead of looking only at the 1D marginalised distributions of each parameter we look at the equivalent 2D distributions for every combination of parameters, we can generate a table of correlation coefficients. This is shown in Fig.~\ref{fig:corr_plots_params}. From this, we can see that there is some clear anti-correlation between a number of the external backgrounds. This seems intuitive: the PDFs for many of these external backgrounds are similar, and so the fit struggles to distinguish between them.
+Fig.~\ref{fig:corr_plots_params} shows the correlation coefficients associated with the 2D marginalised distributions, for each pair of parameters. From this, clear anti-correlation between a number of the external backgrounds can be seen. This seems intuitive: the PDFs for many of these external backgrounds are similar, and so the fit struggles to distinguish between them.
 
-\begin{figure}
+\begin{figure}[!th]
     \centering
-    \includegraphics[width=0.8\textwidth]{6_SolarAnalysis/images/corr_coeff.pdf}
+    \includegraphics[width=\textwidth]{6_SolarAnalysis/images/corr_coeff.pdf}
     \caption[Correlation matrix between all parameters in the MCMC fit]
     {Correlation matrix between all parameters in the MCMC fit.}
     \label{fig:corr_plots_params}
@@ -801,9 +711,9 @@ If instead of looking only at the 1D marginalised distributions of each paramete
 
 The only other pair of parameters which have a substantial correlation between one another are the two oscillation parameters. Fig.~\ref{fig:2d_osc_param_posterior} shows their 2D marginalised posterior distribution, along with contours for a number of Bayesian CIs. Because the priors on both oscillation parameters are uniform, this can be directly converted into the log-likelihood ratio $\ln{L_{R}}$ for a given bin, where $L_{R} = p/p_{max}$: $p$ is the posterior density of a given bin in the 2D space, and $p_{max}$ is the posterior density of the HPD bin, equivalent to the bin with the maximum likelihood. This allows for Frequentist CI to be derived as well. For this plot, the HPD is at $\tonetwo{} = \ang{34.1}, \dmsq{} = \SI{1.80e-5}{\eV\squared}$.
 
-\begin{figure}
+\begin{figure}[!th]
     \centering
-    \includegraphics[width=0.8\textwidth]{6_SolarAnalysis/images/steve_style_contours.png}
+    \includegraphics[width=\textwidth]{6_SolarAnalysis/images/steve_style_contours.png}
     \caption[2D posterior density distribution marginalised onto \dmsq{} and \tonetwo{}]
     {2D posterior density distribution marginalised onto \dmsq{} and \tonetwo{}. The colour axis shows $-2\ln{L_{R}}$, proportional to the natural logarithm of the posterior density, with labels corresponding to the values associated with the $N\sigma$ Frequentist CIs. Also shown, in shades of brown, are the Bayesian CIs.}
     \label{fig:2d_osc_param_posterior}
@@ -819,23 +729,23 @@ Here, the HPD has been estimated by fitting a quadratic function to the peak of 
 \begin{equation*}
     \left|\tonetwo{} + n\cdot180\right|^{\circ} = 33.44^{\circ+0.77^{\circ}}_{\phantom{\circ}-0.74^{\circ}}.
 \end{equation*}
-As can be seen, the measurement made in this thesis is consistent with the global fit value, although with a substantially larger uncertainty. This is not surprising, given the limited statistics of the 80.6 days of data used.
+As can be seen, the measurement made in this thesis is consistent with the global fit value, although with a substantially larger uncertainty, due to the limited statistics of the dataset.
 
-\begin{figure}
+\begin{figure}[!th]
     \centering
-    \includegraphics[width=0.75\textwidth]{6_SolarAnalysis/images/theta_12_comparison_flux_constraint_corrected_tagging_2_mobins.pdf}
+    \includegraphics[width=\textwidth]{6_SolarAnalysis/images/theta_12_comparison_flux_constraint_corrected_tagging_2_mobins.pdf}
     \caption[Comparison of 1D posterior density distribution marginalised onto \tonetwo{} for different flux constraints]
     {Comparison of 1D posterior density distributions marginalised onto \tonetwo{}, using both forms of \beight{} flux constraint. The 1$\sigma$ Bayesian CI are shown for both.}
     \label{fig:1d_theta_12_posterior}
 \end{figure}
 
-The fact that the measured value of \tonetwo{} is somewhat above the global fit value also has a reasonable explanation. Looking back at Fig.~\ref{fig:2d_osc_param_posterior}, we find that the preferred values of \tonetwo{} for large \dmsq{} are somewhat greater on average than for \dmsq{} values close to the global fit value of \SI{7.4e-5}{\eV\squared}. As a result, the final value quoted for \tonetwo{} is dependent on our choice of the prior distribution for \dmsq{}: this is an inevitable result of using a Bayesian framework for this analysis. We can see the impact of choosing a less conservative prior for \dmsq{} by ignoring all sampled points with $\dmsq{} \geq \SI{5e-4}{\eV\squared}$, say. The resulting measurement of \tonetwo{} becomes:
+The fact that the measured value of \tonetwo{} is somewhat above the global fit value also has a reasonable explanation. Looking back at Fig.~\ref{fig:2d_osc_param_posterior}, the preferred values of \tonetwo{} for large \dmsq{} are somewhat greater on average than for \dmsq{} values close to the global fit value of \SI{7.4e-5}{\eV\squared}. As a result, the final value quoted for \tonetwo{} is dependent on the choice of the prior distribution for \dmsq{}: this is an inevitable result of using a Bayesian framework for this analysis. The impact of choosing a less conservative prior for \dmsq{} can be seen by ignoring all sampled points with $\dmsq{} \geq \SI{5e-4}{\eV\squared}$, as an example. The resulting measurement of \tonetwo{} becomes:
 \begin{equation*}
     \left|\tonetwo{} + n\cdot180\right|^{\circ} = 36.4^{\circ+8.0^{\circ}}_{\phantom{\circ}-7.8^{\circ}}.
 \end{equation*}
 Although there is negligible change to the uncertainty of the measurement, this change in prior shifts the HPD value down by \ang{2.5}, in the direction of the global fit value.
 
-Also shown in Fig.~\ref{fig:2d_osc_param_posterior} is the posterior density for \tonetwo{} if the looser SSM flux constraint is used. Under these conditions, the measurement becomes:
+Also shown in Fig.~\ref{fig:2d_osc_param_posterior} is the posterior density for \tonetwo{} if the looser SSM flux constraint described in Appendix~\ref{chap:appendix_solar_rates} is used. Under these conditions, the measurement becomes:
 \begin{equation*}
     \left|\tonetwo{} + n\cdot180\right|^{\circ} = 39.0^{\circ+9.8^{\circ}}_{\phantom{\circ}-9.6^{\circ}}.
 \end{equation*}
@@ -843,7 +753,7 @@ Using this constraint has little impact on the HPD value, but does increase the 
 
 One could na\"{i}vely expect that the point in parameter space where each fit parameter corresponds to the HPD value obtained in the above 1D marginalisation would correspond to the maximum likelihood. This is not the case, because of the correlations between parameters in the fit. Because an MCMC fit does not actually attempt to directly find this maximum likelihood point, deciding on the overall `best-fit' point in parameter space is a little ambiguous. For this analysis, the sampled point in all of the chains which had the greatest log-likelihood was declared as the best-fit point. A comparison between the parameter values obtained at the HPD of the 1D marginalisations to the maximum likelihood point is shown in Table~\ref{tab:fit_params_comparison}.
 
-\begin{table}
+\begin{table}[!th]
     \centering
     \begin{tabular}{c r r}
         \hline
@@ -871,17 +781,18 @@ One could na\"{i}vely expect that the point in parameter space where each fit pa
         Energy Scale Factor, $\alpha$ & 0.9964 & 0.9970\\
         \hline
     \end{tabular}
-    \caption{Comparison of the fit parameter values obtained when getting the HPD values after marginalising onto each parameter, versus looking at the sampled point with the maximal likelihood found.}
+    \caption[Comparison of the fit parameter values obtained when getting the HPD values after marginalising onto each parameter, versus looking at the sampled point with the maximal likelihood found]
+    {Comparison of the fit parameter values obtained when getting the HPD values after marginalising onto each parameter, versus looking at the sampled point with the maximal likelihood found.}
     \label{tab:fit_params_comparison}
 \end{table}
 
-Using the maximal likelihood fit parameters, the comparison of data to MC is shown in Fig.~\ref{fig:solar_data_mc_slices_comparison}. We see that the \beight{} signal distribution only dominates above \SI{5}{\MeV}, as well as at low energies for the first two radial slices. This is because for larger radii, external backgrounds become the dominant processes in the \SIrange{2.5}{2.8}{\MeV} region. Between \SIrange{3}{5}{\MeV}, at all radii the internal \ce{^{208}Tl} shows a clear peak well above the \beight{} signal. Qualitatively, the MC appears to give a good fit to the data.
+Using the maximal likelihood fit parameters, the comparison of data to MC is shown in Fig.~\ref{fig:solar_data_mc_slices_comparison}. The \beight{} signal distribution only dominates above \SI{5}{\MeV}, as well as at low energies for the first two radial slices. This is because for larger radii, external backgrounds become the dominant processes in the \SIrange{2.5}{2.8}{\MeV} region. Between \SIrange{3}{5}{\MeV}, at all radii the internal \ce{^{208}Tl} shows a clear peak well above the \beight{} signal. Qualitatively, the MC appears to give a good fit to the data.
 
-\begin{figure}
+\begin{figure}[!th]
     \centering
-    \includegraphics[width=\textwidth]{6_SolarAnalysis/images/data_mc_fit_plot_1D_energy_r3_slices_log_maxlh.pdf}
+    \includegraphics[width=\textwidth]{6_SolarAnalysis/images/data_mc_fit_plot_1D_energy_r3_slices_log_maxlh_tannerstyle_2.pdf}
     \caption[Comparison of data to MC for each radial slice]
-    {Comparison of data to MC for each radial slice, using the best-fit parameter values derived from the MCMC results. The buffer bins used for varying the energy scale parameter within the fit are shown in grey.}
+    {Comparison of data to MC for each radial slice, using the best-fit parameter values derived from the MCMC results.}
     \label{fig:solar_data_mc_slices_comparison}
 \end{figure}
 
@@ -902,17 +813,17 @@ Using the maximal likelihood fit parameters, the comparison of data to MC is sho
 %     [8 pages]
     
 \section{Sensitivity Projections}\label{sec:solar_projections}
-Given the limited statistics used in the dataset analysed in Section~\ref{sec:solar_analysis_results}, the question of how much better we could measure the solar oscillation parameters with more data naturally arises. In particular, it is worthwhile knowing the expected sensitivity of this analysis as a function of livetime, and hence whether SNO+ could eventually make a world-leading measurement of \tonetwo{} via \beight{} neutrinos. Furthermore, it is useful to find out to what extent improvements such as additional background reduction could help the measurement.
+Given the limited statistics used in the dataset analysed in Section~\ref{sec:solar_analysis_results}, the question of how much better the solar oscillation parameters could be measured with more data in SNO+ naturally arises. In particular, it is worthwhile knowing the expected sensitivity of this analysis as a function of livetime, and hence whether SNO+ could eventually make a world-leading measurement of \tonetwo{} via \beight{} neutrinos. Furthermore, it is useful to find out to what extent improvements such as additional background reduction could help the measurement.
 
 To perform these sensitivity projections, the same analysis method was employed as with the real dataset. However, for each projection scenario a fake ``Asimov'' dataset was generated. This was a 2D histogram binned in the same way as the MC PDFs, corresponding to the total expected rate of all signal and background processes. Because the same PDFs were used to build both the MC and fake dataset, the maximum likelihood should occur when the fit parameters are identical to those which generated the fake dataset. Although this method of performing sensitivity projections leads to the slightly odd situation of having non-integer numbers of events in the bins of the fake dataset, it has been shown that this approach allows us to estimate the median sensitivity of a scenario~\cite{cowanAsymptoticFormulaeLikelihoodbased2011}. % cite https://arxiv.org/pdf/1007.1727.pdf, maybe more?
 
-The assumptions used to make the fake datasets are as follows. To begin with, no cuts were changed between the main analysis and this projection, and the same PDFs were used in both. Furthermore, the \beight{} rate was determined by the same global fit flux value and neutrino oscillation parameters used in the rest of this analysis. Because some of the dataset used in the main analysis was taken during a time of known elevated \ce{^{238}U}- and \ce{^{232}Th}-chain backgrounds, R. Hunt-Stokes provided an additional estimate of the \ce{^{214}Bi-Po} and \ce{^{212}Bi-Po} rates in the \SI{5.0}{\metre} FV for only the period of the dataset where the internal background levels had stabilised. Those rates went from 6.06 events per hour before excluding the higher background period down to 4.87 events per hour for the \ce{^{214}Bi-Po}, and from 0.94 events per hour down to 0.89 events per hour. These relative changes for the two background chains were used to scale the rates from their expectation in the original dataset. For the internal \ce{^{208}Tl}, the rate of each slice relative to one another was taken from their fitted HPD values in the original analysis, with the absolute value of those rates scaled by $0.89/0.94$.
+The assumptions used to make the fake datasets are as follows. To begin with, no cuts were changed between the main analysis and this projection, and the same PDFs were used in both. Furthermore, the \beight{} rate was determined by the same global fit flux value and neutrino oscillation parameters used in the rest of this analysis. Because some of the dataset used in the main analysis was taken during a time of known elevated \ce{^{238}U}- and \ce{^{232}Th}-chain backgrounds, R. Hunt-Stokes provided an additional estimate of the \ce{^{214}Bi-Po} and \ce{^{212}Bi-Po} rates in the \SI{5.0}{\metre} FV for only the period of the dataset where the internal background levels had stabilised. Those rates went from 6.06 events per hour before excluding the higher background period down to 4.87 events per hour for the \ce{^{214}Bi-Po}, and from 0.94 events per hour down to 0.89 events per hour. These relative changes for the two background chains were used to scale the rates from their expectation in the original dataset. For the internal \ce{^{208}Tl}, the rate of each slice relative to one another was taken from their fitted HPD values in the original analysis, with the absolute value of those rates scaled by the fractional change in rate between the two time periods, $0.89/0.94$.
 
-External backgrounds were in general set to the rates expected from T. Zummo, as described in Section~\ref{sec:exp_rates_constraints}. The exceptions were the backgrounds from the external water: for the \ce{^{208}Tl} component, the nominal rate without T. Zummo's correction factor was used. For the \ce{^{214}Bi} component, the higher rate as given by the fitted HPD value was used instead. The same constraints on all the rates were used as in the main analysis. For the energy scale parameter, because no additional systematics were applied to the Asimov dataset the true and expected value of $\alpha$ was set to 1, with the same uncertainty of $\pm0.0022$ as before.
+External backgrounds were in general set to the rates expected from T. Zummo, as described in Section~\ref{sec:rates_ext_backgrounds}. The exceptions were the backgrounds from the external water: for the \ce{^{208}Tl} component, the target rate of this background as described in~\cite{andringaCurrentStatusFuture2016} was used. For the \ce{^{214}Bi} component, the higher rate as given by the fitted HPD value was used instead. The same constraints on all the rates were used as in the main analysis. For the energy scale parameter, because no additional systematics were applied to the Asimov dataset the true and expected value of $\alpha$ was set to 1, with the same uncertainty of $\pm0.0022$ as before.
 
-Using this baseline set of assumptions, fake datasets were generated and fit over a series of livetime scenarios between 150 days and 5 years. The results of these MCMC fits, in terms of the 2D and 1D posterior densities for the oscillation parameters are shown in Figs.~\ref{fig:2d_posteriors_projections} and \ref{fig:1d_posteriors_projections}. Note that the length of burn-in was increased to \num{250000} steps for these projections to ensure the convergence of all chains. As can be seen, by $\sim$2 years of livetime, there is sufficient evidence to confidently reject large \dmsq{} values above \SI{2e-4}{\eV\squared}. This leads to a fairly substantial decrease in uncertainty as well as less bias in the 1D HPD value for \tonetwo{}. There does remain some bias, however: this is because of the non-Gaussian ``boomerang'' structure seen in the 2D posterior density plots.
+Using this baseline set of assumptions, fake datasets were generated and fit over a series of livetime scenarios between 150 days and 5 years. The results of these MCMC fits, in terms of the 2D and 1D posterior densities for the oscillation parameters are shown in Figs.~\ref{fig:2d_posteriors_projections} and \ref{fig:1d_posteriors_projections}. Some chains took much longer to converge than in the main analysis; as a result, a burn-in of \num{250000} steps was found to be sufficient. As can be seen, by $\sim$2 years of livetime, there is sufficient evidence to confidently reject large \dmsq{} values above \SI{2e-4}{\eV\squared}. This leads to a fairly substantial decrease in uncertainty as well as less bias in the 1D HPD value for \tonetwo{}. There does remain some bias, however: this is because of the non-Gaussian ``boomerang'' structure seen in the 2D posterior density plots.
 
-\begin{figure}
+\begin{figure}[!th]
     \centering
     \includegraphics[width=\textwidth]{6_SolarAnalysis/images/steve_style_contours_projections.png}
     \caption[Posterior density posterior distributions marginalised onto the two solar oscillation parameters, for each livetime scenario]
@@ -948,52 +859,49 @@ Using this baseline set of assumptions, fake datasets were generated and fit ove
     \label{fig:1d_posteriors_projections}
 \end{figure}
 
-The general story told by these projections is that, assuming the same conditions and analysis, increasing the livetime of the dataset will lead to a substantial improvement to the precision of the measurement of \tonetwo{}, as well as the beginnings of a measurement of \dmsq{}. However, after $\sim$3 years of livetime the rate of progress slows down somewhat.
+The general story told by these projections is that, assuming the same conditions and analysis, increasing the livetime of the dataset will lead to a substantial improvement to the precision of the measurement of \tonetwo{} made by SNO+, as well as the beginnings of a measurement of \dmsq{}. However, after $\sim$3 years of livetime the rate of progress slows down somewhat.
 
-The choices of assumptions for this baseline set of projections were deliberately chosen to be fairly conservative. However, they do not account for the loading of BisMSB and TeLS into the detector that is likely to occur in the coming years. For BisMSB, the main impact is expected to be a dramatic increase in the observed light yield in the detector, leading to a smaller energy resolution and hence improved measurement~\cite{albaneseSNOExperiment2021}. % cite something
-Once the TeLS is also loaded, the observed light yield will likely decrease back down to levels similar to that of the current LABPPO. One of the biggest expected impact of the Te phase on this analysis will instead be to the background levels within the detector: the target rate of \ce{^{238}U}-chain backgrounds in the Te phase is $\sim$100 times that of the scintillator phase~\cite{andringaCurrentStatusFuture2016}. % cite target level backgrounds
+The choices of assumptions for this baseline set of projections were deliberately chosen to be fairly conservative. However, they do not account for the loading of BisMSB and Te into the detector that is likely to occur in the coming years. For BisMSB, the main impact is expected to be a dramatic increase in the observed light yield in the detector, leading to a smaller energy resolution and hence improved measurement~\cite{albaneseSNOExperiment2021}. % cite something
+Once the Te is also loaded, the observed light yield will likely decrease back down to levels similar to that of the current LABPPO. One of the biggest expected impact of the Te phase on this analysis will instead be to the background levels within the detector: the target rate of \ce{^{238}U}-chain backgrounds in the Te phase is $\sim$100 times that of the scintillator phase~\cite{andringaCurrentStatusFuture2016}. % cite target level backgrounds
 
 Because of this, two further scenarios were considered over a period of 1 year of livetime. In one, the internal \ce{^{238}U}- and \ce{^{232}Th}-chain backgrounds were raised to the nominal level expected during the Te-loaded phase~\cite{kroupovaImprovingSensitivityNeutrinoless2020}. % cite tereza
 Unique to the Te phase will be a number of other background processes. These include $2\nu\beta\beta$ decay as well as cosmogenic isotopes created from the spallation of Te nuclei. Because the Q-value of $2\nu\beta\beta$ decay for \ce{^{130}Te} is \SI{2.53}{\MeV}, only a tiny fraction of those events should be expected to make it above this analysis' \SI{2.5}{\MeV} energy threshold. When the cuts described in Table~\ref{tab:ev_selection} were run over the production of $2\nu\beta\beta$ MC made for the dataset used in the above analysis, no events survived. For the cosmogenics, assuming that the purification of the TeLS works as expected, less than one cosmogenic event of any kind is expected in the \onbb{} ROI in a year~\cite{kroupovaImprovingSensitivityNeutrinoless2020}. % cite Tereza
 Because of this, both of these additional backgrounds have been ignored for this scenario.
 
-In the other background scenario, the external water backgrounds were set to the level measured by T. Zummo in the water phase, and the internal \ce{^{208}Tl} were reduced by a factor of 10. This latter scenario reflects the possibility of better control of the radioactivity in the external water, as well as a way of using new analysis methods to cut out 90\% of the internal \ce{^{208}Tl} events.
+In the other background scenario, the external water backgrounds were set to the lower level measured by T. Zummo in the water phase, and the internal \ce{^{208}Tl} were reduced by a factor of 10. This latter scenario reflects the possibility of better control of the radioactivity in the external water, as well as a way of using new analysis methods to cut out 90\% of the internal \ce{^{208}Tl} events.
 
-The results of running these two scenarios can be seen in Fig.~\ref{fig:osc_plots_low_vs_hi_backs}. Unsurprisingly, the $1\sigma$ CI for \tonetwo{} is wider when backgrounds are greater, and thinner in the lower background scenario. However, the magnitudes of the change in width are somewhat different. For the high backgrounds case, the width only increases by 2\%. This implies that the higher internal backgrounds expected during the Te phase should not, on their own, substantially hamper the sensitivity of the measurement of \tonetwo{}. With lower external water and internal \ce{^{208}Tl} backgrounds, it appears that sensitivity improvements $\mathcal{O}(10\%)$ are achievable. This is because, over 1 year of livetime, the statistical uncertainties present in the signal process still dominate.
+The results of running these two scenarios can be seen in Figs.~\ref{fig:2D_posteriors_low_vs_hi_backs}~\&~\ref{fig:1D_posteriors_low_vs_hi_backs}. Unsurprisingly, the $1\sigma$ CI for \tonetwo{} is wider when backgrounds are greater, and thinner in the lower background scenario. However, the magnitudes of the change in width are somewhat different. For the high backgrounds case, the width only increases by 2\%. This implies that the higher internal backgrounds expected during the Te phase should not, on their own, substantially hamper the sensitivity of the measurement of \tonetwo{}. With lower external water and internal \ce{^{208}Tl} backgrounds, it appears that sensitivity improvements $\mathcal{O}(10\%)$ are achievable. This is because, over 1 year of livetime, the statistical uncertainties present in the signal process still dominate.
 
-\begin{figure}
+\begin{sidewaysfigure}
     \centering
-    \begin{subfigure}{0.98\textwidth}
-        \centering
-        \includegraphics[width=0.9\textwidth]{6_SolarAnalysis/images/steve_style_contours_projections_low_vs_hi_1yr.png}
-        \caption{Posterior densities marginalised onto the two oscillation parameters.}
-        \label{fig:2D_posteriors_low_vs_hi_backs}
-    \end{subfigure}
-    \begin{subfigure}{0.98\textwidth}
-        \centering
-        \includegraphics[width=0.9\textwidth]{6_SolarAnalysis/images/theta_12_comparison_projections_low_vs_Te_backs_1yr.pdf}
-        \caption{Posterior densities marginalised onto \tonetwo{}.}
-        \label{fig:1D_posteriors_low_vs_hi_backs}
-    \end{subfigure}
-    \caption{Comparison of projections over 1 year of livetime, with different background expectations.}
-    \label{fig:osc_plots_low_vs_hi_backs}
+    \includegraphics[width=\textwidth]{6_SolarAnalysis/images/steve_style_contours_projections_low_vs_hi_1yr.png}
+    \caption[Posterior densities marginalised onto the two oscillation parameters, for projections over 1 year of livetime, with different background expectations]
+    {Posterior densities marginalised onto the two oscillation parameters, for projections over 1 year of livetime, with different background expectations.}
+    \label{fig:2D_posteriors_low_vs_hi_backs}
+\end{sidewaysfigure}
+
+\begin{figure}[!th]
+    \centering
+    \includegraphics[width=\textwidth]{6_SolarAnalysis/images/theta_12_comparison_projections_low_vs_Te_backs_1yr.pdf}
+    \caption{Posterior densities marginalised onto \tonetwo{}, for projections over 1 year of livetime, with different background expectations.}
+    \label{fig:1D_posteriors_low_vs_hi_backs}
 \end{figure}
 
 \section{Summary and Suggestions for Further Work}\label{sec:solar_summary}
 In this chapter, a full analysis for measuring the solar neutrino oscillation parameters via \beight{} neutrinos was built and demonstrated on SNO+ scintillator-phase data. Using 80.6 days of livetime, assuming the global fit constraint on the \beight{} flux of $\Phi_{\beight{}} = (5.16\,^{+2.5\%}_{-1.7\%})\times 10^{6}\,\si{\per\cm\squared\per\second}$~\cite{bergstromUpdatedDeterminationSolar2016}, % cite Bergstrom et al
 the oscillation parameter \tonetwo{} was measured to be $\left|\tonetwo{} + n\cdot180\right|^{\circ} = 38.9^{\circ+8.0^{\circ}}_{\phantom{\circ}-7.9^{\circ}}$.
 
-Furthermore, assuming an identical analysis approach and similar detector conditions to those seen in the above dataset, the precision of this measurement is liable to improve by a factor of 2 in under 2 years of total livetime. This is partly because there become enough statistics to confidently reject large values of \dmsq{} above $\sim\SI{1.5e-4}{\eV\squared}$.
+Furthermore, assuming an identical analysis approach and similar detector conditions to those seen in the above dataset, the precision of this measurement is liable to improve by a factor of 2 in under 2 years of total livetime. This is partly because there will be enough statistics to make a measurement of \dmsq{}.
 
-Of course, major changes to the detector's scintillator cocktail are expected in that timeline. We have shown that the negative impacts expected from the higher internal backgrounds of the Te-loaded phase should have minimal impact on the sensitivity to the oscillation parameters over a livetime of 1 year. The sensitivity obtained in this scenario is expected to be somewhat conservative, as the scintillation emission time profile is expected to become substantially shorter~\cite{autyMethodLoadTellurium2023}, % cite something relevant
+Of course, major changes to the detector's scintillator cocktail are expected in that timeline. The negative impacts expected from the higher internal backgrounds of the Te-loaded phase should have a small impact on the sensitivity to the oscillation parameters over a livetime of 1 year. The sensitivity obtained in this scenario is expected to be somewhat conservative, as the scintillation emission time profile is expected to become substantially shorter~\cite{autyMethodLoadTellurium2023}, % cite something relevant
 leading to substantial improvements in the position resolution of the detector as well as the discrimination power of various time-based classifiers.
 
-If the external water backgrounds are able to return to the levels observed during the water phase, and the event selection of internal \ce{^{208}Tl} events improves substantially, there is some scope for improvement to the measurement of \tonetwo{} when considering 1 year of livetime. There are three main possibilities for removal of internal \ce{^{208}Tl} events. Firstly, these $\beta$-decays come as the delayed partner to the $\alpha$-decay branch of \ce{^{214}Bi} nuclei. Therefore, a coincidence tagging approach to remove these events could be possible. Furthermore, alongside the $\beta$-decay of \ce{^{208}Tl} are typically $\gamma$s, which should modify the observed time residual spectrum these events compared to a single-site event like the signal process. As a result, creating a custom multi-site classifier to exclude internal \ce{^{208}Tl} events from single-site events could help further. Finally, solar neutrino and \ce{^{208}Tl} events can in theory be distinguished by their direction. Via a method such as the one developed in~\cite{allegaEventbyEventDirectionReconstruction2023,patonDirectionalReconstructionLiquid2023}, % cite Josie
+If the external water backgrounds can be returned to the levels observed during the water phase, and the event selection of internal \ce{^{208}Tl} events improves substantially, there is some scope for improvement to the measurement of \tonetwo{} when considering 1 year of livetime. There are three main possibilities for removal of internal \ce{^{208}Tl} events. Firstly, these $\beta$-decays come as the delayed partner to the $\alpha$-decay branch of \ce{^{214}Bi} nuclei. Therefore, a coincidence tagging approach to remove these events could be possible. Furthermore, alongside the $\beta$-decay of \ce{^{208}Tl} are typically $\gamma$s, which should modify the observed time residual spectrum of these events compared to a \beight{} signal event. As a result, creating a custom multi-site classifier to exclude internal \ce{^{208}Tl} events from single-site events could help further. Finally, solar neutrino and \ce{^{208}Tl} events can in theory be distinguished by their direction. Via a method such as the one developed in~\cite{allegaEventbyEventDirectionReconstruction2023,patonDirectionalReconstructionLiquid2023}, % cite Josie
 it might be possible to gain some discrimination power of the solar signal over this background.
 
 On the subject of classifiers, the choice of cuts used for the externals classifiers were chosen to be deliberately conservative. By tuning those cuts, it is possible that the sensitivity could be improved through the increased rejection of external events. An even more sophisticated approach would be to include these classifiers as dimensions of the PDFs. This method yielded substantial improvements in the \onbb{} study performed in~\cite{kroupovaImprovingSensitivityNeutrinoless2020}.
 
-Of course, what has been seen in this analysis is that the greatest barrier to greater precision is simply the signal statistics. This is a function of exposure, not just livetime. Therefore, substantial improvements are likely to be made by increasing the FV used for this analysis. For example, if the maximum radius used in this analysis was moved from \SI{5.0}{\metre} out to \SI{5.7}{\metre}, then the increased volume leads to an increased rate of signal events of 48\%. Admittedly, for energies below $\sim\SI{3.0}{\MeV}$ at larger radii we expect external backgrounds to completely dominate over the signal, so the benefits in the signal statistics will mostly be seen above \SI{5}{\MeV}.
+Of course, what has been seen in this analysis is that the greatest barrier to greater precision is simply the signal statistics. This is a function of exposure, not just livetime. Therefore, substantial improvements are likely to be made by increasing the FV used for this analysis. For example, if the maximum radius used in this analysis was moved from \SI{5.0}{\metre} out to \SI{5.7}{\metre}, then the increased volume leads to an increased rate of signal events of 48\%. Admittedly, for energies below $\sim\SI{3.0}{\MeV}$ at larger radii external backgrounds are expected to completely dominate over the signal, so the benefits in the signal statistics will mostly be seen above \SI{5}{\MeV}.
 
 Because the time of day impacts the extent to which solar neutrinos will be travelling through the Earth, there is expected to be some additional power in considering the difference between events observed during the day versus the night. This approach was used to boost the expected sensitivity for the solar oscillation analysis to be used on the JUNO experiment, for example~\cite{abuslemeFeasibilityPhysicsPotential2020,zhaoModelIndependentApproach2022}. % cite JUNO b8 osc measurement paper(s)
 Also considered in that sensitivity study were additional interaction modes of solar neutrinos with a liquid scintillator, such as the CC interaction of $\nu_{e}$ on \ce{^{13}C} within the detector. These modes could provide further sensitivity.

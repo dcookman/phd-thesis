@@ -1,0 +1,93 @@
+\chapter{Expected Rates and Constraints in the Solar Analysis}\label{chap:appendix_solar_rates}
+
+\section[Boron-8 Signal]{\beight{} Signal}
+Numerous theoretical predictions and experimental measurements have been made of the \beight{} flux. For this analysis, two different values have been used. The SSM predicts a relatively loose constraint of $\Phi_{\beight{}} = (5.46\pm 12\%)\times 10^{6}\,\si{\per\cm\squared\per\second}$~\cite{vinyolesB16StandardSolar2018}, % cite SSM flux
+whereas a recent global fit of neutrino oscillation experiments by Bergstr\"{o}m \textit{et al} leads to a much stronger constraint of $\Phi_{\beight{}} = (5.16\,^{+2.5\%}_{-1.7\%})\times 10^{6}\,\si{\per\cm\squared\per\second}$~\cite{bergstromUpdatedDeterminationSolar2016}. % cite Bergstrom et al
+We shall mainly use the latter result to both calculate the expected rate of the signal events in the detector, and the fractional uncertainties used to constrain this rate. The looser constraint coming from the SSM will be used for comparison.
+
+To calculate the number of electrons within the liquid scintillator, the method used in~\cite{inacioDataAnalysisWater2022} is followed, % cite Ana Sofia's thesis
+which uses the formula:
+\begin{equation}
+    n_{e} = \frac{\left(f_{\mathrm{LAB}}n_{\mathrm{LAB}} +
+                        f_{\mathrm{PPO}}n_{\mathrm{PPO}}\right)
+                  N_{A}M_{\mathrm{LAB}}}
+                 {m}.
+\end{equation}
+Here, $f_{\mathrm{LAB}}$ and $f_{\mathrm{PPO}}$ are the fraction by weight of the LAB and PPO within the scintillator cocktail, respectively. Because this analysis uses data taken during the scintillator phase with a PPO concentration of \SI{2.2}{\g} for every litre of LAB, these take values 99.744\% and 0.256\%, respectively. $n_{\mathrm{LAB}}$ and $n_{\mathrm{PPO}}$ are the mean number of electrons per molecule of LAB and PPO, respectively. PPO has the chemical formula \ce{C_{15}H_{11}NO}, leading to $n_{\mathrm{PPO}} = 116$. The LAB used in SNO+ has varying alkyl chain lengths, leading to a varying number of electrons per molecule. This distribution is known to have changed between batches of LAB made by the manufacturer, and is also impacted by the distillation process used during the purification of the LAB before it was put into the AV. At the time of writing, no final molecular breakdown has been made for the LAB within the detector; for now the breakdown provided here has been used~\cite{lebeufLABCertificateAnalysis2020}, % cite LAB breakdown DocDB #7572
+from a representative tanker truck of LAB: there $n_{\mathrm{LAB}} = 131.68$. Finally, $N_{A} = \SI{6.02e23}{\per\mol}$ is Avogadro's Constant, $M_{\mathrm{LAB}} = \SI{780.2}{\tonne}$ is the total mass of scintillator within a sphere of radius the size of the AV, and $m = \SI{235}{\g\per\mol}$ is the molecular weight of the scintillator. This leads to a value for the number of electron targets:
+\begin{equation*}
+    n_{e} = \num{2.63e32}\; \mathrm{electrons}.
+\end{equation*}
+
+Eq.~\ref{eq:solar_rate} can be modified to get an equation for the total rate of solar neutrino events by flavour, before oscillations or analysis cuts are considered:\
+\begin{equation}
+    R_{i} = \Phi_{\beight{}}n_{e}
+                \int S_{\nu}\left(E_{\nu}\right)\sigma_{\nu_{i}}\left(E_{\nu}\right)\,dE_{\nu}.
+\end{equation}
+
+Using the cross-section formula from Eq.~\ref{eq:enu_es_xsec}, the \beight{} spectral shape from~\cite{winterB8NeutrinoSpectrum2006}, and $\Phi_{\beight{}} = \SI{5.46e6}{\per\cm\squared\per\second} \left(\SI{5.16e6}{\per\cm\squared\per\second}\right)$, the expected rate before considering oscillations or cuts is:
+\begin{equation*}
+    R_{i} = 
+    \begin{cases}
+        2743.2 (2592.5)\; \text{events/yr} & \quad \text{for } i = e,\\
+        489.7 (462.8)\;  \text{events/yr} & \quad \text{for } i = \mu,\tau.
+    \end{cases}
+\end{equation*}
+In the above rates, an additional volume correction factor of 1.0139 has been included, because in MC events are simulated within the neck of the AV in addition to the main spherical bulk~\cite{caravacaValidationSNOProduction2019}. % cite Javi, DocDB 5519
+
+\section{Internal Uranium- and Thorium-Chai\\Backgrounds}
+As mentioned in Section~\ref{sec:u_th_internals}, \ce{^{214}Bi-Po} and \ce{^{212}Bi-Po} decays, coming from the \ce{^{238}U} and \ce{^{232}Th} decay chains respectively, are capable of generating distinctive delayed coincidence events. Rafael Hunt-Stokes was able to use a series of cuts to isolate both types of coincidence signals~\cite{hunt-stokesUraniumThoriumBackground2022}, % cite Rafa's tech note?
+looking at coincidence signals within the same \SI{5.0}{\m} FV as this analysis. After correcting for his cut efficiencies, he obtained a derived rate in the whole detector of~\cite{hunt-stokesPrivateCommunication2023}: % cite Rafa
+\begin{equation*}
+    \text{BiPo rate} = 
+    \begin{cases}
+        0.94\; \text{events/hour} & \quad \text{for } ^{212}\text{Bi-Po},\\
+        6.06\; \text{events/hour} & \quad \text{for } ^{214}\text{Bi-Po}.
+    \end{cases}
+\end{equation*}
+These rates assume a uniform concentration of \ce{^{222}Rn} and \ce{^{220}Rn} throughout the detector: this is how internal backgrounds are simulated by default in \texttt{RAT}. However, it has been shown that this is not at all the case within SNO+; radon ingress from the AV neck propagates through the bulk of the detector via convection currents induced by the thermal gradient present throughout the detector~\cite{wilsonThermallydrivenScintillatorFlow2023}. % Cite John wilson's paper, JoshW's & Rafa's tagging
+This radon ingress also breaks the secular equilibrium of the two decay chains, so that one can no longer make straightforward predictions about rates for decays in the chains above radon. Fortunately for this analysis, Table~\ref{tab:MC_cut_effs} showed that the cut efficiencies for \ce{^{228}Ac} and \ce{^{234m}Pa} decays, both in their respective decay chain above radon, are negligible. This means that even if their decay rates were much greater than what would be predicted from the tagged BiPo rates, a negligible number of events are expected for both in the livetime of the dataset considered in this analysis.
+
+The combination of broad coincidence tagging as well as using an in-window BiPo classifier cut ensures that the expected rate of \ce{Bi-Po} events that survive all the cuts is 1.5 and 2.5 for \ce{^{212}Bi-Po} and \ce{^{214}Bi-Po}, respectively. Because the branching ratio of \ce{^{212}Bi\to^{208}Tl} is 36\%, and the branching ratio of \ce{^{214}Bi\to^{210}Tl} is 0.021\%~\cite{martinNuclearDataSheets2007,shamsuzzohabasuniaNuclearDataSheets2014}, % cite some table of decays
+after considering the cut efficiencies in this analysis 512.4 internal \ce{^{208}Tl} and 1.1 internal \ce{^{210}Tl} events are expected.
+
+In theory, the non-uniformity of all the radon-induced backgrounds could impact the results of the oscillation analysis. However, the small rates of each of these backgrounds after cuts have been applied indicated that only the internal \ce{^{208}Tl} could plausibly have any effect. For this particular background, each slice of the binned PDF in $r_{3}$ was allowed to float independently, with no constraints. The other three related backgrounds considered in the fit (\ce{^{210}Tl}, \ce{^{212}Bi-Po}, and \ce{^{214}Bi-Po}) did not have this PDF splitting applied to them. A loose 25\% constraint on each of these three processes' rates was applied, to account for the current uncertainty in the calculation of R. Hunt-Stokes' tagging efficiency.
+
+\section[Alpha-n Reactions]{\alphan{} Reactions}
+As discussed in Section~\ref{sec:alphans}, \alphan{} reactions are induced by $\alpha$-particles generated in the detector. In the SNO+ scintillator phase, the dominant source of $\alpha$-particles are decays of \ce{^{210}Po} located both within the scintillator and on the AV surfaces. Because of substantial quenching by the scintillator, the reconstructed energy of the \ce{^{210}Po} $\alpha$ events fall substantially below $E_{\textrm{min}}$. The rate of the internal and surface \ce{^{210}Po} events have been tracked throughout the scintillator phase by Serena Riccetto and Shengzhao Yu, respectively.
+
+Within the \SI{5}{\m} FV, S. Riccetto measured a total of \num{1.60e8} \ce{^{210}Po} events over the runs considered for this analysis~\cite{riccettoPrivateCommunication2023,riccettoFullFillInternal2023}. % cite Serena (private comm?)
+Assuming the internal rate of these events are uniform throughout the scintillator, this leads to a total rate of \num{2.78e8} events for all the scintillator. After using a conversion rate of \num{6e-8} neutrons generated per $\alpha$ on \ce{^{13}C} in liquid scintillator~\cite{morton-blakeFirstMeasurementReactor2021,lozzaNeutronSourcesBackgrounds2015}, % where did this come from?
+the expected number of internal \alphan{} events before cuts is 17. However, because a coincidence cut is used in this analysis, the vast majority of these should be removed, leading to merely 0.009 events expected after cuts.
+
+Similarly, S. Yu measured the surface \ce{^{210}Po} rate to vary between \SIrange{2}{5}{\Bq\per\square\metre} over the time period of this analysis as well as a function of height in the detector~\cite{yuAVSurfacePo2102023}. % cite Shengzhao's work
+Using the midpoint value of \SI{3.5}{\Bq\per\square\metre}, one can derive an expected rate of 554.4 surface \alphan{} events occurring over the dataset's livetime, before cuts. Once again, the coincidence cut as well as the FV cut removes the vast majority of these events, so that only 0.07 events are expected after all cuts have been applied. Because both classes of \alphan{} events have negligible expected rates in the dataset, they were not included within the MCMC fit.
+
+\section{External Backgrounds}\label{sec:rates_ext_backgrounds}
+During the water phase of SNO+, an analysis of the rates of the external backgrounds was performed by Tony Zummo~\cite{zummoExternalBackgroundBox2022}. % cite Zummo's externals results
+The results of this analysis are shown in Table~\ref{tab:externals_rates_zummo}, giving the measured rates as a fraction of the nominal values given in~\cite{andringaCurrentStatusFuture2016}. % cite white paper.
+Although the statistical uncertainty for these measurements were quite small, the total systematic uncertainty was substantial because T. Zummo's analysis involved looking at events in the tail of energy distributions, so that any uncertainty in the energy scale systematic had a strong impact on the number of events observed within the tail. These measured rates and their systematic uncertainties were used to predict the expected rate and constrain the external backgrounds in this scintillator phase solar analysis. For the AV, ropes, and PMTs, this seems reasonable as we do not expect there to be any substantial change in these backgrounds between the phases. The exception to this is the external water, where various aspects of the water purification process have changed over the years since T. Zummo's analysis dataset was taken~\cite{kaptanogluFirstLookExternal2023}. Because of this, the water phase measured rate was used as a starting point for the fit, but no constraint was applied.
+
+\begin{table}
+    \centering
+    \begin{tabular}{c r}
+        \hline
+        Background Type & Rate (Fraction of Nominal)  \\ \hline \hline
+        AV \& Ropes    & $0.21\pm0.009^{+0.64}_{-0.21}$  \\
+        External Water & $0.44\pm0.003^{+0.32}_{-0.27}$  \\
+        PMTs           & $1.48\pm0.002^{+1.65}_{-0.60}$  \\
+        \hline
+    \end{tabular}
+    \caption[Measured rates of the external backgrounds during the water phase of SNO+, by Tony Zummo]
+    {Measured rates of the external backgrounds during the water phase of SNO+, by Tony Zummo~\cite{zummoExternalBackgroundBox2022}. % cite Zummo
+    }
+    \label{tab:externals_rates_zummo}
+\end{table}
+
+Before the expected number of triggered events can be calculated for each external background process, two subtleties must be dealt with. Firstly, MC production of the externals did not include the hold-up ropes at the time of performing the analysis. This is not a major problem, because the hold-up ropes are of substantially lower mass than the hold-down ropes, and also their average radius from the centre of the detector is much larger. This means that the expected rate of events from the hold-up ropes that manage to reconstruct inside the FV should be sub-dominant to their hold-down counterparts. For the purposes of this thesis, the combined rate for both kinds of ropes were calculated assuming the same rate of decays per unit volume, with the overall cut efficiency and derived PDFs coming from just the hold-down ropes.
+
+Secondly, because the attenuation length of a \SI{2.6}{\MeV} $\gamma$ particle is \SI{23}{\cm} in water~\cite{bergerXCOMPhotonCross2009,heintzelmanSurvivalRadiiPSUP2012}, % cite xsec database (see W.Heintzelman DocDBs!)
+the vast majority of external backgrounds which start from a substantial distance away from the AV do not generate $\gamma$s that make it into the scintillator. As a result, an enormous amount of computational resources could be wasted on simulating events that never get into the ROI. To work around this, PMT $\beta-\gamma$ events are modelled as \SI{2.6}{\MeV} $\gamma$s generated at a radius of \SI{6.2}{\m} (just outside the AV), pointing radially inwards. Making some basic assumptions about these events, one can derive the expected survival rate of these $\gamma$ particles as a function of radius~\cite{heintzelmanSurvivalRadiiPSUP2012,heintzelmanAngularDistributionSurviving2013}. % cite Heintzelman #1712, 1729
+This leads to a correction factor of \num{1.17e-6} being applied to the results of the radial shell simulation.
+
+Similarly, simulations of background events in the external water and ropes are restricted from starting beyond certain maximum radii. The particular maximum radii chosen depends on the specific process, in order to ensure a negligible impact on the fraction of simulated events that actually deposit any energy into the scintillator. This leads to rate correction factors of 0.35 and 0.50 for external water \ce{^{214}Bi} and \ce{^{208}Tl} events, as well as 0.50 and 0.35 for hold-down and hold-up ropes~\cite{inacioUsingSmallerShell2019}. % cite Ana Sofia's DocDB #5154
