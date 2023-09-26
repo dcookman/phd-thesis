@@ -668,6 +668,8 @@ supported!}
  \@ifundefined{selectfont}{\renewcommand{\UrlFont}{\sffamily}}
  {\renewcommand{\UrlFont}{\normalsize}}}
 \urlstyle{leo}
+\def\UrlBreaks{\do\/\do-}
+\Urlmuskip=0mu plus 1mu\relax
 
 % option to split urls over multiple lines for latex >> DVIPS >> PDF option
 \ifpdf
