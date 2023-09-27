@@ -313,7 +313,8 @@ FUNCTION {format.bvolume}
 { "" }
 { series empty$
 'skip$
-{ ", " series * }
+% { ", " series * }
+{ series }
 if$
 " Vol." volume tie.or.space.connect *
 "volume and number" number either.or.check
@@ -339,7 +340,7 @@ FUNCTION {format.edition}
 { edition empty$
 { "" }
 { output.state mid.sentence =
-{ ", " edition "l" change.case$ *  }
+{ " " edition "l" change.case$ *  }
 { ", " edition "t" change.case$ *  }
 if$
 " ed." *
