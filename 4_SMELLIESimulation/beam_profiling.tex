@@ -93,12 +93,13 @@ The Cumulative Density Function (CDF) of this intensity histogram as a function 
     \item The photon's direction is defined by the $(\alpha, \phi)$ chosen by this process. 
 \end{enumerate}
 
-Because of the relative simplicity of this algorithm compared to the previous 2D generator, the speed improvement was very large: generation now took $\sim\SI{1}{\milli\second}$ per SMELLIE event, a speed improvement of nearly $\num{50000}$. Event generation became almost as fast as it was when the 1D generator was being used. Furthermore, because of the approach taken, this major speed improvement comes at no sacrifice in accuracy. Figure~\ref{fig:data_generator_comp_new_profiles} shows a comparison of the average number of photoelectrons (npe) per event per PMT between water-phase SMELLIE data and simulations with both the old and new 2D generator. One can see clearly that both generators are as accurate as one another. Note that this plot uses the updated beam profiles as explained in the next section.
+Because of the relative simplicity of this algorithm compared to the previous 2D generator, the speed improvement was very large: generation now took $\sim\SI{1}{\milli\second}$ per SMELLIE event, a speed improvement of nearly $\num{50000}$. Event generation became almost as fast as it was when the 1D generator was being used. Furthermore, because of the approach taken, this major speed improvement comes at no sacrifice in accuracy. Figure~\ref{fig:data_generator_comp_new_profiles} shows a comparison of the average number of photoelectrons (npe) per event per PMT between water-phase SMELLIE data and simulations with both the old and new 2D generator. One can see that both generators are generally as accurate as one another. Note that this plot uses the updated beam profiles as explained in the next section.
 
 \begin{figure}
     \centering
-    \includegraphics[width=0.8\linewidth]{4_SMELLIESimulation/images/data_mc_comparison_npe_vs_r_114018_109_use_f.pdf}
-    \caption[Comparison of water-phase data to MC generated using both the old and new 2D beam profile generator approaches, with the updated beam profiles]{Comparison of water-phase data to MC generated using both the old and new 2D beam profile generator approaches, with the updated beam profiles. Both versions of the generator are consistent with one another, but the new generator is many times faster.}
+    \includegraphics[width=0.8\linewidth]{4_SMELLIESimulation/images/data_mc_comparison_npe_vs_r_114018_109_use_f_and_old.pdf}
+    \caption[Comparison of water-phase data to MC generated using both the old and new 2D beam profile generator approaches]
+    {Comparison of water-phase data to MC generated using both the old and new 2D beam profile generator approaches. The new generator also uses the updated beam profiles, as discussed in Section~\ref{sect:new_beam_profiles}. The MC distributions have been scaled to match the total npe of the data.}
     \label{fig:data_generator_comp_new_profiles}
 \end{figure}
 
