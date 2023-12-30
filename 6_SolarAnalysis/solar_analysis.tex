@@ -3,17 +3,17 @@
 Measuring the ``solar'' neutrino oscillation parameters \dmsq{} and \tonetwo{} is one of the principal aims of the SNO+ detector during the scintillator phase. There are, in fact, two complementary methods of measuring these parameters: the oscillations of anti-neutrinos from terrestrial nuclear reactors, and the oscillations of neutrinos from the Sun.
 
 This chapter focuses on the latter approach, using \beight{} neutrinos coming from the Sun to measure the solar oscillation parameters. An initial background-free study was performed by Javi Caravaca~\cite{caravacaSNOSensitivityStandard2020}, % Javi's tech note
-which demonstrated that it was indeed possible to make such a measurement in the detector. The work in this chapter builds substantially from that analysis. This chapter also draws on the associated reactor anti-neutrino analysis built by Iwan Morton-Blake~\cite{morton-blakeFirstMeasurementReactor2021}, % Iwan's thesis
+which made an initial estimate of the sensitivity of SNO+. The work in this chapter builds substantially from that analysis. This chapter also draws on the associated reactor anti-neutrino analysis built by Iwan Morton-Blake~\cite{morton-blakeFirstMeasurementReactor2021}, % Iwan's thesis
 and more broadly from the general techniques used in the \onbb{} analysis of Tereza Kroupova~\cite{kroupovaImprovingSensitivityNeutrinoless2020} and Jack Dunger~\cite{dungerTopologicalTimeBased2018}.% Tereza & Jack's thesis
 
 This chapter begins by explaining how it is possible to measure the solar oscillation parameters via \beight{} events. Then, the framework used to perform the analysis is explained: that of a \textit{Bayesian Analysis using Markov Chain Monte Carlo techniques}. After the method has been described, the dataset upon which the analysis is performed is introduced. The results are then given. Given these results, a projection is then made for the expected sensitivity to \tonetwo{} as a function of livetime.
 
 
-\section{Analysis Methodology}\label{sec:analysis_method}
-\subsection{Observational Principle}\label{sec:solar_obs_principle}
+% \section{Analysis Methodology}\label{sec:analysis_method}
+\section{Observational Principle}\label{sec:solar_obs_principle}
 There are three key properties of solar neutrinos and their interactions that enable neutrino oscillations to be measured. The first of these is the dependence of the electron neutrino survival probability, $P_{ee}$, on both the individual oscillation parameters and the neutrino energy. As discussed in Section~\ref{sec:nu_osc_phenom}, $P_{ee}$ is dependent on the oscillation parameters \tonetwo{} and $\theta_{13}$ when propagating through the vacuum of space (after averaging over very many oscillations), and the effective oscillation parameters $\theta_{12}^{M}$ and $\Delta m^{2}_{M,21}$ when passing through the Sun or Earth. By Eq.~\ref{eq:matter_osc_params}, this leads to an overall dependence of $P_{ee} = P_{ee}\left(\theta_{12}, \theta_{13}, \Delta m^{2}_{12}\right)$.
 
-Fig.~\ref{fig:pee_osc_param_dependence} shows the dependence of each of these oscillation parameters on $P_{ee}(E)$, as well as the oscillation parameter $\Delta m^{2}_{13}$ for comparison. It is clear that only the parameters \dmsq{} and \tonetwo{} have a substantial impact on $P_{ee}(E)$. Because of this, only \dmsq{} and \tonetwo{} will be varied in this analysis, with $\theta_{13}$ and $\Delta m^{2}_{13}$ being fixed at the global fit values shown in Table~\ref{tab:nufit_osc_params}.
+Fig.~\ref{fig:pee_osc_param_dependence} shows the dependence of $P_{ee}(E)$ on each of these oscillation parameters, as well as the oscillation parameter $\Delta m^{2}_{13}$ for comparison. It is clear that only the parameters \dmsq{} and \tonetwo{} have a substantial impact on $P_{ee}(E)$. $\theta_{13}$ does have a small effect on the survival probability, but the global fit measurement of $\sin^{2}\theta_{13} = 0.02220^{+0.00068}_{-0.00062}$~\cite{estebanFateHintsUpdated2020} has uncertainties over an order of magnitude smaller than the range of $\sin^{2}\theta_{13}$ values scanned over in Fig.~\ref{fig:pee_osc_param_dependence}. Because of this, only \dmsq{} and \tonetwo{} will be varied in this analysis, with $\theta_{13}$ and $\Delta m^{2}_{13}$ being fixed at the global fit values shown in Table~\ref{tab:nufit_osc_params}.
 
 % Let us now consider the dependence of $P_{ee}$ on the individual neutrino oscillation parameters. Recall from Eq.~\ref{eq:pee_msw} %
 % that, after considering matter-induced oscillations due to neutrinos passing through the Sun and possibly the Earth, $P_{ee} = P_{ee}\left(\tan2\theta^{M}_{12}, \sin\theta^{M}_{13}, \Delta m^{2}_{21,M}\right) = P_{ee}\left(\theta_{12}, \theta_{13}, \Delta m^{2}_{12}, \Delta m^{2}_{13}\right)$. Fig.~\ref{fig:pee_osc_param_dependence} shows the dependence of each of these four oscillation parameters on $P_{ee}(E)$. We can see that in reality only the two parameters \dmsq{} and \tonetwo{} have a substantial impact on $P_{ee}(E)$ and hence the observed electron energy spectrum. Because of this, for this analysis we will only ever vary these two oscillation parameters, and keep $\theta_{13}$ and $\Delta m^{2}_{13}$ at their current ``NuFit 5.1'' global fit values\footnote{We use the global fit results excluding Super-Kamiokande's atmospheric data, and assuming normal ordering of the neutrino mass hierarchy. This choice has a tiny impact on the magnitudes of these two fixed parameters, the main impact being the sign of $\Delta m^{2}_{13}$.} % Confirm that mass hierarchy has no impact on Pee.
@@ -45,7 +45,7 @@ Of course, neutrino energies are not directly measured in the detector --- only 
 \begin{equation}
     T_{\mathrm{max}} = \frac{2E_{\nu}^{2}}{m_{e}+2E_{\nu}}.
 \end{equation}
-This kinematic limit can be very clearly seen in the shapes of the differential cross-sections. As a result, a higher energy neutrino will generate a higher energy scattered electron, on average.
+This kinematic limit can be very clearly seen in the shapes of the differential cross-sections. As a result, a higher energy neutrino will generate a higher energy scattered electron, on average. Fig.~\ref{fig:nu_elec_energy_dependence} also demonstrates that the correlation between neutrino and electron energies is rather weak.
 
 \begin{figure}[!th]
     \centering
@@ -66,8 +66,41 @@ This kinematic limit can be very clearly seen in the shapes of the differential 
 
 The combined effect that each of the above physical processes has on the energy spectrum of the solar neutrinos can be seen in Fig.~\ref{fig:nu_elec_energy_dependence2}. A broad energy distribution of \beight{} electron neutrinos are generated in the Sun. These neutrinos then oscillate their flavour state as they propagate to the detector, in an energy-dependent manner. When neutrinos interact with the electrons in the detector, there is both an energy- and flavour-dependence on the cross-section. The scattered electrons gain a kinetic energy with some mild dependence on the inciting neutrino's energy, which is then measured by the detector to within some energy resolution.
 
-\subsection{Background Processes}\label{sec:background_processes}
-There are a number of background processes that the solar signal must compete against. Below a reconstructed energy of $\sim\SI{2.5}{\MeV}$, it is known that low-energy backgrounds coming mainly from Uranium- and Thorium-chain isotopes coming from the natural radioactivity of the detector materials completely dominate over the \beight{} signal, and so for this analysis only processes that can generate reconstructed energies of at least $E_{\textrm{min}} = \SI{2.5}{\MeV}$ are considered. The following subsections explain each of the backgrounds present in the dataset above $E_{\mathrm{min}}$, as well as methods that have been used to mitigate them as much as possible.
+\begin{figure}[!th]
+    \centering
+    \includegraphics[width=\textwidth]{6_SolarAnalysis/images/rec_energy_dist_vs_osc_params2.pdf}
+    \caption[Comparison of the reconstructed electron energy distribution expected for 9 different oscillation parameter combinations]
+    {Comparison of the reconstructed electron energy distribution expected for 9 different oscillation parameter combinations, after 1 year of data. The unoscillated rate was calculated in Appendix~\ref{chap:appendix_solar_rates}, with the cuts described in Section~\ref{sec:event_selection} being applied.}
+    \label{fig:rec_energy_dist_vs_osc_params}
+\end{figure}
+
+The overall effect of changing the oscillation parameters on the observed signal distribution can be seen in Fig.~\ref{fig:rec_energy_dist_vs_osc_params}. There is some shape change in the spectrum as the oscillation parameters are modified. However, the correlation between the neutrino and electron energies is only weak, meaning the total rate of \beight{} events observed changing is the more dominant effect.
+
+
+\begin{figure}[!th]
+    \centering
+    \begin{subfigure}{0.44\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{6_SolarAnalysis/images/nufit51_t12_dmsq21_solar_antinu.png}
+        \caption{}
+        \label{fig:nufit_osc_param_contours}
+    \end{subfigure}
+    \begin{subfigure}{0.54\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{6_SolarAnalysis/images/javi_solar_sensitivity.png}
+        \caption{}
+        \label{fig:javi_osc_param_contours}
+    \end{subfigure}
+    \caption[Solar oscillation parameter contours, from both the NuFit 5.1 global fit, and initial SNO+ sensitivity study]
+    {\textbf{(a):} NuFit 5.1 global fit contours for the two solar neutrino oscillation parameters, after marginalisation over all other oscillation parameters~\cite{estebanFateHintsUpdated2020}. Contours correspond to the allowed regions at $1\sigma$, 90\%, $2\sigma$, 99\%, and $3\sigma$ confidence levels. \textbf{(b):} Sensitivity contours produced by J. Caravaca~\cite{caravacaSNOSensitivityStandard2020} for 1 year of SNO+ data in a solar oscillation analysis sensitivity study. The analysis assumed no backgrounds, systematics, or uncertainty on the \beight{} flux. The analysis took the NuFit 4.1 `solar' combined fit oscillation parameters to be true, and compared them to the reactor anti-neutrino measurement made by KamLAND~\cite{gandoReactorOnoffAntineutrino2013}.}
+    \label{fig:previous_solar_osc_results}
+\end{figure}
+
+The NuFit 5.1 global fit results, shown in Table~\ref{tab:nufit_osc_params}, have the solar oscillation parameters measured as $\dmsq = 7.42^{+0.21}_{-0.20}\times10^{-5}\si{\eV\squared}$ and $\tonetwo = 33.44^{\circ+0.77^{\circ}}_{\phantom{\circ}-0.74}$~\cite{estebanFateHintsUpdated2020}. Fig.~\ref{fig:nufit_osc_param_contours} %
+shows the current allowed parameter regions associated with this fit. Thanks to the work of both solar neutrino and reactor anti-neutrino oscillation experiments, both of these oscillation parameters are known to a precision better than 3\%. For comparison, the initial sensitivity study by J. Caravaca~\cite{caravacaSNOSensitivityStandard2020} gave an expected result for 1 year of data in the SNO+ scintillator phase shown in Fig.~\ref{fig:javi_osc_param_contours}. Note that this analysis assumed no backgrounds, systematics, or parameter constraints, and used a different statistical approach and set of analysis cuts to the ones described in the rest of this chapter. The study showed that, on its own, a solar oscillation analysis was unlikely to substantially improve the global fit measurement. However, it is possible that the solar analysis combined with a complementary reactor anti-neutrino analysis could do so. In any case, SNO+ has the capability to be the first experiment to measure \tonetwo{} and \dmsq{} using solar neutrino and reactor anti-neutrino sources in the same detector. Moreover, it is valuable to perform a more detailed study of the solar analysis in SNO+, incorporating backgrounds, systematics, and constraints. This is the work of the rest of this chapter.
+
+\section{Background Processes}\label{sec:background_processes}
+There are a number of background processes that the solar signal must compete against. Below a scattered electron reconstructed energy of $\sim\SI{2.5}{\MeV}$, it is known that low-energy backgrounds coming mainly from Uranium- and Thorium-chain isotopes coming from the natural radioactivity of the detector materials completely dominate over the \beight{} signal, and so for this analysis only processes that can generate reconstructed energies of at least $E_{\textrm{min}} = \SI{2.5}{\MeV}$ are considered. The following subsections explain each of the backgrounds present in the dataset above $E_{\mathrm{min}}$, as well as methods that have been used to mitigate them as much as possible.
 
 \subsubsection{Internal Uranium- and Thorium-Chain Backgrounds}\label{sec:u_th_internals}
 Although every effort has been made to make the scintillator cocktail that fills SNO+ to be as radio-pure as possible, there inevitably remain trace amounts of the radioactive isotopes that derive from the decay chains of the \ce{^{238}U} and \ce{^{232}Th} isotopes. Fig.~\ref{fig:u_th_decay_chains} shows these two decay chains. Only a fraction of the radioactive isotopes in these chains actually are capable of generating events in the detector with energies above $E_{\textrm{min}}$: these have been highlighted in Fig.~\ref{fig:u_th_decay_chains} in gold.
@@ -95,7 +128,7 @@ which uses a much tighter cut on position as well as cuts on the energies of the
         Property      & Requirement \\ \hline \hline
         Prompt Event  & Triggers detector, valid position reconstruction \\
         Delayed Event & Triggers detector, valid position reconstruction, $\texttt{nhitsCleaned} \geq 100$ \\
-        $\Delta t$    & $<\SI{4}{\micro\second}$ \\
+        $\Delta t$    & $<\SI{4}{\milli\second}$ \\
         $\Delta R$    & $<\SI{2}{\metre}$ \\
         \hline
     \end{tabular}
@@ -163,7 +196,7 @@ To distinguish between the inherent backgrounds within the scintillator, and the
 \nomenclature{\textbf{FV}}{Fiducial Volume}
 Although there are numerous external backgrounds, with an accurate and precise position reconstruction algorithm they can be efficiently rejected. The simplest approach is with a ``fiducial volume'' (FV) cut: all events that reconstruct beyond some radius are cut. The only external background events that will reach within the FV are those that have reconstructed very poorly, or have some long-distance radiation that manages to deposit radiation towards the centre of the AV. % FOM cut?
 Because $\alpha$ and $\beta$ radiation can only travel short distances through the detector, it is only $\gamma$ % and neutron?
-radiation that can realistically travel far enough into the detector to be able to reconstruct anywhere near the centre. Moreover, the intensity of this $\gamma$ radiation attenuates exponentially with the Compton scattering length towards the centre of the detector. This strong radial-dependence can be seen in Fig.~\ref{fig:external_radial_dependence}.
+radiation that can realistically travel far enough into the detector to be able to reconstruct anywhere near the centre. Moreover, the intensity of this $\gamma$ radiation attenuates exponentially with the Compton scattering length towards the centre of the detector. This strong radial-dependence can be seen in Fig.~\ref{fig:external_radial_dependence}. One example of such a background are `PMT $\beta-\gamma$' events, in which the \ce{^{238}U}- and \ce{^{232}Th}-chain radio-isotopes present in the PMT photocathodes generate $\gamma$s from the decays.
 
 \begin{figure}
     \centering
@@ -211,6 +244,7 @@ As can be seen, the external background is far more spread out along both axes c
 % just below $E_{\textrm{min}}$, so only a small fraction of \ce{^{11}C} events end up in the ROI: the ones with very high energies that get their energy reconstruction falsely-inflated by some amount. As a result, this background is expected to be very much sub-dominant to all other backgrounds in this analysis. Because this background is important to consider for some other analyses, a triple-coincidence tagging algorithm is being built by Katharine Dixon~\cite{}, % Katharine C11 citation
 % but not used for this analysis currently.% Maybe this changes? will see if constraint needed.
 
+\section{Statistical Approach}
 \subsection{The Log-likelihood Test Statistic}\label{sec:test_statistic}
 At the highest level, this analysis involves taking the data observed in the scintillator-fill after applying a certain set of cuts, along with simulated PDFs for all processes believed to constitute the observed data with those same cuts applied. Using these, the combined energy and radial distributions of the MC are fit to that of the data. Given a set of PDFs, a number of parameters can be modified to try and match the distribution of observables in data. These consist of the normalisations of each PDF (i.e. the total number of events observed due to that process), and any systematic parameters that could modify the shapes of these distributions. For this analysis, the neutrino oscillation parameters act as \textit{de facto} systematic parameters, as they modify the shape of the \beight{} PDFs.
 
@@ -278,7 +312,7 @@ Here, $\bm{\mu}$ is the set of parameters that model a given system, $P\left(\bm
 
 \nomenclature{\textbf{CI}}{Credible Interval}
 \nomenclature{\textbf{HPD}}{(The point of) Highest Posterior Density}
-If one is able to determine the overall posterior distribution, then it is possible to derive best-fit values with uncertainties for all parameters in the fit. This is done by ``marginalising'' the posterior distribution, i.e. integrating over all parameters other than the one of interest. A sensible best-fit value is then the point of Highest Posterior Density (HPD). The uncertainty on this value is derived from the spread of the marginalised posterior, by the calculation of a $1\sigma$ Credible Interval (CI): this is a set of values for a given parameter which has a total posterior probability of 68.3\%, and contain the best-fit value. There are an infinite number of CIs that satisfy this property; for this analysis, the values have been chosen in decreasing order of marginalised posterior probability density.
+If one is able to determine the overall posterior distribution, then it is possible to derive best-fit values with uncertainties for all parameters in the fit. This is done by ``marginalising'' the posterior distribution, i.e. integrating over all parameters other than the one of interest. A sensible best-fit value is then the point of Highest Posterior Density (HPD). The uncertainty on this value is derived from the spread of the marginalised posterior, by the calculation of a $1\sigma$ Credible Interval (CI): this is a set of values for a given parameter which has a total posterior probability of 68.3\%, and contains the best-fit value. There are an infinite number of CIs that satisfy this property; for this analysis, the values have been chosen in decreasing order of marginalised posterior probability density.
 
 \subsection{Markov Chain Monte Carlo}
 The above discussion of Bayesian statistics assumes that one can accurately determine the posterior density distribution. Whilst the likelihood and prior distribution are straightforward enough to calculate, often-times $P\left(\bm{x}\right)$ (which acts as a normalisation) is very challenging to determine. This is because calculating this normalisation involves integrating the likelihood over all the parameter space, and if there are a large number of parameters this can become very numerically complex.
@@ -384,7 +418,7 @@ Even after using the Large Mixing Angle approximation, having to call \texttt{PS
     % [19 pages currently, without figures; probably +5 pages for figures.]
 \section{Analysis on Scintillator-Phase data}\label{sec:solar_analysis_results}
 \subsection{Dataset and Livetime}\label{sec:solar_dataset_livetime}
-The data used in this analysis was chosen to be scintillator phase data after the end of the PPO top-up campaign that completed in April 2022. An initial validation of the analysis tools was performed on data between 29\textsuperscript{th} April and 10\textsuperscript{th} May 2022~\cite{cookmanSolarOscillationAnalysis2023}. % cite presentation of my high-background results
+The data used in this analysis was scintillator phase data after the end of the PPO top-up campaign that completed in April 2022. An initial validation of the analysis tools was performed on data between 29\textsuperscript{th} April and 10\textsuperscript{th} May 2022~\cite{cookmanSolarOscillationAnalysis2023}. % cite presentation of my high-background results
 For the full analysis, data was chosen from runs taken after these dates. Not all data taken during this time was considered usable for this analysis, however. The Collaboration's `Preliminary Scintillator Gold' run selection list was used as the basis for this analysis. This run list requires:
 \begin{itemize}
     \item The run type must be in `Physics', as opposed to running in calibration or maintenance;
@@ -481,8 +515,8 @@ The results of all these cuts can be seen for the data in Table~\ref{tab:data_cu
         \begin{tabulary}{\textwidth}{c R R R R}
             \hline
             MC process       & \# Physics Events Simulated & \# Triggered Events Simulated  & \# Remaining after cuts & Overall Cut Efficiency (\%) \\ \hline \hline
-            \beight{} $\nu_{e}$ & \num{2830425}  & \num{5511568}  & \num{929551} & 32.8     \\
-            \beight{} $\nu_{\mu,\tau}$ & \num{1898088} & \num{3675261} & \num{572949} & 30.2\\
+            \beight{} $\nu_{e}$, unoscillated & \num{2830425}  & \num{5511568}  & \num{929551} & 32.8     \\
+            \beight{} $\nu_{\mu,\tau}$, unoscillated & \num{1898088} & \num{3675261} & \num{572949} & 30.2\\
             \hline
             AV \ce{^{214}Bi}    & \num{27138894} & \num{38267431} & \num{127}    & 0.000468 \\
             Ropes \ce{^{214}Bi} & \num{67541698} & \num{84734663} & \num{221}    & 0.000327 \\
@@ -505,7 +539,7 @@ The results of all these cuts can be seen for the data in Table~\ref{tab:data_cu
         \end{tabulary}
     \end{center}
     \caption[Combined impact of cuts on each MC process]
-    {Combined impact of cuts on each MC process. Overall cut efficiency is defined as the number of remaining triggered events after all cuts have been applied, divided by the number of physics events simulated for that process. Processes have been split into three general categories: signal, external backgrounds, and internal backgrounds. A final category corresponds to other processes that were considered for this analysis, but either all events are cut out, or Section~\ref{sec:exp_rates_constraints} will show a negligible number of these events are expected in our dataset.}
+    {Combined impact of cuts on each MC process. Overall cut efficiency is defined as the number of remaining triggered events after all cuts have been applied, divided by the number of physics events simulated for that process. Processes have been split into three general categories: (unoscillated) signal, external backgrounds, and internal backgrounds. A final category corresponds to other processes that were considered for this analysis, but either all events are cut out, or Section~\ref{sec:exp_rates_constraints} will show a negligible number of these events are expected in our dataset.}
     \label{tab:MC_cut_effs}
 \end{table}
 
@@ -532,15 +566,15 @@ Variable bin widths in energy were chosen for this analysis: \SI{0.1}{\MeV} bins
     % \end{itemize}
     % [4 pages]
 \subsection{Expected Rates and their Constraints}\label{sec:exp_rates_constraints}
-Because this analysis is dependent on deriving the shape and normalisation of the \beight{} spectrum from the data observed, it is important to know the number of events expected to be seen within the dataset for each process, both signal and background. This is done in two stages: firstly, the expected rates for each process before any cuts applied is determined, along with any constraints. Then, by using the cut efficiencies calculated in the previous section, estimates for the expected number of events after cuts can be derived. When combined with a constraining uncertainty, this can be used as a prior within the MCMC fit. The resulting expected rates before and after cuts, along with any constraints being used, are shown in Table~\ref{tab:MC_expected_rates_constraints}. Details of how the rates and constraints were calculated can be found in Appendix~\ref{chap:appendix_solar_rates}.
+Because this analysis is dependent on deriving the shape and normalisation of the \beight{} spectrum from the data observed, it is important to know the number of events expected to be seen within the dataset for each process, both signal and background. This is done in two stages: firstly, the expected rates for each process before any cuts are applied is determined, along with any constraints. Then, by using the cut efficiencies calculated in the previous section, estimates for the expected number of events after cuts can be derived. When combined with a constraining uncertainty, this can be used as a prior within the MCMC fit. The resulting expected rates before and after cuts, along with any constraints being used, are shown in Table~\ref{tab:MC_expected_rates_constraints}. Details of how the rates and constraints were calculated can be found in Appendix~\ref{chap:appendix_solar_rates}.
 
 \begin{table}[!th]
     \begin{center}
         \begin{tabulary}{\textwidth}{c R R R R}
             \hline
             MC process       & Expected \# Events Pre-Cuts & Overall Cut Efficiency (\%) & Expected \# Events Post-Cuts & Constraint (\%) \\ \hline \hline
-            \beight{} $\nu_{e}$          & 572.58 & 32.8       & 187.94 & $^{+2.5\%}_{-1.7\%}$ \\
-            \beight{} $\nu_{\mu,\tau}$   & 102.22 & 30.2       & 30.86  & $^{+2.5\%}_{-1.7\%}$ \\
+            \beight{} $\nu_{e}$, unoscillated & 572.58 & 32.8       & 187.94 & $^{+2.5\%}_{-1.7\%}$ \\
+            \beight{} $\nu_{\mu,\tau}$, unoscillated & 102.22 & 30.2       & 30.86  & $^{+2.5\%}_{-1.7\%}$ \\
             \hline
             AV \ce{^{214}Bi}             &\num{594000}&0.000468& 2.78   & $^{+304.8\%}_{-100\%}$ \\
             Ropes \ce{^{214}Bi}          &\num{140000}&0.000327& 0.46   & $^{+304.8\%}_{-100\%}$ \\
@@ -598,11 +632,14 @@ Values of $\alpha$ were scanned over, generating a log-likelihood distribution. 
     \label{fig:bi214_escale_calibration}
 \end{figure}
 
-To handle energy scaling as a systematic in this analysis, the energy scale is floated within the MCMC fit, with the constraint given above. The first and last energy bins of the MCMC fit, \SIrange{2.5}{2.6}{\MeV} and \SIrange{13}{14}{\MeV}, were used as buffer bins to let this floating occur; this allows for the energy scale to float in the range $\frac{13}{14}\leq\alpha\leq\frac{2.6}{2.5}$.
+To handle energy scaling as a systematic in this analysis, the energy scale is floated within the MCMC fit, with the constraint given above. The first and last energy bins of the MCMC fit, \SIrange{2.5}{2.6}{\MeV} and \SIrange{13}{14}{\MeV}, were used as buffer bins to let this floating occur.
+The energy scale was then allowed to float in the range $\frac{13}{14}\leq\alpha\leq\frac{2.6}{2.5}$, which ensures that scaling could never go beyond the maximum or minimum allowed by the size of the buffer bins. This allowed region is much larger than the constraint found above.
 
 In addition to a global energy scaling, it is possible that the resolution of the energy reconstruction could be systematically off. Because of the effects discussed in Section~\ref{sec:solar_obs_principle}, changes to the oscillation parameters only impact the observed signal distribution over a broad range of energies. This means that mismodelling the energy resolution of the detector is only liable to have an impact on the measurement if that mismodelling is substantial. However, by looking again at Fig.~\ref{fig:bi214_escale_calibration} there appears to be a good qualitative match of the energy resolution between data and MC for the tagged \ce{^{214}Bi} events. As a result, the systematic effect of additional energy smearing will not be considered in this thesis.
 
-Similar to the systematics in reconstructed energy, there are also systematics possible in reconstructed position. These can be decomposed into three kinds of systematic: radial scaling, radial resolution, and position bias along each coordinate axis. The dominant effect that these systematics will have on the PDFs is to change their normalisations. Because all normalisations are being floated within the MCMC fit, and the normalisation constraints of almost all PDFs are relative large, the impact of these systematics is expected to be sub-dominant.
+Two other possible energy systematics could also exist. There could be an offset in the reconstructed energy, and even some degree of non-linearity. This would lead to a mismodelling of the form $E_{\mathrm{reco}}\to E_{0} + \alpha E_{\mathrm{reco}} +\beta E_{\mathrm{reco}}^{2}$, where $E_{0}$ and $\beta$ are the energy offset and non-linearity systematic parameters. Calibrating all of these systematics together would require at least three calibration sources. This has not been done in this thesis, and so for now these two systematics have been ignored.
+
+Similar to the systematics in reconstructed energy, there are also systematics possible in reconstructed position. These can be decomposed into three kinds of systematic: radial scaling, radial resolution, and position bias along each coordinate axis. The dominant effect that these systematics will have on the PDFs is to change their normalisations. Because all normalisations are being floated within the MCMC fit, and the normalisation constraints of almost all PDFs are relatively large, the impact of these systematics is expected to be sub-dominant.
 
 Finally, there can also be mismodelling of the radial distributions for given processes in MC compared to data. For example, it is known that the internal \ce{^{208}Tl} events are non-uniform as a function of radius; this is why the normalisation of each radial slice for this background is floated independently. The external backgrounds can also plausibly have PDF shape systematics, especially if the assumptions made to model them (such as the use of simulation shells) are not fully accurate. These shape systematics can also arise from the lack of statistics in the PDFs used to model them: as an example, Table~\ref{tab:MC_cut_effs} shows that only 62 external water \ce{^{214}Bi} events are used in the creation of the associated PDF. Handling this type of modelling uncertainties for the external backgrounds is not considered in this thesis.
 
