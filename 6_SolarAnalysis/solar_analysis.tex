@@ -669,7 +669,14 @@ Finally, there can also be mismodelling of the radial distributions for given pr
 In theory, the convergence of the sampled distribution within an MCMC fit to the posterior density distribution is guaranteed to eventually occur, regardless of the specific shape of the multivariate Gaussian proposal distribution. However, the speed of this convergence is highly dependent on the widths of the proposal distribution. This is very important as in practice the MCMC fit can only be run for a finite amount of time. For a given parameter within the fit, if the associated width (also known as the step size) in the proposal distribution is too large, then the vast majority of proposals will be of positions in the parameter space where the log-likelihood is less than before, and so these proposals will be consistently rejected. Alternatively,  if the width is chosen too small, the acceptance rate of the chain will be very high, but too much time will be spent for the chain to simply explore the space.
 
 By choosing sensible width parameters for the proposal distribution, as well as running the chain for as long as possible, one can attempt to maximise the ``effective sample size'' of the MCMC fit. The effective sample size is the theoretical number of independent samples that would need to be drawn from the posterior density distribution to have equivalent statistics to that of the MCMC sampling process. It has been shown that~\cite{gelmanChapter11Basics2013}, for a wide variety of situations, an appropriate size for the width of a given parameter is the standard deviation of the true posterior density distribution. % cite appropriate
-Because knowing this posterior density distribution is precisely the aim of the whole MCMC procedure, this can make choosing these widths challenging in practice. In this analysis, an iterative approach was used: an MCMC fit was first run using width parameters that were guessed. Once this fit completed, the resulting sampled distribution marginalised onto each fit parameter were looked at to find approximately the magnitude of their standard deviations. This then informed the widths chosen for the next MCMC fit. This process was repeated until the autocorrelation of the sampled distribution for each fit parameter appeared to become zero for any step delay that was a substantial fraction of the whole chain length. Such a result indicated that the effective sample size has been maximised. A chain length of \num{1000000} steps was found to be sufficient to obtain large enough effective sample sizes for this analysis.
+Because knowing this posterior density distribution is precisely the aim of the whole MCMC procedure, this can make choosing these widths challenging in practice. In this analysis, an iterative approach was used: an MCMC fit was first run using width parameters that were guessed. Once this fit completed, the resulting sampled distribution marginalised onto each fit parameter were looked at to find approximately the magnitude of their standard deviations. This then informed the widths chosen for the next MCMC fit. 
+This process continued until two conditions were met simultaneously:
+\begin{itemize}
+    \item The sampled distribution marginalised over every fit parameter appeared smooth;
+    \item The marginalised distributions also appeared to fully explore their parameter spaces many times.
+\end{itemize}
+% This process was repeated until the autocorrelation of the sampled distribution for each fit parameter appeared to become zero for any step delay that was a substantial fraction of the whole chain length. 
+Such a result indicated that the effective sample size has been maximised. A chain length of \num{1000000} steps was found to be sufficient to obtain large enough effective sample sizes for this analysis.
 
 In order to guard against the possibility of a given chain missing some important part of the parameter space because of its starting position, 100 chains were run simultaneously. The initial positions of each in the parameter space were chosen randomly according to the overall prior distribution. Fig.~\ref{fig:params_vs_step_plots} shows the sampled values for four different parameters in a given chain, after the tuning of the width parameters had been completed.
 
@@ -704,16 +711,21 @@ In order to guard against the possibility of a given chain missing some importan
     \label{fig:params_vs_step_plots}
 \end{figure}
 
-Given some initial start point in the parameter space, a given chain will typically take some time in finding where the region of greatest likelihood is. This leads to an initial set of steps where the chain moves a large distance in the parameter space in the same direction, so that the autocorrelation of the chain in this period is substantial for any chosen step delay. These initial samples are not representative of the actual posterior density distribution, and are called the ``burn-in'' period. Fig.~\ref{fig:auto_corr} shows the auto-correlation distributions in a typical chain for a couple of parameters, as well as the log-likelihood. As can be seen, by the time the number of steps differed by \num{1000}, the autocorrelation of parameters and the log-likelihood itself of each chain was at zero, indicating the likelihood evaluations in the chains were independent when they differed by at least \num{1000} steps. To be very safe, for all chains the first \num{100000} steps were declared as the burn-in period. The overall set of samples used to approximate the posterior density distribution corresponds to collection of all sampled points on all the chains, after burn-in.
+Given some initial start point in the parameter space, a given chain will typically take some time in finding where the region of greatest likelihood is. This leads to an initial set of steps where the chain moves a large distance in the parameter space in the same direction. 
+% , so that the autocorrelation of the chain in this period is substantial for any chosen step delay.
+These initial samples are not representative of the actual posterior density distribution, and are called the ``burn-in'' period. Fortunately, enough tuning of the width parameters was performed that there was minimal burn-in observed in any of the chains: this can be observed in Fig.~\ref{fig:params_vs_step_plots}. 
+% Fig.~\ref{fig:auto_corr} shows the auto-correlation distributions in a typical chain for a couple of parameters, as well as the log-likelihood. As can be seen, by the time the number of steps differed by \num{1000}, the autocorrelation of parameters and the log-likelihood itself of each chain was at zero, indicating the likelihood evaluations in the chains were independent when they differed by at least \num{1000} steps. 
+To be very safe, for all chains the first \num{100000} steps were declared as the burn-in period. The overall set of samples used to approximate the posterior density distribution corresponds to collection of all sampled points on all the chains, after burn-in.
 
+In addition to the above, the MCMC fitting code was also tested on a series of `fake' datasets, including those described in Section~\ref{sec:solar_projections}. These were able to validate that if a `fake' dataset was generated with a given set of parameters, the MCMC fitter would correctly generate posterior densities consistent with those input parameters.
 
-\begin{figure}
-    \centering
-    \includegraphics[width=0.8\textwidth]{6_SolarAnalysis/images/autocorr_plot_llh_dmsq_theta12.pdf}
-    \caption[Plot showing the auto-correlation as a function of step delay for three variables in a typical chain]
-    {Plot showing the auto-correlation as a function of step delay for three variables in a typical chain: log-likelihood (blue), \dmsq{} (red), and \tonetwo{} (green).}
-    \label{fig:auto_corr}
-\end{figure}
+% \begin{figure}
+%     \centering
+%     \includegraphics[width=0.8\textwidth]{6_SolarAnalysis/images/autocorr_plot_llh_dmsq_theta12.pdf}
+%     \caption[Plot showing the auto-correlation as a function of step delay for three variables in a typical chain]
+%     {Plot showing the auto-correlation as a function of step delay for three variables in a typical chain: log-likelihood (blue), \dmsq{} (red), and \tonetwo{} (green).}
+%     \label{fig:auto_corr}
+% \end{figure}
 
     % \begin{itemize}
     %     \item Show plots of parameter values versus step, to demonstrate that the step sizes have been tuned sufficiently.
@@ -726,15 +738,16 @@ Now that there is confidence in the convergence of the MCMC fit to the posterior
 
 \begin{figure}
     \centering
-    \includegraphics[width=0.8\textwidth]{6_SolarAnalysis/images/posterior_densities_plot_no_osc.pdf}
+    \includegraphics[width=0.87\textwidth]{6_SolarAnalysis/images/posterior_densities_plot_no_osc.pdf}
     \caption[Marginalised 1D posterior density distributions for all non-oscillation parameters]
     {Marginalised 1D posterior density distributions for all non-oscillation parameters, shown in blue. The HPD and 1$\sigma$ Bayesian CI are shown for each parameter. Also shown in dashed red are the associated prior distributions.}
     \label{fig:nuisance_params_marged}
 \end{figure}
 
-For a number of the parameters, the posterior distributions are more strongly peaked than their associated priors. This indicates that there was enough information in the dataset to further constrain those parameters. One such parameter is the rate of the external water \ce{^{214}Bi}. The resulting measurement of this is $34.1^{+18.5}_{-18.9}$ events in the dataset. This is 10 times larger than the expected rate shown in Table~\ref{tab:MC_expected_rates_constraints}, providing good evidence for a change in the level of this particular background relative to the water phase. In contrast, all other external backgrounds have HPDs consistent with their prior expected values.
+For a number of the parameters, the posterior distributions are more strongly peaked than their associated priors. This indicates that there was enough information in the dataset to further constrain those parameters. One such parameter is the rate of the external water \ce{^{214}Bi}. The resulting measurement of this is $34.1^{+18.5}_{-18.9}$ events in the dataset. This is 10 times larger than the expected rate shown in Table~\ref{tab:MC_expected_rates_constraints}, providing some evidence for a change in the level of this particular background relative to the water phase. In contrast, all other external backgrounds have HPDs consistent with their prior expected values.
 
-Another set of parameters that have been well-constrained in the fit are the normalisations of each of the internal \ce{^{208}Tl} slices. As expected, slices corresponding to larger radii have a greater fitted rate, with the number of events measured in the outermost radial slice to be twice that of the innermost one. However, the posteriors of the other internal \ce{^{238}U}- and \ce{^{232}Th}-chain are the same as their priors, indicating there was no evidence from data within the fit to constrain those processes any further. Similarly, the posteriors of the energy scale parameter and $\Phi_{\beight{}}$ only show very mild differences with their strong priors.
+Another set of parameters that have been well-constrained in the fit are the normalisations of each of the internal \ce{^{208}Tl} slices. These slices have been numbered radially, with the innermost radial slice being slice 1. 
+As expected, slices corresponding to larger radii have a greater fitted rate, with the number of events measured in the outermost radial slice to be twice that of the innermost one. However, the posteriors of the other internal \ce{^{238}U}- and \ce{^{232}Th}-chain are the same as their priors, indicating there was no information from data within the fit to constrain those processes any further. Similarly, the posteriors of the energy scale parameter and $\Phi_{\beight{}}$ only show very mild differences with their strong priors.
 
 Fig.~\ref{fig:corr_plots_params} shows the correlation coefficients associated with the 2D marginalised distributions, for each pair of parameters. From this, clear anti-correlation between a number of the external backgrounds can be seen. This seems intuitive: the PDFs for many of these external backgrounds are similar, and so the fit struggles to distinguish between them.
 
