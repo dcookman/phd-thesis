@@ -668,7 +668,7 @@ Finally, there can also be mismodelling of the radial distributions for given pr
 \subsubsection{Fit Validation}
 In theory, the convergence of the sampled distribution within an MCMC fit to the posterior density distribution is guaranteed to eventually occur, regardless of the specific shape of the multivariate Gaussian proposal distribution. However, the speed of this convergence is highly dependent on the widths of the proposal distribution. This is very important as in practice the MCMC fit can only be run for a finite amount of time. For a given parameter within the fit, if the associated width (also known as the step size) in the proposal distribution is too large, then the vast majority of proposals will be of positions in the parameter space where the log-likelihood is less than before, and so these proposals will be consistently rejected. Alternatively,  if the width is chosen too small, the acceptance rate of the chain will be very high, but too much time will be spent for the chain to simply explore the space.
 
-By choosing sensible width parameters for the proposal distribution, as well as running the chain for as long as possible, one can attempt to maximise the ``effective sample size'' of the MCMC fit. The effective sample size is the theoretical number of independent samples that would need to be drawn from the posterior density distribution to have equivalent statistics to that of the MCMC sampling process. It has been shown that~\cite{gelmanChapter11Basics2013}, for a wide variety of situations, an appropriate size for the width of a given parameter is the standard deviation of the true posterior density distribution. % cite appropriate
+By choosing sensible width parameters for the proposal distribution, as well as running the chain for as long as possible, one can attempt to maximise the ``effective sample size'' of the MCMC fit. The effective sample size is the theoretical number of independent samples that would need to be drawn from the posterior density distribution to have equivalent statistics to that of the MCMC sampling process. It has been shown~\cite{gelmanChapter11Basics2013} that, for a wide variety of situations, an appropriate size for the width of a given parameter is the standard deviation of the true posterior density distribution. % cite appropriate
 Because knowing this posterior density distribution is precisely the aim of the whole MCMC procedure, this can make choosing these widths challenging in practice. In this analysis, an iterative approach was used: an MCMC fit was first run using width parameters that were guessed. Once this fit completed, the resulting sampled distribution marginalised onto each fit parameter were looked at to find approximately the magnitude of their standard deviations. This then informed the widths chosen for the next MCMC fit. 
 This process continued until two conditions were met simultaneously:
 \begin{itemize}
@@ -753,7 +753,7 @@ Fig.~\ref{fig:corr_plots_params} shows the correlation coefficients associated w
 
 \begin{figure}[!th]
     \centering
-    \includegraphics[width=\textwidth]{6_SolarAnalysis/images/corr_coeff.pdf}
+    \includegraphics[width=\textwidth]{6_SolarAnalysis/images/corr_coeff2.pdf}
     \caption[Correlation matrix between all parameters in the MCMC fit]
     {Correlation matrix between all parameters in the MCMC fit.}
     \label{fig:corr_plots_params}
@@ -769,7 +769,7 @@ The only other pair of parameters which have a substantial correlation between o
     \label{fig:2d_osc_param_posterior}
 \end{figure}
 
-As can be seen from this plot, the fit has been able to successfully constrain \tonetwo{} to some success. However, beyond a value of \SI{5e-4}{\eV\squared}, the posterior density appears flat as a function of \dmsq{}. This implies that this dataset provides little ability to reject the possibility of large values of \dmsq{}.
+As can be seen from this plot, the fit has been able to successfully constrain \tonetwo{}. However, beyond a value of \SI{5e-4}{\eV\squared}, the posterior density appears flat as a function of \dmsq{}. This implies that this dataset provides little ability to reject the possibility of large values of \dmsq{}.
 
 Given this lack of constraining power on \dmsq{}, it is reasonable to only obtain a measurement for \tonetwo{}. The result of marginalising over \dmsq{} to obtain the 1D posterior distribution in \tonetwo{} is shown in Fig.~\ref{fig:1d_theta_12_posterior}. From this, we can obtain a measurement of:
 \begin{equation*}
@@ -789,7 +789,7 @@ As can be seen, the measurement made in this thesis is consistent with the globa
     \label{fig:1d_theta_12_posterior}
 \end{figure}
 
-The fact that the measured value of \tonetwo{} is somewhat above the global fit value also has a reasonable explanation. Looking back at Fig.~\ref{fig:2d_osc_param_posterior}, the preferred values of \tonetwo{} for large \dmsq{} are somewhat greater on average than for \dmsq{} values close to the global fit value of \SI{7.4e-5}{\eV\squared}. As a result, the final value quoted for \tonetwo{} is dependent on the choice of the prior distribution for \dmsq{}: this is an inevitable result of using a Bayesian framework for this analysis. The impact of choosing a less conservative prior for \dmsq{} can be seen by ignoring all sampled points with $\dmsq{} \geq \SI{5e-4}{\eV\squared}$, as an example. The resulting measurement of \tonetwo{} becomes:
+Looking back at Fig.~\ref{fig:2d_osc_param_posterior}, the preferred values of \tonetwo{} for large \dmsq{} are somewhat greater on average than for \dmsq{} values close to the global fit value of \SI{7.4e-5}{\eV\squared}. As a result, the final value quoted for \tonetwo{} is dependent on the choice of the prior distribution for \dmsq{}: this is an inevitable result of using a Bayesian framework for this analysis. The impact of choosing a less conservative prior for \dmsq{} can be seen by ignoring all sampled points with $\dmsq{} \geq \SI{5e-4}{\eV\squared}$, as an example. The resulting measurement of \tonetwo{} becomes:
 \begin{equation*}
     \left|\tonetwo{} + n\cdot180\right|^{\circ} = 36.4^{\circ+8.0^{\circ}}_{\phantom{\circ}-7.8^{\circ}}.
 \end{equation*}
@@ -867,11 +867,11 @@ Given the limited statistics used in the dataset analysed in Section~\ref{sec:so
 
 To perform these sensitivity projections, the same analysis method was employed as with the real dataset. However, for each projection scenario a fake ``Asimov'' dataset was generated. This was a 2D histogram binned in the same way as the MC PDFs, corresponding to the total expected rate of all signal and background processes. Because the same PDFs were used to build both the MC and fake dataset, the maximum likelihood should occur when the fit parameters are identical to those which generated the fake dataset. Although this method of performing sensitivity projections leads to the slightly odd situation of having non-integer numbers of events in the bins of the fake dataset, it has been shown that this approach allows us to estimate the median sensitivity of a scenario~\cite{cowanAsymptoticFormulaeLikelihoodbased2011}. % cite https://arxiv.org/pdf/1007.1727.pdf, maybe more?
 
-The assumptions used to make the fake datasets are as follows. To begin with, no cuts were changed between the main analysis and this projection, and the same PDFs were used in both. Furthermore, the \beight{} rate was determined by the same global fit flux value and neutrino oscillation parameters used in the rest of this analysis. Because some of the dataset used in the main analysis was taken during a time of known elevated \ce{^{238}U}- and \ce{^{232}Th}-chain backgrounds, R. Hunt-Stokes provided an additional estimate of the \ce{^{214}Bi-Po} and \ce{^{212}Bi-Po} rates in the \SI{5.0}{\metre} FV for only the period of the dataset where the internal background levels had stabilised. Those rates went from 6.06 events per hour before excluding the higher background period down to 4.87 events per hour for the \ce{^{214}Bi-Po}, and from 0.94 events per hour down to 0.89 events per hour. These relative changes for the two background chains were used to scale the rates from their expectation in the original dataset. For the internal \ce{^{208}Tl}, the rate of each slice relative to one another was taken from their fitted HPD values in the original analysis, with the absolute value of those rates scaled by the fractional change in rate between the two time periods, $0.89/0.94$.
+The assumptions used to make the fake datasets are as follows. To begin with, no cuts were changed between the main analysis and this projection, and the same PDFs were used in both. Furthermore, the \beight{} rate was determined by the same global fit flux value and neutrino oscillation parameters used in the rest of this analysis. Because some of the dataset used in the main analysis was taken during a time of known elevated \ce{^{238}U}- and \ce{^{232}Th}-chain backgrounds, R. Hunt-Stokes provided an additional estimate of the \ce{^{214}Bi-Po} and \ce{^{212}Bi-Po} rates in the \SI{5.0}{\metre} FV for only the period of the dataset where the internal background levels had stabilised. Those rates went from 6.06 events per hour before excluding the higher background period down to 4.87 events per hour for the \ce{^{214}Bi-Po}, and from 0.94 events per hour down to 0.89 events per hour for the \ce{^{212}Bi-Po}. These relative changes for the two background chains were used to scale the rates from their expectation in the original dataset. For the internal \ce{^{208}Tl}, the rate of each slice relative to one another was taken from their fitted HPD values in the original analysis, with the absolute value of those rates scaled by the fractional change in rate between the two time periods, $0.89/0.94$.
 
 External backgrounds were in general set to the rates expected from T. Zummo, as described in Section~\ref{sec:rates_ext_backgrounds}. The exceptions were the backgrounds from the external water: for the \ce{^{208}Tl} component, the target rate of this background as described in~\cite{andringaCurrentStatusFuture2016} was used. For the \ce{^{214}Bi} component, the higher rate as given by the fitted HPD value was used instead. The same constraints on all the rates were used as in the main analysis. For the energy scale parameter, because no additional systematics were applied to the Asimov dataset the true and expected value of $\alpha$ was set to 1, with the same uncertainty of $\pm0.0022$ as before.
 
-Using this baseline set of assumptions, fake datasets were generated and fit over a series of livetime scenarios between 150 days and 5 years. The results of these MCMC fits, in terms of the 2D and 1D posterior densities for the oscillation parameters are shown in Figs.~\ref{fig:2d_posteriors_projections} and \ref{fig:1d_posteriors_projections}. Some chains took much longer to converge than in the main analysis; as a result, a burn-in of \num{250000} steps was found to be sufficient. As can be seen, by $\sim$2 years of livetime, there is sufficient evidence to confidently reject large \dmsq{} values above \SI{2e-4}{\eV\squared}. This leads to a fairly substantial decrease in uncertainty as well as less bias in the 1D HPD value for \tonetwo{}. There does remain some bias, however: this is because of the non-Gaussian ``boomerang'' structure seen in the 2D posterior density plots.
+Using this baseline set of assumptions, fake datasets were generated and fit over a series of livetime scenarios between 150 days and 5 years. The results of these MCMC fits, in terms of the 2D and 1D posterior densities for the oscillation parameters are shown in Figs.~\ref{fig:2d_posteriors_projections} and \ref{fig:1d_posteriors_projections}. Some chains took much longer to converge than in the main analysis; as a result, a burn-in of \num{250000} steps was found to be sufficient. As can be seen, by 2 years of livetime, there is sufficient evidence to reject large \dmsq{} values above \SI{2e-4}{\eV\squared} with $3.1\sigma$ of confidence, because the total posterior probability \SI{2e-4}{\eV\squared} is only 0.1\%. This leads to a fairly substantial decrease in uncertainty as well as less bias in the 1D HPD value for \tonetwo{}. There does remain some bias, however: this is because of the non-Gaussian ``boomerang'' structure seen in the 2D posterior density plots.
 
 \begin{figure}[!th]
     \centering
@@ -892,13 +892,13 @@ Using this baseline set of assumptions, fake datasets were generated and fit ove
 
 \begin{figure}
     \centering
-    \begin{subfigure}{0.98\textwidth}
+    \begin{subfigure}{0.90\textwidth}
         \centering
         \includegraphics[width=\textwidth]{6_SolarAnalysis/images/theta_12_comparison_projections.pdf}
         \caption{}
         \label{fig:1d_posteriors_projections_theta}
     \end{subfigure}
-    \begin{subfigure}{0.98\textwidth}
+    \begin{subfigure}{0.90\textwidth}
         \centering
         \includegraphics[width=\textwidth]{6_SolarAnalysis/images/dmsq_21_comparison_projections.pdf}
         \caption{}
