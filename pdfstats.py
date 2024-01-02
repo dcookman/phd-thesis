@@ -22,9 +22,9 @@ def main():
     ax.set_ylim(0,250)
     ax.set_xlabel("Date")
     # ax.set_xlim(datetime.date(2023,1,1), datetime.date.today()+ datetime.timedelta(days=1))
-    ax.set_xlim(datetime.date(2023,1,1), datetime.date(2023,10,1))
+    ax.set_xlim(datetime.date(2023,1,1), datetime.date(2024,1,2))
     ax.xaxis.set_major_formatter(mdates.ConciseDateFormatter(ax.xaxis.get_major_locator()))
-    plt.legend()
+    plt.legend(loc="upper left")
     fig.savefig("Figs/pdfstats_plot.pdf")
     plt.show()
 
